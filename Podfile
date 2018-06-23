@@ -6,6 +6,11 @@ target 'Preparture' do
   use_frameworks!
 
 pod 'IQKeyboardManagerSwift'
+pod 'MBProgressHUD'
+pod 'SDWebImage'
+pod 'FacebookCore'
+pod 'FacebookLogin'
+pod 'GoogleSignIn'
 
   # Pods for Preparture
 
