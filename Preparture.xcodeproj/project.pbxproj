@@ -32,6 +32,10 @@
 		05D2F1EA20D81D0600E2A5C9 /* Muli-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05D2F1DB20D81D0500E2A5C9 /* Muli-SemiBoldItalic.ttf */; };
 		05D2F1EB20D81D0600E2A5C9 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05D2F1DC20D81D0500E2A5C9 /* OFL.txt */; };
 		05D2F1EF20D81EC100E2A5C9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D2F1EE20D81EC100E2A5C9 /* Constants.swift */; };
+		05E2B6FB20DFDD21005DD640 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E2B6F920DFDD21005DD640 /* ForgotPasswordViewController.swift */; };
+		05E2B6FC20DFDD21005DD640 /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E2B6FA20DFDD21005DD640 /* ForgotPasswordViewController.xib */; };
+		05E2B6FF20DFDD35005DD640 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E2B6FD20DFDD35005DD640 /* SignUpViewController.swift */; };
+		05E2B70020DFDD35005DD640 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E2B6FE20DFDD35005DD640 /* SignUpViewController.xib */; };
 		38F420D450408B7AF197A995 /* Pods_PrepartureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430A11E36AEB8069B91E2363 /* Pods_PrepartureTests.framework */; };
 		6158A613072DEB05FC89D93A /* Pods_Preparture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544D5A88B8A7CEE7D1A87742 /* Pods_Preparture.framework */; };
 		8ED8FECA96B4BD3361B8A543 /* Pods_PrepartureUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC83D1E3E260073FFA03D7D /* Pods_PrepartureUITests.framework */; };
@@ -86,6 +90,10 @@
 		05D2F1DB20D81D0500E2A5C9 /* Muli-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		05D2F1DC20D81D0500E2A5C9 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		05D2F1EE20D81EC100E2A5C9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		05E2B6F920DFDD21005DD640 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		05E2B6FA20DFDD21005DD640 /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordViewController.xib; sourceTree = "<group>"; };
+		05E2B6FD20DFDD35005DD640 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		05E2B6FE20DFDD35005DD640 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		3F38D0C6C2483D7C13F1E542 /* Pods-Preparture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preparture.release.xcconfig"; path = "Pods/Target Support Files/Pods-Preparture/Pods-Preparture.release.xcconfig"; sourceTree = "<group>"; };
 		430A11E36AEB8069B91E2363 /* Pods_PrepartureTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrepartureTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		544D5A88B8A7CEE7D1A87742 /* Pods_Preparture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Preparture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,18 +145,11 @@
 		059948DC20D6B1710057F673 /* UserManagement */ = {
 			isa = PBXGroup;
 			children = (
-				059948DD20D6B1710057F673 /* ForgotPassword */,
+				05E2B6F720DFDD13005DD640 /* ForgotPassword */,
+				05E2B6F820DFDD13005DD640 /* SignUp */,
 				059948DE20D6B1710057F673 /* SignIn */,
-				059948DF20D6B1710057F673 /* SignUp */,
 			);
 			path = UserManagement;
-			sourceTree = "<group>";
-		};
-		059948DD20D6B1710057F673 /* ForgotPassword */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ForgotPassword;
 			sourceTree = "<group>";
 		};
 		059948DE20D6B1710057F673 /* SignIn */ = {
@@ -157,13 +158,6 @@
 				059948E320D6B1C90057F673 /* SignInViewController.swift */,
 			);
 			path = SignIn;
-			sourceTree = "<group>";
-		};
-		059948DF20D6B1710057F673 /* SignUp */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SignUp;
 			sourceTree = "<group>";
 		};
 		059948E020D6B1710057F673 /* AppDelegate */ = {
@@ -282,6 +276,24 @@
 				05D2F1EE20D81EC100E2A5C9 /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		05E2B6F720DFDD13005DD640 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				05E2B6F920DFDD21005DD640 /* ForgotPasswordViewController.swift */,
+				05E2B6FA20DFDD21005DD640 /* ForgotPasswordViewController.xib */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		05E2B6F820DFDD13005DD640 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				05E2B6FD20DFDD35005DD640 /* SignUpViewController.swift */,
+				05E2B6FE20DFDD35005DD640 /* SignUpViewController.xib */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		4797767B83B7F4FCF7F5EB79 /* Frameworks */ = {
@@ -420,6 +432,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05D2F1E920D81D0600E2A5C9 /* Muli-SemiBold.ttf in Resources */,
+				05E2B6FC20DFDD21005DD640 /* ForgotPasswordViewController.xib in Resources */,
 				05D2F1E220D81D0600E2A5C9 /* Muli-ExtraBoldItalic.ttf in Resources */,
 				05D2F1E520D81D0600E2A5C9 /* Muli-Italic.ttf in Resources */,
 				05D2F1E720D81D0600E2A5C9 /* Muli-LightItalic.ttf in Resources */,
@@ -428,6 +441,7 @@
 				05B2CB6D20B1E481008D0D32 /* LaunchScreen.storyboard in Resources */,
 				05D2F1E320D81D0600E2A5C9 /* Muli-ExtraLight.ttf in Resources */,
 				05D2F1EA20D81D0600E2A5C9 /* Muli-SemiBoldItalic.ttf in Resources */,
+				05E2B70020DFDD35005DD640 /* SignUpViewController.xib in Resources */,
 				05D2F1E420D81D0600E2A5C9 /* Muli-ExtraLightItalic.ttf in Resources */,
 				05B2CB6A20B1E481008D0D32 /* Assets.xcassets in Resources */,
 				05D2F1E620D81D0600E2A5C9 /* Muli-Light.ttf in Resources */,
@@ -575,7 +589,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				05D2F1EF20D81EC100E2A5C9 /* Constants.swift in Sources */,
+				05E2B6FF20DFDD35005DD640 /* SignUpViewController.swift in Sources */,
 				059948E220D6B1A10057F673 /* AppDelegate.swift in Sources */,
+				05E2B6FB20DFDD21005DD640 /* ForgotPasswordViewController.swift in Sources */,
 				059948E720D6B2040057F673 /* BaseViewController.swift in Sources */,
 				05B2CB6520B1E481008D0D32 /* ViewController.swift in Sources */,
 				059948E420D6B1C90057F673 /* SignInViewController.swift in Sources */,
