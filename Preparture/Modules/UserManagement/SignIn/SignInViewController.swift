@@ -45,12 +45,18 @@ class SignInViewController: BaseViewController {
     }
     
     @IBAction func actionFacebookLogin(_ sender: Any) {
+        self.view.endEditing(true)
     }
     @IBAction func actionGooglePlusLogin(_ sender: Any) {
+        self.view.endEditing(true)
     }
     @IBAction func actionForgotPassword(_ sender: Any) {
+        self.view.endEditing(true)
+        let fpVc:ForgotPasswordViewController = ForgotPasswordViewController(nibName: "ForgotPasswordViewController", bundle: nil)
+        self.present(fpVc, animated: true, completion: nil)
     }
     @IBAction func actionContinue(_ sender: Any) {
+        self.view.endEditing(true)
     }
 }
 

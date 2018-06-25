@@ -22,7 +22,38 @@ class SignUpViewController: BaseViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func actionCamera(_ sender: Any) {
+        self.view.endEditing(true)
     }
     @IBAction func actionSignup(_ sender: Any) {
+        self.view.endEditing(true)
     }
+}
+
+// MARK : -> ------ UITextField Delegates ------
+
+extension SignInViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        var message = String()
+        guard let _text = textField.text else {
+            return true
+        }
+        if textField == tfName {
+            tfName.resignFirstResponder()
+            tfUserName.becomeFirstResponder()
+        } else if textField == tfUserName {
+            tfUserName.resignFirstResponder()
+            tfEmail.becomeFirstResponder()
+        } else if textField == tfEmail {
+            tfEmail.resignFirstResponder()
+            tfPassword.becomeFirstResponder()
+        } else if textField == tfPassword {
+            tfPassword.resignFirstResponder()
+            tfConfirmPassword.becomeFirstResponder()
+        } else {
+            tfConfirmPassword.resignFirstResponder()
+        }
+        return true
+    }
+    
 }
