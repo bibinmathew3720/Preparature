@@ -19,6 +19,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="Preparture" customModuleProvider="target">
             <connections>
+                <outlet property="imageProfile" destination="Rqp-ct-1VW" id="wfP-bU-NlF"/>
+                <outlet property="tfConfirmPassword" destination="D98-2Y-omQ" id="JgT-sn-Oux"/>
+                <outlet property="tfEmail" destination="CvT-Qs-MhK" id="PnS-nZ-cMP"/>
+                <outlet property="tfName" destination="F6M-bn-coq" id="kv5-8Y-5Xu"/>
+                <outlet property="tfPassword" destination="m6X-m4-asz" id="aFg-xm-47D"/>
+                <outlet property="tfUserName" destination="O9y-Sg-xSs" id="exr-yg-KKM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -71,6 +77,9 @@
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="6up-PX-ujv"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O9y-Sg-xSs">
                                     <rect key="frame" x="20" y="176" width="295" height="36"/>
@@ -80,23 +89,10 @@
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="mW0-4M-dU7"/>
+                                    </connections>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFL-HC-LHf">
-                                    <rect key="frame" x="20" y="387" width="295" height="40"/>
-                                    <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="GQm-Xk-yeQ"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="20"/>
-                                    <state key="normal" title="Start Tripping">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgb-23-iPC">
                                     <rect key="frame" x="20" y="161" width="295" height="1"/>
                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -119,6 +115,9 @@
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="OXh-Lf-6QC"/>
+                                    </connections>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FlB-XV-vde">
                                     <rect key="frame" x="20" y="315" width="295" height="1"/>
@@ -142,6 +141,9 @@
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="xCr-Re-skR"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D98-2Y-omQ">
                                     <rect key="frame" x="20" y="331" width="295" height="36"/>
@@ -151,6 +153,9 @@
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="AI0-VX-8LI"/>
+                                    </connections>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Wz-4R-21e">
                                     <rect key="frame" x="20" y="367" width="295" height="1"/>
@@ -159,6 +164,25 @@
                                         <constraint firstAttribute="height" constant="1" id="lbH-yG-R2S"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFL-HC-LHf">
+                                    <rect key="frame" x="20" y="387" width="295" height="40"/>
+                                    <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="GQm-Xk-yeQ"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="20"/>
+                                    <state key="normal" title="Start Tripping">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="actionSignup:" destination="-1" eventType="touchUpInside" id="Fqg-da-9jf"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -215,6 +239,9 @@
                                 <constraint firstAttribute="height" constant="40" id="XAQ-2G-voX"/>
                             </constraints>
                             <state key="normal" image="cameraIcon"/>
+                            <connections>
+                                <action selector="actionCamera:" destination="-1" eventType="touchUpInside" id="W9w-ZS-gn7"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.59859154930000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

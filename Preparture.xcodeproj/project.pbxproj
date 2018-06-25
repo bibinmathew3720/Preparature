@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		051EF8CB20E15BA6001FC354 /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 051EF8CC20E15BA6001FC354 /* IQKeyboardManagerSwift.framework */; };
 		059948E220D6B1A10057F673 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059948E120D6B1A10057F673 /* AppDelegate.swift */; };
 		059948E420D6B1C90057F673 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059948E320D6B1C90057F673 /* SignInViewController.swift */; };
 		059948E720D6B2040057F673 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059948E620D6B2040057F673 /* BaseViewController.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		051EF8CC20E15BA6001FC354 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		059948E120D6B1A10057F673 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		059948E320D6B1C90057F673 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		059948E620D6B2040057F673 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				051EF8CB20E15BA6001FC354 /* IQKeyboardManagerSwift.framework in Frameworks */,
 				6158A613072DEB05FC89D93A /* Pods_Preparture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +302,7 @@
 		4797767B83B7F4FCF7F5EB79 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				051EF8CC20E15BA6001FC354 /* IQKeyboardManagerSwift.framework */,
 				544D5A88B8A7CEE7D1A87742 /* Pods_Preparture.framework */,
 				430A11E36AEB8069B91E2363 /* Pods_PrepartureTests.framework */,
 				8DC83D1E3E260073FFA03D7D /* Pods_PrepartureUITests.framework */,
