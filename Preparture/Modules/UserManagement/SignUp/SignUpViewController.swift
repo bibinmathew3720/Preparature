@@ -31,7 +31,7 @@ class SignUpViewController: BaseViewController {
 
 // MARK : -> ------ UITextField Delegates ------
 
-extension SignInViewController: UITextFieldDelegate {
+extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         var message = String()
