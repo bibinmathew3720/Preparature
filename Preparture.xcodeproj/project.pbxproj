@@ -40,6 +40,11 @@
 		38F420D450408B7AF197A995 /* Pods_PrepartureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430A11E36AEB8069B91E2363 /* Pods_PrepartureTests.framework */; };
 		6158A613072DEB05FC89D93A /* Pods_Preparture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544D5A88B8A7CEE7D1A87742 /* Pods_Preparture.framework */; };
 		8ED8FECA96B4BD3361B8A543 /* Pods_PrepartureUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC83D1E3E260073FFA03D7D /* Pods_PrepartureUITests.framework */; };
+		D095507F20E32B4F00D8BBD9 /* CLBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507820E32B4E00D8BBD9 /* CLBaseService.swift */; };
+		D095508020E32B4F00D8BBD9 /* CLNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507920E32B4E00D8BBD9 /* CLNetworkManager.swift */; };
+		D095508120E32B4F00D8BBD9 /* CLNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507A20E32B4E00D8BBD9 /* CLNetworkModel.swift */; };
+		D095508220E32B4F00D8BBD9 /* CLNetworkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507B20E32B4E00D8BBD9 /* CLNetworkUtility.swift */; };
+		D095508320E32B4F00D8BBD9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D095507E20E32B4E00D8BBD9 /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +107,13 @@
 		772155CA00517C2E46427F36 /* Pods-PrepartureTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureTests/Pods-PrepartureTests.release.xcconfig"; sourceTree = "<group>"; };
 		8DC83D1E3E260073FFA03D7D /* Pods_PrepartureUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrepartureUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98114864B11C38A03BF9C34 /* Pods-PrepartureUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureUITests/Pods-PrepartureUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D095507820E32B4E00D8BBD9 /* CLBaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBaseService.swift; sourceTree = "<group>"; };
+		D095507920E32B4E00D8BBD9 /* CLNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLNetworkManager.swift; sourceTree = "<group>"; };
+		D095507A20E32B4E00D8BBD9 /* CLNetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLNetworkModel.swift; sourceTree = "<group>"; };
+		D095507B20E32B4E00D8BBD9 /* CLNetworkUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLNetworkUtility.swift; sourceTree = "<group>"; };
+		D095507D20E32B4E00D8BBD9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		D095507E20E32B4E00D8BBD9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		D095508520E32CB300D8BBD9 /* Preparature-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Preparature-Bridging-Header.h"; sourceTree = "<group>"; };
 		D1C42B3C6F3EA91E849E8704 /* Pods-PrepartureUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureUITests/Pods-PrepartureUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D760075719329CC9C9DF73C1 /* Pods-Preparture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preparture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Preparture/Pods-Preparture.debug.xcconfig"; sourceTree = "<group>"; };
 		DB4235DBA8CFFCE1ACC620B0 /* Pods-PrepartureTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureTests/Pods-PrepartureTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -268,6 +280,8 @@
 		05D2F1EC20D81E9C00E2A5C9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D095508420E32C2B00D8BBD9 /* BridgingHeader */,
+				D095507720E32B4E00D8BBD9 /* BaseNetworkManager */,
 				05D2F1ED20D81E9C00E2A5C9 /* Constants */,
 			);
 			path = Helpers;
@@ -321,6 +335,35 @@
 				B98114864B11C38A03BF9C34 /* Pods-PrepartureUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D095507720E32B4E00D8BBD9 /* BaseNetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				D095507820E32B4E00D8BBD9 /* CLBaseService.swift */,
+				D095507920E32B4E00D8BBD9 /* CLNetworkManager.swift */,
+				D095507A20E32B4E00D8BBD9 /* CLNetworkModel.swift */,
+				D095507B20E32B4E00D8BBD9 /* CLNetworkUtility.swift */,
+				D095507C20E32B4E00D8BBD9 /* Reachability */,
+			);
+			path = BaseNetworkManager;
+			sourceTree = "<group>";
+		};
+		D095507C20E32B4E00D8BBD9 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				D095507D20E32B4E00D8BBD9 /* Reachability.h */,
+				D095507E20E32B4E00D8BBD9 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		D095508420E32C2B00D8BBD9 /* BridgingHeader */ = {
+			isa = PBXGroup;
+			children = (
+				D095508520E32CB300D8BBD9 /* Preparature-Bridging-Header.h */,
+			);
+			path = BridgingHeader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -593,11 +636,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				05D2F1EF20D81EC100E2A5C9 /* Constants.swift in Sources */,
+				D095508120E32B4F00D8BBD9 /* CLNetworkModel.swift in Sources */,
+				D095507F20E32B4F00D8BBD9 /* CLBaseService.swift in Sources */,
 				05E2B6FF20DFDD35005DD640 /* SignUpViewController.swift in Sources */,
 				059948E220D6B1A10057F673 /* AppDelegate.swift in Sources */,
 				05E2B6FB20DFDD21005DD640 /* ForgotPasswordViewController.swift in Sources */,
 				059948E720D6B2040057F673 /* BaseViewController.swift in Sources */,
+				D095508220E32B4F00D8BBD9 /* CLNetworkUtility.swift in Sources */,
 				05B2CB6520B1E481008D0D32 /* ViewController.swift in Sources */,
+				D095508020E32B4F00D8BBD9 /* CLNetworkManager.swift in Sources */,
+				D095508320E32B4F00D8BBD9 /* Reachability.m in Sources */,
 				059948E420D6B1C90057F673 /* SignInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -772,6 +820,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.preparture.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Preparture/Helpers/BridgingHeader/Preparature-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -789,6 +838,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.preparture.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Preparture/Helpers/BridgingHeader/Preparature-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -58,5 +58,10 @@
 		<string>Muli-SemiBold.ttf</string>
 		<string>Muli-SemiBoldItalic.ttf</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
