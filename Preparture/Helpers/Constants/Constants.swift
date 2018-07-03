@@ -25,8 +25,8 @@ struct Constant{
     }
     
     struct Titles{
-        static let homeTitle = "Home"
-        static let favoritesTitle = "Favorite"
-        static let settingsTitle = "Settings"
+        static let HomeTitle = "Home"
+        static let FavoritesTitle = "Favorite"
+        static let SettingsTitle = "Settings"
     }
 }

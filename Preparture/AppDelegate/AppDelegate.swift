@@ -29,15 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let homeVC:HomeVC = HomeVC(nibName: "HomeVC", bundle: nil)
         let homeNavVC = UINavigationController.init(rootViewController: homeVC)
-        homeVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.homeTabSelected, unselectedImage: Constant.ImageNames.tabImages.homeTabIcon, title: Constant.Titles.homeTitle)
+        homeVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.homeTabSelected, unselectedImage: Constant.ImageNames.tabImages.homeTabIcon, title: Constant.Titles.HomeTitle)
         
         let favoritesVC:FavoritesVC = FavoritesVC(nibName: "FavoritesVC", bundle: nil)
         let favoritesNavVC = UINavigationController.init(rootViewController: favoritesVC)
-        favoritesVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.favoritesTabSelected, unselectedImage: Constant.ImageNames.tabImages.favoriteTabIcon, title: Constant.Titles.favoritesTitle)
+        favoritesVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.favoritesTabSelected, unselectedImage: Constant.ImageNames.tabImages.favoriteTabIcon, title: Constant.Titles.FavoritesTitle)
         
         let settingsVC:SettingsVC = SettingsVC(nibName: "SettingsVC", bundle: nil)
         let settingsNavVC = UINavigationController.init(rootViewController: settingsVC)
-        settingsVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.settingsTabSelected, unselectedImage: Constant.ImageNames.tabImages.settingsIcon, title: Constant.Titles.settingsTitle)
+        settingsVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.settingsTabSelected, unselectedImage: Constant.ImageNames.tabImages.settingsIcon, title: Constant.Titles.SettingsTitle)
         
         tabBarController.viewControllers = [homeNavVC,favoritesNavVC,settingsNavVC];
         customisingTabBarController(tabBarCnlr: tabBarController)

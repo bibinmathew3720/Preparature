@@ -51,6 +51,10 @@
 		D0F5B43C20EBFC73008727CC /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F5B43A20EBFC73008727CC /* SettingsVC.xib */; };
 		D0F5B43F20EBFC86008727CC /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5B43D20EBFC86008727CC /* FavoritesVC.swift */; };
 		D0F5B44020EBFC86008727CC /* FavoritesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F5B43E20EBFC86008727CC /* FavoritesVC.xib */; };
+		D0F5B44620EC0625008727CC /* HomeHeadingCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5B44420EC0625008727CC /* HomeHeadingCVC.swift */; };
+		D0F5B44720EC0625008727CC /* HomeHeadingCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F5B44520EC0625008727CC /* HomeHeadingCVC.xib */; };
+		D0F5B44A20EC063A008727CC /* HomeListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5B44820EC063A008727CC /* HomeListCVC.swift */; };
+		D0F5B44B20EC063A008727CC /* HomeListCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F5B44920EC063A008727CC /* HomeListCVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +130,10 @@
 		D0F5B43A20EBFC73008727CC /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
 		D0F5B43D20EBFC86008727CC /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		D0F5B43E20EBFC86008727CC /* FavoritesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesVC.xib; sourceTree = "<group>"; };
+		D0F5B44420EC0625008727CC /* HomeHeadingCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeadingCVC.swift; sourceTree = "<group>"; };
+		D0F5B44520EC0625008727CC /* HomeHeadingCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeadingCVC.xib; sourceTree = "<group>"; };
+		D0F5B44820EC063A008727CC /* HomeListCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListCVC.swift; sourceTree = "<group>"; };
+		D0F5B44920EC063A008727CC /* HomeListCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListCVC.xib; sourceTree = "<group>"; };
 		D1C42B3C6F3EA91E849E8704 /* Pods-PrepartureUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureUITests/Pods-PrepartureUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D760075719329CC9C9DF73C1 /* Pods-Preparture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preparture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Preparture/Pods-Preparture.debug.xcconfig"; sourceTree = "<group>"; };
 		DB4235DBA8CFFCE1ACC620B0 /* Pods-PrepartureTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureTests/Pods-PrepartureTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -401,6 +409,7 @@
 		D0F5B43320EBFB37008727CC /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D0F5B44120EC05AC008727CC /* CustomCells */,
 				D0F5B43520EBFB78008727CC /* HomeVC.swift */,
 				D0F5B43620EBFB78008727CC /* HomeVC.xib */,
 			);
@@ -414,6 +423,33 @@
 				D0F5B43A20EBFC73008727CC /* SettingsVC.xib */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		D0F5B44120EC05AC008727CC /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				D0F5B44320EC0601008727CC /* HomeHeadingCVC */,
+				D0F5B44220EC0601008727CC /* HomeListCVC */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		D0F5B44220EC0601008727CC /* HomeListCVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0F5B44820EC063A008727CC /* HomeListCVC.swift */,
+				D0F5B44920EC063A008727CC /* HomeListCVC.xib */,
+			);
+			path = HomeListCVC;
+			sourceTree = "<group>";
+		};
+		D0F5B44320EC0601008727CC /* HomeHeadingCVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0F5B44420EC0625008727CC /* HomeHeadingCVC.swift */,
+				D0F5B44520EC0625008727CC /* HomeHeadingCVC.xib */,
+			);
+			path = HomeHeadingCVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -530,12 +566,14 @@
 			files = (
 				05D2F1E920D81D0600E2A5C9 /* Muli-SemiBold.ttf in Resources */,
 				05E2B6FC20DFDD21005DD640 /* ForgotPasswordViewController.xib in Resources */,
+				D0F5B44B20EC063A008727CC /* HomeListCVC.xib in Resources */,
 				05D2F1E220D81D0600E2A5C9 /* Muli-ExtraBoldItalic.ttf in Resources */,
 				05D2F1E520D81D0600E2A5C9 /* Muli-Italic.ttf in Resources */,
 				05D2F1E720D81D0600E2A5C9 /* Muli-LightItalic.ttf in Resources */,
 				05D2F1E820D81D0600E2A5C9 /* Muli-Regular.ttf in Resources */,
 				05D2F1DF20D81D0600E2A5C9 /* Muli-Bold.ttf in Resources */,
 				05B2CB6D20B1E481008D0D32 /* LaunchScreen.storyboard in Resources */,
+				D0F5B44720EC0625008727CC /* HomeHeadingCVC.xib in Resources */,
 				05D2F1E320D81D0600E2A5C9 /* Muli-ExtraLight.ttf in Resources */,
 				05D2F1EA20D81D0600E2A5C9 /* Muli-SemiBoldItalic.ttf in Resources */,
 				05E2B70020DFDD35005DD640 /* SignUpViewController.xib in Resources */,
@@ -692,9 +730,11 @@
 				D095508120E32B4F00D8BBD9 /* CLNetworkModel.swift in Sources */,
 				D095507F20E32B4F00D8BBD9 /* CLBaseService.swift in Sources */,
 				05E2B6FF20DFDD35005DD640 /* SignUpViewController.swift in Sources */,
+				D0F5B44620EC0625008727CC /* HomeHeadingCVC.swift in Sources */,
 				D0F5B43720EBFB78008727CC /* HomeVC.swift in Sources */,
 				D0F5B43F20EBFC86008727CC /* FavoritesVC.swift in Sources */,
 				059948E220D6B1A10057F673 /* AppDelegate.swift in Sources */,
+				D0F5B44A20EC063A008727CC /* HomeListCVC.swift in Sources */,
 				05E2B6FB20DFDD21005DD640 /* ForgotPasswordViewController.swift in Sources */,
 				059948E720D6B2040057F673 /* BaseViewController.swift in Sources */,
 				D095508220E32B4F00D8BBD9 /* CLNetworkUtility.swift in Sources */,
