@@ -8,8 +8,6 @@
 
 import Foundation
 
-let APPNAME = "Trippinyea"
-
 struct Constant{
     static let AppName = "Trippinyea"
     struct Colors{
