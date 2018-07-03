@@ -20,7 +20,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().enableAutoToolbar = false
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
+        initialisingTabBar()
         return true
+    }
+    
+    func initialisingTabBar(){
+        let tabBarController = UITabBarController.init()
+        
+        let homeVC:HomeVC = HomeVC(nibName: "HomeVC", bundle: nil)
+        let homeNavVC = UINavigationController.init(rootViewController: homeVC)
+        homeVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.homeTabSelected, unselectedImage: Constant.ImageNames.tabImages.homeTabIcon, title: Constant.Titles.homeTitle)
+        
+        let favoritesVC:FavoritesVC = FavoritesVC(nibName: "FavoritesVC", bundle: nil)
+        let favoritesNavVC = UINavigationController.init(rootViewController: favoritesVC)
+        favoritesVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.favoritesTabSelected, unselectedImage: Constant.ImageNames.tabImages.favoriteTabIcon, title: Constant.Titles.favoritesTitle)
+        
+        let settingsVC:SettingsVC = SettingsVC(nibName: "SettingsVC", bundle: nil)
+        let settingsNavVC = UINavigationController.init(rootViewController: settingsVC)
+        settingsVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.settingsTabSelected, unselectedImage: Constant.ImageNames.tabImages.settingsIcon, title: Constant.Titles.settingsTitle)
+        
+        tabBarController.viewControllers = [homeNavVC,favoritesNavVC,settingsNavVC];
+        customisingTabBarController(tabBarCnlr: tabBarController)
+        self.window?.rootViewController = tabBarController
+    }
+    
+    func settingTabBarItemFontsAndImages(selectedImageName:String,unselectedImage:String,title:String)->UITabBarItem{
+        let tabBarItem = UITabBarItem.init(title: title, image: UIImage.init(named: unselectedImage)?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), selectedImage: UIImage.init(named: selectedImageName)?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))
+        tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: .normal)
+        tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: .selected)
+        tabBarItem.imageInsets = UIEdgeInsets(top: -10, left: 0, bottom: 10, right: 0)
+        return tabBarItem
+    }
+    
+    func customisingTabBarController(tabBarCnlr:UITabBarController){
+        UITabBar.appearance().backgroundImage = UIImage(named: "tabBarBG")
+        let appearance = UITabBarItem.appearance()
+        let attributes = [kCTFontAttributeName:UIFont(name: "Mada-Bold", size: 25)]
+        appearance.setTitleTextAttributes([kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.white], for:.normal)
+        appearance.setTitleTextAttributes([kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.white], for:.selected)
+        //appearance.setTitleTextAttributes(attributes as [NSAttributedStringKey : Any], for: .normal)
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -15)
+        UITabBar.appearance().contentMode = .scaleAspectFit
     }
     
     
