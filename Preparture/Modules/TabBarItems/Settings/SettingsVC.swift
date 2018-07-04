@@ -12,7 +12,7 @@ class SettingsVC: BaseViewController {
 
     override func initView() {
         super.initView()
-        self.view.backgroundColor = UIColor.green
+        self.view.backgroundColor = UIColor.brown
         // Do any additional setup after loading the view.
     }
 

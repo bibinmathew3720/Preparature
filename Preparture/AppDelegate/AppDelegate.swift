@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let settingsVC:SettingsVC = SettingsVC(nibName: "SettingsVC", bundle: nil)
         let settingsNavVC = UINavigationController.init(rootViewController: settingsVC)
-        settingsVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.settingsTabSelected, unselectedImage: Constant.ImageNames.tabImages.settingsIcon, title: Constant.Titles.SettingsTitle)
+        settingsVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.settingsTabSelected, unselectedImage: Constant.ImageNames.tabImages.settingsTabSelected, title: Constant.Titles.SettingsTitle)
         
         tabBarController.viewControllers = [homeNavVC,favoritesNavVC,settingsNavVC];
         customisingTabBarController(tabBarCnlr: tabBarController)
@@ -46,21 +46,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func settingTabBarItemFontsAndImages(selectedImageName:String,unselectedImage:String,title:String)->UITabBarItem{
         let tabBarItem = UITabBarItem.init(title: title, image: UIImage.init(named: unselectedImage)?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), selectedImage: UIImage.init(named: selectedImageName)?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))
-        tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: .normal)
-        tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: .selected)
-        tabBarItem.imageInsets = UIEdgeInsets(top: -10, left: 0, bottom: 10, right: 0)
+        tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black], for: .normal)
+        tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: Constant.Colors.AppThemeGreenColor], for: .selected)
+        
+        //tabBarItem.imageInsets = UIEdgeInsets(top: -10, left: 0, bottom: 10, right: 0)
         return tabBarItem
     }
     
     func customisingTabBarController(tabBarCnlr:UITabBarController){
-        UITabBar.appearance().backgroundImage = UIImage(named: "tabBarBG")
+        //UITabBar.appearance().backgroundImage = UIImage(named: "tabBarBG")
+        UITabBar.appearance().backgroundColor = UIColor.white
         let appearance = UITabBarItem.appearance()
         let attributes = [kCTFontAttributeName:UIFont(name: "Mada-Bold", size: 25)]
-        appearance.setTitleTextAttributes([kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.white], for:.normal)
-        appearance.setTitleTextAttributes([kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.white], for:.selected)
-        //appearance.setTitleTextAttributes(attributes as [NSAttributedStringKey : Any], for: .normal)
-        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -15)
-        UITabBar.appearance().contentMode = .scaleAspectFit
+        appearance.setTitleTextAttributes(attributes as [NSAttributedStringKey : Any], for: .normal)
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -5)
+        //UITabBar.appearance().contentMode = .scaleAspectFit
     }
     
     
