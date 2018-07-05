@@ -12,7 +12,7 @@ class SettingsVC: BaseViewController {
 
     override func initView() {
         super.initView()
-        self.view.backgroundColor = UIColor.brown
+        self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
     }
 
