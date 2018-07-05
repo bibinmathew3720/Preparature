@@ -56,6 +56,8 @@ class SignInViewController: BaseViewController {
         self.present(fpVc, animated: true, completion: nil)
     }
     @IBAction func actionContinue(_ sender: Any) {
+        UserDefaults.standard.set(true, forKey: Constant.UserDefaultskeys.isLoggedIn)
+        NotificationCenter.default.post(name: .rootResettingNot, object: nil)
         self.view.endEditing(true)
     }
 }

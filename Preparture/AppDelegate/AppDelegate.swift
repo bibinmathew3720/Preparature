@@ -20,8 +20,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().enableAutoToolbar = false
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
-        initialisingTabBar()
+        NotificationCenter.default.addObserver(self, selector: #selector(noticationObserverAction), name: .rootResettingNot, object: nil)
+        initWindow()
         return true
+    }
+    
+    //MARK: - Notification Observer Action
+    
+    @objc func noticationObserverAction() {
+        initWindow()
+    }
+    
+    //MARK: - Initialise view
+    
+    func initWindow() {
+        let valueSuccess = UserDefaults.standard.bool(forKey:Constant.UserDefaultskeys.isLoggedIn)
+        self.window?.backgroundColor = UIColor(red:0.22, green:0.77, blue:0.89, alpha:1.0)
+        if valueSuccess {
+            initialisingTabBar()
+        } else {
+           loadLoginPage()
+        }
+    }
+    
+    func loadLoginPage(){
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let signIn:SignInViewController = storyBoard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+        self.window?.rootViewController = signIn
     }
     
     func initialisingTabBar(){
@@ -88,5 +113,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+extension Notification.Name{
+    static let rootResettingNot = Notification.Name("RootResettingNotification")
 }
 

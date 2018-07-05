@@ -10,6 +10,9 @@ import Foundation
 
 struct Constant{
     static let AppName = "Trippinyea"
+    struct UserDefaultskeys {
+        static let isLoggedIn = "isLoggedIn"
+    }
     struct Colors{
         static let AppThemeGreenColor = UIColor(red:0.60, green:0.79, blue:0.23, alpha:1.0) //99CA3B
     }
