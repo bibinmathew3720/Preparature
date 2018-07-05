@@ -11,6 +11,8 @@ import UIKit
 class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
     
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var topCollectionView: UICollectionView!
     @IBOutlet weak var listCollectionView: UICollectionView!
     

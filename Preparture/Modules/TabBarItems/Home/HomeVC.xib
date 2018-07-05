@@ -9,10 +9,17 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Muli-Regular.ttf">
+            <string>Muli-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="Preparture" customModuleProvider="target">
             <connections>
                 <outlet property="listCollectionView" destination="Imm-jf-CSA" id="SM6-IK-6Qf"/>
+                <outlet property="searchTF" destination="gfA-7n-UjA" id="yQM-Pt-afh"/>
+                <outlet property="searchView" destination="LUY-Ht-ZWM" id="BeZ-tb-P5y"/>
                 <outlet property="topCollectionView" destination="cG4-VO-he5" id="XCq-BY-nj9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -44,14 +51,36 @@
                     </connections>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUY-Ht-ZWM">
-                    <rect key="frame" x="20" y="100" width="335" height="60"/>
+                    <rect key="frame" x="10" y="90" width="355" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="Us9-De-Ezd">
+                            <rect key="frame" x="10" y="14.5" width="22" height="21"/>
+                        </imageView>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search your location, events etc." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfA-7n-UjA">
+                            <rect key="frame" x="37" y="5" width="310" height="40"/>
+                            <color key="textColor" red="0.086274509803921567" green="0.086274509803921567" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
+                        </textField>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="gzS-Aj-nUF"/>
+                        <constraint firstItem="gfA-7n-UjA" firstAttribute="leading" secondItem="Us9-De-Ezd" secondAttribute="trailing" constant="5" id="2Ii-bp-eaZ"/>
+                        <constraint firstItem="Us9-De-Ezd" firstAttribute="centerY" secondItem="LUY-Ht-ZWM" secondAttribute="centerY" id="Xpy-Yw-93e"/>
+                        <constraint firstAttribute="height" constant="50" id="gzS-Aj-nUF"/>
+                        <constraint firstItem="Us9-De-Ezd" firstAttribute="leading" secondItem="LUY-Ht-ZWM" secondAttribute="leading" constant="10" id="i95-9o-xrM"/>
+                        <constraint firstAttribute="bottom" secondItem="gfA-7n-UjA" secondAttribute="bottom" constant="5" id="izA-Ky-h6x"/>
+                        <constraint firstItem="gfA-7n-UjA" firstAttribute="top" secondItem="LUY-Ht-ZWM" secondAttribute="top" constant="5" id="rX4-m5-ym0"/>
+                        <constraint firstAttribute="trailing" secondItem="gfA-7n-UjA" secondAttribute="trailing" constant="8" id="zO1-sR-qlC"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Imm-jf-CSA">
-                    <rect key="frame" x="0.0" y="180" width="375" height="467"/>
+                    <rect key="frame" x="0.0" y="150" width="375" height="497"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="j2a-d7-BmR">
                         <size key="itemSize" width="50" height="50"/>
@@ -67,14 +96,14 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="LUY-Ht-ZWM" firstAttribute="top" secondItem="cG4-VO-he5" secondAttribute="bottom" constant="20" id="4Tz-eR-I8V"/>
-                <constraint firstItem="LUY-Ht-ZWM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="7aV-0e-3G6"/>
+                <constraint firstItem="LUY-Ht-ZWM" firstAttribute="top" secondItem="cG4-VO-he5" secondAttribute="bottom" constant="10" id="4Tz-eR-I8V"/>
+                <constraint firstItem="LUY-Ht-ZWM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="7aV-0e-3G6"/>
                 <constraint firstItem="cG4-VO-he5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Fq9-3E-Pfa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="QGX-jz-cns" secondAttribute="bottom" id="JHq-Pw-wCG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Imm-jf-CSA" secondAttribute="bottom" constant="20" id="NPL-3q-CxH"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Imm-jf-CSA" secondAttribute="trailing" id="VOO-zq-NOc"/>
-                <constraint firstItem="Imm-jf-CSA" firstAttribute="top" secondItem="LUY-Ht-ZWM" secondAttribute="bottom" constant="20" id="WY6-c6-ToJ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LUY-Ht-ZWM" secondAttribute="trailing" constant="20" id="hfw-v5-XMg"/>
+                <constraint firstItem="Imm-jf-CSA" firstAttribute="top" secondItem="LUY-Ht-ZWM" secondAttribute="bottom" constant="10" id="WY6-c6-ToJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LUY-Ht-ZWM" secondAttribute="trailing" constant="10" id="hfw-v5-XMg"/>
                 <constraint firstItem="QGX-jz-cns" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="oTT-FI-WE4"/>
                 <constraint firstItem="cG4-VO-he5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="raB-q1-zJT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cG4-VO-he5" secondAttribute="trailing" id="sC4-af-IKP"/>
@@ -85,4 +114,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
+    <resources>
+        <image name="search" width="22" height="21"/>
+    </resources>
 </document>
