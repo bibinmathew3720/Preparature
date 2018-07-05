@@ -40,6 +40,8 @@
 		38F420D450408B7AF197A995 /* Pods_PrepartureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430A11E36AEB8069B91E2363 /* Pods_PrepartureTests.framework */; };
 		6158A613072DEB05FC89D93A /* Pods_Preparture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544D5A88B8A7CEE7D1A87742 /* Pods_Preparture.framework */; };
 		8ED8FECA96B4BD3361B8A543 /* Pods_PrepartureUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC83D1E3E260073FFA03D7D /* Pods_PrepartureUITests.framework */; };
+		D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003032120EDA72A00F85F11 /* HomeListTVC.swift */; };
+		D003032420EDA72A00F85F11 /* HomeListTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D003032220EDA72A00F85F11 /* HomeListTVC.xib */; };
 		D095507F20E32B4F00D8BBD9 /* CLBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507820E32B4E00D8BBD9 /* CLBaseService.swift */; };
 		D095508020E32B4F00D8BBD9 /* CLNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507920E32B4E00D8BBD9 /* CLNetworkManager.swift */; };
 		D095508120E32B4F00D8BBD9 /* CLNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507A20E32B4E00D8BBD9 /* CLNetworkModel.swift */; };
@@ -117,6 +119,8 @@
 		772155CA00517C2E46427F36 /* Pods-PrepartureTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureTests/Pods-PrepartureTests.release.xcconfig"; sourceTree = "<group>"; };
 		8DC83D1E3E260073FFA03D7D /* Pods_PrepartureUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrepartureUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98114864B11C38A03BF9C34 /* Pods-PrepartureUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureUITests/Pods-PrepartureUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D003032120EDA72A00F85F11 /* HomeListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListTVC.swift; sourceTree = "<group>"; };
+		D003032220EDA72A00F85F11 /* HomeListTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListTVC.xib; sourceTree = "<group>"; };
 		D095507820E32B4E00D8BBD9 /* CLBaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBaseService.swift; sourceTree = "<group>"; };
 		D095507920E32B4E00D8BBD9 /* CLNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLNetworkManager.swift; sourceTree = "<group>"; };
 		D095507A20E32B4E00D8BBD9 /* CLNetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLNetworkModel.swift; sourceTree = "<group>"; };
@@ -358,6 +362,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D003032020EDA71200F85F11 /* HomeListTVC */ = {
+			isa = PBXGroup;
+			children = (
+				D003032120EDA72A00F85F11 /* HomeListTVC.swift */,
+				D003032220EDA72A00F85F11 /* HomeListTVC.xib */,
+			);
+			path = HomeListTVC;
+			sourceTree = "<group>";
+		};
 		D095507720E32B4E00D8BBD9 /* BaseNetworkManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,6 +441,7 @@
 		D0F5B44120EC05AC008727CC /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
+				D003032020EDA71200F85F11 /* HomeListTVC */,
 				D0F5B44320EC0601008727CC /* HomeHeadingCVC */,
 				D0F5B44220EC0601008727CC /* HomeListCVC */,
 			);
@@ -564,6 +578,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D003032420EDA72A00F85F11 /* HomeListTVC.xib in Resources */,
 				05D2F1E920D81D0600E2A5C9 /* Muli-SemiBold.ttf in Resources */,
 				05E2B6FC20DFDD21005DD640 /* ForgotPasswordViewController.xib in Resources */,
 				D0F5B44B20EC063A008727CC /* HomeListCVC.xib in Resources */,
@@ -738,6 +753,7 @@
 				05E2B6FB20DFDD21005DD640 /* ForgotPasswordViewController.swift in Sources */,
 				059948E720D6B2040057F673 /* BaseViewController.swift in Sources */,
 				D095508220E32B4F00D8BBD9 /* CLNetworkUtility.swift in Sources */,
+				D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */,
 				05B2CB6520B1E481008D0D32 /* ViewController.swift in Sources */,
 				D095508020E32B4F00D8BBD9 /* CLNetworkManager.swift in Sources */,
 				D095508320E32B4F00D8BBD9 /* Reachability.m in Sources */,

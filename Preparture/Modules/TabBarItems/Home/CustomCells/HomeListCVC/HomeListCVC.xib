@@ -19,32 +19,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="206" height="370"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yYz-Mb-ULE">
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yYz-Mb-ULE">
                         <rect key="frame" x="0.0" y="0.0" width="206" height="370"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="-1" id="Gpr-4Z-pQX"/>
+                            <outlet property="delegate" destination="-1" id="aCE-G6-Yzq"/>
+                        </connections>
                     </tableView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQN-Kc-PuO">
-                        <rect key="frame" x="0.0" y="173" width="206" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" red="0.22352941179999999" green="0.76862745099999996" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="yYz-Mb-ULE" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="0ME-aT-HCJ"/>
                 <constraint firstItem="yYz-Mb-ULE" firstAttribute="trailing" secondItem="ZTg-uK-7eu" secondAttribute="trailing" id="2DZ-iW-I2b"/>
-                <constraint firstItem="iQN-Kc-PuO" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="Asb-oN-0cx"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="iQN-Kc-PuO" secondAttribute="trailing" id="Mpy-tu-rOC"/>
-                <constraint firstItem="iQN-Kc-PuO" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="RUC-C3-heq"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="yYz-Mb-ULE" secondAttribute="bottom" id="iVz-ti-cQV"/>
                 <constraint firstItem="yYz-Mb-ULE" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="nXU-tl-FVG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="206" height="370"/>
             <connections>
-                <outlet property="nameLabel" destination="iQN-Kc-PuO" id="nnl-hB-XZD"/>
+                <outlet property="tableView" destination="yYz-Mb-ULE" id="uMV-VT-De0"/>
             </connections>
             <point key="canvasLocation" x="-43" y="82"/>
         </collectionViewCell>

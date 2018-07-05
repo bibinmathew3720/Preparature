@@ -47,7 +47,7 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Imm-jf-CSA">
-                    <rect key="frame" x="10" y="180" width="355" height="467"/>
+                    <rect key="frame" x="0.0" y="180" width="375" height="467"/>
                     <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="j2a-d7-BmR">
                         <size key="itemSize" width="50" height="50"/>
@@ -67,12 +67,12 @@
                 <constraint firstItem="LUY-Ht-ZWM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="7aV-0e-3G6"/>
                 <constraint firstItem="cG4-VO-he5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Fq9-3E-Pfa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Imm-jf-CSA" secondAttribute="bottom" constant="20" id="NPL-3q-CxH"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Imm-jf-CSA" secondAttribute="trailing" constant="10" id="VOO-zq-NOc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Imm-jf-CSA" secondAttribute="trailing" id="VOO-zq-NOc"/>
                 <constraint firstItem="Imm-jf-CSA" firstAttribute="top" secondItem="LUY-Ht-ZWM" secondAttribute="bottom" constant="20" id="WY6-c6-ToJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LUY-Ht-ZWM" secondAttribute="trailing" constant="20" id="hfw-v5-XMg"/>
                 <constraint firstItem="cG4-VO-he5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="raB-q1-zJT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cG4-VO-he5" secondAttribute="trailing" id="sC4-af-IKP"/>
-                <constraint firstItem="Imm-jf-CSA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="xuX-bH-Fqw"/>
+                <constraint firstItem="Imm-jf-CSA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xuX-bH-Fqw"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

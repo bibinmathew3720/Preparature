@@ -42,7 +42,6 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
         }
         else{
             let homeListCVC : HomeListCVC = collectionView.dequeueReusableCell(withReuseIdentifier: "homeListCell", for: indexPath) as! HomeListCVC
-            homeListCVC.nameLabel.text = "Index Path:\(indexPath.row)"
             return homeListCVC
         }
     }
