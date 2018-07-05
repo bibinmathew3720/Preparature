@@ -10,6 +10,8 @@ import UIKit
 
 class HomeHeadingCVC: UICollectionViewCell {
 
+    @IBOutlet weak var itemNameLabel: UILabel!
+    @IBOutlet weak var undelLineView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

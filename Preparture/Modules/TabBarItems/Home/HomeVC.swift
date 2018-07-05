@@ -16,9 +16,12 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
     @IBOutlet weak var topCollectionView: UICollectionView!
     @IBOutlet weak var listCollectionView: UICollectionView!
     
+    let topCollectionArray = ["Events","Hotels","Bar","What2Do"]
+    
     override func initView() {
         super.initView()
         registeringCollectionViewCells()
+        self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -33,12 +36,18 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if(collectionView == self.topCollectionView){
+            return topCollectionArray.count
+        }
+        else{
+            return 10
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if(collectionView == self.topCollectionView){
             let homeHeadingCVC : HomeHeadingCVC = collectionView.dequeueReusableCell(withReuseIdentifier: "homeHeadingCell", for: indexPath) as! HomeHeadingCVC
+            homeHeadingCVC.itemNameLabel.text = topCollectionArray[indexPath.row]
             return homeHeadingCVC
         }
         else{
