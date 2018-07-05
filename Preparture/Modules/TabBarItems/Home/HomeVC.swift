@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDelegate {
+class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
     
     @IBOutlet weak var topCollectionView: UICollectionView!
@@ -42,9 +42,29 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
         }
         else{
             let homeListCVC : HomeListCVC = collectionView.dequeueReusableCell(withReuseIdentifier: "homeListCell", for: indexPath) as! HomeListCVC
+            homeListCVC.nameLabel.text = "Index Path:\(indexPath.row)"
             return homeListCVC
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if(collectionView == self.topCollectionView){
+            return CGSize(width: 100, height: collectionView.frame.size.height)
+        }
+        else{
+            return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    
     
 
     /*
