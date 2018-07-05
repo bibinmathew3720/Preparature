@@ -20,5 +20,12 @@ class HomeListTVC: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    @IBAction func favoriteButtonAction(_ sender: UIButton) {
+    }
+    @IBAction func doubleArrowAction(_ sender: UIButton) {
+    }
+    
+    @IBAction func shareButtonAction(_ sender: UIButton) {
+    }
     
 }
