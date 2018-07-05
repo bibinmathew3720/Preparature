@@ -16,7 +16,6 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
     
     override func initView() {
         super.initView()
-        self.view.backgroundColor = UIColor.red
         registeringCollectionViewCells()
         // Do any additional setup after loading the view.
     }

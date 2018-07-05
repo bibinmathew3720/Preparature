@@ -21,7 +21,7 @@
                 <subviews>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yYz-Mb-ULE">
                         <rect key="frame" x="0.0" y="0.0" width="206" height="370"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
                             <outlet property="dataSource" destination="-1" id="Gpr-4Z-pQX"/>
                             <outlet property="delegate" destination="-1" id="aCE-G6-Yzq"/>
@@ -29,7 +29,7 @@
                     </tableView>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.22352941179999999" green="0.76862745099999996" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="yYz-Mb-ULE" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="0ME-aT-HCJ"/>
                 <constraint firstItem="yYz-Mb-ULE" firstAttribute="trailing" secondItem="ZTg-uK-7eu" secondAttribute="trailing" id="2DZ-iW-I2b"/>

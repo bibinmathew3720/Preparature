@@ -9,7 +9,12 @@
 import UIKit
 
 class HomeListTVC: UITableViewCell {
-
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var headingLabel: UILabel!
+    @IBOutlet weak var subHeadingLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var itemImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,11 +25,11 @@ class HomeListTVC: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
     }
     @IBAction func doubleArrowAction(_ sender: UIButton) {
     }
-    
     @IBAction func shareButtonAction(_ sender: UIButton) {
     }
     

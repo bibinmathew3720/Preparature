@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let settingsVC:SettingsVC = SettingsVC(nibName: "SettingsVC", bundle: nil)
         let settingsNavVC = UINavigationController.init(rootViewController: settingsVC)
-        settingsVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.settingsTabSelected, unselectedImage: Constant.ImageNames.tabImages.settingsTabSelected, title: Constant.Titles.SettingsTitle)
+        settingsVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.settingsTabSelected, unselectedImage: Constant.ImageNames.tabImages.settingsIcon, title: Constant.Titles.SettingsTitle)
         
         tabBarController.viewControllers = [homeNavVC,favoritesNavVC,settingsNavVC];
         customisingTabBarController(tabBarCnlr: tabBarController)
