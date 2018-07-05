@@ -256,6 +256,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="conView" destination="ZDc-u2-Ld3" id="Uuc-Jj-kpg"/>
                 <outlet property="dateLabel" destination="Ep6-nA-e3U" id="5G0-ov-Tvf"/>
                 <outlet property="descriptionLabel" destination="raX-ea-t1a" id="UGK-bj-ba3"/>
                 <outlet property="headingLabel" destination="kb6-hg-7NH" id="Gzz-a1-QzV"/>

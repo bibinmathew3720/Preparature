@@ -25,6 +25,15 @@ class BaseViewController: UIViewController {
     func initView() {
         
     }
+    
+    //MARK: Adding Shadow View
+    
+    func addShadowToAView(shadowView:UIView){
+        shadowView.layer.shadowColor = UIColor.lightGray.cgColor
+        shadowView.layer.shadowOpacity = 1
+        shadowView.layer.shadowOffset = CGSize.zero
+        shadowView.layer.shadowRadius = 3
+    }
 
     /*
     // MARK: - Navigation

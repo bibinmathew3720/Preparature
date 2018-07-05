@@ -32,6 +32,7 @@ class HomeListCVC: UICollectionViewCell,UITableViewDataSource,UITableViewDelegat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeListCell", for: indexPath) as!HomeListTVC
+        
         return cell
     }
     

@@ -22,6 +22,7 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
         super.initView()
         registeringCollectionViewCells()
         self.navigationController?.navigationBar.isHidden = true
+        addShadowToAView(shadowView: searchView)
         // Do any additional setup after loading the view.
     }
     
