@@ -8,12 +8,79 @@
 
 import UIKit
 
-class SettingsVC: BaseViewController {
-
+class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
+    @IBOutlet weak var settingsTableView: UITableView!
+    let generalArray = ["General"," Notification","Feed back","Rate & Review","Terms & Conditions"]
+    let generalImagesArray = [#imageLiteral(resourceName: "notification"),#imageLiteral(resourceName: "notification"),#imageLiteral(resourceName: "feedback"),#imageLiteral(resourceName: "rateAndReview"),#imageLiteral(resourceName: "terms")]
+    let accountsArray = ["Account"," Change Password","Log out"]
+    let accountImagesArray = [#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "logout")]
+    let sectionHeaderheight = 50
     override func initView() {
         super.initView()
+        tableCellRegistration()
         self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
+    }
+    
+    func tableCellRegistration(){
+        settingsTableView.register(UINib.init(nibName: "SettingsHeaderTVC", bundle: nil), forCellReuseIdentifier: "settingHeader")
+        settingsTableView.register(UINib.init(nibName: "SettingsTVC", bundle: nil), forCellReuseIdentifier: "settingCell")
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0{
+            return self.generalArray.count
+        }
+        else{
+           return self.accountsArray .count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0{
+            let settingHeaderCell = tableView.dequeueReusableCell(withIdentifier: "settingHeader", for: indexPath) as! SettingsHeaderTVC
+            if indexPath.section == 0{
+                settingHeaderCell.headerLabel.text = self.generalArray.first
+            }
+            else{
+                settingHeaderCell.headerLabel.text = self.accountsArray.first
+            }
+            return settingHeaderCell
+        }
+        else{
+            let settingCell = tableView.dequeueReusableCell(withIdentifier: "settingCell", for: indexPath) as! SettingsTVC
+            if indexPath.section == 0{
+                settingCell.settingLabel.text = self.generalArray[indexPath.row]
+                settingCell.settingsIcon.image = self.generalImagesArray[indexPath.row]
+            }
+            else{
+                settingCell.settingLabel.text = self.accountsArray[indexPath.row]
+                settingCell.settingsIcon.image = self.accountImagesArray[indexPath.row]
+            }
+            return settingCell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0{
+            return CGFloat(sectionHeaderheight)
+        }
+        else{
+            return (self.view.frame.size.height - 120-2*CGFloat(sectionHeaderheight))/6
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0{
+            
+        }
+        else if indexPath.section == 1{
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -17,6 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsVC" customModule="Preparture" customModuleProvider="target">
             <connections>
+                <outlet property="settingsTableView" destination="fGq-ww-ACz" id="IHp-G9-M9W"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -43,11 +44,15 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59W-SQ-Rym">
-                    <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                    <rect key="frame" x="0.0" y="100" width="375" height="527"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fGq-ww-ACz">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fGq-ww-ACz">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="527"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="pl5-fY-cRc"/>
+                                <outlet property="delegate" destination="-1" id="NBw-Kv-r7m"/>
+                            </connections>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="0.30106608072916669" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -66,7 +71,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="leading" secondItem="bjH-aH-FJ4" secondAttribute="leading" id="boa-vR-Jd9"/>
                 <constraint firstItem="59W-SQ-Rym" firstAttribute="top" secondItem="bjH-aH-FJ4" secondAttribute="bottom" id="iRS-ky-FS4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bjH-aH-FJ4" secondAttribute="trailing" id="nF3-iF-WQr"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="59W-SQ-Rym" secondAttribute="bottom" id="xrT-G1-D2o"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="59W-SQ-Rym" secondAttribute="bottom" constant="40" id="xrT-G1-D2o"/>
                 <constraint firstItem="59W-SQ-Rym" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yVk-a8-ghP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

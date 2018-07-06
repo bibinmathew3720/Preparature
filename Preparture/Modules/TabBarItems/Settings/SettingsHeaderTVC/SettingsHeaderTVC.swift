@@ -9,7 +9,8 @@
 import UIKit
 
 class SettingsHeaderTVC: UITableViewCell {
-
+    @IBOutlet weak var headerLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

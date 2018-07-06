@@ -9,7 +9,9 @@
 import UIKit
 
 class SettingsTVC: UITableViewCell {
-
+    @IBOutlet weak var settingLabel: UILabel!
+    @IBOutlet weak var settingsIcon: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
