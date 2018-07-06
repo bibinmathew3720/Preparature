@@ -44,7 +44,19 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59W-SQ-Rym">
                     <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fGq-ww-ACz">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                    </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="0.30106608072916669" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="fGq-ww-ACz" secondAttribute="trailing" id="BwA-mK-6NL"/>
+                        <constraint firstItem="fGq-ww-ACz" firstAttribute="top" secondItem="59W-SQ-Rym" secondAttribute="top" id="GPL-hK-2jl"/>
+                        <constraint firstItem="fGq-ww-ACz" firstAttribute="leading" secondItem="59W-SQ-Rym" secondAttribute="leading" id="HeJ-mf-Es7"/>
+                        <constraint firstAttribute="bottom" secondItem="fGq-ww-ACz" secondAttribute="bottom" id="fWP-Nb-AmE"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

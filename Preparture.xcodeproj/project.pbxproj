@@ -42,6 +42,10 @@
 		8ED8FECA96B4BD3361B8A543 /* Pods_PrepartureUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC83D1E3E260073FFA03D7D /* Pods_PrepartureUITests.framework */; };
 		D0012C9120EEE61500074C90 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0012C8F20EEE61500074C90 /* FavoriteCell.swift */; };
 		D0012C9220EEE61500074C90 /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0012C9020EEE61500074C90 /* FavoriteCell.xib */; };
+		D0012C9720EEF5DC00074C90 /* SettingsHeaderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0012C9520EEF5DC00074C90 /* SettingsHeaderTVC.swift */; };
+		D0012C9820EEF5DC00074C90 /* SettingsHeaderTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0012C9620EEF5DC00074C90 /* SettingsHeaderTVC.xib */; };
+		D0012C9B20EEF5F100074C90 /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0012C9920EEF5F100074C90 /* SettingsTVC.swift */; };
+		D0012C9C20EEF5F100074C90 /* SettingsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0012C9A20EEF5F100074C90 /* SettingsTVC.xib */; };
 		D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003032120EDA72A00F85F11 /* HomeListTVC.swift */; };
 		D003032420EDA72A00F85F11 /* HomeListTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D003032220EDA72A00F85F11 /* HomeListTVC.xib */; };
 		D095507F20E32B4F00D8BBD9 /* CLBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507820E32B4E00D8BBD9 /* CLBaseService.swift */; };
@@ -123,6 +127,10 @@
 		B98114864B11C38A03BF9C34 /* Pods-PrepartureUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureUITests/Pods-PrepartureUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D0012C8F20EEE61500074C90 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		D0012C9020EEE61500074C90 /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
+		D0012C9520EEF5DC00074C90 /* SettingsHeaderTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderTVC.swift; sourceTree = "<group>"; };
+		D0012C9620EEF5DC00074C90 /* SettingsHeaderTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsHeaderTVC.xib; sourceTree = "<group>"; };
+		D0012C9920EEF5F100074C90 /* SettingsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
+		D0012C9A20EEF5F100074C90 /* SettingsTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTVC.xib; sourceTree = "<group>"; };
 		D003032120EDA72A00F85F11 /* HomeListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListTVC.swift; sourceTree = "<group>"; };
 		D003032220EDA72A00F85F11 /* HomeListTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListTVC.xib; sourceTree = "<group>"; };
 		D095507820E32B4E00D8BBD9 /* CLBaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBaseService.swift; sourceTree = "<group>"; };
@@ -375,6 +383,24 @@
 			path = CustomCells;
 			sourceTree = "<group>";
 		};
+		D0012C9320EEF5C500074C90 /* SettingsTVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0012C9920EEF5F100074C90 /* SettingsTVC.swift */,
+				D0012C9A20EEF5F100074C90 /* SettingsTVC.xib */,
+			);
+			path = SettingsTVC;
+			sourceTree = "<group>";
+		};
+		D0012C9420EEF5C500074C90 /* SettingsHeaderTVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0012C9520EEF5DC00074C90 /* SettingsHeaderTVC.swift */,
+				D0012C9620EEF5DC00074C90 /* SettingsHeaderTVC.xib */,
+			);
+			path = SettingsHeaderTVC;
+			sourceTree = "<group>";
+		};
 		D003032020EDA71200F85F11 /* HomeListTVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +472,8 @@
 		D0F5B43420EBFB37008727CC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D0012C9420EEF5C500074C90 /* SettingsHeaderTVC */,
+				D0012C9320EEF5C500074C90 /* SettingsTVC */,
 				D0F5B43920EBFC73008727CC /* SettingsVC.swift */,
 				D0F5B43A20EBFC73008727CC /* SettingsVC.xib */,
 			);
@@ -597,6 +625,7 @@
 				05E2B6FC20DFDD21005DD640 /* ForgotPasswordViewController.xib in Resources */,
 				D0F5B44B20EC063A008727CC /* HomeListCVC.xib in Resources */,
 				05D2F1E220D81D0600E2A5C9 /* Muli-ExtraBoldItalic.ttf in Resources */,
+				D0012C9820EEF5DC00074C90 /* SettingsHeaderTVC.xib in Resources */,
 				05D2F1E520D81D0600E2A5C9 /* Muli-Italic.ttf in Resources */,
 				05D2F1E720D81D0600E2A5C9 /* Muli-LightItalic.ttf in Resources */,
 				05D2F1E820D81D0600E2A5C9 /* Muli-Regular.ttf in Resources */,
@@ -612,6 +641,7 @@
 				05B2CB6A20B1E481008D0D32 /* Assets.xcassets in Resources */,
 				D0F5B43820EBFB78008727CC /* HomeVC.xib in Resources */,
 				05D2F1E620D81D0600E2A5C9 /* Muli-Light.ttf in Resources */,
+				D0012C9C20EEF5F100074C90 /* SettingsTVC.xib in Resources */,
 				D0F5B43C20EBFC73008727CC /* SettingsVC.xib in Resources */,
 				05D2F1EB20D81D0600E2A5C9 /* OFL.txt in Resources */,
 				05D2F1DE20D81D0600E2A5C9 /* Muli-BlackItalic.ttf in Resources */,
@@ -765,12 +795,14 @@
 				D0F5B43F20EBFC86008727CC /* FavoritesVC.swift in Sources */,
 				059948E220D6B1A10057F673 /* AppDelegate.swift in Sources */,
 				D0F5B44A20EC063A008727CC /* HomeListCVC.swift in Sources */,
+				D0012C9720EEF5DC00074C90 /* SettingsHeaderTVC.swift in Sources */,
 				05E2B6FB20DFDD21005DD640 /* ForgotPasswordViewController.swift in Sources */,
 				059948E720D6B2040057F673 /* BaseViewController.swift in Sources */,
 				D095508220E32B4F00D8BBD9 /* CLNetworkUtility.swift in Sources */,
 				D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */,
 				05B2CB6520B1E481008D0D32 /* ViewController.swift in Sources */,
 				D095508020E32B4F00D8BBD9 /* CLNetworkManager.swift in Sources */,
+				D0012C9B20EEF5F100074C90 /* SettingsTVC.swift in Sources */,
 				D0012C9120EEE61500074C90 /* FavoriteCell.swift in Sources */,
 				D095508320E32B4F00D8BBD9 /* Reachability.m in Sources */,
 				059948E420D6B1C90057F673 /* SignInViewController.swift in Sources */,
