@@ -40,6 +40,8 @@
 		38F420D450408B7AF197A995 /* Pods_PrepartureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430A11E36AEB8069B91E2363 /* Pods_PrepartureTests.framework */; };
 		6158A613072DEB05FC89D93A /* Pods_Preparture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544D5A88B8A7CEE7D1A87742 /* Pods_Preparture.framework */; };
 		8ED8FECA96B4BD3361B8A543 /* Pods_PrepartureUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC83D1E3E260073FFA03D7D /* Pods_PrepartureUITests.framework */; };
+		D0012C9120EEE61500074C90 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0012C8F20EEE61500074C90 /* FavoriteCell.swift */; };
+		D0012C9220EEE61500074C90 /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0012C9020EEE61500074C90 /* FavoriteCell.xib */; };
 		D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003032120EDA72A00F85F11 /* HomeListTVC.swift */; };
 		D003032420EDA72A00F85F11 /* HomeListTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D003032220EDA72A00F85F11 /* HomeListTVC.xib */; };
 		D095507F20E32B4F00D8BBD9 /* CLBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507820E32B4E00D8BBD9 /* CLBaseService.swift */; };
@@ -119,6 +121,8 @@
 		772155CA00517C2E46427F36 /* Pods-PrepartureTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureTests/Pods-PrepartureTests.release.xcconfig"; sourceTree = "<group>"; };
 		8DC83D1E3E260073FFA03D7D /* Pods_PrepartureUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrepartureUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98114864B11C38A03BF9C34 /* Pods-PrepartureUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureUITests/Pods-PrepartureUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D0012C8F20EEE61500074C90 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		D0012C9020EEE61500074C90 /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
 		D003032120EDA72A00F85F11 /* HomeListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListTVC.swift; sourceTree = "<group>"; };
 		D003032220EDA72A00F85F11 /* HomeListTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListTVC.xib; sourceTree = "<group>"; };
 		D095507820E32B4E00D8BBD9 /* CLBaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBaseService.swift; sourceTree = "<group>"; };
@@ -362,6 +366,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D0012C8E20EEE5FA00074C90 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				D0012C8F20EEE61500074C90 /* FavoriteCell.swift */,
+				D0012C9020EEE61500074C90 /* FavoriteCell.xib */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
 		D003032020EDA71200F85F11 /* HomeListTVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +426,7 @@
 		D0F5B43220EBFB37008727CC /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				D0012C8E20EEE5FA00074C90 /* CustomCells */,
 				D0F5B43D20EBFC86008727CC /* FavoritesVC.swift */,
 				D0F5B43E20EBFC86008727CC /* FavoritesVC.xib */,
 			);
@@ -592,6 +606,7 @@
 				05D2F1E320D81D0600E2A5C9 /* Muli-ExtraLight.ttf in Resources */,
 				05D2F1EA20D81D0600E2A5C9 /* Muli-SemiBoldItalic.ttf in Resources */,
 				05E2B70020DFDD35005DD640 /* SignUpViewController.xib in Resources */,
+				D0012C9220EEE61500074C90 /* FavoriteCell.xib in Resources */,
 				D0F5B44020EBFC86008727CC /* FavoritesVC.xib in Resources */,
 				05D2F1E420D81D0600E2A5C9 /* Muli-ExtraLightItalic.ttf in Resources */,
 				05B2CB6A20B1E481008D0D32 /* Assets.xcassets in Resources */,
@@ -756,6 +771,7 @@
 				D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */,
 				05B2CB6520B1E481008D0D32 /* ViewController.swift in Sources */,
 				D095508020E32B4F00D8BBD9 /* CLNetworkManager.swift in Sources */,
+				D0012C9120EEE61500074C90 /* FavoriteCell.swift in Sources */,
 				D095508320E32B4F00D8BBD9 /* Reachability.m in Sources */,
 				059948E420D6B1C90057F673 /* SignInViewController.swift in Sources */,
 				D0F5B43B20EBFC73008727CC /* SettingsVC.swift in Sources */,
