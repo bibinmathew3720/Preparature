@@ -22,6 +22,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileViewController" customModule="Preparture" customModuleProvider="target">
             <connections>
+                <outlet property="imageProfile" destination="hcD-wF-R6e" id="rS2-2t-mSW"/>
+                <outlet property="labelName" destination="419-5N-Odb" id="Vne-y3-Hko"/>
+                <outlet property="labelPlace" destination="InL-7d-cFN" id="zom-HD-faj"/>
+                <outlet property="textfieldUsername" destination="hGq-PK-7Q7" id="E1L-HE-iwF"/>
+                <outlet property="tfEmail" destination="hr7-4X-xb6" id="UDx-eJ-Waj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -46,6 +51,9 @@
                                 <constraint firstAttribute="height" constant="50" id="pnY-hc-mGi"/>
                             </constraints>
                             <state key="normal" image="editIcon"/>
+                            <connections>
+                                <action selector="actionEdit:" destination="-1" eventType="touchUpInside" id="oDJ-HX-Tvd"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -87,21 +95,24 @@
                                                 <constraint firstAttribute="height" constant="1" id="9iP-HB-8Yl"/>
                                             </constraints>
                                         </view>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s4D-Fy-4aV">
-                                            <rect key="frame" x="5" y="15" width="30" height="30"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="s4D-Fy-4aV">
+                                            <rect key="frame" x="5" y="20" width="20" height="20"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="62c-Kb-g11"/>
-                                                <constraint firstAttribute="width" constant="30" id="TbJ-fc-z2a"/>
+                                                <constraint firstAttribute="height" constant="20" id="62c-Kb-g11"/>
+                                                <constraint firstAttribute="width" constant="20" id="TbJ-fc-z2a"/>
                                             </constraints>
                                         </imageView>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="brettany01" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hGq-PK-7Q7">
-                                            <rect key="frame" x="55" y="10" width="270" height="40"/>
+                                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="brettany01" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hGq-PK-7Q7">
+                                            <rect key="frame" x="45" y="10" width="280" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="dJx-wb-PAk"/>
                                             </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="Wze-e4-YHt"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,21 +138,24 @@
                                                 <constraint firstAttribute="height" constant="1" id="594-PM-K3G"/>
                                             </constraints>
                                         </view>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sge-Pk-a2a">
-                                            <rect key="frame" x="5" y="15" width="30" height="30"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mailIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Sge-Pk-a2a">
+                                            <rect key="frame" x="5" y="20" width="20" height="20"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="DPt-AM-rAD"/>
-                                                <constraint firstAttribute="height" constant="30" id="TOz-X4-zf0"/>
+                                                <constraint firstAttribute="width" constant="20" id="DPt-AM-rAD"/>
+                                                <constraint firstAttribute="height" constant="20" id="TOz-X4-zf0"/>
                                             </constraints>
                                         </imageView>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="brettany01@gmail.com" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hr7-4X-xb6">
-                                            <rect key="frame" x="55" y="10" width="270" height="40"/>
+                                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="brettany01@gmail.com" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hr7-4X-xb6">
+                                            <rect key="frame" x="45" y="10" width="280" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="fp0-ge-u5d"/>
                                             </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="Bd7-VH-dRe"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -216,5 +230,7 @@
     </objects>
     <resources>
         <image name="editIcon" width="25" height="25"/>
+        <image name="mailIcon" width="16" height="12"/>
+        <image name="userIcon" width="17" height="17"/>
     </resources>
 </document>

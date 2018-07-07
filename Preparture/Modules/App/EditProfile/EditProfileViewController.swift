@@ -9,7 +9,12 @@
 import UIKit
 
 class EditProfileViewController: BaseViewController {
-
+    @IBOutlet weak var imageProfile: UIImageView!
+    @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var labelPlace: UILabel!
+    
+    @IBOutlet weak var textfieldUsername: UITextField!
+    @IBOutlet weak var tfEmail: UITextField!
     override func initView() {
         super.initView()
 
@@ -20,4 +25,6 @@ class EditProfileViewController: BaseViewController {
         
     }
 
+    @IBAction func actionEdit(_ sender: Any) {
+    }
 }

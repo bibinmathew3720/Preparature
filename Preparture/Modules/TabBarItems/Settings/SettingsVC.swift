@@ -12,8 +12,8 @@ class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var settingsTableView: UITableView!
     let generalArray = ["General"," Notification","Feed back","Rate & Review","Terms & Conditions"]
     let generalImagesArray = [#imageLiteral(resourceName: "notification"),#imageLiteral(resourceName: "notification"),#imageLiteral(resourceName: "feedback"),#imageLiteral(resourceName: "rateAndReview"),#imageLiteral(resourceName: "terms")]
-    let accountsArray = ["Account"," Change Password","Log out"]
-    let accountImagesArray = [#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "logout")]
+    let accountsArray = ["Account"," Change Password", "Edit Profile", "Log out"]
+    let accountImagesArray = [#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "editIcon"),#imageLiteral(resourceName: "logout")]
     let sectionHeaderheight = 50
     override func initView() {
         super.initView()
@@ -77,9 +77,14 @@ class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0{
             
-        }
-        else if indexPath.section == 1{
-            
+        } else if indexPath.section == 1{
+            if indexPath.row == 1 {
+                let changePswd = ChangePswdViewController(nibName: "ChangePswdViewController", bundle: nil)
+                self.present(changePswd, animated: true, completion: nil)
+            } else if indexPath.row == 2 {
+                let editProfile = EditProfileViewController(nibName: "EditProfileViewController", bundle: nil)
+                self.present(editProfile, animated: true, completion: nil)
+            }
         }
     }
 
