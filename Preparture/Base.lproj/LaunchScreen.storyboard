@@ -22,14 +22,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgImage" translatesAutoresizingMaskIntoConstraints="NO" id="ene-xP-HP5">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xDo-d4-vtB" firstAttribute="top" secondItem="ene-xP-HP5" secondAttribute="bottom" id="8Kv-vv-9GI"/>
                             <constraint firstItem="ene-xP-HP5" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ACd-A6-Lw7"/>
-                            <constraint firstItem="ene-xP-HP5" firstAttribute="top" secondItem="Jed-VP-OW2" secondAttribute="bottom" id="cbC-NM-cvi"/>
+                            <constraint firstItem="ene-xP-HP5" firstAttribute="top" secondItem="Jed-VP-OW2" secondAttribute="bottom" constant="-20" id="cbC-NM-cvi"/>
                             <constraint firstAttribute="trailing" secondItem="ene-xP-HP5" secondAttribute="trailing" id="va5-pd-Y7G"/>
                         </constraints>
                     </view>
