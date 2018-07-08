@@ -23,6 +23,8 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
         registeringCollectionViewCells()
         self.navigationController?.navigationBar.isHidden = true
         addShadowToAView(shadowView: searchView)
+        listCollectionView.delegate = self
+        listCollectionView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
@@ -54,6 +56,13 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
         else{
             let homeListCVC : HomeListCVC = collectionView.dequeueReusableCell(withReuseIdentifier: "homeListCell", for: indexPath) as! HomeListCVC
             return homeListCVC
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if(collectionView == self.listCollectionView){
+            let detailView = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
+            self.present(detailView, animated: true, completion: nil)
         }
     }
     
