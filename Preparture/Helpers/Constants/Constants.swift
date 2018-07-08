@@ -15,6 +15,7 @@ struct Constant{
     }
     struct Colors{
         static let AppThemeGreenColor = UIColor(red:0.60, green:0.79, blue:0.23, alpha:1.0) //99CA3B
+        static let AppThemeYellowColor = UIColor(red:0.91, green:0.70, blue:0.05, alpha:1.0) //e9b30d
     }
     struct ImageNames{
         struct  tabImages {
