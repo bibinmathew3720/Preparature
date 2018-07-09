@@ -27,6 +27,9 @@ class SignUpViewController: BaseViewController {
     @IBAction func actionSignup(_ sender: Any) {
         self.view.endEditing(true)
     }
+    @IBAction func actioonBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 // MARK : -> ------ UITextField Delegates ------

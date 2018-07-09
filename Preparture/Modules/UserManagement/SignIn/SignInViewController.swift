@@ -23,7 +23,7 @@ class SignInViewController: BaseViewController {
         let myString:NSString = "Don't have an account? Sign Up"
         var myMutableString = NSMutableAttributedString()
         myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedStringKey.font:UIFont(name: "Muli-Bold", size: 16)!])
-        myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: NSRange(location:23,length:7))
+        myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(red:0.91, green:0.70, blue:0.05, alpha:1.0), range: NSRange(location:23,length:7))
         labelSignup.attributedText = myMutableString
         labelSignup.isUserInteractionEnabled = true
         labelSignup.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel(_:))))
