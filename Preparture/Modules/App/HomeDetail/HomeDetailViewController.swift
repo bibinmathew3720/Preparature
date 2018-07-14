@@ -89,6 +89,7 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     }
     
     @IBAction func actionReadReviews(_ sender: Any) {
-        
+        let suggestionsVC = SuggestionsViewController(nibName: "SuggestionsViewController", bundle: nil)
+        self.present(suggestionsVC, animated: true, completion: nil)
     }
 }

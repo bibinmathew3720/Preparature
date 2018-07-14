@@ -86,11 +86,11 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
     //MARK: Home List Table View Delegates
     
     func selectedCellDelegateWithTag(tag: NSInteger) {
-//        let detailView = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
-//        self.present(detailView, animated: true, completion: nil)
+        let detailView = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
+        self.present(detailView, animated: true, completion: nil)
         
-        let itineraryVC = ItineraryViewController(nibName: "ItineraryViewController", bundle: nil)
-        self.present(itineraryVC, animated: true, completion: nil)
+//        let itineraryVC = ItineraryViewController(nibName: "ItineraryViewController", bundle: nil)
+//        self.present(itineraryVC, animated: true, completion: nil)
     }
     
     

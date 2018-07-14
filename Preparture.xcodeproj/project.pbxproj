@@ -45,6 +45,8 @@
 		05D2F1EA20D81D0600E2A5C9 /* Muli-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05D2F1DB20D81D0500E2A5C9 /* Muli-SemiBoldItalic.ttf */; };
 		05D2F1EB20D81D0600E2A5C9 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05D2F1DC20D81D0500E2A5C9 /* OFL.txt */; };
 		05D2F1EF20D81EC100E2A5C9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D2F1EE20D81EC100E2A5C9 /* Constants.swift */; };
+		05DFA28F20FA6DE6001F676A /* SuggestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DFA28D20FA6DE6001F676A /* SuggestionsTableViewCell.swift */; };
+		05DFA29020FA6DE6001F676A /* SuggestionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05DFA28E20FA6DE6001F676A /* SuggestionsTableViewCell.xib */; };
 		05E2B6FB20DFDD21005DD640 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E2B6F920DFDD21005DD640 /* ForgotPasswordViewController.swift */; };
 		05E2B6FC20DFDD21005DD640 /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E2B6FA20DFDD21005DD640 /* ForgotPasswordViewController.xib */; };
 		05E2B6FF20DFDD35005DD640 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E2B6FD20DFDD35005DD640 /* SignUpViewController.swift */; };
@@ -141,6 +143,8 @@
 		05D2F1DB20D81D0500E2A5C9 /* Muli-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		05D2F1DC20D81D0500E2A5C9 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		05D2F1EE20D81EC100E2A5C9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		05DFA28D20FA6DE6001F676A /* SuggestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsTableViewCell.swift; sourceTree = "<group>"; };
+		05DFA28E20FA6DE6001F676A /* SuggestionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestionsTableViewCell.xib; sourceTree = "<group>"; };
 		05E2B6F920DFDD21005DD640 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		05E2B6FA20DFDD21005DD640 /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordViewController.xib; sourceTree = "<group>"; };
 		05E2B6FD20DFDD35005DD640 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +278,7 @@
 		056D4DDF20F0A7BE00B7F408 /* Suggestions */ = {
 			isa = PBXGroup;
 			children = (
+				05DFA28C20FA6DCC001F676A /* TableCell */,
 				056D4DF420F0B5CA00B7F408 /* SuggestionsViewController.swift */,
 				056D4DF520F0B5CA00B7F408 /* SuggestionsViewController.xib */,
 			);
@@ -427,6 +432,15 @@
 				05D2F1EE20D81EC100E2A5C9 /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		05DFA28C20FA6DCC001F676A /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				05DFA28D20FA6DE6001F676A /* SuggestionsTableViewCell.swift */,
+				05DFA28E20FA6DE6001F676A /* SuggestionsTableViewCell.xib */,
+			);
+			path = TableCell;
 			sourceTree = "<group>";
 		};
 		05E2B6F720DFDD13005DD640 /* ForgotPassword */ = {
@@ -740,6 +754,7 @@
 				05D2F1DF20D81D0600E2A5C9 /* Muli-Bold.ttf in Resources */,
 				05B2CB6D20B1E481008D0D32 /* LaunchScreen.storyboard in Resources */,
 				D0F5B44720EC0625008727CC /* HomeHeadingCVC.xib in Resources */,
+				05DFA29020FA6DE6001F676A /* SuggestionsTableViewCell.xib in Resources */,
 				05D2F1E320D81D0600E2A5C9 /* Muli-ExtraLight.ttf in Resources */,
 				05D2F1EA20D81D0600E2A5C9 /* Muli-SemiBoldItalic.ttf in Resources */,
 				05E2B70020DFDD35005DD640 /* SignUpViewController.xib in Resources */,
@@ -925,6 +940,7 @@
 				D0012C9120EEE61500074C90 /* FavoriteCell.swift in Sources */,
 				056D4DEA20F0B58E00B7F408 /* ChangePswdViewController.swift in Sources */,
 				D095508320E32B4F00D8BBD9 /* Reachability.m in Sources */,
+				05DFA28F20FA6DE6001F676A /* SuggestionsTableViewCell.swift in Sources */,
 				059948E420D6B1C90057F673 /* SignInViewController.swift in Sources */,
 				D0F5B43B20EBFC73008727CC /* SettingsVC.swift in Sources */,
 			);
