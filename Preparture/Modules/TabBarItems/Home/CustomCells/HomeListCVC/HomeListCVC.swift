@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol HomeListTVDelegate: class {
+    func selectedCellDelegateWithTag(tag:NSInteger)
+ 
+}
+
 class HomeListCVC: UICollectionViewCell,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
+    weak var delegate : HomeListTVDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         tableCellRegistration()
@@ -38,6 +44,10 @@ class HomeListCVC: UICollectionViewCell,UITableViewDataSource,UITableViewDelegat
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 170
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.selectedCellDelegateWithTag(tag: indexPath.row)
     }
     
     

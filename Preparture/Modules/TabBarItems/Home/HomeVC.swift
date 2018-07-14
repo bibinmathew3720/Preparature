@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,HomeListTVDelegate {
     
     
     @IBOutlet weak var searchView: UIView!
@@ -55,14 +55,14 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
         }
         else{
             let homeListCVC : HomeListCVC = collectionView.dequeueReusableCell(withReuseIdentifier: "homeListCell", for: indexPath) as! HomeListCVC
+            homeListCVC.delegate = self
             return homeListCVC
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(collectionView == self.listCollectionView){
-            let detailView = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
-            self.present(detailView, animated: true, completion: nil)
+          
         }
     }
     
@@ -81,6 +81,16 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    //MARK: Home List Table View Delegates
+    
+    func selectedCellDelegateWithTag(tag: NSInteger) {
+//        let detailView = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
+//        self.present(detailView, animated: true, completion: nil)
+        
+        let itineraryVC = ItineraryViewController(nibName: "ItineraryViewController", bundle: nil)
+        self.present(itineraryVC, animated: true, completion: nil)
     }
     
     

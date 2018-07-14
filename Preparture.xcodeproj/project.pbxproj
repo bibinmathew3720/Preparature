@@ -60,6 +60,8 @@
 		D0012C9C20EEF5F100074C90 /* SettingsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0012C9A20EEF5F100074C90 /* SettingsTVC.xib */; };
 		D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003032120EDA72A00F85F11 /* HomeListTVC.swift */; };
 		D003032420EDA72A00F85F11 /* HomeListTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D003032220EDA72A00F85F11 /* HomeListTVC.xib */; };
+		D01A848C20F96FF6004ED6FB /* ItineraryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A848A20F96FF6004ED6FB /* ItineraryTVC.swift */; };
+		D01A848D20F96FF6004ED6FB /* ItineraryTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A848B20F96FF6004ED6FB /* ItineraryTVC.xib */; };
 		D095507F20E32B4F00D8BBD9 /* CLBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507820E32B4E00D8BBD9 /* CLBaseService.swift */; };
 		D095508020E32B4F00D8BBD9 /* CLNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507920E32B4E00D8BBD9 /* CLNetworkManager.swift */; };
 		D095508120E32B4F00D8BBD9 /* CLNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507A20E32B4E00D8BBD9 /* CLNetworkModel.swift */; };
@@ -157,6 +159,8 @@
 		D0012C9A20EEF5F100074C90 /* SettingsTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTVC.xib; sourceTree = "<group>"; };
 		D003032120EDA72A00F85F11 /* HomeListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListTVC.swift; sourceTree = "<group>"; };
 		D003032220EDA72A00F85F11 /* HomeListTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListTVC.xib; sourceTree = "<group>"; };
+		D01A848A20F96FF6004ED6FB /* ItineraryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryTVC.swift; sourceTree = "<group>"; };
+		D01A848B20F96FF6004ED6FB /* ItineraryTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItineraryTVC.xib; sourceTree = "<group>"; };
 		D095507820E32B4E00D8BBD9 /* CLBaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBaseService.swift; sourceTree = "<group>"; };
 		D095507920E32B4E00D8BBD9 /* CLNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLNetworkManager.swift; sourceTree = "<group>"; };
 		D095507A20E32B4E00D8BBD9 /* CLNetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLNetworkModel.swift; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 		056D4DDE20F0A7BE00B7F408 /* Itinerary */ = {
 			isa = PBXGroup;
 			children = (
+				D01A848920F96FC4004ED6FB /* ItineraryTVC */,
 				056D4DF020F0B5B700B7F408 /* ItineraryViewController.swift */,
 				056D4DF120F0B5B700B7F408 /* ItineraryViewController.xib */,
 			);
@@ -502,6 +507,15 @@
 			path = HomeListTVC;
 			sourceTree = "<group>";
 		};
+		D01A848920F96FC4004ED6FB /* ItineraryTVC */ = {
+			isa = PBXGroup;
+			children = (
+				D01A848A20F96FF6004ED6FB /* ItineraryTVC.swift */,
+				D01A848B20F96FF6004ED6FB /* ItineraryTVC.xib */,
+			);
+			path = ItineraryTVC;
+			sourceTree = "<group>";
+		};
 		D095507720E32B4E00D8BBD9 /* BaseNetworkManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -721,6 +735,7 @@
 				D0012C9820EEF5DC00074C90 /* SettingsHeaderTVC.xib in Resources */,
 				05D2F1E520D81D0600E2A5C9 /* Muli-Italic.ttf in Resources */,
 				05D2F1E720D81D0600E2A5C9 /* Muli-LightItalic.ttf in Resources */,
+				D01A848D20F96FF6004ED6FB /* ItineraryTVC.xib in Resources */,
 				05D2F1E820D81D0600E2A5C9 /* Muli-Regular.ttf in Resources */,
 				05D2F1DF20D81D0600E2A5C9 /* Muli-Bold.ttf in Resources */,
 				05B2CB6D20B1E481008D0D32 /* LaunchScreen.storyboard in Resources */,
@@ -901,6 +916,7 @@
 				056D4DF620F0B5CA00B7F408 /* SuggestionsViewController.swift in Sources */,
 				056D4DF220F0B5B700B7F408 /* ItineraryViewController.swift in Sources */,
 				D095508220E32B4F00D8BBD9 /* CLNetworkUtility.swift in Sources */,
+				D01A848C20F96FF6004ED6FB /* ItineraryTVC.swift in Sources */,
 				056D4DEE20F0B5A600B7F408 /* HomeDetailViewController.swift in Sources */,
 				D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */,
 				05B2CB6520B1E481008D0D32 /* ViewController.swift in Sources */,
