@@ -162,7 +162,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2d-Pc-Jfs">
                     <rect key="frame" x="20" y="484" width="335" height="40"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IQButtonBarArrowDown.png" translatesAutoresizingMaskIntoConstraints="NO" id="xck-p8-5bv">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="typeDownArrow" translatesAutoresizingMaskIntoConstraints="NO" id="xck-p8-5bv">
                             <rect key="frame" x="310" y="10" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="20" id="JAO-Ip-ghn"/>
@@ -171,6 +171,7 @@
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hotels" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aKW-kt-axY">
                             <rect key="frame" x="10" y="0.0" width="325" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
@@ -289,9 +290,9 @@
         </toolbar>
     </objects>
     <resources>
-        <image name="IQButtonBarArrowDown.png" width="21" height="12"/>
         <image name="backIcon" width="19" height="15"/>
         <image name="starSelected" width="22" height="22"/>
         <image name="starUnSelected" width="22" height="22"/>
+        <image name="typeDownArrow" width="13" height="8"/>
     </resources>
 </document>

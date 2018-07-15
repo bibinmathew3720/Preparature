@@ -53,6 +53,7 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     //MARK:- UIView Action Methods
     
     @IBAction func actionBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func actionAddIMage(_ sender: Any) {
