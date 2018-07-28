@@ -77,11 +77,44 @@ class UserManager: CLBaseService {
         let signUpReponseModel = SignUpResponseModel.init(dict:dict)
         return signUpReponseModel
     }
+    
+    //MARK : Forgot Password Api
+    
+    func callingForgotPasswordApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForForgotPassword(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getForgotResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForForgotPassword(with body:String)->CLNetworkModel{
+        let forgotRequestModel = CLNetworkModel.init(url: BASE_URL+FORGOT_PASSWORD_URL, requestMethod_: "POST")
+        forgotRequestModel.requestBody = body
+        return forgotRequestModel
+    }
+    
+    func getForgotResponseModel(dict:[String : Any?]) -> Any? {
+        let forgotReponseModel = ForgotResponseModel.init(dict:dict)
+        return forgotReponseModel
+    }
 }
     
 class LogInResponseModel : NSObject{
         var statusMessage:String = ""
-        var errorMessage:String = ""
         var statusCode:Int = 0
         var userId:Int = 0
         
@@ -92,9 +125,6 @@ class LogInResponseModel : NSObject{
         init(dict:[String:Any?]) {
             if let value = dict["message"] as? String{
                 statusMessage = value
-            }
-            if let value = dict["errorMsg"] as? String{
-                errorMessage = value
             }
             if let value = dict["status"] as? Int{
                 statusCode = value
@@ -123,21 +153,30 @@ class LogInResponseModel : NSObject{
 
 class SignUpResponseModel : NSObject{
     var statusMessage:String = ""
-    var errorMessage:String = ""
     var statusCode:Int = 0
     var userId:Int = 0
     init(dict:[String:Any?]) {
         if let value = dict["message"] as? String{
             statusMessage = value
         }
-        if let value = dict["errorMsg"] as? String{
-            errorMessage = value
-        }
         if let value = dict["status"] as? Int{
             statusCode = value
         }
         if let value = dict["user_id"] as? Int{
             userId = value
+        }
+    }
+}
+
+class ForgotResponseModel : NSObject{
+    var statusMessage:String = ""
+    var statusCode:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["message"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["status"] as? Int{
+            statusCode = value
         }
     }
 }

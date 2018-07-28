@@ -15,3 +15,4 @@ let BASE_URL = LOCAL
 
 let LOGIN_URL = "user_login"
 let SIGNUP_URL = "register"
+let FORGOT_PASSWORD_URL = "forgot_password"
