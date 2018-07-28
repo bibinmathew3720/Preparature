@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpViewController: BaseViewController {
+class SignUpViewController: BaseViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var tfName: UITextField!
     @IBOutlet weak var tfUserName: UITextField!
@@ -23,6 +23,7 @@ class SignUpViewController: BaseViewController {
     }
     @IBAction func actionCamera(_ sender: Any) {
         self.view.endEditing(true)
+        addingActionSheetForPhotos()
     }
     @IBAction func actionSignup(_ sender: Any) {
         self.view.endEditing(true)
@@ -119,6 +120,52 @@ class SignUpViewController: BaseViewController {
         }
         return valid
     }
+    
+    func addingActionSheetForPhotos(){
+        let photoActionSheet = UIAlertController.init(title: "Choose an option", message: "", preferredStyle: .actionSheet)
+        let cameraAction = UIAlertAction.init(title: "Camera", style: .destructive) { (alert:UIAlertAction) in
+            self.addingImagePickerController(sourceType: .camera)
+        }
+        let galleryAction = UIAlertAction.init(title: "Choose from Gallery", style: .default) { (alert:UIAlertAction) in
+            self.addingImagePickerController(sourceType: .photoLibrary)
+        }
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel) { (alert:UIAlertAction) in
+            
+        }
+        photoActionSheet.addAction(cameraAction)
+        photoActionSheet.addAction(galleryAction)
+        photoActionSheet.addAction(cancelAction)
+        present(photoActionSheet, animated: true, completion: nil)
+    }
+    
+    func addingImagePickerController(sourceType:UIImagePickerControllerSourceType){
+        let imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = false
+        imagePicker.delegate = self
+        imagePicker.sourceType = sourceType;
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate Methods
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
+        
+        dismiss(animated: true, completion: nil)
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            let referenceURL = info["UIImagePickerControllerReferenceURL"] as? URL
+            if let refUrl = referenceURL {
+               // sendChatImage(image: pickedImage, ext: (refUrl.pathExtension))
+            }
+            else {
+               // sendChatImage(image: pickedImage, ext: "JPG")
+            }
+        }
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 // MARK : -> ------ UITextField Delegates ------

@@ -63,5 +63,9 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app requires to access your photo library to add profile image and Event photos</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This app requires to access your camera to add profile image and Event photos</string>
 </dict>
 </plist>
