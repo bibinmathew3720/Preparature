@@ -43,10 +43,43 @@ class UserManager: CLBaseService {
         let logInReponseModel = LogInResponseModel.init(dict:dict)
         return logInReponseModel
     }
+    
+    //MARK : Sign Up Api
+    
+    func callingSignUpApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForSignUp(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getSignUpResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForSignUp(with body:String)->CLNetworkModel{
+        let signUpRequestModel = CLNetworkModel.init(url: BASE_URL+SIGNUP_URL, requestMethod_: "POST")
+        signUpRequestModel.requestBody = body
+        return signUpRequestModel
+    }
+    
+    func getSignUpResponseModel(dict:[String : Any?]) -> Any? {
+        let signUpReponseModel = SignUpResponseModel.init(dict:dict)
+        return signUpReponseModel
+    }
 }
     
-    class LogInResponseModel : NSObject{
-        
+class LogInResponseModel : NSObject{
         var statusMessage:String = ""
         var errorMessage:String = ""
         var statusCode:Int = 0
@@ -87,3 +120,24 @@ class UserManager: CLBaseService {
             }
         }
     }
+
+class SignUpResponseModel : NSObject{
+    var statusMessage:String = ""
+    var errorMessage:String = ""
+    var statusCode:Int = 0
+    var userId:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["message"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["errorMsg"] as? String{
+            errorMessage = value
+        }
+        if let value = dict["status"] as? Int{
+            statusCode = value
+        }
+        if let value = dict["user_id"] as? Int{
+            userId = value
+        }
+    }
+}

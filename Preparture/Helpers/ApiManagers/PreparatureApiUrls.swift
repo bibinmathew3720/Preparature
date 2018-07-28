@@ -14,3 +14,4 @@ let LOCAL  = "http://preparature.copycon.in/api/"
 let BASE_URL = LOCAL
 
 let LOGIN_URL = "user_login"
+let SIGNUP_URL = "register"
