@@ -55,10 +55,48 @@ class SignInViewController: BaseViewController {
         let fpVc:ForgotPasswordViewController = ForgotPasswordViewController(nibName: "ForgotPasswordViewController", bundle: nil)
         self.present(fpVc, animated: true, completion: nil)
     }
+    
     @IBAction func actionContinue(_ sender: Any) {
-        UserDefaults.standard.set(true, forKey: Constant.UserDefaultskeys.isLoggedIn)
-        NotificationCenter.default.post(name: .rootResettingNot, object: nil)
-        self.view.endEditing(true)
+        if isValidLogInDetails(){
+            self.view.endEditing(true)
+            MBProgressHUD.showAdded(to: self.view!, animated: true)
+            UserManager().callingLogInApi(with: getLoginRequestBody(), success: {
+                (model) in
+                MBProgressHUD.hide(for: self.view, animated: true)
+                if let model = model as? LogInResponseModel{
+                    if model.statusCode == 1{
+                       // User.saveUserData(userData: model)
+                        CCUtility.processAfterLogIn()
+                    }
+                    else{
+                        CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                    }
+                    
+                }
+                
+            }) { (ErrorType) in
+                MBProgressHUD.hide(for: self.view, animated: true)
+                if(ErrorType == .noNetwork){
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+                }
+                else{
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+                }
+                
+                print(ErrorType)
+            }
+        }
+    }
+    
+    func getLoginRequestBody()->String{
+        var dict:[String:AnyObject] = [String:AnyObject]()
+        if let email = self.textfieldEmail.text {
+            dict.updateValue(email as AnyObject, forKey: "username")
+        }
+        if let password = self.textfieldPassword.text {
+            dict.updateValue(password as AnyObject, forKey: "password")
+        }
+        return CCUtility.getJSONfrom(dictionary: dict)
     }
 }
 
@@ -78,6 +116,27 @@ extension SignInViewController: UITextFieldDelegate {
             textfieldPassword.resignFirstResponder()
         }
         return true
+    }
+    
+    func isValidLogInDetails()->Bool{
+        var valid = true
+        var messageString = ""
+        if (self.textfieldEmail.text?.isEmpty)! {
+            messageString = "Please enter email id"
+            valid = false
+        }
+        else if !(self.textfieldEmail.text?.isValidEmail())! {
+            messageString = "Please enter valid email id"
+            valid = false
+        }
+        else if (self.textfieldPassword.text?.isEmpty)! {
+            messageString = "Please enter password"
+            valid = false
+        }
+        if !valid {
+             CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: messageString, parentController: self)
+        }
+        return valid
     }
 
 }

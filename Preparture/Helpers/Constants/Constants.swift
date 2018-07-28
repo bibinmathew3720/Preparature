@@ -33,4 +33,9 @@ struct Constant{
         static let FavoritesTitle = "Favorite"
         static let SettingsTitle = "Settings"
     }
+    
+    struct ErrorMessages{
+        static let noNetworkMessage = "Network not available"
+        static let serverErrorMessamge = "Unable to connect server"
+    }
 }

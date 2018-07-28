@@ -62,6 +62,13 @@
 		D0012C9C20EEF5F100074C90 /* SettingsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0012C9A20EEF5F100074C90 /* SettingsTVC.xib */; };
 		D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003032120EDA72A00F85F11 /* HomeListTVC.swift */; };
 		D003032420EDA72A00F85F11 /* HomeListTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D003032220EDA72A00F85F11 /* HomeListTVC.xib */; };
+		D0183CE3210CB1A80030D02D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0183CE2210CB1A70030D02D /* UserManager.swift */; };
+		D0183CE5210CB20B0030D02D /* PreparatureApiUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0183CE4210CB20B0030D02D /* PreparatureApiUrls.swift */; };
+		D0183CEB210CC3CD0030D02D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0183CE7210CC3CC0030D02D /* StringExtensions.swift */; };
+		D0183CEC210CC3CD0030D02D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0183CE8210CC3CC0030D02D /* UIColorExtension.swift */; };
+		D0183CED210CC3CD0030D02D /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0183CE9210CC3CC0030D02D /* UIImageViewExtensions.swift */; };
+		D0183CEE210CC3CD0030D02D /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0183CEA210CC3CC0030D02D /* UIViewExtensions.swift */; };
+		D0183CF1210CC6200030D02D /* CCUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0183CF0210CC6200030D02D /* CCUtility.swift */; };
 		D01A848C20F96FF6004ED6FB /* ItineraryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A848A20F96FF6004ED6FB /* ItineraryTVC.swift */; };
 		D01A848D20F96FF6004ED6FB /* ItineraryTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A848B20F96FF6004ED6FB /* ItineraryTVC.xib */; };
 		D095507F20E32B4F00D8BBD9 /* CLBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507820E32B4E00D8BBD9 /* CLBaseService.swift */; };
@@ -163,6 +170,13 @@
 		D0012C9A20EEF5F100074C90 /* SettingsTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTVC.xib; sourceTree = "<group>"; };
 		D003032120EDA72A00F85F11 /* HomeListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListTVC.swift; sourceTree = "<group>"; };
 		D003032220EDA72A00F85F11 /* HomeListTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListTVC.xib; sourceTree = "<group>"; };
+		D0183CE2210CB1A70030D02D /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		D0183CE4210CB20B0030D02D /* PreparatureApiUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparatureApiUrls.swift; sourceTree = "<group>"; };
+		D0183CE7210CC3CC0030D02D /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		D0183CE8210CC3CC0030D02D /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		D0183CE9210CC3CC0030D02D /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		D0183CEA210CC3CC0030D02D /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		D0183CF0210CC6200030D02D /* CCUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUtility.swift; sourceTree = "<group>"; };
 		D01A848A20F96FF6004ED6FB /* ItineraryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryTVC.swift; sourceTree = "<group>"; };
 		D01A848B20F96FF6004ED6FB /* ItineraryTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItineraryTVC.xib; sourceTree = "<group>"; };
 		D095507820E32B4E00D8BBD9 /* CLBaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBaseService.swift; sourceTree = "<group>"; };
@@ -419,6 +433,9 @@
 		05D2F1EC20D81E9C00E2A5C9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D0183CEF210CC6200030D02D /* Utility */,
+				D0183CE6210CC3CC0030D02D /* Extensions */,
+				D0183CE0210CB1150030D02D /* ApiManagers */,
 				D095508420E32C2B00D8BBD9 /* BridgingHeader */,
 				D095507720E32B4E00D8BBD9 /* BaseNetworkManager */,
 				05D2F1ED20D81E9C00E2A5C9 /* Constants */,
@@ -519,6 +536,34 @@
 				D003032220EDA72A00F85F11 /* HomeListTVC.xib */,
 			);
 			path = HomeListTVC;
+			sourceTree = "<group>";
+		};
+		D0183CE0210CB1150030D02D /* ApiManagers */ = {
+			isa = PBXGroup;
+			children = (
+				D0183CE2210CB1A70030D02D /* UserManager.swift */,
+				D0183CE4210CB20B0030D02D /* PreparatureApiUrls.swift */,
+			);
+			path = ApiManagers;
+			sourceTree = "<group>";
+		};
+		D0183CE6210CC3CC0030D02D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D0183CE7210CC3CC0030D02D /* StringExtensions.swift */,
+				D0183CE8210CC3CC0030D02D /* UIColorExtension.swift */,
+				D0183CE9210CC3CC0030D02D /* UIImageViewExtensions.swift */,
+				D0183CEA210CC3CC0030D02D /* UIViewExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D0183CEF210CC6200030D02D /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				D0183CF0210CC6200030D02D /* CCUtility.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		D01A848920F96FC4004ED6FB /* ItineraryTVC */ = {
@@ -915,6 +960,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				056D4DE620F0B57C00B7F408 /* AddEventViewController.swift in Sources */,
+				D0183CEE210CC3CD0030D02D /* UIViewExtensions.swift in Sources */,
 				056D4DE220F0A7D900B7F408 /* EditProfileViewController.swift in Sources */,
 				05D2F1EF20D81EC100E2A5C9 /* Constants.swift in Sources */,
 				D095508120E32B4F00D8BBD9 /* CLNetworkModel.swift in Sources */,
@@ -922,26 +968,32 @@
 				05E2B6FF20DFDD35005DD640 /* SignUpViewController.swift in Sources */,
 				D0F5B44620EC0625008727CC /* HomeHeadingCVC.swift in Sources */,
 				D0F5B43720EBFB78008727CC /* HomeVC.swift in Sources */,
+				D0183CEC210CC3CD0030D02D /* UIColorExtension.swift in Sources */,
 				D0F5B43F20EBFC86008727CC /* FavoritesVC.swift in Sources */,
 				059948E220D6B1A10057F673 /* AppDelegate.swift in Sources */,
 				D0F5B44A20EC063A008727CC /* HomeListCVC.swift in Sources */,
 				D0012C9720EEF5DC00074C90 /* SettingsHeaderTVC.swift in Sources */,
 				05E2B6FB20DFDD21005DD640 /* ForgotPasswordViewController.swift in Sources */,
 				059948E720D6B2040057F673 /* BaseViewController.swift in Sources */,
+				D0183CE5210CB20B0030D02D /* PreparatureApiUrls.swift in Sources */,
 				056D4DF620F0B5CA00B7F408 /* SuggestionsViewController.swift in Sources */,
 				056D4DF220F0B5B700B7F408 /* ItineraryViewController.swift in Sources */,
 				D095508220E32B4F00D8BBD9 /* CLNetworkUtility.swift in Sources */,
 				D01A848C20F96FF6004ED6FB /* ItineraryTVC.swift in Sources */,
+				D0183CE3210CB1A80030D02D /* UserManager.swift in Sources */,
 				056D4DEE20F0B5A600B7F408 /* HomeDetailViewController.swift in Sources */,
 				D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */,
 				05B2CB6520B1E481008D0D32 /* ViewController.swift in Sources */,
 				D095508020E32B4F00D8BBD9 /* CLNetworkManager.swift in Sources */,
+				D0183CEB210CC3CD0030D02D /* StringExtensions.swift in Sources */,
 				D0012C9B20EEF5F100074C90 /* SettingsTVC.swift in Sources */,
+				D0183CF1210CC6200030D02D /* CCUtility.swift in Sources */,
 				D0012C9120EEE61500074C90 /* FavoriteCell.swift in Sources */,
 				056D4DEA20F0B58E00B7F408 /* ChangePswdViewController.swift in Sources */,
 				D095508320E32B4F00D8BBD9 /* Reachability.m in Sources */,
 				05DFA28F20FA6DE6001F676A /* SuggestionsTableViewCell.swift in Sources */,
 				059948E420D6B1C90057F673 /* SignInViewController.swift in Sources */,
+				D0183CED210CC3CD0030D02D /* UIImageViewExtensions.swift in Sources */,
 				D0F5B43B20EBFC73008727CC /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
