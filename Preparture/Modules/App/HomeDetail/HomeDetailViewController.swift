@@ -55,8 +55,8 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
         self.scrollTop.delegate = self
         self.pageControllTop.numberOfPages = colors.count
         for index in 0..<colors.count {
-            frame.origin.x = self.scrollTop.frame.size.width * CGFloat(index)
-            frame.size = self.scrollTop.frame.size
+            frame.origin.x = UIScreen.main.bounds.size.width * CGFloat(index)
+            frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: self.scrollTop.frame.size.height)
             
             let subView = UIImageView(frame: frame)
             subView.backgroundColor = colors[index]
@@ -84,7 +84,7 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     //MARK:- UIView Action Methods
     
     @IBAction func actionPageControllValueChanged(_ sender: UIPageControl) {
-        let x = CGFloat(pageControllTop.currentPage) * scrollTop.frame.size.width
+        let x = CGFloat(pageControllTop.currentPage) * UIScreen.main.bounds.size.width
         scrollTop.setContentOffset(CGPoint(x:x, y:0), animated: true)
     }
     
