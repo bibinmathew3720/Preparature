@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class SignUpViewController: BaseViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     @IBOutlet weak var imageProfile: UIImageView!
@@ -149,21 +150,41 @@ class SignUpViewController: BaseViewController,UIImagePickerControllerDelegate,U
     // MARK: - UIImagePickerControllerDelegate Methods
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
-        
+        if let asset = info["UIImagePickerControllerPHAsset"] as? PHAsset{
+            if let fileName = asset.value(forKey: "filename") as? String{
+                print(fileName)
+            }
+        }
         dismiss(animated: true, completion: nil)
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             let referenceURL = info["UIImagePickerControllerReferenceURL"] as? URL
+            
             if let refUrl = referenceURL {
-               // sendChatImage(image: pickedImage, ext: (refUrl.pathExtension))
+                sendChatImage(image: pickedImage, ext: (refUrl.pathExtension))
             }
             else {
-               // sendChatImage(image: pickedImage, ext: "JPG")
+                sendChatImage(image: pickedImage, ext: "JPG")
             }
         }
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: Sending Chat Image
+    
+    func sendChatImage(image:UIImage, ext: String){
+        let imageData = UIImageJPEGRepresentation(image, 0.25)
+        CLNetworkManager.upload(file: imageData!,
+                                type: .JPEG, ext: ext,
+                                url: "http://preparature.copycon.in/api/file_upload",
+                                parameters: "files",
+                                headers: nil)
+        {
+            (response, status, error) in
+            
+        }
     }
     
 }

@@ -7,7 +7,12 @@
 //
 
 import UIKit
-
+enum MIMEType : String {
+    case JPEG
+    case PNG
+    case DOC
+    case PDF
+}
 class CLNetworkManager: NSObject {
     func initateWebRequest(_ netWorkModel : CLNetworkModel, success:@escaping (_ result: Data)->(), failiure:@escaping (_ error:ErrorType)->()){
         if CLNetworkUtility.sharedInstance.isConnected() {
@@ -27,11 +32,15 @@ class CLNetworkManager: NSObject {
                         DispatchQueue.main.async(execute: {[weak self] () -> () in
                             let errorReceived = error_ as NSError
                             if(errorReceived.code == -1004){
-                               failiure(.internalServerError)
+                                failiure(.internalServerError)
+                            }
+                            else if (errorReceived.code == -2103){
+                                failiure(.internalServerError)
                             }
                             else{
-                                 failiure( (self?.getErrorTypeFromCode(errorCode: (errorReceived.code)))!)
+                                failiure( (self?.getErrorTypeFromCode(errorCode: errorReceived.code))!)
                             }
+                            
                         })
                     }else{
                         DispatchQueue.main.async(execute: { () -> () in
@@ -58,7 +67,86 @@ class CLNetworkManager: NSObject {
             })
         }
     }
-    
+    //TODO:- UPLOAD IMAGE
+    static func upload(file:Data,type:MIMEType,ext:String,url:String,parameters:String?,headers:[String:String]?, completionHandler:@escaping([String : Any]?,Bool,ErrorType?) ->Void) ->Void {
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession.init(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
+        let characterSet = CharacterSet.urlQueryAllowed
+        let queryUrl = URL.init(string: url.addingPercentEncoding(withAllowedCharacters: characterSet)!)
+        let boundary = "---------------------------14737809831466499882746641449"
+        var request = URLRequest.init(url: queryUrl!)
+        request.httpMethod = "POST"
+        request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        if headers != nil {
+            request.allHTTPHeaderFields = headers
+        }
+        
+        let body = NSMutableData()
+        let boundaryPrefix = "--\(boundary)\r\n"
+        let uploadFile = "image." + ext
+        let mimeType = CLNetworkManager().mime(type: type)
+        
+        
+        body.appendString(boundaryPrefix)
+        body.appendString("Content-Disposition: form-data; name=\"files\"; filename=\"\(uploadFile)\"\r\n")
+        body.appendString("Content-Type: \(mimeType)\r\n\r\n")
+        body.append(file)
+        body.appendString("\r\n")
+        
+        //Text params
+        body.appendString(boundaryPrefix)
+        body.appendString("Content-Disposition: form-data; name=\"message\"\r\n\r\n")
+        body.appendString("")
+        body.appendString("\r\n")
+        
+        body.appendString("--\(boundary)--\r\n")
+        
+        request.httpBody = body as Data
+        
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            
+            if error == nil  {
+                let httpResponse = response as! HTTPURLResponse
+                print(httpResponse.statusCode)
+                if httpResponse.statusCode == 200 {
+                    do {
+                        if let jsondata = data ,
+                            let json = try JSONSerialization.jsonObject(with: jsondata, options: []) as? [String : Any] {
+                            
+                            print(json as AnyObject)
+                            /*if json["status"] as! String == APIStatus.SUCCESS {
+                             completionHandler(json,true,json["message"] as? String)
+                             }
+                             else {
+                             completionHandler(nil,false,json["message"] as? String)
+                             }*/
+                            completionHandler(json,true,nil)
+                            
+                        }
+                        else {
+                            //DATA IS NIL
+                            completionHandler(nil,false,ErrorType.dataError)
+                        }
+                    }
+                    catch {
+                        //JSON CANNOT SERIALISED
+                        completionHandler(nil,false,ErrorType.dataError)
+                    }
+                }
+                else {
+                    //BAD RESPONSE - 404,402
+                    completionHandler(nil,false,ErrorType.dataError)
+                }
+            }
+            else{
+                //BAD RESPONSE - 500
+                completionHandler(nil,false,ErrorType.noNetwork)
+            }
+        }
+        task.resume()
+    }
     
     func createURLFromString(_ urlString :String)->URL?{
         let encodedUrlstring = urlString.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
@@ -114,5 +202,21 @@ class CLNetworkManager: NSObject {
         default:
             return .noNetwork
         }
+    }
+    func mime(type: MIMEType) ->String {
+        switch type {
+        case .JPEG:
+            return "image/jpeg"
+        case .PNG:
+            return "image/png"
+        default:
+            return ""
+        }
+    }
+}
+extension NSMutableData {
+    func appendString(_ string: String) {
+        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)
+        append(data!)
     }
 }
