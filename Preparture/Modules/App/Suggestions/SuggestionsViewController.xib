@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -22,6 +22,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SuggestionsViewController" customModule="Preparture" customModuleProvider="target">
             <connections>
+                <outlet property="buttonStarFifth" destination="aPl-sW-fPY" id="WnF-Z2-vdf"/>
+                <outlet property="buttonStarFirst" destination="7Go-sJ-f48" id="YLf-AL-Oka"/>
+                <outlet property="buttonStarForth" destination="CXy-Qk-DgU" id="IIe-Qd-ng2"/>
+                <outlet property="buttonStarSecond" destination="TYx-Ky-CIf" id="4rX-Lw-8hU"/>
+                <outlet property="buttonStarThird" destination="ZA8-N1-obn" id="Hek-dZ-sgC"/>
                 <outlet property="pickerViewType" destination="V8D-jw-jG9" id="0uk-n6-nbd"/>
                 <outlet property="tableviewReviews" destination="FhH-VK-Wj9" id="S0D-x7-5CS"/>
                 <outlet property="textViewSuggestions" destination="l6V-Fw-g07" id="wZM-uK-M3e"/>
@@ -39,13 +44,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4we-HM-gyZ">
-                            <rect key="frame" x="138" y="29.5" width="100" height="21.5"/>
+                            <rect key="frame" x="138" y="34.5" width="100" height="21.5"/>
                             <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xa6-s7-0H0">
-                            <rect key="frame" x="10" y="15.5" width="40" height="50"/>
+                            <rect key="frame" x="10" y="20.5" width="40" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="5G6-4e-CtU"/>
                                 <constraint firstAttribute="width" constant="40" id="5T3-GY-MHw"/>
@@ -59,10 +64,10 @@
                     <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="4we-HM-gyZ" firstAttribute="centerX" secondItem="cij-Tg-zpp" secondAttribute="centerX" id="1qI-zW-QJt"/>
-                        <constraint firstItem="xa6-s7-0H0" firstAttribute="centerY" secondItem="cij-Tg-zpp" secondAttribute="centerY" id="7UW-Pw-Ju5"/>
                         <constraint firstAttribute="height" constant="80" id="I6T-O0-4ct"/>
+                        <constraint firstItem="xa6-s7-0H0" firstAttribute="centerY" secondItem="4we-HM-gyZ" secondAttribute="centerY" id="gdh-sp-CcY"/>
                         <constraint firstItem="xa6-s7-0H0" firstAttribute="leading" secondItem="cij-Tg-zpp" secondAttribute="leading" constant="10" id="zdq-Pp-kvo"/>
-                        <constraint firstItem="4we-HM-gyZ" firstAttribute="centerY" secondItem="cij-Tg-zpp" secondAttribute="centerY" id="zgh-z0-xmf"/>
+                        <constraint firstItem="4we-HM-gyZ" firstAttribute="centerY" secondItem="cij-Tg-zpp" secondAttribute="centerY" constant="5" id="zgh-z0-xmf"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MFh-c6-5Tb">
@@ -81,23 +86,30 @@
                             </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write your suggestions" translatesAutoresizingMaskIntoConstraints="NO" id="l6V-Fw-g07">
-                            <rect key="frame" x="20" y="0.0" width="265" height="80"/>
+                            <rect key="frame" x="20" y="25" width="265" height="30"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="Iii-jb-1gU"/>
+                            </constraints>
                             <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="jUm-9c-Fj9"/>
+                            </connections>
                         </textView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="p8d-Az-C82" firstAttribute="leading" secondItem="l6V-Fw-g07" secondAttribute="trailing" constant="10" id="5cZ-5F-TSl"/>
                         <constraint firstAttribute="bottom" secondItem="p8d-Az-C82" secondAttribute="bottom" id="DHk-Fb-mSC"/>
-                        <constraint firstItem="l6V-Fw-g07" firstAttribute="top" secondItem="p8d-Az-C82" secondAttribute="top" id="GHg-TV-5vF"/>
-                        <constraint firstItem="l6V-Fw-g07" firstAttribute="bottom" secondItem="p8d-Az-C82" secondAttribute="bottom" id="PsX-Ga-eAF"/>
+                        <constraint firstItem="l6V-Fw-g07" firstAttribute="centerY" secondItem="p8d-Az-C82" secondAttribute="centerY" id="TWh-Ew-9BW"/>
                         <constraint firstItem="l6V-Fw-g07" firstAttribute="leading" secondItem="MFh-c6-5Tb" secondAttribute="leading" constant="20" id="WJK-Bv-eKE"/>
                         <constraint firstItem="p8d-Az-C82" firstAttribute="top" secondItem="MFh-c6-5Tb" secondAttribute="top" id="YuS-km-ut8"/>
                         <constraint firstAttribute="height" constant="80" id="f9g-iL-E3o"/>
+                        <constraint firstItem="l6V-Fw-g07" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MFh-c6-5Tb" secondAttribute="top" id="qAJ-eq-AKb"/>
                         <constraint firstAttribute="trailing" secondItem="p8d-Az-C82" secondAttribute="trailing" id="qCt-NX-ZkR"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="l6V-Fw-g07" secondAttribute="bottom" constant="5" id="wdK-UO-2e5"/>
                         <constraint firstItem="p8d-Az-C82" firstAttribute="centerY" secondItem="MFh-c6-5Tb" secondAttribute="centerY" id="xCs-wX-kmL"/>
                     </constraints>
                 </view>
