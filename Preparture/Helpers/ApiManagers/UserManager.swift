@@ -180,3 +180,18 @@ class ForgotResponseModel : NSObject{
         }
     }
 }
+
+class FileUploadResponseModel : NSObject{
+    var statusMessage:String = ""
+    var uploadedImageName:String = ""
+    //var statusCode:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["status"] as? String{
+            statusMessage = value
+        }
+        if let imageName = dict["image_name"] as? String{
+            uploadedImageName = imageName
+        }
+        
+    }
+}

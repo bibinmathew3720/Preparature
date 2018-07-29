@@ -17,6 +17,9 @@ class SignUpViewController: BaseViewController,UIImagePickerControllerDelegate,U
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var tfConfirmPassword: UITextField!
     
+    var fileUploadResponseModel:FileUploadResponseModel?
+    var selImage:UIImage?
+    var imagePathExtension:String?
     override func initView() {
         super.initView()
 
@@ -29,7 +32,12 @@ class SignUpViewController: BaseViewController,UIImagePickerControllerDelegate,U
     @IBAction func actionSignup(_ sender: Any) {
         self.view.endEditing(true)
         if (self.isValidSignUpDetails()){
-            callingSignUpApi()
+            if let image = self.selImage {
+                sendProfileImage(image: image, ext: self.imagePathExtension!)
+            }
+            else{
+                callingSignUpApi()
+            }
         }
     }
     func callingSignUpApi(){
@@ -77,7 +85,9 @@ class SignUpViewController: BaseViewController,UIImagePickerControllerDelegate,U
         if let password = self.tfPassword.text {
             dict.updateValue(password as AnyObject, forKey: "password")
         }
-        dict.updateValue("imageurl" as AnyObject, forKey: "user_image")
+        if let filUploadResponse = self.fileUploadResponseModel {
+           dict.updateValue(filUploadResponse.uploadedImageName as AnyObject, forKey: "user_image")
+        }
         return CCUtility.getJSONfrom(dictionary: dict)
     }
     
@@ -150,20 +160,17 @@ class SignUpViewController: BaseViewController,UIImagePickerControllerDelegate,U
     // MARK: - UIImagePickerControllerDelegate Methods
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
-        if let asset = info["UIImagePickerControllerPHAsset"] as? PHAsset{
-            if let fileName = asset.value(forKey: "filename") as? String{
-                print(fileName)
-            }
-        }
         dismiss(animated: true, completion: nil)
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             let referenceURL = info["UIImagePickerControllerReferenceURL"] as? URL
-            
+            selImage = pickedImage
+            imageProfile.image = selImage
             if let refUrl = referenceURL {
-                sendChatImage(image: pickedImage, ext: (refUrl.pathExtension))
+                imagePathExtension = refUrl.pathExtension
+                //sendChatImage(image: pickedImage, ext: (refUrl.pathExtension))
             }
             else {
-                sendChatImage(image: pickedImage, ext: "JPG")
+                imagePathExtension = "JPG"
             }
         }
     }
@@ -174,16 +181,31 @@ class SignUpViewController: BaseViewController,UIImagePickerControllerDelegate,U
     
     //MARK: Sending Chat Image
     
-    func sendChatImage(image:UIImage, ext: String){
+    func sendProfileImage(image:UIImage, ext: String){
         let imageData = UIImageJPEGRepresentation(image, 0.25)
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         CLNetworkManager.upload(file: imageData!,
                                 type: .JPEG, ext: ext,
-                                url: "http://preparature.copycon.in/api/file_upload",
+                                url: BASE_URL+IMAGE_UPLOAD_URL,
                                 parameters: "files",
                                 headers: nil)
         {
             (response, status, error) in
-            
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if status == true {
+                if let res = response {
+                    self.fileUploadResponseModel = FileUploadResponseModel.init(dict: res)
+                    self.callingSignUpApi()
+                }
+            }
+            else{
+                if(error == .noNetwork){
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+                }
+                else{
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+                }
+            }
         }
     }
     
