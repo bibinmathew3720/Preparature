@@ -56,7 +56,7 @@ class EditProfileViewController: BaseViewController,UIImagePickerControllerDeleg
                 sendProfileImage(image: image, ext: self.imagePathExtension!)
             }
             else{
-                //callingSignUpApi()
+                callingEditProfileApi()
             }
         }
     }
@@ -134,6 +134,63 @@ class EditProfileViewController: BaseViewController,UIImagePickerControllerDeleg
         dismiss(animated: true, completion: nil)
     }
     
+    func callingEditProfileApi(){
+        MBProgressHUD.showAdded(to: self.view!, animated: true)
+        UserManager().callingEditProfileApi(with: getEditProfileRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? EditProfileResponseModel{
+                if model.statusCode == 1{
+                    if let user = User.getUser(){
+                        user.name = self.nameTF.text
+                        if let fileReponse = self.fileUploadResponseModel {
+                            user.imageUrl = fileReponse.uploadedImageName
+                        }
+                        CoreDataHandler.sharedInstance.saveContext()
+                    }
+                    self.disableEditing()
+                    CCUtility.showDefaultAlertwithCompletionHandler(_title: Constant.AppName, _message: "Profile Updated successfully", parentController: self, completion: { (status) in
+                        
+                    })
+                }
+                else{
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                }
+                
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func getEditProfileRequestBody()->String{
+        var dict:[String:AnyObject] = [String:AnyObject]()
+        if let name = self.nameTF.text {
+            dict.updateValue(name as AnyObject, forKey: "name")
+        }
+        if let filUploadResponse = self.fileUploadResponseModel {
+            dict.updateValue(filUploadResponse.uploadedImageName as AnyObject, forKey: "user_image")
+        }
+        else{
+            if let user = User.getUser() {
+                dict.updateValue(user.imageUrl as AnyObject, forKey: "user_image")
+            }
+        }
+        if let user = User.getUser() {
+            dict.updateValue(user.userId as AnyObject, forKey: "user_id")
+        }
+        return CCUtility.getJSONfrom(dictionary: dict)
+    }
+    
     //MARK: Sending Chat Image
     
     func sendProfileImage(image:UIImage, ext: String){
@@ -150,7 +207,7 @@ class EditProfileViewController: BaseViewController,UIImagePickerControllerDeleg
             if status == true {
                 if let res = response {
                     self.fileUploadResponseModel = FileUploadResponseModel.init(dict: res)
-//                    self.callingSignUpApi()
+                    self.callingEditProfileApi()
                 }
             }
             else{

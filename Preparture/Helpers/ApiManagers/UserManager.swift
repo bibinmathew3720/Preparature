@@ -145,6 +145,40 @@ class UserManager: CLBaseService {
         let changePasswordReponseModel = ChangePasswordResponseModel.init(dict:dict)
         return changePasswordReponseModel
     }
+    
+    //MARK : Edit Profile Api
+    
+    func callingEditProfileApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForEditProfile(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getEditProfileResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForEditProfile(with body:String)->CLNetworkModel{
+        let editProfileRequestModel = CLNetworkModel.init(url: BASE_URL+EDIT_PROFILE_URL, requestMethod_: "POST")
+        editProfileRequestModel.requestBody = body
+        return editProfileRequestModel
+    }
+    
+    func getEditProfileResponseModel(dict:[String : Any?]) -> Any? {
+        let editProfileReponseModel = EditProfileResponseModel.init(dict:dict)
+        return editProfileReponseModel
+    }
 }
     
 class LogInResponseModel : NSObject{
@@ -216,6 +250,19 @@ class ForgotResponseModel : NSObject{
 }
 
 class ChangePasswordResponseModel : NSObject{
+    var statusMessage:String = ""
+    var statusCode:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["message"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["status"] as? Int{
+            statusCode = value
+        }
+    }
+}
+
+class EditProfileResponseModel : NSObject{
     var statusMessage:String = ""
     var statusCode:Int = 0
     init(dict:[String:Any?]) {
