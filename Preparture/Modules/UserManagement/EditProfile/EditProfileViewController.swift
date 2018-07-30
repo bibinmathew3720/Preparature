@@ -42,6 +42,9 @@ class EditProfileViewController: BaseViewController,UIImagePickerControllerDeleg
        enableEditing()
     }
     
+    @IBAction func backButtonAction(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func viewGestureAction(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }

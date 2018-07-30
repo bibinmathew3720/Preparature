@@ -85,6 +85,23 @@ class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
                 let editProfile = EditProfileViewController(nibName: "EditProfileViewController", bundle: nil)
                 self.present(editProfile, animated: true, completion: nil)
             }
+            else if indexPath.row == 3 {
+               showAlertForLogout()
+            }
+        }
+    }
+    
+    func showAlertForLogout() {
+        let alertController = UIAlertController(title: Constant.AppName, message: "Do you want to Logout?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title:"YES", style: .default) { (action:UIAlertAction) in
+            CCUtility.processAfterLogOut()
+        }
+        let noAction = UIAlertAction(title:"NO", style: .default) { (action:UIAlertAction) in
+            
+        }
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        self.present(alertController, animated: true) {
         }
     }
 

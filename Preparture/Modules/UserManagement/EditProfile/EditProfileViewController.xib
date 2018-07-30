@@ -46,6 +46,17 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJl-C6-Bgt">
+                            <rect key="frame" x="10" y="22.5" width="46" height="46"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="mXl-oM-X2F"/>
+                                <constraint firstAttribute="width" constant="46" id="vgh-SJ-mSq"/>
+                            </constraints>
+                            <state key="normal" image="backIcon"/>
+                            <connections>
+                                <action selector="backButtonAction:" destination="-1" eventType="touchUpInside" id="ZXg-xf-4lz"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gR3-3b-3UB">
                             <rect key="frame" x="325" y="20.5" width="40" height="50"/>
                             <constraints>
@@ -60,6 +71,7 @@
                     </subviews>
                     <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="WJl-C6-Bgt" firstAttribute="centerY" secondItem="wmE-8N-xJp" secondAttribute="centerY" id="4ct-XS-LGx"/>
                         <constraint firstAttribute="trailing" secondItem="gR3-3b-3UB" secondAttribute="trailing" constant="10" id="TYe-vD-aTa"/>
                         <constraint firstItem="gR3-3b-3UB" firstAttribute="centerY" secondItem="wmE-8N-xJp" secondAttribute="centerY" id="aTj-l8-AAF"/>
                         <constraint firstItem="wmE-8N-xJp" firstAttribute="centerX" secondItem="e2D-vM-n3y" secondAttribute="centerX" id="eGN-aA-NZq"/>
@@ -258,6 +270,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="WJl-C6-Bgt" firstAttribute="leading" secondItem="hcD-wF-R6e" secondAttribute="leading" constant="-10" id="0nO-UY-qgh"/>
                 <constraint firstItem="Uwi-4T-hqt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5CT-6d-qfj"/>
                 <constraint firstAttribute="trailing" secondItem="e2D-vM-n3y" secondAttribute="trailing" id="6bZ-Ze-hCR"/>
                 <constraint firstAttribute="bottom" secondItem="Uwi-4T-hqt" secondAttribute="bottom" id="7q4-t9-IJV"/>
@@ -275,6 +288,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="backIcon" width="19" height="15"/>
         <image name="cameraIcon" width="33" height="33"/>
         <image name="editIcon" width="25" height="25"/>
         <image name="mailIcon" width="16" height="12"/>
