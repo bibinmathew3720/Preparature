@@ -171,9 +171,8 @@ class CCUtility: NSObject {
     class func processAfterLogOut(){
         UserDefaults.standard.set(false, forKey: Constant.UserDefaultskeys.isLoggedIn)
         NotificationCenter.default.post(name: .rootResettingNot, object: nil)
-//        if let user = User.getUser(){
-//            User.deleteUser()
-//           
-//        }
+        if let user = User.getUser(){
+            User.deleteUser()
+        }
     }
 }

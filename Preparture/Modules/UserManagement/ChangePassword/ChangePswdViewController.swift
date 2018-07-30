@@ -97,7 +97,9 @@ class ChangePswdViewController: BaseViewController {
         if let newPwd = self.tfNew.text {
             dict.updateValue(newPwd as AnyObject, forKey: "new_password")
         }
-        dict.updateValue("52" as AnyObject, forKey: "user_id")
+        if let user = User.getUser() {
+            dict.updateValue(user.userId as AnyObject, forKey: "user_id")
+        }
         return CCUtility.getJSONfrom(dictionary: dict)
     }
 }

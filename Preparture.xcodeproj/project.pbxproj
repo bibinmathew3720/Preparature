@@ -62,6 +62,9 @@
 		D0098006210F3FEF00DA1316 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0098001210F3FEF00DA1316 /* EditProfileViewController.xib */; };
 		D0098007210F3FEF00DA1316 /* ChangePswdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0098003210F3FEF00DA1316 /* ChangePswdViewController.swift */; };
 		D0098008210F3FEF00DA1316 /* ChangePswdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0098004210F3FEF00DA1316 /* ChangePswdViewController.xib */; };
+		D009800B210F487700DA1316 /* PreparatureModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0098009210F487700DA1316 /* PreparatureModel.xcdatamodeld */; };
+		D009800F210F49FE00DA1316 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009800E210F49FE00DA1316 /* User.swift */; };
+		D0098012210F4B1000DA1316 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0098011210F4B1000DA1316 /* CoreDataHandler.swift */; };
 		D0183CE3210CB1A80030D02D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0183CE2210CB1A70030D02D /* UserManager.swift */; };
 		D0183CE5210CB20B0030D02D /* PreparatureApiUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0183CE4210CB20B0030D02D /* PreparatureApiUrls.swift */; };
 		D0183CEB210CC3CD0030D02D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0183CE7210CC3CC0030D02D /* StringExtensions.swift */; };
@@ -170,6 +173,9 @@
 		D0098001210F3FEF00DA1316 /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		D0098003210F3FEF00DA1316 /* ChangePswdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePswdViewController.swift; sourceTree = "<group>"; };
 		D0098004210F3FEF00DA1316 /* ChangePswdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePswdViewController.xib; sourceTree = "<group>"; };
+		D009800A210F487700DA1316 /* PreparatureModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PreparatureModel.xcdatamodel; sourceTree = "<group>"; };
+		D009800E210F49FE00DA1316 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D0098011210F4B1000DA1316 /* CoreDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		D0183CE2210CB1A70030D02D /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		D0183CE4210CB20B0030D02D /* PreparatureApiUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparatureApiUrls.swift; sourceTree = "<group>"; };
 		D0183CE7210CC3CC0030D02D /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -351,6 +357,7 @@
 		05B2CB6120B1E481008D0D32 /* Preparture */ = {
 			isa = PBXGroup;
 			children = (
+				D009800C210F49AE00DA1316 /* Model */,
 				059948E020D6B1710057F673 /* AppDelegate */,
 				059948DB20D6B1710057F673 /* Modules */,
 				05D2F1CC20D81D0500E2A5C9 /* Resources */,
@@ -360,6 +367,7 @@
 				05B2CB6920B1E481008D0D32 /* Assets.xcassets */,
 				05B2CB6B20B1E481008D0D32 /* LaunchScreen.storyboard */,
 				05B2CB6E20B1E481008D0D32 /* Info.plist */,
+				D0098009210F487700DA1316 /* PreparatureModel.xcdatamodeld */,
 			);
 			path = Preparture;
 			sourceTree = "<group>";
@@ -415,6 +423,7 @@
 		05D2F1EC20D81E9C00E2A5C9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D0098010210F4B1000DA1316 /* CoreDataHandler */,
 				D0183CEF210CC6200030D02D /* Utility */,
 				D0183CE6210CC3CC0030D02D /* Extensions */,
 				D0183CE0210CB1150030D02D /* ApiManagers */,
@@ -536,6 +545,30 @@
 				D0098004210F3FEF00DA1316 /* ChangePswdViewController.xib */,
 			);
 			path = ChangePassword;
+			sourceTree = "<group>";
+		};
+		D009800C210F49AE00DA1316 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D009800D210F49C100DA1316 /* User */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D009800D210F49C100DA1316 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				D009800E210F49FE00DA1316 /* User.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		D0098010210F4B1000DA1316 /* CoreDataHandler */ = {
+			isa = PBXGroup;
+			children = (
+				D0098011210F4B1000DA1316 /* CoreDataHandler.swift */,
+			);
+			path = CoreDataHandler;
 			sourceTree = "<group>";
 		};
 		D0183CE0210CB1150030D02D /* ApiManagers */ = {
@@ -977,6 +1010,7 @@
 				05E2B6FB20DFDD21005DD640 /* ForgotPasswordViewController.swift in Sources */,
 				059948E720D6B2040057F673 /* BaseViewController.swift in Sources */,
 				D0183CE5210CB20B0030D02D /* PreparatureApiUrls.swift in Sources */,
+				D009800F210F49FE00DA1316 /* User.swift in Sources */,
 				056D4DF620F0B5CA00B7F408 /* SuggestionsViewController.swift in Sources */,
 				056D4DF220F0B5B700B7F408 /* ItineraryViewController.swift in Sources */,
 				D095508220E32B4F00D8BBD9 /* CLNetworkUtility.swift in Sources */,
@@ -986,6 +1020,7 @@
 				D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */,
 				05B2CB6520B1E481008D0D32 /* ViewController.swift in Sources */,
 				D095508020E32B4F00D8BBD9 /* CLNetworkManager.swift in Sources */,
+				D0098012210F4B1000DA1316 /* CoreDataHandler.swift in Sources */,
 				D0183CEB210CC3CD0030D02D /* StringExtensions.swift in Sources */,
 				D0012C9B20EEF5F100074C90 /* SettingsTVC.swift in Sources */,
 				D0183CF1210CC6200030D02D /* CCUtility.swift in Sources */,
@@ -993,6 +1028,7 @@
 				D095508320E32B4F00D8BBD9 /* Reachability.m in Sources */,
 				05DFA28F20FA6DE6001F676A /* SuggestionsTableViewCell.swift in Sources */,
 				059948E420D6B1C90057F673 /* SignInViewController.swift in Sources */,
+				D009800B210F487700DA1316 /* PreparatureModel.xcdatamodeld in Sources */,
 				D0183CED210CC3CD0030D02D /* UIImageViewExtensions.swift in Sources */,
 				D0F5B43B20EBFC73008727CC /* SettingsVC.swift in Sources */,
 			);
@@ -1298,6 +1334,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D0098009210F487700DA1316 /* PreparatureModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D009800A210F487700DA1316 /* PreparatureModel.xcdatamodel */,
+			);
+			currentVersion = D009800A210F487700DA1316 /* PreparatureModel.xcdatamodel */;
+			path = PreparatureModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 05B2CB5720B1E480008D0D32 /* Project object */;
 }

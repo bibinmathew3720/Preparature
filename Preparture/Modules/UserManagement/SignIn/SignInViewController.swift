@@ -65,7 +65,7 @@ class SignInViewController: BaseViewController {
                 MBProgressHUD.hide(for: self.view, animated: true)
                 if let model = model as? LogInResponseModel{
                     if model.statusCode == 1{
-                       // User.saveUserData(userData: model)
+                        User.saveUserData(userData: model)
                         CCUtility.processAfterLogIn()
                     }
                     else{
