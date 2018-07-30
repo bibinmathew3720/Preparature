@@ -24,10 +24,11 @@
             <connections>
                 <outlet property="cameraButton" destination="eFY-7I-DJu" id="hb9-dP-uq1"/>
                 <outlet property="editButton" destination="gR3-3b-3UB" id="Nwe-fV-wKX"/>
+                <outlet property="emailTF" destination="hr7-4X-xb6" id="lgq-gE-Bnb"/>
                 <outlet property="imageProfile" destination="hcD-wF-R6e" id="rS2-2t-mSW"/>
                 <outlet property="nameTF" destination="mun-ym-tSX" id="5n2-u6-S5z"/>
-                <outlet property="textfieldUsername" destination="hGq-PK-7Q7" id="E1L-HE-iwF"/>
-                <outlet property="tfEmail" destination="hr7-4X-xb6" id="UDx-eJ-Waj"/>
+                <outlet property="updateButton" destination="pX6-Xq-dTl" id="oKe-ZN-kj9"/>
+                <outlet property="userNameTF" destination="hGq-PK-7Q7" id="j7q-Bj-8Kf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -80,7 +81,7 @@
                                         <constraint firstAttribute="height" constant="160" id="wUI-VM-NLB"/>
                                     </constraints>
                                 </imageView>
-                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Frenk Prince" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mun-ym-tSX">
+                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Frenk Prince" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mun-ym-tSX">
                                     <rect key="frame" x="0.0" y="200" width="375" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="0Xq-Cw-Hph"/>
@@ -196,9 +197,30 @@
                                         <action selector="cameraButtonAction:" destination="-1" eventType="touchUpInside" id="lkP-ZM-HeC"/>
                                     </connections>
                                 </button>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pX6-Xq-dTl">
+                                    <rect key="frame" x="40" y="404" width="295" height="40"/>
+                                    <color key="backgroundColor" red="0.91372549020000005" green="0.70196078429999997" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="295" id="2Wp-zH-nGb"/>
+                                        <constraint firstAttribute="height" constant="40" id="SQe-Rl-o5N"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="20"/>
+                                    <state key="normal" title="Update">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="updateButtonAction:" destination="-1" eventType="touchUpInside" id="ax1-lE-1Sz"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="pX6-Xq-dTl" firstAttribute="top" secondItem="uRP-md-DqN" secondAttribute="bottom" constant="23" id="1So-gm-1R4"/>
                                 <constraint firstAttribute="trailing" secondItem="mun-ym-tSX" secondAttribute="trailing" id="314-4F-IPY"/>
                                 <constraint firstItem="uRP-md-DqN" firstAttribute="top" secondItem="EMb-BY-JRw" secondAttribute="bottom" constant="5" id="BB1-79-CJM"/>
                                 <constraint firstItem="eFY-7I-DJu" firstAttribute="trailing" secondItem="hcD-wF-R6e" secondAttribute="trailing" constant="20" id="E2W-Be-Hry"/>
@@ -215,6 +237,7 @@
                                 <constraint firstItem="hcD-wF-R6e" firstAttribute="top" secondItem="7un-XV-MGc" secondAttribute="top" constant="20" id="mqL-N1-g2B"/>
                                 <constraint firstItem="vCp-89-xwK" firstAttribute="leading" secondItem="hcD-wF-R6e" secondAttribute="leading" id="pz3-3f-kXG"/>
                                 <constraint firstItem="vCp-89-xwK" firstAttribute="trailing" secondItem="hcD-wF-R6e" secondAttribute="trailing" id="qiq-X2-wd6"/>
+                                <constraint firstItem="pX6-Xq-dTl" firstAttribute="centerX" secondItem="7un-XV-MGc" secondAttribute="centerX" id="tOq-Kv-Z2F"/>
                                 <constraint firstItem="hcD-wF-R6e" firstAttribute="leading" secondItem="7un-XV-MGc" secondAttribute="leading" constant="20" id="uYT-mc-kU1"/>
                             </constraints>
                         </view>

@@ -13,8 +13,9 @@ class EditProfileViewController: BaseViewController,UIImagePickerControllerDeleg
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var nameTF: UITextField!
-    @IBOutlet weak var textfieldUsername: UITextField!
-    @IBOutlet weak var tfEmail: UITextField!
+    @IBOutlet weak var updateButton: UIButton!
+    @IBOutlet weak var userNameTF: UITextField!
+    @IBOutlet weak var emailTF: UITextField!
     
     var fileUploadResponseModel:FileUploadResponseModel?
     var selImage:UIImage?
@@ -25,13 +26,20 @@ class EditProfileViewController: BaseViewController,UIImagePickerControllerDeleg
     }
 
     func customization() {
+        populateUserDetails()
         
+    }
+    
+    func populateUserDetails(){
+        if let user = User.getUser() {
+            self.nameTF.text = user.name
+            self.userNameTF.text = user.userName
+            self.emailTF.text = user.email
+        }
     }
 
     @IBAction func actionEdit(_ sender: Any) {
-        self.nameTF.isEnabled = true
-        self.nameTF.becomeFirstResponder()
-        self.cameraButton.isHidden = false
+       enableEditing()
     }
     
     @IBAction func viewGestureAction(_ sender: UITapGestureRecognizer) {
@@ -40,6 +48,44 @@ class EditProfileViewController: BaseViewController,UIImagePickerControllerDeleg
     @IBAction func cameraButtonAction(_ sender: UIButton) {
         self.view.endEditing(true)
         addingActionSheetForPhotos()
+    }
+    @IBAction func updateButtonAction(_ sender: UIButton) {
+        self.view.endEditing(true)
+        if (self.isValidEditProfileDetails()){
+            if let image = self.selImage {
+                sendProfileImage(image: image, ext: self.imagePathExtension!)
+            }
+            else{
+                //callingSignUpApi()
+            }
+        }
+    }
+    
+    func isValidEditProfileDetails()->Bool{
+        var valid = true
+        var messageString = ""
+        if (self.nameTF.text?.isEmpty)!{
+            messageString = "Please enter valid name"
+            valid = false
+        }
+        if !valid {
+            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: messageString, parentController: self)
+        }
+        return valid
+    }
+    
+    func enableEditing(){
+        self.nameTF.isEnabled = true
+        self.nameTF.becomeFirstResponder()
+        self.cameraButton.isHidden = false
+        self.updateButton.isHidden = false
+    }
+    
+    func disableEditing(){
+        self.nameTF.isEnabled = false
+        self.view.endEditing(true)
+        self.cameraButton.isHidden = true
+        self.updateButton.isHidden = true
     }
     
     func addingActionSheetForPhotos(){
