@@ -111,6 +111,40 @@ class UserManager: CLBaseService {
         let forgotReponseModel = ForgotResponseModel.init(dict:dict)
         return forgotReponseModel
     }
+    
+    //MARK : Change Password Api
+    
+    func callingChangePasswordApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForChangePassword(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getChangePasswordResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForChangePassword(with body:String)->CLNetworkModel{
+        let chnagePasswordRequestModel = CLNetworkModel.init(url: BASE_URL+CHANGE_PASSWORD_URL, requestMethod_: "POST")
+        chnagePasswordRequestModel.requestBody = body
+        return chnagePasswordRequestModel
+    }
+    
+    func getChangePasswordResponseModel(dict:[String : Any?]) -> Any? {
+        let changePasswordReponseModel = ChangePasswordResponseModel.init(dict:dict)
+        return changePasswordReponseModel
+    }
 }
     
 class LogInResponseModel : NSObject{
@@ -169,6 +203,19 @@ class SignUpResponseModel : NSObject{
 }
 
 class ForgotResponseModel : NSObject{
+    var statusMessage:String = ""
+    var statusCode:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["message"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["status"] as? Int{
+            statusCode = value
+        }
+    }
+}
+
+class ChangePasswordResponseModel : NSObject{
     var statusMessage:String = ""
     var statusCode:Int = 0
     init(dict:[String:Any?]) {

@@ -8,12 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		051EF8CB20E15BA6001FC354 /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 051EF8CC20E15BA6001FC354 /* IQKeyboardManagerSwift.framework */; };
-		056D4DE220F0A7D900B7F408 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D4DE020F0A7D900B7F408 /* EditProfileViewController.swift */; };
-		056D4DE320F0A7D900B7F408 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056D4DE120F0A7D900B7F408 /* EditProfileViewController.xib */; };
 		056D4DE620F0B57C00B7F408 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D4DE420F0B57C00B7F408 /* AddEventViewController.swift */; };
 		056D4DE720F0B57C00B7F408 /* AddEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056D4DE520F0B57C00B7F408 /* AddEventViewController.xib */; };
-		056D4DEA20F0B58E00B7F408 /* ChangePswdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D4DE820F0B58E00B7F408 /* ChangePswdViewController.swift */; };
-		056D4DEB20F0B58E00B7F408 /* ChangePswdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056D4DE920F0B58E00B7F408 /* ChangePswdViewController.xib */; };
 		056D4DEE20F0B5A600B7F408 /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D4DEC20F0B5A600B7F408 /* HomeDetailViewController.swift */; };
 		056D4DEF20F0B5A600B7F408 /* HomeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056D4DED20F0B5A600B7F408 /* HomeDetailViewController.xib */; };
 		056D4DF220F0B5B700B7F408 /* ItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056D4DF020F0B5B700B7F408 /* ItineraryViewController.swift */; };
@@ -62,6 +58,10 @@
 		D0012C9C20EEF5F100074C90 /* SettingsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0012C9A20EEF5F100074C90 /* SettingsTVC.xib */; };
 		D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003032120EDA72A00F85F11 /* HomeListTVC.swift */; };
 		D003032420EDA72A00F85F11 /* HomeListTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D003032220EDA72A00F85F11 /* HomeListTVC.xib */; };
+		D0098005210F3FEF00DA1316 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0098000210F3FEF00DA1316 /* EditProfileViewController.swift */; };
+		D0098006210F3FEF00DA1316 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0098001210F3FEF00DA1316 /* EditProfileViewController.xib */; };
+		D0098007210F3FEF00DA1316 /* ChangePswdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0098003210F3FEF00DA1316 /* ChangePswdViewController.swift */; };
+		D0098008210F3FEF00DA1316 /* ChangePswdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0098004210F3FEF00DA1316 /* ChangePswdViewController.xib */; };
 		D0183CE3210CB1A80030D02D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0183CE2210CB1A70030D02D /* UserManager.swift */; };
 		D0183CE5210CB20B0030D02D /* PreparatureApiUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0183CE4210CB20B0030D02D /* PreparatureApiUrls.swift */; };
 		D0183CEB210CC3CD0030D02D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0183CE7210CC3CC0030D02D /* StringExtensions.swift */; };
@@ -107,12 +107,8 @@
 
 /* Begin PBXFileReference section */
 		051EF8CC20E15BA6001FC354 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		056D4DE020F0A7D900B7F408 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		056D4DE120F0A7D900B7F408 /* EditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		056D4DE420F0B57C00B7F408 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		056D4DE520F0B57C00B7F408 /* AddEventViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddEventViewController.xib; sourceTree = "<group>"; };
-		056D4DE820F0B58E00B7F408 /* ChangePswdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePswdViewController.swift; sourceTree = "<group>"; };
-		056D4DE920F0B58E00B7F408 /* ChangePswdViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePswdViewController.xib; sourceTree = "<group>"; };
 		056D4DEC20F0B5A600B7F408 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
 		056D4DED20F0B5A600B7F408 /* HomeDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeDetailViewController.xib; sourceTree = "<group>"; };
 		056D4DF020F0B5B700B7F408 /* ItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +166,10 @@
 		D0012C9A20EEF5F100074C90 /* SettingsTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTVC.xib; sourceTree = "<group>"; };
 		D003032120EDA72A00F85F11 /* HomeListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListTVC.swift; sourceTree = "<group>"; };
 		D003032220EDA72A00F85F11 /* HomeListTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListTVC.xib; sourceTree = "<group>"; };
+		D0098000210F3FEF00DA1316 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		D0098001210F3FEF00DA1316 /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
+		D0098003210F3FEF00DA1316 /* ChangePswdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePswdViewController.swift; sourceTree = "<group>"; };
+		D0098004210F3FEF00DA1316 /* ChangePswdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePswdViewController.xib; sourceTree = "<group>"; };
 		D0183CE2210CB1A70030D02D /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		D0183CE4210CB20B0030D02D /* PreparatureApiUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparatureApiUrls.swift; sourceTree = "<group>"; };
 		D0183CE7210CC3CC0030D02D /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -234,8 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				056D4DDA20F0A7BE00B7F408 /* AddEvents */,
-				056D4DDB20F0A7BE00B7F408 /* ChangePassword */,
-				056D4DDC20F0A7BE00B7F408 /* EditProfile */,
 				056D4DDD20F0A7BE00B7F408 /* HomeDetail */,
 				056D4DDE20F0A7BE00B7F408 /* Itinerary */,
 				056D4DDF20F0A7BE00B7F408 /* Suggestions */,
@@ -250,24 +248,6 @@
 				056D4DE520F0B57C00B7F408 /* AddEventViewController.xib */,
 			);
 			path = AddEvents;
-			sourceTree = "<group>";
-		};
-		056D4DDB20F0A7BE00B7F408 /* ChangePassword */ = {
-			isa = PBXGroup;
-			children = (
-				056D4DE820F0B58E00B7F408 /* ChangePswdViewController.swift */,
-				056D4DE920F0B58E00B7F408 /* ChangePswdViewController.xib */,
-			);
-			path = ChangePassword;
-			sourceTree = "<group>";
-		};
-		056D4DDC20F0A7BE00B7F408 /* EditProfile */ = {
-			isa = PBXGroup;
-			children = (
-				056D4DE020F0A7D900B7F408 /* EditProfileViewController.swift */,
-				056D4DE120F0A7D900B7F408 /* EditProfileViewController.xib */,
-			);
-			path = EditProfile;
 			sourceTree = "<group>";
 		};
 		056D4DDD20F0A7BE00B7F408 /* HomeDetail */ = {
@@ -313,6 +293,8 @@
 		059948DC20D6B1710057F673 /* UserManagement */ = {
 			isa = PBXGroup;
 			children = (
+				D0098002210F3FEF00DA1316 /* ChangePassword */,
+				D0097FFF210F3FEF00DA1316 /* EditProfile */,
 				05E2B6F720DFDD13005DD640 /* ForgotPassword */,
 				05E2B6F820DFDD13005DD640 /* SignUp */,
 				059948DE20D6B1710057F673 /* SignIn */,
@@ -536,6 +518,24 @@
 				D003032220EDA72A00F85F11 /* HomeListTVC.xib */,
 			);
 			path = HomeListTVC;
+			sourceTree = "<group>";
+		};
+		D0097FFF210F3FEF00DA1316 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				D0098000210F3FEF00DA1316 /* EditProfileViewController.swift */,
+				D0098001210F3FEF00DA1316 /* EditProfileViewController.xib */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		D0098002210F3FEF00DA1316 /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				D0098003210F3FEF00DA1316 /* ChangePswdViewController.swift */,
+				D0098004210F3FEF00DA1316 /* ChangePswdViewController.xib */,
+			);
+			path = ChangePassword;
 			sourceTree = "<group>";
 		};
 		D0183CE0210CB1150030D02D /* ApiManagers */ = {
@@ -787,23 +787,23 @@
 			files = (
 				D003032420EDA72A00F85F11 /* HomeListTVC.xib in Resources */,
 				05D2F1E920D81D0600E2A5C9 /* Muli-SemiBold.ttf in Resources */,
-				056D4DE320F0A7D900B7F408 /* EditProfileViewController.xib in Resources */,
 				05E2B6FC20DFDD21005DD640 /* ForgotPasswordViewController.xib in Resources */,
 				D0F5B44B20EC063A008727CC /* HomeListCVC.xib in Resources */,
 				05D2F1E220D81D0600E2A5C9 /* Muli-ExtraBoldItalic.ttf in Resources */,
 				D0012C9820EEF5DC00074C90 /* SettingsHeaderTVC.xib in Resources */,
 				05D2F1E520D81D0600E2A5C9 /* Muli-Italic.ttf in Resources */,
 				05D2F1E720D81D0600E2A5C9 /* Muli-LightItalic.ttf in Resources */,
+				D0098006210F3FEF00DA1316 /* EditProfileViewController.xib in Resources */,
 				D01A848D20F96FF6004ED6FB /* ItineraryTVC.xib in Resources */,
 				05D2F1E820D81D0600E2A5C9 /* Muli-Regular.ttf in Resources */,
 				05D2F1DF20D81D0600E2A5C9 /* Muli-Bold.ttf in Resources */,
 				05B2CB6D20B1E481008D0D32 /* LaunchScreen.storyboard in Resources */,
+				D0098008210F3FEF00DA1316 /* ChangePswdViewController.xib in Resources */,
 				D0F5B44720EC0625008727CC /* HomeHeadingCVC.xib in Resources */,
 				05DFA29020FA6DE6001F676A /* SuggestionsTableViewCell.xib in Resources */,
 				05D2F1E320D81D0600E2A5C9 /* Muli-ExtraLight.ttf in Resources */,
 				05D2F1EA20D81D0600E2A5C9 /* Muli-SemiBoldItalic.ttf in Resources */,
 				05E2B70020DFDD35005DD640 /* SignUpViewController.xib in Resources */,
-				056D4DEB20F0B58E00B7F408 /* ChangePswdViewController.xib in Resources */,
 				D0012C9220EEE61500074C90 /* FavoriteCell.xib in Resources */,
 				056D4DE720F0B57C00B7F408 /* AddEventViewController.xib in Resources */,
 				D0F5B44020EBFC86008727CC /* FavoritesVC.xib in Resources */,
@@ -961,18 +961,19 @@
 			files = (
 				056D4DE620F0B57C00B7F408 /* AddEventViewController.swift in Sources */,
 				D0183CEE210CC3CD0030D02D /* UIViewExtensions.swift in Sources */,
-				056D4DE220F0A7D900B7F408 /* EditProfileViewController.swift in Sources */,
 				05D2F1EF20D81EC100E2A5C9 /* Constants.swift in Sources */,
 				D095508120E32B4F00D8BBD9 /* CLNetworkModel.swift in Sources */,
 				D095507F20E32B4F00D8BBD9 /* CLBaseService.swift in Sources */,
 				05E2B6FF20DFDD35005DD640 /* SignUpViewController.swift in Sources */,
 				D0F5B44620EC0625008727CC /* HomeHeadingCVC.swift in Sources */,
 				D0F5B43720EBFB78008727CC /* HomeVC.swift in Sources */,
+				D0098007210F3FEF00DA1316 /* ChangePswdViewController.swift in Sources */,
 				D0183CEC210CC3CD0030D02D /* UIColorExtension.swift in Sources */,
 				D0F5B43F20EBFC86008727CC /* FavoritesVC.swift in Sources */,
 				059948E220D6B1A10057F673 /* AppDelegate.swift in Sources */,
 				D0F5B44A20EC063A008727CC /* HomeListCVC.swift in Sources */,
 				D0012C9720EEF5DC00074C90 /* SettingsHeaderTVC.swift in Sources */,
+				D0098005210F3FEF00DA1316 /* EditProfileViewController.swift in Sources */,
 				05E2B6FB20DFDD21005DD640 /* ForgotPasswordViewController.swift in Sources */,
 				059948E720D6B2040057F673 /* BaseViewController.swift in Sources */,
 				D0183CE5210CB20B0030D02D /* PreparatureApiUrls.swift in Sources */,
@@ -989,7 +990,6 @@
 				D0012C9B20EEF5F100074C90 /* SettingsTVC.swift in Sources */,
 				D0183CF1210CC6200030D02D /* CCUtility.swift in Sources */,
 				D0012C9120EEE61500074C90 /* FavoriteCell.swift in Sources */,
-				056D4DEA20F0B58E00B7F408 /* ChangePswdViewController.swift in Sources */,
 				D095508320E32B4F00D8BBD9 /* Reachability.m in Sources */,
 				05DFA28F20FA6DE6001F676A /* SuggestionsTableViewCell.swift in Sources */,
 				059948E420D6B1C90057F673 /* SignInViewController.swift in Sources */,
