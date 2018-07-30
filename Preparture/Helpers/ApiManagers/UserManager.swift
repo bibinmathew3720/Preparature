@@ -116,7 +116,7 @@ class UserManager: CLBaseService {
 class LogInResponseModel : NSObject{
         var statusMessage:String = ""
         var statusCode:Int = 0
-        var userId:Int = 0
+        var userId:String = ""
         
         var name:String = ""
         var userName:String = ""
@@ -131,7 +131,7 @@ class LogInResponseModel : NSObject{
             }
             
             if let user = dict["user_details"] as? [String:AnyObject]{
-                if let value = user["user_id"] as? Int{
+                if let value = user["user_id"] as? String{
                     userId = value
                 }
                 if let value = user["name"] as? String{
@@ -154,7 +154,7 @@ class LogInResponseModel : NSObject{
 class SignUpResponseModel : NSObject{
     var statusMessage:String = ""
     var statusCode:Int = 0
-    var userId:Int = 0
+    var userId:String = ""
     init(dict:[String:Any?]) {
         if let value = dict["message"] as? String{
             statusMessage = value
@@ -162,7 +162,7 @@ class SignUpResponseModel : NSObject{
         if let value = dict["status"] as? Int{
             statusCode = value
         }
-        if let value = dict["user_id"] as? Int{
+        if let value = dict["user_id"] as? String{
             userId = value
         }
     }
