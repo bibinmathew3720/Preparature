@@ -58,6 +58,7 @@
 		D0012C9C20EEF5F100074C90 /* SettingsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0012C9A20EEF5F100074C90 /* SettingsTVC.xib */; };
 		D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003032120EDA72A00F85F11 /* HomeListTVC.swift */; };
 		D003032420EDA72A00F85F11 /* HomeListTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D003032220EDA72A00F85F11 /* HomeListTVC.xib */; };
+		D0030DCF2111609E00703B64 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0030DCE2111609E00703B64 /* EventManager.swift */; };
 		D0098005210F3FEF00DA1316 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0098000210F3FEF00DA1316 /* EditProfileViewController.swift */; };
 		D0098006210F3FEF00DA1316 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0098001210F3FEF00DA1316 /* EditProfileViewController.xib */; };
 		D0098007210F3FEF00DA1316 /* ChangePswdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0098003210F3FEF00DA1316 /* ChangePswdViewController.swift */; };
@@ -169,6 +170,7 @@
 		D0012C9A20EEF5F100074C90 /* SettingsTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTVC.xib; sourceTree = "<group>"; };
 		D003032120EDA72A00F85F11 /* HomeListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListTVC.swift; sourceTree = "<group>"; };
 		D003032220EDA72A00F85F11 /* HomeListTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListTVC.xib; sourceTree = "<group>"; };
+		D0030DCE2111609E00703B64 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		D0098000210F3FEF00DA1316 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		D0098001210F3FEF00DA1316 /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		D0098003210F3FEF00DA1316 /* ChangePswdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePswdViewController.swift; sourceTree = "<group>"; };
@@ -576,6 +578,7 @@
 			children = (
 				D0183CE2210CB1A70030D02D /* UserManager.swift */,
 				D0183CE4210CB20B0030D02D /* PreparatureApiUrls.swift */,
+				D0030DCE2111609E00703B64 /* EventManager.swift */,
 			);
 			path = ApiManagers;
 			sourceTree = "<group>";
@@ -1002,6 +1005,7 @@
 				D0F5B43720EBFB78008727CC /* HomeVC.swift in Sources */,
 				D0098007210F3FEF00DA1316 /* ChangePswdViewController.swift in Sources */,
 				D0183CEC210CC3CD0030D02D /* UIColorExtension.swift in Sources */,
+				D0030DCF2111609E00703B64 /* EventManager.swift in Sources */,
 				D0F5B43F20EBFC86008727CC /* FavoritesVC.swift in Sources */,
 				059948E220D6B1A10057F673 /* AppDelegate.swift in Sources */,
 				D0F5B44A20EC063A008727CC /* HomeListCVC.swift in Sources */,
@@ -1200,7 +1204,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WVYK59KXPF;
 				INFOPLIST_FILE = Preparture/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.preparture.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1218,7 +1222,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WVYK59KXPF;
 				INFOPLIST_FILE = Preparture/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.preparture.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";

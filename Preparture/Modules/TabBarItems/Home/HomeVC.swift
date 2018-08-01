@@ -25,7 +25,36 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
         addShadowToAView(shadowView: searchView)
         listCollectionView.delegate = self
         listCollectionView.dataSource = self
+        getSuggestions()
         // Do any additional setup after loading the view.
+    }
+    
+    func getSuggestions(){
+        MBProgressHUD.showAdded(to: self.view!, animated: true)
+        EventManager().callingSuggestionsApi(with: "", success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? SuggestionsResponseModel{
+                if model.statusCode == 1{
+                  
+                }
+                else{
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                }
+                
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
     }
     
     func registeringCollectionViewCells(){
