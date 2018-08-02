@@ -239,7 +239,7 @@ class UserManager: CLBaseService {
     }
     
     func networkModelForGetAllFavorite(with body:String)->CLNetworkModel{
-        let getAllFavoriteRequestModel = CLNetworkModel.init(url: BASE_URL+LIST_ALL_FAVORITES_URL, requestMethod_: "GET")
+        let getAllFavoriteRequestModel = CLNetworkModel.init(url: BASE_URL+LIST_ALL_FAVORITES_URL, requestMethod_: "POST")
         getAllFavoriteRequestModel.requestBody = body
         return getAllFavoriteRequestModel
     }
