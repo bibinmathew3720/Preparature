@@ -360,12 +360,77 @@ class AddToFavoriteResponseModel : NSObject{
 class ListAllFavoriteResponseModel : NSObject{
     var statusMessage:String = ""
     var statusCode:Int = 0
+    var favoriteItems = [FavoriteItem]()
     init(dict:[String:Any?]) {
         if let value = dict["message"] as? String{
             statusMessage = value
         }
         if let value = dict["status"] as? Int{
             statusCode = value
+        }
+        if let value = dict["favorites"] as? NSArray {
+            for item in value {
+                favoriteItems.append(FavoriteItem.init(dict: item as! [String : Any?]))
+            }
+        }
+    }
+}
+
+class FavoriteItem : NSObject{
+    var comments:String = ""
+    var createdDate:String = ""
+    var eventId:Int = 0
+    var userName:String = ""
+    var placeImages = [String]()
+    var placeLocation:String = ""
+    var placeName:String = ""
+    var placeType:String = ""
+    var rating:CGFloat = 0.0
+    var sugId:Int = 0
+    var updatedDate:String = ""
+    var userId:Int = 0
+    var userImage:String = ""
+    init(dict:[String:Any?]) {
+        if let value = dict["comments"] as? String{
+            comments = value
+        }
+        if let value = dict["created_date"] as? String{
+            createdDate = value
+        }
+        if let value = dict["event_id"] as? String{
+            eventId = Int(value)!
+        }
+        if let value = dict["name"] as? String{
+            userName = value
+        }
+        if let value = dict["place_files"] as? NSArray{
+            for item in value {
+                placeImages.append(item as! String)
+            }
+        }
+        if let value = dict["place_location"] as? String{
+            placeLocation = value
+        }
+        if let value = dict["place_name"] as? String{
+            placeName = value
+        }
+        if let value = dict["place_type"] as? String{
+            placeType = value
+        }
+        if let value = dict["rating"] as? Float{
+            rating = CGFloat(value)
+        }
+        if let value = dict["sgg_id"] as? String{
+            sugId = Int(value)!
+        }
+        if let value = dict["updated_date"] as? String{
+            updatedDate = value
+        }
+        if let value = dict["user_id"] as? String{
+            userId = Int(value)!
+        }
+        if let value = dict["user_image"] as? String{
+            userImage = value
         }
     }
 }

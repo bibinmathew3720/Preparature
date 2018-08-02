@@ -43,17 +43,29 @@
                                     <constraint firstAttribute="height" constant="150" id="sVr-1P-dJL"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EVENTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9nK-B3-ex7">
-                                <rect key="frame" x="499" y="5" width="60" height="21"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nud-nh-iR8">
+                                <rect key="frame" x="512.5" y="5" width="46.5" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EVENTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9nK-B3-ex7">
+                                        <rect key="frame" x="2" y="2" width="42.5" height="21"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="gaY-q1-Z2A"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="11"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.792156862745098" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="gaY-q1-Z2A"/>
-                                    <constraint firstAttribute="width" constant="60" id="vlK-ee-xTR"/>
+                                    <constraint firstAttribute="bottom" secondItem="9nK-B3-ex7" secondAttribute="bottom" constant="2" id="Bml-X0-Lid"/>
+                                    <constraint firstItem="9nK-B3-ex7" firstAttribute="leading" secondItem="nud-nh-iR8" secondAttribute="leading" constant="2" id="RNY-Fx-fVQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="9nK-B3-ex7" secondAttribute="trailing" constant="2" id="dzM-Us-JBt"/>
+                                    <constraint firstItem="9nK-B3-ex7" firstAttribute="top" secondItem="nud-nh-iR8" secondAttribute="top" constant="2" id="i9j-7N-5gs"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="11"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQ4-Fs-Kba">
                                 <rect key="frame" x="0.0" y="150" width="80" height="81.5"/>
                                 <subviews>
@@ -145,9 +157,9 @@
                             <constraint firstAttribute="trailing" secondItem="Dzt-IP-HJx" secondAttribute="trailing" id="9Jn-MC-BcF"/>
                             <constraint firstAttribute="trailing" secondItem="i3U-8f-EoN" secondAttribute="trailing" id="Eai-gf-USr"/>
                             <constraint firstAttribute="bottom" secondItem="Dzt-IP-HJx" secondAttribute="bottom" constant="1" id="KdS-Mi-6LK"/>
-                            <constraint firstItem="9nK-B3-ex7" firstAttribute="top" secondItem="i3U-8f-EoN" secondAttribute="top" constant="5" id="OFa-0m-Kf6"/>
                             <constraint firstAttribute="bottom" secondItem="IQ4-Fs-Kba" secondAttribute="bottom" id="PJv-yO-T2Z"/>
-                            <constraint firstItem="9nK-B3-ex7" firstAttribute="trailing" secondItem="i3U-8f-EoN" secondAttribute="trailing" constant="2" id="Taw-oz-oDV"/>
+                            <constraint firstItem="nud-nh-iR8" firstAttribute="top" secondItem="i3U-8f-EoN" secondAttribute="top" constant="5" id="Vh3-HN-JST"/>
+                            <constraint firstItem="nud-nh-iR8" firstAttribute="trailing" secondItem="i3U-8f-EoN" secondAttribute="trailing" constant="2" id="brI-LV-1pv"/>
                             <constraint firstItem="IQ4-Fs-Kba" firstAttribute="leading" secondItem="i3U-8f-EoN" secondAttribute="leading" id="egK-ap-XgM"/>
                             <constraint firstAttribute="trailing" secondItem="CFN-O0-Axx" secondAttribute="trailing" id="k8F-Mm-Fyn"/>
                             <constraint firstItem="i3U-8f-EoN" firstAttribute="leading" secondItem="Uip-SX-vcs" secondAttribute="leading" id="rMf-bI-okg"/>

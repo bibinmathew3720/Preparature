@@ -10,7 +10,7 @@ import UIKit
 
 class FavoritesVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var favoriteTableView: UITableView!
-    
+    var favoriteResponseModel:ListAllFavoriteResponseModel?
     override func initView() {
         super.initView()
         tableCellRegistration()
@@ -33,12 +33,17 @@ class FavoritesVC: BaseViewController,UITableViewDataSource,UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if let favoritResponse = self.favoriteResponseModel{
+            return favoritResponse.favoriteItems.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as!FavoriteCell
-        
+        if let favoritResponse = self.favoriteResponseModel{
+             cell.setFavoriteitem(favorite:favoritResponse.favoriteItems[indexPath.row])
+        }
         return cell
     }
     
@@ -55,7 +60,8 @@ class FavoritesVC: BaseViewController,UITableViewDataSource,UITableViewDelegate 
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? ListAllFavoriteResponseModel{
                 if model.statusCode == 1{
-                    
+                   self.favoriteResponseModel = model
+                   self.favoriteTableView.reloadData()
                 }
                 else{
                     CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)

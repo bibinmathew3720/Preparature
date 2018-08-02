@@ -28,4 +28,16 @@ class FavoriteCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setFavoriteitem(favorite:FavoriteItem){
+        if favorite.placeImages.count>0{
+            if let placeImage = favorite.placeImages.first {
+                favoriteImageView.sd_setImage(with: URL(string: placeImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
+            }
+        }
+        categoryLabel.text = favorite.placeType.uppercased()
+        nameLabel.text = favorite.userName
+        locationLabel.text = favorite.placeLocation
+        categoryTypeLabel.text = favorite.placeName
+    }
+    
 }
