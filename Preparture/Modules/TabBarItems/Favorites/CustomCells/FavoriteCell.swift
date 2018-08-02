@@ -35,7 +35,7 @@ class FavoriteCell: UITableViewCell {
             }
         }
         categoryLabel.text = favorite.placeType.uppercased()
-        nameLabel.text = favorite.userName
+        nameLabel.text = favorite.name
         locationLabel.text = favorite.placeLocation
         categoryTypeLabel.text = favorite.placeName
     }

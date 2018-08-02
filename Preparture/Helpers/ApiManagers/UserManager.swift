@@ -380,7 +380,7 @@ class FavoriteItem : NSObject{
     var comments:String = ""
     var createdDate:String = ""
     var eventId:Int = 0
-    var userName:String = ""
+    var name:String = ""
     var placeImages = [String]()
     var placeLocation:String = ""
     var placeName:String = ""
@@ -401,7 +401,7 @@ class FavoriteItem : NSObject{
             eventId = Int(value)!
         }
         if let value = dict["name"] as? String{
-            userName = value
+            name = value
         }
         if let value = dict["place_files"] as? NSArray{
             for item in value {

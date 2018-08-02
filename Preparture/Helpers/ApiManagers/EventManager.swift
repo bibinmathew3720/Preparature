@@ -43,6 +43,40 @@ class EventManager: CLBaseService {
         let suggestionReponseModel = SuggestionsResponseModel.init(dict:dict)
         return suggestionReponseModel
     }
+    
+    //MARK : Get Suggestion Details Api
+    
+    func callingSuggestionDetailsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetSuggestionDetails(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getSuggestionsDetailResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetSuggestionDetails(with body:String)->CLNetworkModel{
+        let getSuggestionsModel = CLNetworkModel.init(url: BASE_URL+GET_SUGGESTION_DETAILS, requestMethod_: "POST")
+        getSuggestionsModel.requestBody = body
+        return getSuggestionsModel
+    }
+    
+    func getSuggestionsDetailResponseModel(dict:[String : Any?]) -> Any? {
+        let suggestionDetailReponseModel = SuggestionDetailResponseModel.init(dict:dict)
+        return suggestionDetailReponseModel
+    }
 }
 
 class SuggestionsResponseModel : NSObject{
@@ -67,7 +101,7 @@ class SuggestionItems : NSObject{
     var comments:String = ""
     var createdDate:String = ""
     var eventId:Int = 0
-    var userName:String = ""
+    var name:String = ""
     var placeImages = [String]()
     var placeLocation:String = ""
     var placeName:String = ""
@@ -90,7 +124,7 @@ class SuggestionItems : NSObject{
             eventId = Int(value)!
         }
         if let value = dict["name"] as? String{
-            userName = value
+            name = value
         }
         if let value = dict["place_files"] as? NSArray{
             for item in value {
@@ -120,6 +154,23 @@ class SuggestionItems : NSObject{
         }
         if let value = dict["user_image"] as? String{
             userImage = value
+        }
+    }
+}
+
+class SuggestionDetailResponseModel : NSObject{
+    var statusMessage:String = ""
+    var statusCode:Int = 0
+    var suggestionItem:SuggestionItems?
+    init(dict:[String:Any?]) {
+        if let value = dict["message"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["status"] as? Int{
+            statusCode = value
+        }
+        if let value = dict["suggestions"] as? [String : Any?]{
+            suggestionItem = SuggestionItems.init(dict: value as! [String : Any?])
         }
     }
 }

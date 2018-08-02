@@ -9,6 +9,8 @@
 import UIKit
 
 class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
+    
+    var sugItem:SuggestionItems?
 
     @IBOutlet weak var scrollFull: UIScrollView!
     @IBOutlet weak var viewScrollFull: UIView!
@@ -47,8 +49,8 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     
     override func initView() {
         super.initView()
-        
         customization()
+        callingGetSuggestionDetailsApi()
     }
     
     func customization() {
@@ -91,5 +93,39 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     @IBAction func actionReadReviews(_ sender: Any) {
         let suggestionsVC = SuggestionsViewController(nibName: "SuggestionsViewController", bundle: nil)
         self.present(suggestionsVC, animated: true, completion: nil)
+    }
+    
+    //MARK:- Add To Favorite Api integration
+    
+    func callingGetSuggestionDetailsApi(){
+        MBProgressHUD.showAdded(to: self.view!, animated: true)
+        EventManager().callingSuggestionDetailsApi(with: getSuggestionDetailsRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? SuggestionDetailResponseModel{
+                if model.statusCode == 1{
+                   
+                }
+                else{
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                }
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            } else {
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            print(ErrorType)
+        }
+    }
+    
+    func getSuggestionDetailsRequestBody()->String{
+        var dict:[String:AnyObject] = [String:AnyObject]()
+        if let sugIt = sugItem {
+            dict.updateValue(sugIt.sugId as AnyObject, forKey: "sgg_id")
+        }
+        return CCUtility.getJSONfrom(dictionary: dict)
     }
 }
