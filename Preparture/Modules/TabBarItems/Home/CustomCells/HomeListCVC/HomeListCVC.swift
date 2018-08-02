@@ -16,6 +16,7 @@ protocol HomeListTVDelegate: class {
 class HomeListCVC: UICollectionViewCell,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     weak var delegate : HomeListTVDelegate?
+    var suggestionsArray:[SuggestionItems]?
     override func awakeFromNib() {
         super.awakeFromNib()
         tableCellRegistration()
@@ -33,12 +34,17 @@ class HomeListCVC: UICollectionViewCell,UITableViewDataSource,UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if let sugArray = self.suggestionsArray{
+            return sugArray.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeListCell", for: indexPath) as!HomeListTVC
-        
+        if let sugArray = self.suggestionsArray{
+            cell.setSuggestionItem(suggestion:sugArray[indexPath.row])
+        }
         return cell
     }
     
@@ -48,6 +54,11 @@ class HomeListCVC: UICollectionViewCell,UITableViewDataSource,UITableViewDelegat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.selectedCellDelegateWithTag(tag: indexPath.row)
+    }
+    
+    func setSuggestionArray(sugArray:[SuggestionItems]){
+        self.suggestionsArray = sugArray
+        self.tableView.reloadData()
     }
     
     

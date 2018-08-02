@@ -17,7 +17,7 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
     @IBOutlet weak var listCollectionView: UICollectionView!
     
     let topCollectionArray = ["Events","Hotels","Bar","What2Do"]
-    
+    var suggestionResponseModel:SuggestionsResponseModel?
     override func initView() {
         super.initView()
         registeringCollectionViewCells()
@@ -36,7 +36,8 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? SuggestionsResponseModel{
                 if model.statusCode == 1{
-                  
+                    self.suggestionResponseModel = model
+                    self.listCollectionView.reloadData()
                 }
                 else{
                     CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
@@ -72,7 +73,7 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
             return topCollectionArray.count
         }
         else{
-            return 10
+            return topCollectionArray.count
         }
     }
     
@@ -85,6 +86,9 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
         else{
             let homeListCVC : HomeListCVC = collectionView.dequeueReusableCell(withReuseIdentifier: "homeListCell", for: indexPath) as! HomeListCVC
             homeListCVC.delegate = self
+            if let sugResponseModel = self.suggestionResponseModel {
+                homeListCVC.setSuggestionArray(sugArray: sugResponseModel.suggestions)
+            }
             return homeListCVC
         }
     }

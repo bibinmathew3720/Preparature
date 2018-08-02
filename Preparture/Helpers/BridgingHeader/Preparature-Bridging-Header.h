@@ -7,6 +7,7 @@
 //
 #import "Reachability.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #ifndef Preparature_Bridging_Header_h
 #define Preparature_Bridging_Header_h
 

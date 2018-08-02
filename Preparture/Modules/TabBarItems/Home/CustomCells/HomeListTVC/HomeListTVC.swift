@@ -34,4 +34,17 @@ class HomeListTVC: UITableViewCell {
     @IBAction func shareButtonAction(_ sender: UIButton) {
     }
     
+    func setSuggestionItem(suggestion:SuggestionItems){
+        self.headingLabel.text = suggestion.userName
+        self.subHeadingLabel.text = suggestion.placeName
+        self.descriptionLabel.text = suggestion.placeLocation
+        self.ratingLabel.text = String(suggestion.rating)
+        if suggestion.placeImages.count>0{
+            if let placeImage = suggestion.placeImages.first {
+                itemImageView.sd_setImage(with: URL(string: placeImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
+            }
+        }
+        self.dateLabel.text = CCUtility.convertToDateToFormat(inputDate: suggestion.createdDate, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "dd/MM/yyyy")
+    }
+    
 }

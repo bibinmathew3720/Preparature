@@ -18,6 +18,7 @@ struct Constant{
         static let AppThemeYellowColor = UIColor(red:0.91, green:0.70, blue:0.05, alpha:1.0) //e9b30d
     }
     struct ImageNames{
+        static let placeholderImage = "placeHolder"
         struct  tabImages {
             static let homeTabIcon = "homeTab"
             static let homeTabSelected = "homeTabSelected"
