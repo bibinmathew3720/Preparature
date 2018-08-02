@@ -20,6 +20,7 @@ class HomeListTVC: UITableViewCell {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var conView: UIView!
+    @IBOutlet weak var favoriteButton: UIButton!
     var delegate:HomeListTVCDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,6 +51,7 @@ class HomeListTVC: UITableViewCell {
                 itemImageView.sd_setImage(with: URL(string: placeImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
             }
         }
+        favoriteButton.isSelected = suggestion.isFavorited
         self.dateLabel.text = CCUtility.convertToDateToFormat(inputDate: suggestion.createdDate, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "dd/MM/yyyy")
     }
     

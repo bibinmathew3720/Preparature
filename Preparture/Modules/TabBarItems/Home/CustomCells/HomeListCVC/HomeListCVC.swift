@@ -10,7 +10,7 @@ import UIKit
 
 protocol HomeListTVDelegate: class {
     func selectedCellDelegateWithTag(tag:NSInteger)
-    func addToFavoriteFromClick(tag:NSInteger)
+    func addToFavoriteFromClick(suggestion:SuggestionItems)
 }
 
 class HomeListCVC: UICollectionViewCell,UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
@@ -45,6 +45,7 @@ class HomeListCVC: UICollectionViewCell,UITableViewDataSource,UITableViewDelegat
         if let sugArray = self.suggestionsArray{
             cell.setSuggestionItem(suggestion:sugArray[indexPath.row])
         }
+        cell.tag = indexPath.row
         cell.delegate = self
         return cell
     }
@@ -65,6 +66,6 @@ class HomeListCVC: UICollectionViewCell,UITableViewDataSource,UITableViewDelegat
     //MARK:- HomeListTVC Delegate method
     
     func addToFavorite(tag:NSInteger) {
-        delegate?.addToFavoriteFromClick(tag: tag)
+        delegate?.addToFavoriteFromClick(suggestion:self.suggestionsArray![tag])
     }
 }

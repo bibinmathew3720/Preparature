@@ -77,6 +77,7 @@ class SuggestionItems : NSObject{
     var updatedDate:String = ""
     var userId:Int = 0
     var userImage:String = ""
+    var isFavorited:Bool = false
     
     init(dict:[String:Any?]) {
         if let value = dict["comments"] as? String{

@@ -89,11 +89,10 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OxE-3T-1SA">
                                                 <rect key="frame" x="0.0" y="0.0" width="127.5" height="50"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favorite" translatesAutoresizingMaskIntoConstraints="NO" id="OzE-9X-Jfp">
-                                                        <rect key="frame" x="52.5" y="15.5" width="23" height="19"/>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXK-cj-jYR">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXK-cj-jYR">
                                                         <rect key="frame" x="0.0" y="0.0" width="127.5" height="50"/>
+                                                        <state key="normal" image="favorite"/>
+                                                        <state key="selected" image="favorite"/>
                                                         <connections>
                                                             <action selector="favoriteButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="obV-IO-THS"/>
                                                         </connections>
@@ -103,9 +102,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="OXK-cj-jYR" secondAttribute="bottom" id="VAV-Ob-2x3"/>
                                                     <constraint firstAttribute="trailing" secondItem="OXK-cj-jYR" secondAttribute="trailing" id="VkP-UC-r7h"/>
-                                                    <constraint firstItem="OzE-9X-Jfp" firstAttribute="centerX" secondItem="OxE-3T-1SA" secondAttribute="centerX" id="ZVw-3b-scY"/>
                                                     <constraint firstItem="OXK-cj-jYR" firstAttribute="leading" secondItem="OxE-3T-1SA" secondAttribute="leading" id="du7-tj-KMX"/>
-                                                    <constraint firstItem="OzE-9X-Jfp" firstAttribute="centerY" secondItem="OxE-3T-1SA" secondAttribute="centerY" id="f5E-Dl-y0X"/>
                                                     <constraint firstItem="OXK-cj-jYR" firstAttribute="top" secondItem="OxE-3T-1SA" secondAttribute="top" id="fzW-mG-nC8"/>
                                                 </constraints>
                                             </view>
@@ -259,6 +256,7 @@
                 <outlet property="conView" destination="ZDc-u2-Ld3" id="Uuc-Jj-kpg"/>
                 <outlet property="dateLabel" destination="Ep6-nA-e3U" id="5G0-ov-Tvf"/>
                 <outlet property="descriptionLabel" destination="raX-ea-t1a" id="UGK-bj-ba3"/>
+                <outlet property="favoriteButton" destination="OXK-cj-jYR" id="uS9-o8-gry"/>
                 <outlet property="headingLabel" destination="kb6-hg-7NH" id="Gzz-a1-QzV"/>
                 <outlet property="itemImageView" destination="345-Mp-p8p" id="YEM-iU-nrQ"/>
                 <outlet property="ratingLabel" destination="gJ9-Mg-V3t" id="jVl-83-suP"/>

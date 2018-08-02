@@ -128,20 +128,21 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
 //        self.present(detailView, animated: true, completion: nil)
     }
     
-    func addToFavoriteFromClick(tag:NSInteger) {
-        callingAddToFavoriteApi()
+    func addToFavoriteFromClick(suggestion:SuggestionItems) {
+        callingAddToFavoriteApi(suggestionItem:suggestion)
     }
     
     //MARK:- Add To Favorite Api integration
     
-    func callingAddToFavoriteApi(){
+    func callingAddToFavoriteApi(suggestionItem:SuggestionItems){
         MBProgressHUD.showAdded(to: self.view!, animated: true)
-        UserManager().addToFavoriteApi(with: addToFavoriteRequestBody(), success: {
+        UserManager().addToFavoriteApi(with: addToFavoriteRequestBody(suggestion:suggestionItem), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? AddToFavoriteResponseModel{
                 if model.statusCode == 1{
-                    
+                    suggestionItem.isFavorited = true
+                    self.listCollectionView.reloadData()
                 }
                 else{
                     CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
@@ -158,14 +159,12 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
         }
     }
     
-    func addToFavoriteRequestBody()->String{
+    func addToFavoriteRequestBody(suggestion:SuggestionItems)->String{
         var dict:[String:AnyObject] = [String:AnyObject]()
         if let user = User.getUser() {
             dict.updateValue(user.userId as AnyObject, forKey: "user_id")
         }
-        //        if let sggId = "" {
-        //            dict.updateValue(sggId as AnyObject, forKey: "sgg_id")
-        //        }
+        dict.updateValue(suggestion.sugId as AnyObject, forKey: "sgg_id")
         return CCUtility.getJSONfrom(dictionary: dict)
     }
     
