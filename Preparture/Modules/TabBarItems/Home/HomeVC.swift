@@ -128,6 +128,47 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
 //        self.present(detailView, animated: true, completion: nil)
     }
     
+    func addToFavoriteFromClick(tag:NSInteger) {
+        callingAddToFavoriteApi()
+    }
+    
+    //MARK:- Add To Favorite Api integration
+    
+    func callingAddToFavoriteApi(){
+        MBProgressHUD.showAdded(to: self.view!, animated: true)
+        UserManager().addToFavoriteApi(with: addToFavoriteRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? AddToFavoriteResponseModel{
+                if model.statusCode == 1{
+                    
+                }
+                else{
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                }
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            } else {
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            print(ErrorType)
+        }
+    }
+    
+    func addToFavoriteRequestBody()->String{
+        var dict:[String:AnyObject] = [String:AnyObject]()
+        if let user = User.getUser() {
+            dict.updateValue(user.userId as AnyObject, forKey: "user_id")
+        }
+        //        if let sggId = "" {
+        //            dict.updateValue(sggId as AnyObject, forKey: "sgg_id")
+        //        }
+        return CCUtility.getJSONfrom(dictionary: dict)
+    }
+    
     
     
 

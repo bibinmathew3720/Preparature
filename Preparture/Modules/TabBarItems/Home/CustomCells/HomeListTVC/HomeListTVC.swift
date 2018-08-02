@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol HomeListTVCDelegate {
+    func addToFavorite(tag:NSInteger)
+}
+
 class HomeListTVC: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var headingLabel: UILabel!
@@ -16,6 +20,7 @@ class HomeListTVC: UITableViewCell {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var conView: UIView!
+    var delegate:HomeListTVCDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -28,6 +33,7 @@ class HomeListTVC: UITableViewCell {
     }
     
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
+        delegate?.addToFavorite(tag: self.tag)
     }
     @IBAction func doubleArrowAction(_ sender: UIButton) {
     }

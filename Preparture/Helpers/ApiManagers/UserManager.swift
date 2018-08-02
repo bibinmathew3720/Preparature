@@ -179,6 +179,75 @@ class UserManager: CLBaseService {
         let editProfileReponseModel = EditProfileResponseModel.init(dict:dict)
         return editProfileReponseModel
     }
+    
+    //MARK : Add to Favorite Api
+    
+    func addToFavoriteApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForAddToFavorite(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getAddToFavoriteResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForAddToFavorite(with body:String)->CLNetworkModel{
+        let addToFavoriteRequestModel = CLNetworkModel.init(url: BASE_URL+ADD_TO_FAVORITE_URL, requestMethod_: "POST")
+        addToFavoriteRequestModel.requestBody = body
+        return addToFavoriteRequestModel
+    }
+    
+    func getAddToFavoriteResponseModel(dict:[String : Any?]) -> Any? {
+        let addToFavoriteReponseModel = AddToFavoriteResponseModel.init(dict:dict)
+        return addToFavoriteReponseModel
+    }
+    
+    
+    //MARK : Get All Favorite Api
+    
+    func getAllFavoriteApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetAllFavorite(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getAllFavoriteResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetAllFavorite(with body:String)->CLNetworkModel{
+        let getAllFavoriteRequestModel = CLNetworkModel.init(url: BASE_URL+LIST_ALL_FAVORITES_URL, requestMethod_: "GET")
+        getAllFavoriteRequestModel.requestBody = body
+        return getAllFavoriteRequestModel
+    }
+    
+    func getAllFavoriteResponseModel(dict:[String : Any?]) -> Any? {
+        let listAllFavoriteReponseModel = ListAllFavoriteResponseModel.init(dict:dict)
+        return listAllFavoriteReponseModel
+    }
 }
     
 class LogInResponseModel : NSObject{
@@ -263,6 +332,32 @@ class ChangePasswordResponseModel : NSObject{
 }
 
 class EditProfileResponseModel : NSObject{
+    var statusMessage:String = ""
+    var statusCode:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["message"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["status"] as? Int{
+            statusCode = value
+        }
+    }
+}
+
+class AddToFavoriteResponseModel : NSObject{
+    var statusMessage:String = ""
+    var statusCode:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["message"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["status"] as? Int{
+            statusCode = value
+        }
+    }
+}
+
+class ListAllFavoriteResponseModel : NSObject{
     var statusMessage:String = ""
     var statusCode:Int = 0
     init(dict:[String:Any?]) {

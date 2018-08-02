@@ -15,6 +15,7 @@ class FavoritesVC: BaseViewController,UITableViewDataSource,UITableViewDelegate 
         super.initView()
         tableCellRegistration()
         self.navigationController?.navigationBar.isHidden = true
+         callingListAllFavoriteApi()
         // Do any additional setup after loading the view.
     }
 
@@ -43,6 +44,40 @@ class FavoritesVC: BaseViewController,UITableViewDataSource,UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 250
+    }
+    
+    //MARK:- Add To Favorite Api integration
+    
+    func callingListAllFavoriteApi(){
+        MBProgressHUD.showAdded(to: self.view!, animated: true)
+        UserManager().getAllFavoriteApi(with: listAllFavoriteRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? ListAllFavoriteResponseModel{
+                if model.statusCode == 1{
+                    
+                }
+                else{
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                }
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            } else {
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            print(ErrorType)
+        }
+    }
+    
+    func listAllFavoriteRequestBody()->String{
+        var dict:[String:AnyObject] = [String:AnyObject]()
+        if let user = User.getUser() {
+            dict.updateValue(user.userId as AnyObject, forKey: "user_id")
+        }
+        return CCUtility.getJSONfrom(dictionary: dict)
     }
     
 
