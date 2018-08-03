@@ -10,6 +10,8 @@ import UIKit
 
 protocol HomeListTVCDelegate {
     func addToFavorite(tag:NSInteger)
+    func shareAction(tag:NSInteger)
+    func doubleArrowButtonAction(tag:NSInteger)
 }
 
 class HomeListTVC: UITableViewCell {
@@ -37,8 +39,10 @@ class HomeListTVC: UITableViewCell {
         delegate?.addToFavorite(tag: self.tag)
     }
     @IBAction func doubleArrowAction(_ sender: UIButton) {
+        delegate?.doubleArrowButtonAction(tag: self.tag)
     }
     @IBAction func shareButtonAction(_ sender: UIButton) {
+        delegate?.shareAction(tag: self.tag)
     }
     
     func setSuggestionItem(suggestion:SuggestionItems){

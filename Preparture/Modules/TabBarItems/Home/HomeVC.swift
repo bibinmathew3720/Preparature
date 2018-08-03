@@ -128,6 +128,20 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
         callingAddToFavoriteApi(suggestionItem:suggestion)
     }
     
+    func doubleArrowButtonActionDelegateWithSuggestionItem(suggestion:SuggestionItems){
+        
+    }
+    
+    func shareButtonActionDelegateWithSuggestionItem(suggestion:SuggestionItems){
+        let textToShare = "\(suggestion.name)"
+        let objectsToShare = [textToShare]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        DispatchQueue.main.async {
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+    
     //MARK:- Add To Favorite Api integration
     
     func callingAddToFavoriteApi(suggestionItem:SuggestionItems){

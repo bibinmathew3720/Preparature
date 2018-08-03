@@ -11,6 +11,8 @@ import UIKit
 protocol HomeListTVDelegate: class {
     func selectedCellDelegateWithTag(suggestion:SuggestionItems)
     func addToFavoriteFromClick(suggestion:SuggestionItems)
+    func shareButtonActionDelegateWithSuggestionItem(suggestion:SuggestionItems)
+    func doubleArrowButtonActionDelegateWithSuggestionItem(suggestion:SuggestionItems)
 }
 
 class HomeListCVC: UICollectionViewCell,UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
@@ -67,5 +69,13 @@ class HomeListCVC: UICollectionViewCell,UITableViewDataSource,UITableViewDelegat
     
     func addToFavorite(tag:NSInteger) {
         delegate?.addToFavoriteFromClick(suggestion:self.suggestionsArray![tag])
+    }
+    
+    func doubleArrowButtonAction(tag:NSInteger){
+      delegate?.doubleArrowButtonActionDelegateWithSuggestionItem(suggestion:self.suggestionsArray![tag])
+    }
+    
+    func shareAction(tag:NSInteger){
+        delegate?.shareButtonActionDelegateWithSuggestionItem(suggestion:self.suggestionsArray![tag])
     }
 }
