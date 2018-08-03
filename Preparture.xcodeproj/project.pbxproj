@@ -82,6 +82,8 @@
 		D095508120E32B4F00D8BBD9 /* CLNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507A20E32B4E00D8BBD9 /* CLNetworkModel.swift */; };
 		D095508220E32B4F00D8BBD9 /* CLNetworkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507B20E32B4E00D8BBD9 /* CLNetworkUtility.swift */; };
 		D095508320E32B4F00D8BBD9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D095507E20E32B4E00D8BBD9 /* Reachability.m */; };
+		D0F164502114CB3D0030301A /* WebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F1644E2114CB3D0030301A /* WebViewVC.swift */; };
+		D0F164512114CB3D0030301A /* WebViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F1644F2114CB3D0030301A /* WebViewVC.xib */; };
 		D0F5B43720EBFB78008727CC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5B43520EBFB78008727CC /* HomeVC.swift */; };
 		D0F5B43820EBFB78008727CC /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F5B43620EBFB78008727CC /* HomeVC.xib */; };
 		D0F5B43B20EBFC73008727CC /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5B43920EBFC73008727CC /* SettingsVC.swift */; };
@@ -198,6 +200,8 @@
 		D095507D20E32B4E00D8BBD9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		D095507E20E32B4E00D8BBD9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		D095508520E32CB300D8BBD9 /* Preparature-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Preparature-Bridging-Header.h"; sourceTree = "<group>"; };
+		D0F1644E2114CB3D0030301A /* WebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewVC.swift; sourceTree = "<group>"; };
+		D0F1644F2114CB3D0030301A /* WebViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewVC.xib; sourceTree = "<group>"; };
 		D0F5B43520EBFB78008727CC /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		D0F5B43620EBFB78008727CC /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
 		D0F5B43920EBFC73008727CC /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
@@ -654,6 +658,15 @@
 			path = BridgingHeader;
 			sourceTree = "<group>";
 		};
+		D0F1644D2114CAF80030301A /* WebViewVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0F1644E2114CB3D0030301A /* WebViewVC.swift */,
+				D0F1644F2114CB3D0030301A /* WebViewVC.xib */,
+			);
+			path = WebViewVC;
+			sourceTree = "<group>";
+		};
 		D0F5B43120EBFB37008727CC /* TabBarItems */ = {
 			isa = PBXGroup;
 			children = (
@@ -687,6 +700,7 @@
 		D0F5B43420EBFB37008727CC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D0F1644D2114CAF80030301A /* WebViewVC */,
 				D0012C9420EEF5C500074C90 /* SettingsHeaderTVC */,
 				D0012C9320EEF5C500074C90 /* SettingsTVC */,
 				D0F5B43920EBFC73008727CC /* SettingsVC.swift */,
@@ -859,6 +873,7 @@
 				056D4DE720F0B57C00B7F408 /* AddEventViewController.xib in Resources */,
 				D0F5B44020EBFC86008727CC /* FavoritesVC.xib in Resources */,
 				05D2F1E420D81D0600E2A5C9 /* Muli-ExtraLightItalic.ttf in Resources */,
+				D0F164512114CB3D0030301A /* WebViewVC.xib in Resources */,
 				05B2CB6A20B1E481008D0D32 /* Assets.xcassets in Resources */,
 				D0F5B43820EBFB78008727CC /* HomeVC.xib in Resources */,
 				05D2F1E620D81D0600E2A5C9 /* Muli-Light.ttf in Resources */,
@@ -1048,6 +1063,7 @@
 				05DFA28F20FA6DE6001F676A /* SuggestionsTableViewCell.swift in Sources */,
 				059948E420D6B1C90057F673 /* SignInViewController.swift in Sources */,
 				D009800B210F487700DA1316 /* PreparatureModel.xcdatamodeld in Sources */,
+				D0F164502114CB3D0030301A /* WebViewVC.swift in Sources */,
 				D0183CED210CC3CD0030D02D /* UIImageViewExtensions.swift in Sources */,
 				D06819E12114474F00AB4EF6 /* ImagesCVC.swift in Sources */,
 				D0F5B43B20EBFC73008727CC /* SettingsVC.swift in Sources */,

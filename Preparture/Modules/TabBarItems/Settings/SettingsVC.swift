@@ -10,8 +10,8 @@ import UIKit
 
 class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var settingsTableView: UITableView!
-    let generalArray = ["General"," Notification","Feed back","Rate & Review","Terms & Conditions"]
-    let generalImagesArray = [#imageLiteral(resourceName: "notification"),#imageLiteral(resourceName: "notification"),#imageLiteral(resourceName: "feedback"),#imageLiteral(resourceName: "rateAndReview"),#imageLiteral(resourceName: "terms")]
+    let generalArray = ["General"," Notification","Feed back","Rate & Review","Terms & Conditions","Privacy Policy"]
+    let generalImagesArray = [#imageLiteral(resourceName: "notification"),#imageLiteral(resourceName: "notification"),#imageLiteral(resourceName: "feedback"),#imageLiteral(resourceName: "rateAndReview"),#imageLiteral(resourceName: "terms"),#imageLiteral(resourceName: "terms")]
     let accountsArray = ["Account"," Change Password", "Edit Profile", "Log out"]
     let accountImagesArray = [#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "editIcon"),#imageLiteral(resourceName: "logout")]
     let sectionHeaderheight = 50
@@ -83,9 +83,14 @@ class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
                 moveToAppStorePage()
             }
             else if indexPath.row == 4 {
+                if let setResponse = self.settingsResponseModel{
+                    loadWebViewVC(pageType: PageType.TermsAndCondtions)
+                }
             }
             else if indexPath.row == 5{
-                
+                if let setResponse = self.settingsResponseModel{
+                    loadWebViewVC(pageType: PageType.PrivacyPolicy)
+                }
             }
             
         } else if indexPath.section == 1{
@@ -113,6 +118,13 @@ class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
                 UIApplication.shared.openURL(url)
             }
         }
+    }
+    
+    func loadWebViewVC(pageType:PageType){
+        let webViewVC:WebViewVC = WebViewVC(nibName: "WebViewVC", bundle: nil)
+        webViewVC.pageType = pageType
+        webViewVC.settingsResponse = self.settingsResponseModel
+        self.navigationController?.pushViewController(webViewVC, animated: true)
     }
     
     func showAlertForLogout() {
