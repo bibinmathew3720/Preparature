@@ -57,7 +57,7 @@ class HomeListCVC: UICollectionViewCell,UITableViewDataSource,UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.selectedCellDelegateWithTag(suggestion:self.suggestionsArray![tag])
+        delegate?.selectedCellDelegateWithTag(suggestion:self.suggestionsArray![indexPath.row])
     }
     
     func setSuggestionArray(sugArray:[SuggestionItems]){

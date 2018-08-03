@@ -75,6 +75,8 @@
 		D0183CF1210CC6200030D02D /* CCUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0183CF0210CC6200030D02D /* CCUtility.swift */; };
 		D01A848C20F96FF6004ED6FB /* ItineraryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01A848A20F96FF6004ED6FB /* ItineraryTVC.swift */; };
 		D01A848D20F96FF6004ED6FB /* ItineraryTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A848B20F96FF6004ED6FB /* ItineraryTVC.xib */; };
+		D06819E12114474F00AB4EF6 /* ImagesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06819DF2114474F00AB4EF6 /* ImagesCVC.swift */; };
+		D06819E22114474F00AB4EF6 /* ImagesCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06819E02114474F00AB4EF6 /* ImagesCVC.xib */; };
 		D095507F20E32B4F00D8BBD9 /* CLBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507820E32B4E00D8BBD9 /* CLBaseService.swift */; };
 		D095508020E32B4F00D8BBD9 /* CLNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507920E32B4E00D8BBD9 /* CLNetworkManager.swift */; };
 		D095508120E32B4F00D8BBD9 /* CLNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507A20E32B4E00D8BBD9 /* CLNetworkModel.swift */; };
@@ -187,6 +189,8 @@
 		D0183CF0210CC6200030D02D /* CCUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUtility.swift; sourceTree = "<group>"; };
 		D01A848A20F96FF6004ED6FB /* ItineraryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryTVC.swift; sourceTree = "<group>"; };
 		D01A848B20F96FF6004ED6FB /* ItineraryTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItineraryTVC.xib; sourceTree = "<group>"; };
+		D06819DF2114474F00AB4EF6 /* ImagesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCVC.swift; sourceTree = "<group>"; };
+		D06819E02114474F00AB4EF6 /* ImagesCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesCVC.xib; sourceTree = "<group>"; };
 		D095507820E32B4E00D8BBD9 /* CLBaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBaseService.swift; sourceTree = "<group>"; };
 		D095507920E32B4E00D8BBD9 /* CLNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLNetworkManager.swift; sourceTree = "<group>"; };
 		D095507A20E32B4E00D8BBD9 /* CLNetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLNetworkModel.swift; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 		056D4DDD20F0A7BE00B7F408 /* HomeDetail */ = {
 			isa = PBXGroup;
 			children = (
+				D06819DE2114472C00AB4EF6 /* ImageCVC */,
 				056D4DEC20F0B5A600B7F408 /* HomeDetailViewController.swift */,
 				056D4DED20F0B5A600B7F408 /* HomeDetailViewController.xib */,
 			);
@@ -611,6 +616,15 @@
 			path = ItineraryTVC;
 			sourceTree = "<group>";
 		};
+		D06819DE2114472C00AB4EF6 /* ImageCVC */ = {
+			isa = PBXGroup;
+			children = (
+				D06819DF2114474F00AB4EF6 /* ImagesCVC.swift */,
+				D06819E02114474F00AB4EF6 /* ImagesCVC.xib */,
+			);
+			path = ImageCVC;
+			sourceTree = "<group>";
+		};
 		D095507720E32B4E00D8BBD9 /* BaseNetworkManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -841,6 +855,7 @@
 				05D2F1EA20D81D0600E2A5C9 /* Muli-SemiBoldItalic.ttf in Resources */,
 				05E2B70020DFDD35005DD640 /* SignUpViewController.xib in Resources */,
 				D0012C9220EEE61500074C90 /* FavoriteCell.xib in Resources */,
+				D06819E22114474F00AB4EF6 /* ImagesCVC.xib in Resources */,
 				056D4DE720F0B57C00B7F408 /* AddEventViewController.xib in Resources */,
 				D0F5B44020EBFC86008727CC /* FavoritesVC.xib in Resources */,
 				05D2F1E420D81D0600E2A5C9 /* Muli-ExtraLightItalic.ttf in Resources */,
@@ -1034,6 +1049,7 @@
 				059948E420D6B1C90057F673 /* SignInViewController.swift in Sources */,
 				D009800B210F487700DA1316 /* PreparatureModel.xcdatamodeld in Sources */,
 				D0183CED210CC3CD0030D02D /* UIImageViewExtensions.swift in Sources */,
+				D06819E12114474F00AB4EF6 /* ImagesCVC.swift in Sources */,
 				D0F5B43B20EBFC73008727CC /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

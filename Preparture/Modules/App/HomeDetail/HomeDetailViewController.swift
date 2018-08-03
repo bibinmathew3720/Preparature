@@ -11,7 +11,8 @@ import UIKit
 class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     
     var sugItem:SuggestionItems?
-
+    @IBOutlet weak var topCollectionView: UICollectionView!
+    
     @IBOutlet weak var scrollFull: UIScrollView!
     @IBOutlet weak var viewScrollFull: UIView!
     @IBOutlet weak var scrollTop: UIScrollView!
@@ -56,6 +57,7 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     
     func customization() {
         self.scrollTop.delegate = self
+        topCollectionView.register(UINib(nibName: "ImagesCVC", bundle: nil), forCellWithReuseIdentifier:"imageCVC" )
     }
     
     override func viewDidLayoutSubviews() {
@@ -132,6 +134,7 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
         self.labelEventName.text = self.sugItem?.placeName
         self.labelEventPlace.text = self.sugItem?.placeLocation
         self.labelEventDate.text = CCUtility.convertToDateToFormat(inputDate: (self.sugItem?.createdDate)!, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "dd/MM/yyyy")
+        self.topCollectionView.reloadData()
         populateEventImages()
     }
     
@@ -152,5 +155,33 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
         self.viewScrollTop.bringSubview(toFront: pageControllTop)
         self.viewScrollTop.bringSubview(toFront: viewTopStar)
 
+    }
+}
+
+extension HomeDetailViewController :UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return (self.sugItem?.placeImages.count)!
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCVC", for: indexPath) as! ImagesCVC
+        cell.setImageUrlString(imageUrlString: (self.sugItem?.placeImages[indexPath.row])!)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
