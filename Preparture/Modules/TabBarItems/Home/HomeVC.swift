@@ -119,9 +119,9 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
     //MARK: Home List Table View Delegates
     
     func selectedCellDelegateWithTag(suggestion:SuggestionItems) {
-        let detailView = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
-        detailView.sugItem = suggestion
-        self.present(detailView, animated: true, completion: nil)
+        let detailVC = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
+        detailVC.sugItem = suggestion
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     func addToFavoriteFromClick(suggestion:SuggestionItems) {

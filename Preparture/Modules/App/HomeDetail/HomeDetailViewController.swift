@@ -50,23 +50,12 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     override func initView() {
         super.initView()
         customization()
+        populateSuggestionDetails()
         callingGetSuggestionDetailsApi()
     }
     
     func customization() {
         self.scrollTop.delegate = self
-        self.pageControllTop.numberOfPages = colors.count
-        for index in 0..<colors.count {
-            frame.origin.x = UIScreen.main.bounds.size.width * CGFloat(index)
-            frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: self.scrollTop.frame.size.height)
-            
-            let subView = UIImageView(frame: frame)
-            subView.backgroundColor = colors[index]
-            self.viewScrollTop.addSubview(subView)
-        }
-        self.viewScrollTop.bringSubview(toFront: labelTopName)
-        self.viewScrollTop.bringSubview(toFront: pageControllTop)
-        self.viewScrollTop.bringSubview(toFront: viewTopStar)
     }
     
     override func viewDidLayoutSubviews() {
@@ -84,6 +73,13 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     }
 
     //MARK:- UIView Action Methods
+    
+    @IBAction func backButtonAction(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func favoriteButtonAction(_ sender: UIButton) {
+    }
     
     @IBAction func actionPageControllValueChanged(_ sender: UIPageControl) {
         let x = CGFloat(pageControllTop.currentPage) * UIScreen.main.bounds.size.width
@@ -104,7 +100,8 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? SuggestionDetailResponseModel{
                 if model.statusCode == 1{
-                   
+                   self.sugItem = model.suggestionItem
+                    self.populateSuggestionDetails()
                 }
                 else{
                     CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
@@ -127,5 +124,33 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
             dict.updateValue(sugIt.sugId as AnyObject, forKey: "sgg_id")
         }
         return CCUtility.getJSONfrom(dictionary: dict)
+    }
+    
+    func populateSuggestionDetails(){
+        self.labelTopName.text = self.sugItem?.name
+        self.labelComments.text = self.sugItem?.comments
+        self.labelEventName.text = self.sugItem?.placeName
+        self.labelEventPlace.text = self.sugItem?.placeLocation
+        self.labelEventDate.text = CCUtility.convertToDateToFormat(inputDate: (self.sugItem?.createdDate)!, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "dd/MM/yyyy")
+        populateEventImages()
+    }
+    
+    func populateEventImages(){
+        let imagesCount = self.sugItem?.placeImages.count
+        self.pageControllTop.numberOfPages = imagesCount!
+        if let imgCont = imagesCount {
+            for index in 0..<imgCont {
+                frame.origin.x = UIScreen.main.bounds.size.width * CGFloat(index)
+                frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: self.scrollTop.frame.size.height)
+                
+                let subView = UIImageView(frame: frame)
+                subView.sd_setImage(with: URL(string: (self.sugItem?.placeImages[index])!), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
+                self.viewScrollTop.addSubview(subView)
+            }
+        }
+        self.viewScrollTop.bringSubview(toFront: labelTopName)
+        self.viewScrollTop.bringSubview(toFront: pageControllTop)
+        self.viewScrollTop.bringSubview(toFront: viewTopStar)
+
     }
 }

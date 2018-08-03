@@ -8,8 +8,19 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Muli-Bold.ttf">
+            <string>Muli-Bold</string>
+        </array>
+        <array key="Muli-Regular.ttf">
+            <string>Muli-Regular</string>
+        </array>
+        <array key="Muli-SemiBold.ttf">
+            <string>Muli-SemiBold</string>
+        </array>
+    </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeDetailViewController" customModule="SampleApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeDetailViewController" customModule="Preparture" customModuleProvider="target">
             <connections>
                 <outlet property="constraintSrollTopWidth" destination="m0m-LP-fLi" id="8Ns-Fv-vVD"/>
                 <outlet property="imageReview" destination="efg-S6-TLW" id="1zM-qb-vCj"/>
@@ -63,7 +74,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MFf-sn-l6U">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d4D-Ns-pp3">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d4D-Ns-pp3">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                                 </imageView>
                                             </subviews>
@@ -89,6 +100,28 @@
                                         <outlet property="delegate" destination="-1" id="IuW-LT-RoF"/>
                                     </connections>
                                 </scrollView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUn-kc-y6V">
+                                    <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="30" id="4pr-RT-ltM"/>
+                                        <constraint firstAttribute="height" constant="30" id="Mq4-8T-eTh"/>
+                                    </constraints>
+                                    <state key="normal" image="backIcon"/>
+                                    <connections>
+                                        <action selector="backButtonAction:" destination="-1" eventType="touchUpInside" id="mTk-zn-4qf"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NpO-LD-KSg">
+                                    <rect key="frame" x="325" y="20" width="30" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="DQT-oC-Rpr"/>
+                                        <constraint firstAttribute="width" constant="30" id="TNS-Lf-bz3"/>
+                                    </constraints>
+                                    <state key="normal" image="favoriteWhiteNonFilled"/>
+                                    <connections>
+                                        <action selector="favoriteButtonAction:" destination="-1" eventType="touchUpInside" id="IaG-PB-hlI"/>
+                                    </connections>
+                                </button>
                                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Wh5-JX-I4X">
                                     <rect key="frame" x="20" y="193" width="39" height="37"/>
                                     <color key="pageIndicatorTintColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -98,7 +131,7 @@
                                     </connections>
                                 </pageControl>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liza manual" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmo-Ke-oV4">
-                                    <rect key="frame" x="20" y="163" width="96.5" height="21"/>
+                                    <rect key="frame" x="20" y="163" width="105" height="23"/>
                                     <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="18"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -107,7 +140,7 @@
                                     <rect key="frame" x="115" y="180" width="240" height="50"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9W-cS-nvD">
-                                            <rect key="frame" x="171.5" y="17" width="58.5" height="17.5"/>
+                                            <rect key="frame" x="171.5" y="15.5" width="58.5" height="19"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="58.5" id="ZyA-ia-Nyo"/>
                                             </constraints>
@@ -116,13 +149,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="107" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z37-vG-3zW">
-                                            <rect key="frame" x="136" y="17.5" width="30.5" height="17.5"/>
+                                            <rect key="frame" x="136" y="16" width="30.5" height="19"/>
                                             <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
                                             <color key="textColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PbW-of-fA0">
-                                            <rect key="frame" x="1" y="6" width="130" height="40"/>
+                                            <rect key="frame" x="1" y="5" width="130" height="40"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starSelected" translatesAutoresizingMaskIntoConstraints="NO" id="eM9-9r-NQT">
                                                     <rect key="frame" x="5" y="10.5" width="20" height="20"/>
@@ -196,90 +229,90 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 8.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wC-7N-vZb">
-                                    <rect key="frame" x="20" y="280" width="50.5" height="21"/>
+                                    <rect key="frame" x="20" y="280" width="52.5" height="23"/>
                                     <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="18"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnL-9a-Msn">
-                                    <rect key="frame" x="20" y="306" width="36" height="19"/>
+                                    <rect key="frame" x="20" y="308" width="36" height="20.5"/>
                                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
                                     <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TbU-Nm-P0g">
-                                    <rect key="frame" x="90.5" y="275" width="1" height="55"/>
+                                    <rect key="frame" x="92.5" y="275" width="1" height="58.5"/>
                                     <color key="backgroundColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="1" id="lPi-RY-2b1"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Musical Symphony" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDL-l6-Czu">
-                                    <rect key="frame" x="111.5" y="280" width="153.5" height="21"/>
+                                    <rect key="frame" x="113.5" y="280" width="156" height="23"/>
                                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="18"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mumbai" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9v6-vh-Ljt">
-                                    <rect key="frame" x="111.5" y="306" width="58.5" height="19"/>
+                                    <rect key="frame" x="113.5" y="308" width="60" height="20.5"/>
                                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
                                     <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02/04/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABZ-vu-CvC">
-                                    <rect key="frame" x="273" y="306" width="82" height="19"/>
+                                    <rect key="frame" x="269" y="308" width="86" height="20.5"/>
                                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
                                     <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travel Experience" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qum-zG-WnI">
-                                    <rect key="frame" x="20" y="355" width="142" height="21"/>
+                                    <rect key="frame" x="20" y="358.5" width="145.5" height="23"/>
                                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="18"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Efi-Q8-lOK">
-                                    <rect key="frame" x="20" y="396.5" width="335" height="75"/>
+                                    <rect key="frame" x="20" y="402" width="335" height="80.5"/>
                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
                                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
                                     <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPl-xl-OPn">
-                                    <rect key="frame" x="20" y="491.5" width="335" height="1"/>
+                                    <rect key="frame" x="20" y="502.5" width="335" height="1"/>
                                     <color key="backgroundColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="Sqv-gZ-wl9"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0a-gy-JCt">
-                                    <rect key="frame" x="20" y="564" width="335" height="75"/>
+                                    <rect key="frame" x="20" y="577" width="335" height="80.5"/>
                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
                                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
                                     <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlC-zt-fAg">
-                                    <rect key="frame" x="20" y="522.5" width="88.5" height="21"/>
+                                    <rect key="frame" x="20" y="533.5" width="90" height="23"/>
                                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="18"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KZH-ZQ-uxg">
-                                    <rect key="frame" x="20" y="659" width="335" height="1"/>
+                                    <rect key="frame" x="20" y="677.5" width="335" height="1"/>
                                     <color key="backgroundColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="Fe6-wt-1dv"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ny0-sU-CWc">
-                                    <rect key="frame" x="20" y="690" width="100.5" height="21"/>
+                                    <rect key="frame" x="20" y="708.5" width="102.5" height="23"/>
                                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="18"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="twa-b4-zgI">
-                                    <rect key="frame" x="20" y="731" width="335" height="150"/>
+                                    <rect key="frame" x="20" y="751.5" width="335" height="150"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5S9-3C-QBc">
                                             <rect key="frame" x="0.0" y="10" width="60" height="60"/>
@@ -295,19 +328,19 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sandra Lane" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqC-JY-vJW">
-                                            <rect key="frame" x="80" y="10" width="102.5" height="21"/>
+                                            <rect key="frame" x="80" y="10" width="106.5" height="23"/>
                                             <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nov 2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmP-aJ-ice">
-                                            <rect key="frame" x="80" y="36" width="69" height="19"/>
+                                            <rect key="frame" x="80" y="38" width="72.5" height="20.5"/>
                                             <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
                                             <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySr-QZ-t3W">
-                                            <rect key="frame" x="80" y="60" width="130" height="30"/>
+                                            <rect key="frame" x="80" y="63.5" width="130" height="30"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starSelected" translatesAutoresizingMaskIntoConstraints="NO" id="3GW-lR-3Ha">
                                                     <rect key="frame" x="5" y="5.5" width="20" height="20"/>
@@ -362,14 +395,14 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwf-Cj-sCl">
-                                            <rect key="frame" x="0.0" y="100" width="335" height="37.5"/>
+                                            <rect key="frame" x="0.0" y="103.5" width="335" height="40.5"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
                                             <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
                                             <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="efg-S6-TLW">
-                                            <rect key="frame" x="255" y="16" width="80" height="60"/>
+                                            <rect key="frame" x="255" y="19" width="80" height="60"/>
                                             <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="FPl-7u-hzQ"/>
@@ -401,13 +434,13 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read &amp; write all suggestions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFL-zf-QFf">
-                                    <rect key="frame" x="20" y="906" width="228" height="21"/>
+                                    <rect key="frame" x="20" y="926.5" width="240.5" height="23"/>
                                     <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="18"/>
                                     <color key="textColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNW-5i-FCl">
-                                    <rect key="frame" x="225" y="901.5" width="130" height="30"/>
+                                    <rect key="frame" x="225" y="923" width="130" height="30"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starSelected" translatesAutoresizingMaskIntoConstraints="NO" id="Htg-iU-VFf">
                                             <rect key="frame" x="5" y="5.5" width="20" height="20"/>
@@ -462,7 +495,7 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYc-hx-1yG">
-                                    <rect key="frame" x="20" y="901" width="335" height="40"/>
+                                    <rect key="frame" x="20" y="921.5" width="335" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="XR9-aL-g8n"/>
                                     </constraints>
@@ -492,12 +525,16 @@
                                 <constraint firstItem="YDL-l6-Czu" firstAttribute="leading" secondItem="TbU-Nm-P0g" secondAttribute="trailing" constant="20" id="KIW-sQ-7QD"/>
                                 <constraint firstItem="tlC-zt-fAg" firstAttribute="leading" secondItem="Qum-zG-WnI" secondAttribute="leading" id="Kd2-lb-M1Y"/>
                                 <constraint firstItem="Efi-Q8-lOK" firstAttribute="leading" secondItem="Qum-zG-WnI" secondAttribute="leading" id="KvI-72-D20"/>
+                                <constraint firstItem="LUn-kc-y6V" firstAttribute="leading" secondItem="WTC-F6-Zqn" secondAttribute="leading" constant="20" id="MXx-VK-caH"/>
+                                <constraint firstItem="LUn-kc-y6V" firstAttribute="top" secondItem="WTC-F6-Zqn" secondAttribute="top" constant="20" id="McP-qn-RMD"/>
                                 <constraint firstItem="pYc-hx-1yG" firstAttribute="trailing" secondItem="TNW-5i-FCl" secondAttribute="trailing" id="NDe-bx-lzi"/>
                                 <constraint firstItem="YDL-l6-Czu" firstAttribute="centerY" secondItem="1wC-7N-vZb" secondAttribute="centerY" id="OZV-IF-DVv"/>
                                 <constraint firstItem="xPl-xl-OPn" firstAttribute="top" secondItem="Efi-Q8-lOK" secondAttribute="bottom" constant="20" id="QGq-zz-fqs"/>
                                 <constraint firstItem="PFL-zf-QFf" firstAttribute="leading" secondItem="twa-b4-zgI" secondAttribute="leading" id="Qwz-9N-9dP"/>
                                 <constraint firstItem="xnL-9a-Msn" firstAttribute="leading" secondItem="1wC-7N-vZb" secondAttribute="leading" id="RXq-bC-T0o"/>
                                 <constraint firstItem="TbU-Nm-P0g" firstAttribute="top" secondItem="yHJ-bm-GGc" secondAttribute="bottom" constant="25" id="WRP-we-Der"/>
+                                <constraint firstAttribute="trailing" secondItem="NpO-LD-KSg" secondAttribute="trailing" constant="20" id="a1k-WU-1jc"/>
+                                <constraint firstItem="NpO-LD-KSg" firstAttribute="top" secondItem="WTC-F6-Zqn" secondAttribute="top" constant="20" id="aSD-1S-jEK"/>
                                 <constraint firstItem="1wC-7N-vZb" firstAttribute="top" secondItem="d4D-Ns-pp3" secondAttribute="bottom" constant="30" id="agc-Wg-cvc"/>
                                 <constraint firstItem="KZH-ZQ-uxg" firstAttribute="leading" secondItem="l0a-gy-JCt" secondAttribute="leading" id="b6A-P0-5IS"/>
                                 <constraint firstItem="KZH-ZQ-uxg" firstAttribute="trailing" secondItem="l0a-gy-JCt" secondAttribute="trailing" id="bHt-3h-qGi"/>
@@ -547,6 +584,8 @@
         </view>
     </objects>
     <resources>
+        <image name="backIcon" width="19" height="15"/>
+        <image name="favoriteWhiteNonFilled" width="27" height="24"/>
         <image name="starSelected" width="22" height="22"/>
         <image name="starUnSelected" width="22" height="22"/>
     </resources>
