@@ -15,9 +15,12 @@ class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
     let accountsArray = ["Account"," Change Password", "Edit Profile", "Log out"]
     let accountImagesArray = [#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "editIcon"),#imageLiteral(resourceName: "logout")]
     let sectionHeaderheight = 50
+    
+    var settingsResponseModel:SettingsResponseModel?
     override func initView() {
         super.initView()
         tableCellRegistration()
+        callingSettingsApi()
         self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
     }
@@ -76,6 +79,14 @@ class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0{
+            if indexPath.row == 3 {
+                moveToAppStorePage()
+            }
+            else if indexPath.row == 4 {
+            }
+            else if indexPath.row == 5{
+                
+            }
             
         } else if indexPath.section == 1{
             if indexPath.row == 1 {
@@ -87,6 +98,19 @@ class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
             }
             else if indexPath.row == 3 {
                showAlertForLogout()
+            }
+        }
+    }
+    
+    func moveToAppStorePage(){
+        let appID = ""
+        //let urlStr = "itms-apps://itunes.apple.com/app/id\(appID)" // (Option 1) Open App Page
+        let urlStr = "itms-apps://itunes.apple.com/app/viewContentsUserReviews?id=\(appID)" // (Option 2) Open App Review Tab
+        if let url = URL(string: urlStr), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
             }
         }
     }
@@ -108,6 +132,33 @@ class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func callingSettingsApi(){
+        MBProgressHUD.showAdded(to: self.view!, animated: true)
+        UserManager().getSettingsApi(with: "", success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? SettingsResponseModel{
+                if model.statusCode == 1{
+                  self.settingsResponseModel = model
+                }
+                else{
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                }
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
     }
     
 

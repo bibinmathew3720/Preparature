@@ -248,6 +248,40 @@ class UserManager: CLBaseService {
         let listAllFavoriteReponseModel = ListAllFavoriteResponseModel.init(dict:dict)
         return listAllFavoriteReponseModel
     }
+    
+    //MARK : Get Settings Api
+    
+    func getSettingsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetAllSettings(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict)
+                    success(self.getSettingsResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetAllSettings(with body:String)->CLNetworkModel{
+        let getAllFavoriteRequestModel = CLNetworkModel.init(url: BASE_URL+GET_SETTINGS_URL, requestMethod_: "POST")
+        getAllFavoriteRequestModel.requestBody = body
+        return getAllFavoriteRequestModel
+    }
+    
+    func getSettingsResponseModel(dict:[String : Any?]) -> Any? {
+        let settingsReponseModel = SettingsResponseModel.init(dict:dict)
+        return settingsReponseModel
+    }
 }
     
 class LogInResponseModel : NSObject{
@@ -447,5 +481,38 @@ class FileUploadResponseModel : NSObject{
             uploadedImageName = imageName
         }
         
+    }
+}
+
+class SettingsResponseModel : NSObject{
+    var statusMessage:String = ""
+    var settingItems = [SettingItem]()
+    var statusCode:Int = 0
+    init(dict:[String:Any?]) {
+        if let value = dict["status"] as? Int{
+            statusCode = value
+        }
+        if let value = dict["message"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["results"] as? NSArray{
+            for item in value {
+                settingItems.append(SettingItem.init(dict: item as! [String : Any?]) )
+            }
+        }
+        
+    }
+}
+
+class SettingItem : NSObject{
+    var title:String = ""
+    var content:String = ""
+    init(dict:[String:Any?]) {
+        if let value = dict["title"] as? String{
+            title = value
+        }
+        if let value = dict["content"] as? String{
+            content = value
+        }
     }
 }
