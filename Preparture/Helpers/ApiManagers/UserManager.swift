@@ -314,10 +314,9 @@ class LogInResponseModel : NSObject{
                 if let value = user["email"] as? String{
                     userEmail = value
                 }
-              
-//                if let value = user["u_profilePicURL"] as? String{
-//                    userProfileImageUrl = value
-//                }
+                if let value = user["user_image"] as? String{
+                    userProfileImageUrl = value
+                }
             }
         }
     }

@@ -35,6 +35,7 @@ class EditProfileViewController: BaseViewController,UIImagePickerControllerDeleg
             self.nameTF.text = user.name
             self.userNameTF.text = user.userName
             self.emailTF.text = user.email
+            self.imageProfile.sd_setImage(with: URL(string: user.imageUrl!), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
         }
     }
 
