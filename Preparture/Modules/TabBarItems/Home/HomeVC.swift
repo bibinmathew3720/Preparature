@@ -179,6 +179,12 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
     }
     
     
+    @IBAction func actionAddEvent(_ sender: Any) {
+        let vc:AddEventViewController = AddEventViewController(nibName: "AddEventViewController", bundle: nil)
+        let navController:UINavigationController = UINavigationController(rootViewController: vc)
+        navController.modalPresentationStyle = .overFullScreen
+        self.present(navController, animated: false, completion: nil)
+    }
     
 
     /*

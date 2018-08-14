@@ -8,6 +8,8 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import GooglePlaces
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         NotificationCenter.default.addObserver(self, selector: #selector(noticationObserverAction), name: .rootResettingNot, object: nil)
         initWindow()
+        GMSPlacesClient.provideAPIKey(Constant.ApiKey.googleMapKey)
+        GMSServices.provideAPIKey(Constant.ApiKey.googleMapKey)
         return true
     }
     

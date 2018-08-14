@@ -45,6 +45,7 @@ class AddEventViewController: BaseViewController {
         self.textViewComments.layer.cornerRadius = 5
         self.textViewComments.layer.borderColor = UIColor.lightGray.cgColor
         self.textViewComments.layer.borderWidth = 1
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     //MARK: -> ------ UIPickerView Delegates ------
@@ -68,7 +69,7 @@ class AddEventViewController: BaseViewController {
     //MARK:- UIView Action Methods
     
     @IBAction func actionBack(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func actionStarFirst(_ sender: Any) {
@@ -99,4 +100,8 @@ class AddEventViewController: BaseViewController {
     @IBAction func actionToolbarCancel(_ sender: Any) {
     }
     
+    @IBAction func actionAddPlaces(_ sender: Any) {
+        let vc:AddPlacesViewController = AddPlacesViewController(nibName: "AddPlacesViewController", bundle: nil)
+        self.navigationController?.pushViewController(vc , animated: true)
+    }
 }

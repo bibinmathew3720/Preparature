@@ -11,6 +11,10 @@ pod 'SDWebImage'
 pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'GoogleSignIn'
+pod 'GooglePlaces'
+pod 'GooglePlacePicker'
+pod 'GoogleMaps'
+
 
   # Pods for Preparture
 

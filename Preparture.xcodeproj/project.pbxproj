@@ -50,6 +50,8 @@
 		38F420D450408B7AF197A995 /* Pods_PrepartureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430A11E36AEB8069B91E2363 /* Pods_PrepartureTests.framework */; };
 		6158A613072DEB05FC89D93A /* Pods_Preparture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544D5A88B8A7CEE7D1A87742 /* Pods_Preparture.framework */; };
 		8ED8FECA96B4BD3361B8A543 /* Pods_PrepartureUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC83D1E3E260073FFA03D7D /* Pods_PrepartureUITests.framework */; };
+		BBBAAA452122DB1B00DD7601 /* AddPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBAAA432122DB1B00DD7601 /* AddPlacesViewController.swift */; };
+		BBBAAA462122DB1B00DD7601 /* AddPlacesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBBAAA442122DB1B00DD7601 /* AddPlacesViewController.xib */; };
 		D0012C9120EEE61500074C90 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0012C8F20EEE61500074C90 /* FavoriteCell.swift */; };
 		D0012C9220EEE61500074C90 /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0012C9020EEE61500074C90 /* FavoriteCell.xib */; };
 		D0012C9720EEF5DC00074C90 /* SettingsHeaderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0012C9520EEF5DC00074C90 /* SettingsHeaderTVC.swift */; };
@@ -166,6 +168,8 @@
 		772155CA00517C2E46427F36 /* Pods-PrepartureTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureTests/Pods-PrepartureTests.release.xcconfig"; sourceTree = "<group>"; };
 		8DC83D1E3E260073FFA03D7D /* Pods_PrepartureUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrepartureUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98114864B11C38A03BF9C34 /* Pods-PrepartureUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureUITests/Pods-PrepartureUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BBBAAA432122DB1B00DD7601 /* AddPlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlacesViewController.swift; sourceTree = "<group>"; };
+		BBBAAA442122DB1B00DD7601 /* AddPlacesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPlacesViewController.xib; sourceTree = "<group>"; };
 		D0012C8F20EEE61500074C90 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		D0012C9020EEE61500074C90 /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
 		D0012C9520EEF5DC00074C90 /* SettingsHeaderTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderTVC.swift; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 		056D4DDA20F0A7BE00B7F408 /* AddEvents */ = {
 			isa = PBXGroup;
 			children = (
+				BBBAAA422122DAA800DD7601 /* AddPlacesVC */,
 				056D4DE420F0B57C00B7F408 /* AddEventViewController.swift */,
 				056D4DE520F0B57C00B7F408 /* AddEventViewController.xib */,
 			);
@@ -502,6 +507,15 @@
 				B98114864B11C38A03BF9C34 /* Pods-PrepartureUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BBBAAA422122DAA800DD7601 /* AddPlacesVC */ = {
+			isa = PBXGroup;
+			children = (
+				BBBAAA432122DB1B00DD7601 /* AddPlacesViewController.swift */,
+				BBBAAA442122DB1B00DD7601 /* AddPlacesViewController.xib */,
+			);
+			path = AddPlacesVC;
 			sourceTree = "<group>";
 		};
 		D0012C8E20EEE5FA00074C90 /* CustomCells */ = {
@@ -861,6 +875,7 @@
 				D01A848D20F96FF6004ED6FB /* ItineraryTVC.xib in Resources */,
 				05D2F1E820D81D0600E2A5C9 /* Muli-Regular.ttf in Resources */,
 				05D2F1DF20D81D0600E2A5C9 /* Muli-Bold.ttf in Resources */,
+				BBBAAA462122DB1B00DD7601 /* AddPlacesViewController.xib in Resources */,
 				05B2CB6D20B1E481008D0D32 /* LaunchScreen.storyboard in Resources */,
 				D0098008210F3FEF00DA1316 /* ChangePswdViewController.xib in Resources */,
 				D0F5B44720EC0625008727CC /* HomeHeadingCVC.xib in Resources */,
@@ -1007,10 +1022,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Preparture/Pods-Preparture-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1048,6 +1069,7 @@
 				056D4DF620F0B5CA00B7F408 /* SuggestionsViewController.swift in Sources */,
 				056D4DF220F0B5B700B7F408 /* ItineraryViewController.swift in Sources */,
 				D095508220E32B4F00D8BBD9 /* CLNetworkUtility.swift in Sources */,
+				BBBAAA452122DB1B00DD7601 /* AddPlacesViewController.swift in Sources */,
 				D01A848C20F96FF6004ED6FB /* ItineraryTVC.swift in Sources */,
 				D0183CE3210CB1A80030D02D /* UserManager.swift in Sources */,
 				056D4DEE20F0B5A600B7F408 /* HomeDetailViewController.swift in Sources */,

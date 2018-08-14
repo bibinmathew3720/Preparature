@@ -39,4 +39,7 @@ struct Constant{
         static let noNetworkMessage = "Network not available"
         static let serverErrorMessamge = "Unable to connect server"
     }
+    struct ApiKey {
+        static let googleMapKey = "AIzaSyDW3gXZCjFcNoBn3L2bA3nl6ZO6xw_EByw"
+    }
 }
