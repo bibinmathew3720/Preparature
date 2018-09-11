@@ -67,5 +67,7 @@
 	<string>This app requires to access your photo library to add profile image and Event photos</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app requires to access your camera to add profile image and Event photos</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app requires to access your location</string>
 </dict>
 </plist>

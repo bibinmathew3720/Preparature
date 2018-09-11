@@ -56,9 +56,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func initialisingTabBar(){
         let tabBarController = UITabBarController.init()
         
-        let homeVC:HomeVC = HomeVC(nibName: "HomeVC", bundle: nil)
+        let homeVC:HomeEventsViewController = HomeEventsViewController(nibName: "HomeEventsViewController", bundle: nil)
         let homeNavVC = UINavigationController.init(rootViewController: homeVC)
         homeVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.homeTabSelected, unselectedImage: Constant.ImageNames.tabImages.homeTabIcon, title: Constant.Titles.HomeTitle)
+        
+//        let homeVC:HomeVC = HomeVC(nibName: "HomeVC", bundle: nil)
+//        let homeNavVC = UINavigationController.init(rootViewController: homeVC)
+//        homeVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.homeTabSelected, unselectedImage: Constant.ImageNames.tabImages.homeTabIcon, title: Constant.Titles.HomeTitle)
         
         let favoritesVC:FavoritesVC = FavoritesVC(nibName: "FavoritesVC", bundle: nil)
         let favoritesNavVC = UINavigationController.init(rootViewController: favoritesVC)

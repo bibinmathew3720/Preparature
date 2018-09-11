@@ -50,6 +50,10 @@
 		38F420D450408B7AF197A995 /* Pods_PrepartureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 430A11E36AEB8069B91E2363 /* Pods_PrepartureTests.framework */; };
 		6158A613072DEB05FC89D93A /* Pods_Preparture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544D5A88B8A7CEE7D1A87742 /* Pods_Preparture.framework */; };
 		8ED8FECA96B4BD3361B8A543 /* Pods_PrepartureUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC83D1E3E260073FFA03D7D /* Pods_PrepartureUITests.framework */; };
+		BB9FA6C921441A4F00FB26FE /* HomeEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9FA6C721441A4F00FB26FE /* HomeEventsViewController.swift */; };
+		BB9FA6CA21441A4F00FB26FE /* HomeEventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9FA6C821441A4F00FB26FE /* HomeEventsViewController.xib */; };
+		BB9FA6CF2144203F00FB26FE /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9FA6CD2144203F00FB26FE /* CategoryCollectionViewCell.swift */; };
+		BB9FA6D02144203F00FB26FE /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9FA6CE2144203F00FB26FE /* CategoryCollectionViewCell.xib */; };
 		BBBAAA452122DB1B00DD7601 /* AddPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBAAA432122DB1B00DD7601 /* AddPlacesViewController.swift */; };
 		BBBAAA462122DB1B00DD7601 /* AddPlacesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBBAAA442122DB1B00DD7601 /* AddPlacesViewController.xib */; };
 		D0012C9120EEE61500074C90 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0012C8F20EEE61500074C90 /* FavoriteCell.swift */; };
@@ -168,6 +172,10 @@
 		772155CA00517C2E46427F36 /* Pods-PrepartureTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureTests/Pods-PrepartureTests.release.xcconfig"; sourceTree = "<group>"; };
 		8DC83D1E3E260073FFA03D7D /* Pods_PrepartureUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrepartureUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98114864B11C38A03BF9C34 /* Pods-PrepartureUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureUITests/Pods-PrepartureUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BB9FA6C721441A4F00FB26FE /* HomeEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEventsViewController.swift; sourceTree = "<group>"; };
+		BB9FA6C821441A4F00FB26FE /* HomeEventsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeEventsViewController.xib; sourceTree = "<group>"; };
+		BB9FA6CD2144203F00FB26FE /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		BB9FA6CE2144203F00FB26FE /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		BBBAAA432122DB1B00DD7601 /* AddPlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlacesViewController.swift; sourceTree = "<group>"; };
 		BBBAAA442122DB1B00DD7601 /* AddPlacesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPlacesViewController.xib; sourceTree = "<group>"; };
 		D0012C8F20EEE61500074C90 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
@@ -509,6 +517,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BB9FA6CB21441F2300FB26FE /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				BB9FA6CC21441F3800FB26FE /* Cell */,
+				BB9FA6C721441A4F00FB26FE /* HomeEventsViewController.swift */,
+				BB9FA6C821441A4F00FB26FE /* HomeEventsViewController.xib */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		BB9FA6CC21441F3800FB26FE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BB9FA6CD2144203F00FB26FE /* CategoryCollectionViewCell.swift */,
+				BB9FA6CE2144203F00FB26FE /* CategoryCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		BBBAAA422122DAA800DD7601 /* AddPlacesVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,6 +731,7 @@
 		D0F5B43320EBFB37008727CC /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				BB9FA6CB21441F2300FB26FE /* Category */,
 				D0F5B44120EC05AC008727CC /* CustomCells */,
 				D0F5B43520EBFB78008727CC /* HomeVC.swift */,
 				D0F5B43620EBFB78008727CC /* HomeVC.xib */,
@@ -863,6 +891,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB9FA6CA21441A4F00FB26FE /* HomeEventsViewController.xib in Resources */,
 				D003032420EDA72A00F85F11 /* HomeListTVC.xib in Resources */,
 				05D2F1E920D81D0600E2A5C9 /* Muli-SemiBold.ttf in Resources */,
 				05E2B6FC20DFDD21005DD640 /* ForgotPasswordViewController.xib in Resources */,
@@ -898,6 +927,7 @@
 				056D4DF720F0B5CA00B7F408 /* SuggestionsViewController.xib in Resources */,
 				05D2F1EB20D81D0600E2A5C9 /* OFL.txt in Resources */,
 				05D2F1DE20D81D0600E2A5C9 /* Muli-BlackItalic.ttf in Resources */,
+				BB9FA6D02144203F00FB26FE /* CategoryCollectionViewCell.xib in Resources */,
 				05D2F1E020D81D0600E2A5C9 /* Muli-BoldItalic.ttf in Resources */,
 				05B2CB6820B1E481008D0D32 /* Main.storyboard in Resources */,
 				05D2F1DD20D81D0600E2A5C9 /* Muli-Black.ttf in Resources */,
@@ -1048,6 +1078,7 @@
 			files = (
 				056D4DE620F0B57C00B7F408 /* AddEventViewController.swift in Sources */,
 				D0183CEE210CC3CD0030D02D /* UIViewExtensions.swift in Sources */,
+				BB9FA6C921441A4F00FB26FE /* HomeEventsViewController.swift in Sources */,
 				05D2F1EF20D81EC100E2A5C9 /* Constants.swift in Sources */,
 				D095508120E32B4F00D8BBD9 /* CLNetworkModel.swift in Sources */,
 				D095507F20E32B4F00D8BBD9 /* CLBaseService.swift in Sources */,
@@ -1076,6 +1107,7 @@
 				D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */,
 				05B2CB6520B1E481008D0D32 /* ViewController.swift in Sources */,
 				D095508020E32B4F00D8BBD9 /* CLNetworkManager.swift in Sources */,
+				BB9FA6CF2144203F00FB26FE /* CategoryCollectionViewCell.swift in Sources */,
 				D0098012210F4B1000DA1316 /* CoreDataHandler.swift in Sources */,
 				D0183CEB210CC3CD0030D02D /* StringExtensions.swift in Sources */,
 				D0012C9B20EEF5F100074C90 /* SettingsTVC.swift in Sources */,

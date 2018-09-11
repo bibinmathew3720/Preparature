@@ -18,7 +18,7 @@ class UserManager: CLBaseService {
             let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
             if error == nil {
                 if let jdict = jsonDict{
-                    print(jsonDict)
+                    print(jsonDict as Any)
                     success(self.getLogInResponseModel(dict: jdict) as Any)
                 }else{
                     failure(ErrorType.dataError)
@@ -52,7 +52,7 @@ class UserManager: CLBaseService {
             let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
             if error == nil {
                 if let jdict = jsonDict{
-                    print(jsonDict)
+                    print(jsonDict as Any)
                     success(self.getSignUpResponseModel(dict: jdict) as Any)
                 }else{
                     failure(ErrorType.dataError)
@@ -86,7 +86,7 @@ class UserManager: CLBaseService {
             let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
             if error == nil {
                 if let jdict = jsonDict{
-                    print(jsonDict)
+                    print(jsonDict as Any)
                     success(self.getForgotResponseModel(dict: jdict) as Any)
                 }else{
                     failure(ErrorType.dataError)
@@ -120,7 +120,7 @@ class UserManager: CLBaseService {
             let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
             if error == nil {
                 if let jdict = jsonDict{
-                    print(jsonDict)
+                    print(jsonDict as Any)
                     success(self.getChangePasswordResponseModel(dict: jdict) as Any)
                 }else{
                     failure(ErrorType.dataError)
@@ -154,7 +154,7 @@ class UserManager: CLBaseService {
             let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
             if error == nil {
                 if let jdict = jsonDict{
-                    print(jsonDict)
+                    print(jsonDict as Any)
                     success(self.getEditProfileResponseModel(dict: jdict) as Any)
                 }else{
                     failure(ErrorType.dataError)
@@ -188,7 +188,7 @@ class UserManager: CLBaseService {
             let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
             if error == nil {
                 if let jdict = jsonDict{
-                    print(jsonDict)
+                    print(jsonDict as Any)
                     success(self.getAddToFavoriteResponseModel(dict: jdict) as Any)
                 }else{
                     failure(ErrorType.dataError)
@@ -223,7 +223,7 @@ class UserManager: CLBaseService {
             let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
             if error == nil {
                 if let jdict = jsonDict{
-                    print(jsonDict)
+                    print(jsonDict as Any)
                     success(self.getAllFavoriteResponseModel(dict: jdict) as Any)
                 }else{
                     failure(ErrorType.dataError)
@@ -257,7 +257,7 @@ class UserManager: CLBaseService {
             let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
             if error == nil {
                 if let jdict = jsonDict{
-                    print(jsonDict)
+                    print(jsonDict as Any)
                     success(self.getSettingsResponseModel(dict: jdict) as Any)
                 }else{
                     failure(ErrorType.dataError)
@@ -282,6 +282,41 @@ class UserManager: CLBaseService {
         let settingsReponseModel = SettingsResponseModel.init(dict:dict)
         return settingsReponseModel
     }
+    
+    //MARK : Get Main Category Api
+    
+    func getCategoryApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetCategory(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict as Any)
+                    success(self.getCategoryResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetCategory(with body:String)->CLNetworkModel{
+        let addToFavoriteRequestModel = CLNetworkModel.init(url: BASE_URL+GET_MAIN_CATEGORY_URL, requestMethod_: "GET")
+        addToFavoriteRequestModel.requestBody = body
+        return addToFavoriteRequestModel
+    }
+    
+    func getCategoryResponseModel(dict:[String : Any?]) -> Any? {
+        let addToFavoriteReponseModel = GetAllCategoryResponseModel.init(dict:dict)
+        return addToFavoriteReponseModel
+    }
+    
 }
     
 class LogInResponseModel : NSObject{
@@ -409,6 +444,26 @@ class ListAllFavoriteResponseModel : NSObject{
     }
 }
 
+
+class GetAllCategoryResponseModel : NSObject{
+    var statusMessage:String = ""
+    var statusCode:Int = 0
+    var categoryItems = [CategoryItem]()
+    init(dict:[String:Any?]) {
+        if let value = dict["message"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["status"] as? Int{
+            statusCode = value
+        }
+        if let value = dict["category"] as? NSArray {
+            for item in value {
+                categoryItems.append(CategoryItem.init(dict: item as! [String : Any?]))
+            }
+        }
+    }
+}
+
 class FavoriteItem : NSObject{
     var comments:String = ""
     var createdDate:String = ""
@@ -468,6 +523,22 @@ class FavoriteItem : NSObject{
     }
 }
 
+class CategoryItem : NSObject{
+    var categoryID:String = ""
+    var categoryName:String = ""
+    var categoryIcon:String = ""
+    init(dict:[String:Any?]) {
+        if let value = dict["category_id"] as? String{
+            categoryID = value
+        }
+        if let value = dict["category_name"] as? String{
+            categoryName = value
+        }
+        if let value = dict["category_appicon"] as? String{
+            categoryIcon = value
+        }
+    }
+}
 class FileUploadResponseModel : NSObject{
     var statusMessage:String = ""
     var uploadedImageName:String = ""
