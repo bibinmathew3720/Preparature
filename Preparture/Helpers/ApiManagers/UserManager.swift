@@ -307,7 +307,7 @@ class UserManager: CLBaseService {
     }
     
     func networkModelForGetCategory(with body:String)->CLNetworkModel{
-        let addToFavoriteRequestModel = CLNetworkModel.init(url: BASE_URL+GET_MAIN_CATEGORY_URL, requestMethod_: "GET")
+        let addToFavoriteRequestModel = CLNetworkModel.init(url: BASE_URL+GET_MAIN_CATEGORY_URL, requestMethod_: "POST")
         addToFavoriteRequestModel.requestBody = body
         return addToFavoriteRequestModel
     }
