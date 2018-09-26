@@ -21,11 +21,10 @@ class HomeEventsViewController: BaseViewController {
     }
 
     func customization() {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.collectionViewEvents.register(UINib.init(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "categoryCollectionViewCell")
-        
-        let homeVC:AddPlacesViewController = AddPlacesViewController(nibName: "AddPlacesViewController", bundle: nil)
-        self.navigationController?.pushViewController(homeVC, animated: true)
-        //getAllCategoryApi()
+
+        getAllCategoryApi()
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,7 +32,16 @@ class HomeEventsViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK:- Add To Favorite Api integration
+    //MARK:- UIView Action method
+    
+    @IBAction func actionAdd(_ sender: Any) {
+        let vc:AddEventViewController = AddEventViewController(nibName: "AddEventViewController", bundle: nil)
+        let navController:UINavigationController = UINavigationController(rootViewController: vc)
+        navController.modalPresentationStyle = .overFullScreen
+        self.present(navController, animated: false, completion: nil)
+    }
+    
+    //MARK:- Get All Categories Api integration
     
     func getAllCategoryApi(){
         MBProgressHUD.showAdded(to: self.view!, animated: true)
@@ -66,7 +74,7 @@ class HomeEventsViewController: BaseViewController {
     
 }
 
-extension HomeEventsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeEventsViewController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let array = categoryResponseModel {
             return (categoryResponseModel?.count)!
@@ -83,15 +91,18 @@ extension HomeEventsViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let homeVC:HomeVC = HomeVC(nibName: "HomeVC", bundle: nil)
-        self.navigationController?.pushViewController(homeVC, animated: true)
+        homeVC.itemDetail = categoryResponseModel?.object(at: indexPath.row) as? CategoryItem
+        let nav:UINavigationController = UINavigationController.init(rootViewController: homeVC)
+        //self.navigationController?.pushViewController(homeVC, animated: true)
+        self.present(nav, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.size.width/2 - 40, height: 100)
+        return CGSize(width: (UIScreen.main.bounds.size.width - 50)/2, height: 130)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

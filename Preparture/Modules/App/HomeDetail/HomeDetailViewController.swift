@@ -10,7 +10,7 @@ import UIKit
 
 class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     
-    var sugItem:SuggestionItems?
+    var eventItem:SuggestionItems?
     @IBOutlet weak var topCollectionView: UICollectionView!
     
     @IBOutlet weak var scrollFull: UIScrollView!
@@ -52,7 +52,7 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
         super.initView()
         customization()
         populateSuggestionDetails()
-        callingGetSuggestionDetailsApi()
+        //callingGetSuggestionDetailsApi()
     }
     
     func customization() {
@@ -102,7 +102,7 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? SuggestionDetailResponseModel{
                 if model.statusCode == 1{
-                   self.sugItem = model.suggestionItem
+                   self.eventItem = model.suggestionItem
                     self.populateSuggestionDetails()
                 }
                 else{
@@ -122,24 +122,26 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     
     func getSuggestionDetailsRequestBody()->String{
         var dict:[String:AnyObject] = [String:AnyObject]()
-        if let sugIt = sugItem {
-            dict.updateValue(sugIt.sugId as AnyObject, forKey: "sgg_id")
+        if let sugIt = eventItem {
+            dict.updateValue(sugIt.eventId as AnyObject, forKey: "event_id")
         }
         return CCUtility.getJSONfrom(dictionary: dict)
     }
     
     func populateSuggestionDetails(){
-        self.labelTopName.text = self.sugItem?.name
-        self.labelComments.text = self.sugItem?.comments
-        self.labelEventName.text = self.sugItem?.placeName
-        self.labelEventPlace.text = self.sugItem?.placeLocation
-        self.labelEventDate.text = CCUtility.convertToDateToFormat(inputDate: (self.sugItem?.createdDate)!, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "dd/MM/yyyy")
+        self.labelTopName.text = self.eventItem?.name
+        self.labelComments.text = self.eventItem?.comments
+        self.labelEventName.text = self.eventItem?.placeName
+        self.labelEventPlace.text = self.eventItem?.placeLocation
+        self.labelEventDate.text = CCUtility.convertToDateToFormat(inputDate: (self.eventItem?.createdDate)!, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "dd/MM/yyyy")
+        self.labelTravelExp.text = eventItem?.travelExp
+        //labelReviewsCount.text = eventItem?.totalReviews
         self.topCollectionView.reloadData()
         populateEventImages()
     }
     
     func populateEventImages(){
-        let imagesCount = self.sugItem?.placeImages.count
+        let imagesCount = self.eventItem?.placeImages.count
         self.pageControllTop.numberOfPages = imagesCount!
         if let imgCont = imagesCount {
             for index in 0..<imgCont {
@@ -147,7 +149,7 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
                 frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: self.scrollTop.frame.size.height)
                 
                 let subView = UIImageView(frame: frame)
-                subView.sd_setImage(with: URL(string: (self.sugItem?.placeImages[index])!), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
+                subView.sd_setImage(with: URL(string: (self.eventItem?.placeImages[index])!), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
                 self.viewScrollTop.addSubview(subView)
             }
         }
@@ -165,11 +167,11 @@ extension HomeDetailViewController :UICollectionViewDelegate,UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (self.sugItem?.placeImages.count)!
+        return (self.eventItem?.placeImages.count)!
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCVC", for: indexPath) as! ImagesCVC
-        cell.setImageUrlString(imageUrlString: (self.sugItem?.placeImages[indexPath.row])!)
+        cell.setImageUrlString(imageUrlString: (self.eventItem?.placeImages[indexPath.row])!)
         return cell
     }
     

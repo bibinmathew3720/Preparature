@@ -25,25 +25,25 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iBf-QU-ubs">
-                        <rect key="frame" x="15" y="10" width="213" height="60"/>
+                        <rect key="frame" x="15" y="20" width="213" height="60"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="A72-e1-6KC"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zh5-5O-g0f">
-                        <rect key="frame" x="10" y="80" width="223" height="72"/>
+                        <rect key="frame" x="10" y="90" width="223" height="62"/>
                         <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.9137254901960784" green="0.70196078431372544" blue="0.050980392156862744" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="iBf-QU-ubs" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="15" id="1pe-ge-yLC"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="iBf-QU-ubs" secondAttribute="trailing" constant="15" id="5NI-Wd-c0H"/>
                 <constraint firstItem="zh5-5O-g0f" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="10" id="EJp-At-5lG"/>
-                <constraint firstItem="iBf-QU-ubs" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" constant="10" id="JYC-Yz-4ib"/>
+                <constraint firstItem="iBf-QU-ubs" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" constant="20" id="JYC-Yz-4ib"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="zh5-5O-g0f" secondAttribute="trailing" constant="10" id="Kln-CV-1c0"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="zh5-5O-g0f" secondAttribute="bottom" constant="10" id="iM1-3P-iBK"/>
                 <constraint firstItem="zh5-5O-g0f" firstAttribute="top" secondItem="iBf-QU-ubs" secondAttribute="bottom" constant="10" id="vp1-qZ-vdO"/>

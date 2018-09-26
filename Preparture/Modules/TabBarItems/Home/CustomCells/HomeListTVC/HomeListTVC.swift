@@ -46,7 +46,7 @@ class HomeListTVC: UITableViewCell {
     }
     
     func setSuggestionItem(suggestion:SuggestionItems){
-        self.headingLabel.text = suggestion.name
+        self.headingLabel.text = suggestion.authorName
         self.subHeadingLabel.text = suggestion.placeName
         self.descriptionLabel.text = suggestion.placeLocation
         self.ratingLabel.text = String(suggestion.rating)

@@ -18,7 +18,7 @@ class EventManager: CLBaseService {
             let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
             if error == nil {
                 if let jdict = jsonDict{
-                    print(jsonDict)
+                    print(jsonDict as Any)
                     success(self.getSuggestionsResponseModel(dict: jdict) as Any)
                 }else{
                     failure(ErrorType.dataError)
@@ -34,7 +34,7 @@ class EventManager: CLBaseService {
     }
     
     func networkModelForGetSuggestions(with body:String)->CLNetworkModel{
-        let getSuggestionsModel = CLNetworkModel.init(url: BASE_URL+GET_SUGGESTIONS, requestMethod_: "POST")
+        let getSuggestionsModel = CLNetworkModel.init(url: BASE_URL+GET_PARTICULAR_EVENTITEMS_URL, requestMethod_: "POST")
         getSuggestionsModel.requestBody = body
         return getSuggestionsModel
     }
@@ -52,7 +52,7 @@ class EventManager: CLBaseService {
             let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
             if error == nil {
                 if let jdict = jsonDict{
-                    print(jsonDict)
+                    print(jsonDict as Any)
                     success(self.getSuggestionsDetailResponseModel(dict: jdict) as Any)
                 }else{
                     failure(ErrorType.dataError)
@@ -90,7 +90,7 @@ class SuggestionsResponseModel : NSObject{
         if let value = dict["status"] as? Int{
             statusCode = value
         }
-        if let value = dict["suggestions"] as? NSArray{
+        if let value = dict["result"] as? NSArray{
             for item in value {
                 suggestions.append(SuggestionItems.init(dict: item as! [String : Any?]))
             }
@@ -105,13 +105,14 @@ class SuggestionItems : NSObject{
     var placeImages = [String]()
     var placeLocation:String = ""
     var placeName:String = ""
-    var placeType:String = ""
+    var travelExp:String = ""
     var rating:Float = 0.0
-    var sugId:Int = 0
+    var totalReviews:String = ""
     var updatedDate:String = ""
     var userId:Int = 0
     var userImage:String = ""
     var isFavorited:Bool = false
+    var authorName:String = ""
     
     init(dict:[String:Any?]) {
         if let value = dict["comments"] as? String{
@@ -126,25 +127,28 @@ class SuggestionItems : NSObject{
         if let value = dict["name"] as? String{
             name = value
         }
-        if let value = dict["place_files"] as? NSArray{
+        if let value = dict["event_files"] as? NSArray{
             for item in value {
                 placeImages.append(item as! String)
             }
         }
-        if let value = dict["place_location"] as? String{
+        if let value = dict["location"] as? String{
             placeLocation = value
         }
-        if let value = dict["place_name"] as? String{
+        if let value = dict["event_name"] as? String{
             placeName = value
         }
-        if let value = dict["place_type"] as? String{
-            placeType = value
+        if let value = dict["author_name"] as? String{
+            authorName = value
         }
-        if let value = dict["rating"] as? String{
+        if let value = dict["travel_experience"] as? String{
+            travelExp = value
+        }
+        if let value = dict["event_rate"] as? String{
             rating = Float(value)!
         }
-        if let value = dict["sgg_id"] as? String{
-            sugId = Int(value)!
+        if let value = dict["total_reviews"] as? String{
+            totalReviews = value
         }
         if let value = dict["updated_date"] as? String{
             updatedDate = value
@@ -170,7 +174,7 @@ class SuggestionDetailResponseModel : NSObject{
             statusCode = value
         }
         if let value = dict["suggestions"] as? [String : Any?]{
-            suggestionItem = SuggestionItems.init(dict: value as! [String : Any?])
+            suggestionItem = SuggestionItems.init(dict: value )
         }
     }
 }

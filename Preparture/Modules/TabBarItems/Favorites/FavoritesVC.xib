@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -27,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKr-JR-4v3">
-                    <rect key="frame" x="0.0" y="20" width="375" height="80"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AT9-WY-Zxq">
                             <rect key="frame" x="155" y="29.5" width="66.5" height="21.5"/>
@@ -44,10 +43,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wct-XF-DZS">
-                    <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                    <rect key="frame" x="0.0" y="80" width="375" height="587"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BCb-u5-3sU">
-                            <rect key="frame" x="0.0" y="10" width="375" height="517"/>
+                            <rect key="frame" x="0.0" y="10" width="375" height="537"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="uLn-tX-KOA"/>
@@ -66,15 +65,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="wct-XF-DZS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ADK-pW-fvf"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wct-XF-DZS" secondAttribute="bottom" id="Sy6-3I-7L8"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wct-XF-DZS" secondAttribute="trailing" id="UrK-ZI-DCv"/>
+                <constraint firstItem="wct-XF-DZS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ADK-pW-fvf"/>
+                <constraint firstAttribute="bottom" secondItem="wct-XF-DZS" secondAttribute="bottom" id="Sy6-3I-7L8"/>
+                <constraint firstAttribute="trailing" secondItem="wct-XF-DZS" secondAttribute="trailing" id="UrK-ZI-DCv"/>
                 <constraint firstItem="wct-XF-DZS" firstAttribute="top" secondItem="EKr-JR-4v3" secondAttribute="bottom" id="bo5-mi-to0"/>
-                <constraint firstItem="EKr-JR-4v3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="lc9-hI-tqN"/>
-                <constraint firstItem="EKr-JR-4v3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="p1d-Hn-u0a"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="EKr-JR-4v3" secondAttribute="trailing" id="uXU-VK-uZV"/>
+                <constraint firstItem="EKr-JR-4v3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lc9-hI-tqN"/>
+                <constraint firstItem="EKr-JR-4v3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="p1d-Hn-u0a"/>
+                <constraint firstAttribute="trailing" secondItem="EKr-JR-4v3" secondAttribute="trailing" id="uXU-VK-uZV"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>

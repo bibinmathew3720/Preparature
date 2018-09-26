@@ -8,36 +8,47 @@
 
 import UIKit
 
-class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,HomeListTVDelegate {
+class HomeVC: BaseViewController {
     
     
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchTF: UITextField!
-    @IBOutlet weak var topCollectionView: UICollectionView!
-    @IBOutlet weak var listCollectionView: UICollectionView!
-    
-    let topCollectionArray = ["Events","Hotels","Bar","What2Do"]
+    var itemDetail:CategoryItem?
+    var suggestionsArray:NSMutableArray?
     var suggestionResponseModel:SuggestionsResponseModel?
+    @IBOutlet weak var labelHeading: UILabel!
+    @IBOutlet weak var tableViewList: UITableView!
+    var currentPage:Int = 0
+    
     override func initView() {
         super.initView()
-        registeringCollectionViewCells()
+        suggestionsArray = NSMutableArray()
         self.navigationController?.navigationBar.isHidden = true
+        labelHeading.text = itemDetail?.categoryName
         addShadowToAView(shadowView: searchView)
-        listCollectionView.delegate = self
-        listCollectionView.dataSource = self
+        tableCellRegistration()
         getSuggestions()
         // Do any additional setup after loading the view.
     }
     
+    
+    func tableCellRegistration(){
+        tableViewList.register(UINib.init(nibName: "HomeListTVC", bundle: nil), forCellReuseIdentifier: "homeListCell")
+        tableViewList.dataSource = self
+        tableViewList.delegate = self
+    }
+    
     func getSuggestions(){
         MBProgressHUD.showAdded(to: self.view!, animated: true)
-        EventManager().callingSuggestionsApi(with: "", success: {
+        EventManager().callingSuggestionsApi(with: listAllEventRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? SuggestionsResponseModel{
                 if model.statusCode == 1{
+                    self.currentPage = self.currentPage + 1
                     self.suggestionResponseModel = model
-                    self.listCollectionView.reloadData()
+                    self.suggestionsArray?.addObjects(from: (self.suggestionResponseModel?.suggestions)!)
+                    self.tableViewList.reloadData()
                 }
                 else{
                     CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
@@ -58,88 +69,17 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
         }
     }
     
-    func registeringCollectionViewCells(){
-        self.topCollectionView.register(UINib(nibName: "HomeHeadingCVC", bundle: nil), forCellWithReuseIdentifier: "homeHeadingCell")
-        self.listCollectionView.register(UINib(nibName: "HomeListCVC", bundle: nil), forCellWithReuseIdentifier: "homeListCell")
+    func listAllEventRequestBody()->String{
+        var dict:[String:AnyObject] = [String:AnyObject]()
+        dict.updateValue(itemDetail?.categoryID as AnyObject, forKey: "category_id")
+        dict.updateValue(currentPage as AnyObject, forKey: "currentpage")
+        dict.updateValue(10 as AnyObject, forKey: "rowsperpage")
+        return CCUtility.getJSONfrom(dictionary: dict)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(collectionView == self.topCollectionView){
-            return topCollectionArray.count
-        }
-        else{
-            return topCollectionArray.count
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if(collectionView == self.topCollectionView){
-            let homeHeadingCVC : HomeHeadingCVC = collectionView.dequeueReusableCell(withReuseIdentifier: "homeHeadingCell", for: indexPath) as! HomeHeadingCVC
-            homeHeadingCVC.itemNameLabel.text = topCollectionArray[indexPath.row]
-            return homeHeadingCVC
-        }
-        else{
-            let homeListCVC : HomeListCVC = collectionView.dequeueReusableCell(withReuseIdentifier: "homeListCell", for: indexPath) as! HomeListCVC
-            homeListCVC.delegate = self
-            if let sugResponseModel = self.suggestionResponseModel {
-                homeListCVC.setSuggestionArray(sugArray: sugResponseModel.suggestions)
-            }
-            return homeListCVC
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if(collectionView == self.listCollectionView){
-          
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if(collectionView == self.topCollectionView){
-            return CGSize(width: 100, height: collectionView.frame.size.height)
-        }
-        else{
-            return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    //MARK: Home List Table View Delegates
-    
-    func selectedCellDelegateWithTag(suggestion:SuggestionItems) {
-        let detailVC = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
-        detailVC.sugItem = suggestion
-        self.navigationController?.pushViewController(detailVC, animated: true)
-    }
-    
-    func addToFavoriteFromClick(suggestion:SuggestionItems) {
-        callingAddToFavoriteApi(suggestionItem:suggestion)
-    }
-    
-    func doubleArrowButtonActionDelegateWithSuggestionItem(suggestion:SuggestionItems){
-        
-    }
-    
-    func shareButtonActionDelegateWithSuggestionItem(suggestion:SuggestionItems){
-        let textToShare = "\(suggestion.name)"
-        let objectsToShare = [textToShare]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        activityVC.popoverPresentationController?.sourceView = self.view
-        DispatchQueue.main.async {
-            self.present(activityVC, animated: true, completion: nil)
-        }
     }
     
     //MARK:- Add To Favorite Api integration
@@ -152,7 +92,7 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
             if let model = model as? AddToFavoriteResponseModel{
                 if model.statusCode == 1{
                     suggestionItem.isFavorited = true
-                    self.listCollectionView.reloadData()
+                    self.tableViewList.reloadData()
                 }
                 else{
                     CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
@@ -174,27 +114,72 @@ class HomeVC: BaseViewController,UICollectionViewDataSource,UICollectionViewDele
         if let user = User.getUser() {
             dict.updateValue(user.userId as AnyObject, forKey: "user_id")
         }
-        dict.updateValue(suggestion.sugId as AnyObject, forKey: "sgg_id")
+        dict.updateValue(suggestion.eventId as AnyObject, forKey: "event_id")
         return CCUtility.getJSONfrom(dictionary: dict)
     }
     
+    //MARK:- UIView Action Methods
     
-    @IBAction func actionAddEvent(_ sender: Any) {
-        let vc:AddEventViewController = AddEventViewController(nibName: "AddEventViewController", bundle: nil)
-        let navController:UINavigationController = UINavigationController(rootViewController: vc)
-        navController.modalPresentationStyle = .overFullScreen
-        self.present(navController, animated: false, completion: nil)
+    @IBAction func actionBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension HomeVC:UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let sugArray = self.suggestionsArray{
+            return sugArray.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "homeListCell", for: indexPath) as!HomeListTVC
+        if let sugArray = self.suggestionsArray{
+            cell.setSuggestionItem(suggestion:sugArray[indexPath.row] as! SuggestionItems)
+        }
+        cell.tag = indexPath.row
+        cell.delegate = self
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 170
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let suggestion:SuggestionItems = self.suggestionsArray![indexPath.row] as! SuggestionItems
+        let detailVC = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
+        detailVC.eventItem = suggestion
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    //MARK:- HomeListTVC Delegate method
+    
+    func addToFavorite(tag:NSInteger) {
+        let suggestion:SuggestionItems = self.suggestionsArray![tag] as! SuggestionItems
+        callingAddToFavoriteApi(suggestionItem:suggestion)
+    }
+    
+    func doubleArrowButtonAction(tag:NSInteger){
+       
+    }
+    
+    func shareAction(tag:NSInteger){
+        let suggestion:SuggestionItems = self.suggestionsArray![tag] as! SuggestionItems
+        let textToShare = "\(suggestion.name)"
+        let objectsToShare = [textToShare]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        DispatchQueue.main.async {
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
 }

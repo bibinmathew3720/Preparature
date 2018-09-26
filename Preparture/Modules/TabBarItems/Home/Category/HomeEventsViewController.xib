@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Muli-Bold.ttf">
+            <string>Muli-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeEventsViewController" customModule="Preparture" customModuleProvider="target">
             <connections>
@@ -21,8 +25,25 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="N3H-ug-tmf">
-                    <rect key="frame" x="20" y="120" width="335" height="527"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRw-5v-8ml">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDD-Hw-jxe">
+                            <rect key="frame" x="163.5" y="29.5" width="48" height="21.5"/>
+                            <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="ZDD-Hw-jxe" firstAttribute="centerX" secondItem="HRw-5v-8ml" secondAttribute="centerX" id="3LM-dr-TXJ"/>
+                        <constraint firstItem="ZDD-Hw-jxe" firstAttribute="centerY" secondItem="HRw-5v-8ml" secondAttribute="centerY" id="650-dk-BxA"/>
+                        <constraint firstAttribute="height" constant="80" id="XIF-s1-K1j"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="N3H-ug-tmf">
+                    <rect key="frame" x="20" y="100" width="335" height="547"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EUg-gz-Na6">
                         <size key="itemSize" width="50" height="50"/>
@@ -35,15 +56,39 @@
                         <outlet property="delegate" destination="-1" id="Q9O-cu-RVC"/>
                     </connections>
                 </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HpC-8r-4gu">
+                    <rect key="frame" x="315" y="587" width="60" height="60"/>
+                    <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="bei-XL-zRF"/>
+                        <constraint firstAttribute="height" constant="60" id="ckv-cZ-Vx7"/>
+                    </constraints>
+                    <state key="normal" image="addItem"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="30"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="actionAdd:" destination="-1" eventType="touchUpInside" id="c9s-nv-zzJ"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="N3H-ug-tmf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="0zo-3d-vGi"/>
-                <constraint firstItem="N3H-ug-tmf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="31t-x9-3Fj"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="N3H-ug-tmf" secondAttribute="bottom" constant="20" id="fFW-Hg-dQv"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="N3H-ug-tmf" secondAttribute="trailing" constant="20" id="pfP-EW-r9S"/>
+                <constraint firstItem="N3H-ug-tmf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="31t-x9-3Fj"/>
+                <constraint firstItem="HRw-5v-8ml" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jbp-hs-jnk"/>
+                <constraint firstAttribute="trailing" secondItem="HRw-5v-8ml" secondAttribute="trailing" id="OKt-5G-lMs"/>
+                <constraint firstItem="N3H-ug-tmf" firstAttribute="top" secondItem="HRw-5v-8ml" secondAttribute="bottom" constant="20" id="Ro0-Um-Nvj"/>
+                <constraint firstAttribute="bottom" secondItem="N3H-ug-tmf" secondAttribute="bottom" constant="20" id="fFW-Hg-dQv"/>
+                <constraint firstAttribute="trailing" secondItem="HpC-8r-4gu" secondAttribute="trailing" id="ki3-ge-Zdp"/>
+                <constraint firstAttribute="bottom" secondItem="HpC-8r-4gu" secondAttribute="bottom" constant="20" id="la8-ql-VWG"/>
+                <constraint firstItem="HRw-5v-8ml" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oow-JC-Pxx"/>
+                <constraint firstAttribute="trailing" secondItem="N3H-ug-tmf" secondAttribute="trailing" constant="20" id="pfP-EW-r9S"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
+    <resources>
+        <image name="addItem" width="19" height="18"/>
+    </resources>
 </document>
