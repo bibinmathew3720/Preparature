@@ -22,11 +22,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SuggestionsViewController" customModule="Preparture" customModuleProvider="target">
             <connections>
+                <outlet property="buttonAddImg" destination="6ZO-5d-8EY" id="9FZ-fU-Lij"/>
                 <outlet property="buttonStarFifth" destination="aPl-sW-fPY" id="WnF-Z2-vdf"/>
                 <outlet property="buttonStarFirst" destination="7Go-sJ-f48" id="YLf-AL-Oka"/>
                 <outlet property="buttonStarForth" destination="CXy-Qk-DgU" id="IIe-Qd-ng2"/>
                 <outlet property="buttonStarSecond" destination="TYx-Ky-CIf" id="4rX-Lw-8hU"/>
                 <outlet property="buttonStarThird" destination="ZA8-N1-obn" id="Hek-dZ-sgC"/>
+                <outlet property="collectionViewVdo" destination="XYX-vB-qhP" id="Zib-03-GPv"/>
                 <outlet property="pickerViewType" destination="V8D-jw-jG9" id="0uk-n6-nbd"/>
                 <outlet property="tableviewReviews" destination="FhH-VK-Wj9" id="S0D-x7-5CS"/>
                 <outlet property="textViewSuggestions" destination="l6V-Fw-g07" id="wZM-uK-M3e"/>
@@ -171,6 +173,23 @@
                         <action selector="actionStarFifth:" destination="-1" eventType="touchUpInside" id="uDd-7G-as3"/>
                     </connections>
                 </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XYX-vB-qhP">
+                    <rect key="frame" x="20" y="409" width="335" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="fOk-Ff-qPI"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DBn-gF-ugN">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="eqT-Gl-hMc"/>
+                        <outlet property="delegate" destination="-1" id="ELa-Eb-0vg"/>
+                    </connections>
+                </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2d-Pc-Jfs">
                     <rect key="frame" x="20" y="484" width="335" height="40"/>
                     <subviews>
@@ -240,6 +259,7 @@
             <constraints>
                 <constraint firstItem="TYx-Ky-CIf" firstAttribute="leading" secondItem="7Go-sJ-f48" secondAttribute="trailing" constant="10" id="0uY-eT-8oX"/>
                 <constraint firstItem="aPl-sW-fPY" firstAttribute="centerY" secondItem="CXy-Qk-DgU" secondAttribute="centerY" id="2T9-wN-3ku"/>
+                <constraint firstItem="XYX-vB-qhP" firstAttribute="trailing" secondItem="N2d-Pc-Jfs" secondAttribute="trailing" id="2cH-YO-Etd"/>
                 <constraint firstAttribute="trailing" secondItem="cij-Tg-zpp" secondAttribute="trailing" id="7KL-ZV-m9I"/>
                 <constraint firstAttribute="trailing" secondItem="FhH-VK-Wj9" secondAttribute="trailing" id="82Z-ta-PDZ"/>
                 <constraint firstItem="cij-Tg-zpp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="C1C-J6-a5r"/>
@@ -249,6 +269,7 @@
                 <constraint firstItem="CXy-Qk-DgU" firstAttribute="height" secondItem="ZA8-N1-obn" secondAttribute="height" id="K3c-LG-gE0"/>
                 <constraint firstItem="7Go-sJ-f48" firstAttribute="centerY" secondItem="ojU-E0-X23" secondAttribute="centerY" id="LE7-Jl-WIr"/>
                 <constraint firstItem="ZA8-N1-obn" firstAttribute="leading" secondItem="TYx-Ky-CIf" secondAttribute="trailing" constant="10" id="QOb-SP-Wqm"/>
+                <constraint firstItem="XYX-vB-qhP" firstAttribute="top" secondItem="FhH-VK-Wj9" secondAttribute="bottom" constant="10" id="U1e-jm-9w4"/>
                 <constraint firstItem="aPl-sW-fPY" firstAttribute="leading" secondItem="CXy-Qk-DgU" secondAttribute="trailing" constant="10" id="UvE-dU-7sc"/>
                 <constraint firstItem="CXy-Qk-DgU" firstAttribute="leading" secondItem="ZA8-N1-obn" secondAttribute="trailing" constant="10" id="VfO-dy-ZNL"/>
                 <constraint firstItem="MFh-c6-5Tb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="X5y-kl-6eK"/>
@@ -258,6 +279,7 @@
                 <constraint firstItem="CXy-Qk-DgU" firstAttribute="width" secondItem="ZA8-N1-obn" secondAttribute="width" id="cUP-cM-sOd"/>
                 <constraint firstItem="MFh-c6-5Tb" firstAttribute="top" secondItem="ojU-E0-X23" secondAttribute="bottom" constant="20" id="djV-ip-l4S"/>
                 <constraint firstItem="cij-Tg-zpp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gjG-2T-aCd"/>
+                <constraint firstItem="XYX-vB-qhP" firstAttribute="leading" secondItem="N2d-Pc-Jfs" secondAttribute="leading" id="iZz-Ty-Qi2"/>
                 <constraint firstItem="TYx-Ky-CIf" firstAttribute="centerY" secondItem="ZA8-N1-obn" secondAttribute="centerY" id="ib1-9o-06I"/>
                 <constraint firstItem="TYx-Ky-CIf" firstAttribute="width" secondItem="7Go-sJ-f48" secondAttribute="width" id="jFv-mk-yOk"/>
                 <constraint firstItem="6ZO-5d-8EY" firstAttribute="leading" secondItem="N2d-Pc-Jfs" secondAttribute="leading" id="jOF-sI-s3A"/>
