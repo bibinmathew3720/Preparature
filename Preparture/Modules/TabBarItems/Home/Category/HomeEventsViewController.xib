@@ -57,7 +57,7 @@
                     </connections>
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HpC-8r-4gu">
-                    <rect key="frame" x="315" y="587" width="60" height="60"/>
+                    <rect key="frame" x="295" y="517" width="60" height="60"/>
                     <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="bei-XL-zRF"/>
@@ -81,10 +81,10 @@
                 <constraint firstAttribute="trailing" secondItem="HRw-5v-8ml" secondAttribute="trailing" id="OKt-5G-lMs"/>
                 <constraint firstItem="N3H-ug-tmf" firstAttribute="top" secondItem="HRw-5v-8ml" secondAttribute="bottom" constant="20" id="Ro0-Um-Nvj"/>
                 <constraint firstAttribute="bottom" secondItem="N3H-ug-tmf" secondAttribute="bottom" constant="20" id="fFW-Hg-dQv"/>
-                <constraint firstAttribute="trailing" secondItem="HpC-8r-4gu" secondAttribute="trailing" id="ki3-ge-Zdp"/>
-                <constraint firstAttribute="bottom" secondItem="HpC-8r-4gu" secondAttribute="bottom" constant="20" id="la8-ql-VWG"/>
+                <constraint firstAttribute="bottom" secondItem="HpC-8r-4gu" secondAttribute="bottom" constant="90" id="nBg-an-Z9o"/>
                 <constraint firstItem="HRw-5v-8ml" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oow-JC-Pxx"/>
                 <constraint firstAttribute="trailing" secondItem="N3H-ug-tmf" secondAttribute="trailing" constant="20" id="pfP-EW-r9S"/>
+                <constraint firstAttribute="trailing" secondItem="HpC-8r-4gu" secondAttribute="trailing" constant="20" id="wJV-DK-Uh5"/>
             </constraints>
         </view>
     </objects>

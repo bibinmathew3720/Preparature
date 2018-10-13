@@ -30,12 +30,15 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var buttonStarFifth: UIButton!
     @IBOutlet weak var buttonAddImg: UIButton!
     @IBOutlet weak var collectionViewVdo: UICollectionView!
-    
+    var eventItem:SuggestionItems?
+    var arraySuggestions = NSMutableArray()
+    @IBOutlet weak var labelNoSuggestions: UILabel!
     
     //MARK: - Internal Properties
     var imagePickedBlock: ((UIImage) -> Void)?
     var videoPickedBlock: ((NSURL) -> Void)?
     var filePickedBlock: ((URL) -> Void)?
+    var imageArray = NSMutableArray()
     
     override func initView() {
         super.initView()
@@ -49,6 +52,13 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
         tfType.inputAccessoryView = toolBarPicker
         pickerViewType.translatesAutoresizingMaskIntoConstraints = false
         toolBarPicker.translatesAutoresizingMaskIntoConstraints = false
+        if arraySuggestions.count == 0 {
+            labelNoSuggestions.isHidden = false
+            tableviewReviews.isHidden = true
+        } else {
+            labelNoSuggestions.isHidden = true
+            tableviewReviews.isHidden = false
+        }
     }
     
     //MARK: -> ------ UITextView Delegates ------
@@ -148,6 +158,10 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
         // To handle image
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.imagePickedBlock?(image)
+            if let urlName = info[UIImagePickerControllerReferenceURL] as? URL {
+                imageArray.add(urlName)
+                collectionViewVdo.reloadData()
+            }
         } else{
             print("Something went wrong in  image")
         }
@@ -239,7 +253,7 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return arraySuggestions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -250,6 +264,10 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 250
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView.init()
     }
     
     func showAttachmentActionSheet(vc: UIViewController) {
@@ -376,13 +394,29 @@ extension SuggestionsViewController:UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if imageArray.count != 0 {
+            return imageArray.count + 1
+        }
+        return imageArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        buttonAddImg.isHidden = true
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCVC", for: indexPath) as! ImagesCVC
-        //cell.setImageUrlString(imageUrlString: (self.eventItem?.placeImages[indexPath.row])!)
+        if indexPath.row == imageArray.count {
+            cell.eventImageView.image = #imageLiteral(resourceName: "addItem")
+            cell.backgroundColor = Constant.Colors.AppThemeGreenColor
+        } else {
+            cell.setImageUrl(imageUrlString: self.imageArray[indexPath.row] as! URL)
+            cell.backgroundColor = .clear
+        }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == imageArray.count {
+            self.showAttachmentActionSheet(vc: self)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

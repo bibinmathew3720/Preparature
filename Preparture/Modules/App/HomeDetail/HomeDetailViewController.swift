@@ -47,6 +47,8 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     var frame: CGRect = CGRect(x:0, y:0, width:0, height:0)
     @IBOutlet weak var viewTopStar: UIView!
     @IBOutlet weak var constraintSrollTopWidth: NSLayoutConstraint!
+    @IBOutlet weak var viewReviewFull: UIView!
+    @IBOutlet weak var labelNoSuggestions: UILabel!
     
     override func initView() {
         super.initView()
@@ -90,6 +92,7 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     
     @IBAction func actionReadReviews(_ sender: Any) {
         let suggestionsVC = SuggestionsViewController(nibName: "SuggestionsViewController", bundle: nil)
+        suggestionsVC.eventItem = eventItem
         self.present(suggestionsVC, animated: true, completion: nil)
     }
     
@@ -131,12 +134,25 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     func populateSuggestionDetails(){
         self.labelTopName.text = self.eventItem?.name
         self.labelComments.text = self.eventItem?.comments
+        if self.labelComments.text == "" {
+            self.labelComments.text = "No comments"
+        }
         self.labelEventName.text = self.eventItem?.placeName
         self.labelEventPlace.text = self.eventItem?.placeLocation
         self.labelEventDate.text = CCUtility.convertToDateToFormat(inputDate: (self.eventItem?.createdDate)!, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "dd/MM/yyyy")
         self.labelTravelExp.text = eventItem?.travelExp
-        //labelReviewsCount.text = eventItem?.totalReviews
+        if self.labelTravelExp.text == "" {
+            self.labelTravelExp.text = "No travel experience"
+        }
+        labelReviewsCount.text = eventItem?.totalReviews
         self.topCollectionView.reloadData()
+        if eventItem?.totalReviews == "0" {
+            viewReviewFull.isHidden = true
+            labelNoSuggestions.isHidden = false
+        } else {
+            viewReviewFull.isHidden = false
+            labelNoSuggestions.isHidden = true
+        }
         populateEventImages()
     }
     

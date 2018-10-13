@@ -19,5 +19,9 @@ class ImagesCVC: UICollectionViewCell {
     func setImageUrlString(imageUrlString:String){
         eventImageView.sd_setImage(with: URL(string: imageUrlString), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
     }
+    
+    func setImageUrl(imageUrlString:URL){
+        eventImageView.sd_setImage(with: imageUrlString, placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
+    }
 
 }

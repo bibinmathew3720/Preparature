@@ -12,6 +12,9 @@
         <array key="Muli-Bold.ttf">
             <string>Muli-Bold</string>
         </array>
+        <array key="Muli-LightItalic.ttf">
+            <string>Muli-LightItalic</string>
+        </array>
         <array key="Muli-Regular.ttf">
             <string>Muli-Regular</string>
         </array>
@@ -30,6 +33,7 @@
                 <outlet property="labelEventDate" destination="ABZ-vu-CvC" id="23p-S8-vPL"/>
                 <outlet property="labelEventName" destination="YDL-l6-Czu" id="K3g-6G-T5W"/>
                 <outlet property="labelEventPlace" destination="9v6-vh-Ljt" id="Tva-lb-Pm1"/>
+                <outlet property="labelNoSuggestions" destination="5ha-vV-0Rz" id="dRa-bn-0JQ"/>
                 <outlet property="labelReviewComments" destination="qwf-Cj-sCl" id="MFM-Bw-eah"/>
                 <outlet property="labelReviewerDate" destination="CmP-aJ-ice" id="xBk-wM-lV0"/>
                 <outlet property="labelReviewerName" destination="hqC-JY-vJW" id="XjP-Ci-qgE"/>
@@ -51,6 +55,7 @@
                 <outlet property="starTopThird" destination="jOA-YR-8Mi" id="ks9-7w-8xJ"/>
                 <outlet property="topCollectionView" destination="tqb-PR-afB" id="Yr3-pY-0K5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewReviewFull" destination="twa-b4-zgI" id="7we-6f-aVf"/>
                 <outlet property="viewScrollFull" destination="WTC-F6-Zqn" id="eDn-JL-JhH"/>
                 <outlet property="viewScrollTop" destination="MFf-sn-l6U" id="bV9-tP-WmZ"/>
                 <outlet property="viewTopStar" destination="2HY-2p-hcN" id="ThR-ml-Huw"/>
@@ -153,15 +158,15 @@
                                     <rect key="frame" x="115" y="180" width="240" height="50"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9W-cS-nvD">
-                                            <rect key="frame" x="171.5" y="15.5" width="58.5" height="19"/>
+                                            <rect key="frame" x="171.5" y="17" width="58.5" height="16.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="58.5" id="ZyA-ia-Nyo"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
+                                            <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="107" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z37-vG-3zW">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="107" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z37-vG-3zW">
                                             <rect key="frame" x="136" y="16" width="30.5" height="19"/>
                                             <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
                                             <color key="textColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -427,14 +432,20 @@
                                         <constraint firstItem="CmP-aJ-ice" firstAttribute="leading" secondItem="hqC-JY-vJW" secondAttribute="leading" id="tc6-EN-8Uu"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read &amp; write all suggestions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFL-zf-QFf">
-                                    <rect key="frame" x="20" y="926.5" width="240.5" height="23"/>
-                                    <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="18"/>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No suggestions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ha-vV-0Rz">
+                                    <rect key="frame" x="20" y="751" width="335" height="150"/>
+                                    <fontDescription key="fontDescription" name="Muli-LightItalic" family="Muli" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read &amp; write all suggestions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFL-zf-QFf">
+                                    <rect key="frame" x="20" y="926.5" width="200.5" height="43"/>
+                                    <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="17"/>
                                     <color key="textColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNW-5i-FCl">
-                                    <rect key="frame" x="225" y="923" width="130" height="30"/>
+                                    <rect key="frame" x="225" y="933.5" width="130" height="30"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starSelected" translatesAutoresizingMaskIntoConstraints="NO" id="Htg-iU-VFf">
                                             <rect key="frame" x="5" y="5.5" width="20" height="20"/>
@@ -501,16 +512,20 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="9v6-vh-Ljt" firstAttribute="leading" secondItem="YDL-l6-Czu" secondAttribute="leading" id="11E-gG-HXM"/>
+                                <constraint firstItem="5ha-vV-0Rz" firstAttribute="trailing" secondItem="twa-b4-zgI" secondAttribute="trailing" id="1s6-8W-Vqc"/>
                                 <constraint firstItem="tqb-PR-afB" firstAttribute="trailing" secondItem="yHJ-bm-GGc" secondAttribute="trailing" id="4Ax-OJ-5ae"/>
                                 <constraint firstItem="ny0-sU-CWc" firstAttribute="leading" secondItem="tlC-zt-fAg" secondAttribute="leading" id="4oo-GP-Hd5"/>
                                 <constraint firstItem="pYc-hx-1yG" firstAttribute="leading" secondItem="twa-b4-zgI" secondAttribute="leading" id="5bM-9o-hWc"/>
+                                <constraint firstItem="5ha-vV-0Rz" firstAttribute="bottom" secondItem="twa-b4-zgI" secondAttribute="bottom" id="6Yk-3G-d3J"/>
                                 <constraint firstItem="PFL-zf-QFf" firstAttribute="top" secondItem="twa-b4-zgI" secondAttribute="bottom" constant="25" id="9r3-LC-aJN"/>
                                 <constraint firstItem="yHJ-bm-GGc" firstAttribute="leading" secondItem="WTC-F6-Zqn" secondAttribute="leading" id="B5j-XJ-EUH"/>
+                                <constraint firstItem="5ha-vV-0Rz" firstAttribute="top" secondItem="twa-b4-zgI" secondAttribute="top" id="B7n-NJ-Ffn"/>
                                 <constraint firstItem="Qum-zG-WnI" firstAttribute="leading" secondItem="9v6-vh-Ljt" secondAttribute="leading" id="BQQ-1s-mNE"/>
                                 <constraint firstItem="twa-b4-zgI" firstAttribute="trailing" secondItem="KZH-ZQ-uxg" secondAttribute="trailing" id="C2u-U0-xye"/>
                                 <constraint firstItem="Hmo-Ke-oV4" firstAttribute="leading" secondItem="Wh5-JX-I4X" secondAttribute="leading" id="CvZ-8F-OLo"/>
                                 <constraint firstItem="2HY-2p-hcN" firstAttribute="bottom" secondItem="yHJ-bm-GGc" secondAttribute="bottom" constant="-20" id="EIc-VQ-l6i"/>
                                 <constraint firstItem="Efi-Q8-lOK" firstAttribute="top" secondItem="Qum-zG-WnI" secondAttribute="bottom" constant="20" id="FSq-PH-GUA"/>
+                                <constraint firstItem="5ha-vV-0Rz" firstAttribute="leading" secondItem="ny0-sU-CWc" secondAttribute="leading" id="G2A-pE-TjS"/>
                                 <constraint firstItem="TNW-5i-FCl" firstAttribute="centerY" secondItem="PFL-zf-QFf" secondAttribute="centerY" id="GDF-fM-oP6"/>
                                 <constraint firstAttribute="trailing" secondItem="yHJ-bm-GGc" secondAttribute="trailing" id="GF7-Jv-Af0"/>
                                 <constraint firstItem="Wh5-JX-I4X" firstAttribute="bottom" secondItem="yHJ-bm-GGc" secondAttribute="bottom" constant="-20" id="GoB-XR-gko"/>
@@ -542,6 +557,7 @@
                                 <constraint firstItem="xPl-xl-OPn" firstAttribute="trailing" secondItem="Efi-Q8-lOK" secondAttribute="trailing" id="jH1-MW-WuY"/>
                                 <constraint firstItem="tqb-PR-afB" firstAttribute="leading" secondItem="yHJ-bm-GGc" secondAttribute="leading" id="mu9-gH-bmi"/>
                                 <constraint firstItem="ny0-sU-CWc" firstAttribute="top" secondItem="KZH-ZQ-uxg" secondAttribute="bottom" constant="30" id="nn9-r4-G0Q"/>
+                                <constraint firstItem="TNW-5i-FCl" firstAttribute="leading" secondItem="PFL-zf-QFf" secondAttribute="trailing" constant="5" id="pob-TU-uVH"/>
                                 <constraint firstItem="l0a-gy-JCt" firstAttribute="trailing" secondItem="Efi-Q8-lOK" secondAttribute="trailing" id="prK-ZA-guh"/>
                                 <constraint firstItem="ABZ-vu-CvC" firstAttribute="centerY" secondItem="9v6-vh-Ljt" secondAttribute="centerY" id="sFN-Ob-wD1"/>
                                 <constraint firstItem="tlC-zt-fAg" firstAttribute="top" secondItem="xPl-xl-OPn" secondAttribute="bottom" constant="30" id="sgz-fH-pj4"/>
