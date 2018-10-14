@@ -49,9 +49,12 @@ PODS:
     - GTMSessionFetcher/Core (= 1.1.13)
   - IQKeyboardManagerSwift (5.0.7)
   - MBProgressHUD (1.1.0)
+  - PayPal.Checkout (3.0.0):
+    - syr.core (> 1)
   - SDWebImage (4.3.0):
     - SDWebImage/Core (= 4.3.0)
   - SDWebImage/Core (4.3.0)
+  - syr.core (1.5.6)
 
 DEPENDENCIES:
   - FacebookCore
@@ -62,6 +65,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - IQKeyboardManagerSwift
   - MBProgressHUD
+  - PayPal.Checkout
   - SDWebImage
 
 SPEC REPOS:
@@ -80,7 +84,9 @@ SPEC REPOS:
     - GTMSessionFetcher
     - IQKeyboardManagerSwift
     - MBProgressHUD
+    - PayPal.Checkout
     - SDWebImage
+    - syr.core
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -97,8 +103,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5bb1eae636127de695590f50e7d248483eb891e6
   IQKeyboardManagerSwift: 30fb3a61de1af53a95e02b80fb54ed0a19d5ede5
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  PayPal.Checkout: a618c90864b1f5f6b4170ad711161859792f03f8
   SDWebImage: 6da6c8bca115addc4de8613362e1b15f66333825
+  syr.core: d8b7f39df454b70a4628e54dfa26b7dfde686e9e
 
-PODFILE CHECKSUM: c455926c2c8e7cfba3b3c04038d50dab7360ced4
+PODFILE CHECKSUM: 1d90964d417f4d9170d91d4922308a5186136a81
 
 COCOAPODS: 1.5.3
