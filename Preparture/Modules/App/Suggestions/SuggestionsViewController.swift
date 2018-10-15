@@ -22,7 +22,6 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     @IBOutlet var pickerViewType: UIPickerView!
     @IBOutlet var toolBarPicker: UIToolbar!
     @IBOutlet weak var buttonStarFirst: UIButton!
-    var pickerArray = ["Hotels", "Hospitals", "Restaurants"]
     var selectedIndex:NSInteger = 0
     @IBOutlet weak var buttonStarSecond: UIButton!
     @IBOutlet weak var buttonStarThird: UIButton!
@@ -39,6 +38,9 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     var videoPickedBlock: ((NSURL) -> Void)?
     var filePickedBlock: ((URL) -> Void)?
     var imageArray = NSMutableArray()
+    var rateIndex:Int = 0
+    var categoryResponseModel:NSArray?
+    var suggestionModel:GetSuggestionsResponseModel?
     
     override func initView() {
         super.initView()
@@ -59,6 +61,7 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
             labelNoSuggestions.isHidden = true
             tableviewReviews.isHidden = false
         }
+        getAllSuggestionsApi()
     }
     
     //MARK: -> ------ UITextView Delegates ------
@@ -96,11 +99,12 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerArray.count
+        return categoryResponseModel!.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerArray[row]
+        let item:CategoryItem = categoryResponseModel![row] as! CategoryItem
+        return item.categoryName
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -118,33 +122,40 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func actionStarFirst(_ sender: Any) {
+        rateIndex = 1
         selectStarRate(isFirst: true, isSecond: false, isThird: false, isForth: false, isFifth: false)
     }
     
     @IBAction func actionStarSecond(_ sender: Any) {
+        rateIndex = 2
         selectStarRate(isFirst: true, isSecond: true, isThird: false, isForth: false, isFifth: false)
     }
     
     @IBAction func actionStarThird(_ sender: Any) {
+        rateIndex = 3
         selectStarRate(isFirst: true, isSecond: true, isThird: true, isForth: false, isFifth: false)
     }
     
     @IBAction func actionStarFourth(_ sender: Any) {
+        rateIndex = 4
         selectStarRate(isFirst: true, isSecond: true, isThird: true, isForth: true, isFifth: false)
     }
     
     @IBAction func actionStarFifth(_ sender: Any) {
+        rateIndex = 5
         selectStarRate(isFirst: true, isSecond: true, isThird: true, isForth: true, isFifth: true)
     }
     
     @IBAction func actionSubmit(_ sender: Any) {
+        postSuggestionsApi()
     }
     
     @IBAction func actionToolbarDone(_ sender: Any) {
-        guard let code:String = pickerArray[selectedIndex] else {
+        guard let code = categoryResponseModel?[selectedIndex] else {
             return
         }
-        tfType.text = code
+        let item:CategoryItem = code as! CategoryItem
+        tfType.text = item.categoryName
         tfType.resignFirstResponder()
     }
     
@@ -239,6 +250,98 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
         buttonStarFifth.isSelected = isFifth
     }
     
+    //MARK:- Get Suggestions Api integration
+    
+    func getAllSuggestionsApi(){
+        MBProgressHUD.showAdded(to: self.view!, animated: true)
+        UserManager().getSuggestionsApi(with:getSuggestionsRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? GetSuggestionsResponseModel{
+                if model.statusCode == 1{
+                    if model.categoryItems.count != 0 {
+                        self.labelNoSuggestions.isHidden = true
+                        self.tableviewReviews.isHidden = false
+                    }
+                    self.suggestionModel = model
+                    self.tableviewReviews.reloadData()
+                                }
+                //                else{
+                //                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                //                }
+            } else {
+                //                if let model = model as? stat{
+                //                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                //                }
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            } else {
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            print(ErrorType)
+        }
+    }
+    
+    func getSuggestionsRequestBody()->String{
+        var dict:[String:AnyObject] = [String:AnyObject]()
+        if let eventId = eventItem?.eventId {
+            dict.updateValue(eventId as AnyObject, forKey: "event_id")
+        }
+        return CCUtility.getJSONfrom(dictionary: dict)
+    }
+    
+    //MARK:- Post Suggestions Api integration
+    
+    func postSuggestionsApi(){
+        MBProgressHUD.showAdded(to: self.view!, animated: true)
+        UserManager().postSuggestionsApi(with:postSuggestionsRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? GetAllCategoryResponseModel{
+                //if model.statusCode == 1{
+                //                }
+                //                else{
+                //                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                //                }
+            } else {
+                //                if let model = model as? stat{
+                //                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                //                }
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            } else {
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            print(ErrorType)
+        }
+    }
+    
+    func postSuggestionsRequestBody()->String{
+        var dict:[String:AnyObject] = [String:AnyObject]()
+        if let eventId = eventItem?.eventId {
+            dict.updateValue(eventId as AnyObject, forKey: "event_id")
+        }
+        if let user = User.getUser() {
+            dict.updateValue(user.userId as AnyObject, forKey: "user_id")
+        }
+        dict.updateValue(rateIndex as AnyObject, forKey: "rating")
+        if let code = categoryResponseModel?[selectedIndex] {
+            let item:CategoryItem = code as! CategoryItem
+            dict.updateValue(item.categoryID as AnyObject, forKey: "category_id")
+        }
+        dict.updateValue(textViewSuggestions.text as AnyObject, forKey: "comments")
+        
+        //"place_files": "image.jpg,video.mp4" ( File names are concatenate with comma - > check API No: 17)
+        
+        return CCUtility.getJSONfrom(dictionary: dict)
+    }
+    
     //MARK:- UITableViewCell Registration
     
     func tableCellRegistration(){
@@ -253,17 +356,20 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arraySuggestions.count
+        guard let model = suggestionModel else {
+            return 0
+        }
+        return (model.categoryItems.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellSuggestions", for: indexPath) as! SuggestionsTableViewCell
-        
+        cell.setModel(model: (suggestionModel?.categoryItems[indexPath.row])!)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

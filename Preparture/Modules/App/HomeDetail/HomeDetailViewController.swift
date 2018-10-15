@@ -49,6 +49,7 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     @IBOutlet weak var constraintSrollTopWidth: NSLayoutConstraint!
     @IBOutlet weak var viewReviewFull: UIView!
     @IBOutlet weak var labelNoSuggestions: UILabel!
+    var categoryResponseModel:NSArray?
     
     override func initView() {
         super.initView()
@@ -93,6 +94,7 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     @IBAction func actionReadReviews(_ sender: Any) {
         let suggestionsVC = SuggestionsViewController(nibName: "SuggestionsViewController", bundle: nil)
         suggestionsVC.eventItem = eventItem
+        suggestionsVC.categoryResponseModel = categoryResponseModel
         self.present(suggestionsVC, animated: true, completion: nil)
     }
     

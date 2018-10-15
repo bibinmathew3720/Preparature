@@ -93,6 +93,7 @@ extension HomeEventsViewController: UICollectionViewDelegate, UICollectionViewDa
         let homeVC:HomeVC = HomeVC(nibName: "HomeVC", bundle: nil)
         homeVC.itemDetail = categoryResponseModel?.object(at: indexPath.row) as? CategoryItem
         let nav:UINavigationController = UINavigationController.init(rootViewController: homeVC)
+        homeVC.categoryResponseModel = categoryResponseModel
         //self.navigationController?.pushViewController(homeVC, animated: true)
         self.present(nav, animated: true, completion: nil)
     }
