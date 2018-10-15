@@ -510,11 +510,9 @@ extension SuggestionsViewController:UICollectionViewDelegate, UICollectionViewDa
         buttonAddImg.isHidden = true
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCVC", for: indexPath) as! ImagesCVC
         if indexPath.row == imageArray.count {
-            cell.eventImageView.image = #imageLiteral(resourceName: "addItem")
-            cell.backgroundColor = Constant.Colors.AppThemeGreenColor
+            cell.eventImageView.image = #imageLiteral(resourceName: "addImageIcon")
         } else {
             cell.setImageUrl(imageUrlString: self.imageArray[indexPath.row] as! URL)
-            cell.backgroundColor = .clear
         }
         return cell
     }

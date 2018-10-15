@@ -385,6 +385,40 @@ class UserManager: CLBaseService {
         let addToFavoriteReponseModel = GetAllCategoryResponseModel.init(dict:dict)
         return addToFavoriteReponseModel
     }
+    
+    //MARK : Add Event Api
+    
+    func addEventApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForaddEvent(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict as Any)
+                    success(self.addEventResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForaddEvent(with body:String)->CLNetworkModel{
+        let addToFavoriteRequestModel = CLNetworkModel.init(url: BASE_URL+ADD_EVENT_URL, requestMethod_: "POST")
+        addToFavoriteRequestModel.requestBody = body
+        return addToFavoriteRequestModel
+    }
+    
+    func addEventResponseModel(dict:[String : Any?]) -> Any? {
+        let addToFavoriteReponseModel = GetAllCategoryResponseModel.init(dict:dict)
+        return addToFavoriteReponseModel
+    }
 }
     
 class LogInResponseModel : NSObject{

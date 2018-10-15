@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import GooglePlacePicker
 
 class AddPlacesViewController: BaseViewController, GMSMapViewDelegate {
 
@@ -53,7 +54,7 @@ class AddPlacesViewController: BaseViewController, GMSMapViewDelegate {
 }
 
 
-extension AddPlacesViewController:CLLocationManagerDelegate{
+extension AddPlacesViewController:CLLocationManagerDelegate, GMSPlacePickerViewControllerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let currentLocation:CLLocation = locations.last!
         let camera = GMSCameraPosition.camera(withLatitude: (currentLocation.coordinate.latitude), longitude: (currentLocation.coordinate.longitude), zoom: 17.5)
@@ -62,11 +63,42 @@ extension AddPlacesViewController:CLLocationManagerDelegate{
         locationMgr.stopUpdatingLocation()
         let position = currentLocation.coordinate
         let marker = GMSMarker(position: position)
-        marker.title = "wewl"
+        marker.title = "I am here"
         marker.map = mapView
+        showMarkers(currentLocation: currentLocation)
+    }
+    
+    func showMarkers(currentLocation:CLLocation) {
+        let center = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
+        let northEast = CLLocationCoordinate2DMake(center.latitude + 0.001, center.longitude + 0.001)
+        let southWest = CLLocationCoordinate2DMake(center.latitude - 0.001, center.longitude - 0.001)
+        let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
+        let config = GMSPlacePickerConfig(viewport: viewport)
+        let placePicker = GMSPlacePickerViewController(config: config)
+        placePicker.delegate = self
+        present(placePicker, animated: true, completion: nil)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
+    
+    func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
+        viewController.dismiss(animated: true, completion: nil)
+        print("Place name \(place.name)")
+        //placeNameLabel.text = place.name
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapPOIWithPlaceID placeID: String,
+                 name: String, location: CLLocationCoordinate2D) {
+        let infoMarker = GMSMarker()
+        infoMarker.snippet = placeID
+        infoMarker.position = location
+        infoMarker.title = name
+        infoMarker.opacity = 0;
+        infoMarker.infoWindowAnchor.y = 1
+        infoMarker.map = mapView
+        mapView.selectedMarker = infoMarker
+    }
+
 }
