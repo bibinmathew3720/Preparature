@@ -19,6 +19,7 @@ class HomeVC: BaseViewController {
     @IBOutlet weak var labelHeading: UILabel!
     @IBOutlet weak var tableViewList: UITableView!
     var currentPage:Int = 0
+    var categoryResponseModel:NSArray?
     
     override func initView() {
         super.initView()
@@ -158,6 +159,7 @@ extension HomeVC:UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
         let suggestion:SuggestionItems = self.suggestionsArray![indexPath.row] as! SuggestionItems
         let detailVC = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
         detailVC.eventItem = suggestion
+        detailVC.categoryResponseModel = categoryResponseModel
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

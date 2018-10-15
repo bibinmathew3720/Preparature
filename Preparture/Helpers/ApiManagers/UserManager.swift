@@ -317,6 +317,74 @@ class UserManager: CLBaseService {
         return addToFavoriteReponseModel
     }
     
+    
+    //MARK : Get Suggestions Api
+    
+    func getSuggestionsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetSuggestions(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict as Any)
+                    success(self.getSuggestionsResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetSuggestions(with body:String)->CLNetworkModel{
+        let addToFavoriteRequestModel = CLNetworkModel.init(url: BASE_URL+GET_ALL_SUGGESTIONS_EVENT, requestMethod_: "POST")
+        addToFavoriteRequestModel.requestBody = body
+        return addToFavoriteRequestModel
+    }
+    
+    func getSuggestionsResponseModel(dict:[String : Any?]) -> Any? {
+        let addToFavoriteReponseModel = GetSuggestionsResponseModel.init(dict:dict)
+        return addToFavoriteReponseModel
+    }
+    
+    //MARK : Post Suggestions Api
+    
+    func postSuggestionsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForaddSuggestions(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict as Any)
+                    success(self.addSuggestionsResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForaddSuggestions(with body:String)->CLNetworkModel{
+        let addToFavoriteRequestModel = CLNetworkModel.init(url: BASE_URL+ADD_SUGGESTIONS_URL, requestMethod_: "POST")
+        addToFavoriteRequestModel.requestBody = body
+        return addToFavoriteRequestModel
+    }
+    
+    func addSuggestionsResponseModel(dict:[String : Any?]) -> Any? {
+        let addToFavoriteReponseModel = GetAllCategoryResponseModel.init(dict:dict)
+        return addToFavoriteReponseModel
+    }
 }
     
 class LogInResponseModel : NSObject{
@@ -584,5 +652,70 @@ class SettingItem : NSObject{
         if let value = dict["content"] as? String{
             content = value
         }
+    }
+}
+
+class GetSuggestionsResponseModel : NSObject{
+    var statusMessage:String = ""
+    var statusCode:Int = 0
+    var categoryItems = [SuggestionItem]()
+    init(dict:[String:Any?]) {
+        if let value = dict["message"] as? String{
+            statusMessage = value
+        }
+        if let value = dict["status"] as? Int{
+            statusCode = value
+        }
+        if let value = dict["result"] as? NSArray {
+            for item in value {
+                categoryItems.append(SuggestionItem.init(dict: item as! [String : Any?]))
+            }
+        }
+    }
+}
+
+class SuggestionItem : NSObject{
+    var categoryID:String = ""
+    var comments:String = ""
+    var userImage:String = ""
+    var createdDate:String = ""
+    var eventId:String = ""
+    var sugId:String = ""
+    var name:String = ""
+    var userId:String = ""
+    var rating:String = ""
+    init(dict:[String:Any?]) {
+        if let value = dict["category_id"] as? String{
+            categoryID = value
+        }
+        if let value = dict["comments"] as? String{
+            comments = value
+        }
+        if let value = dict["user_image"] as? String{
+            userImage = value
+        }
+        if let value = dict["created_date"] as? String{
+            createdDate = value
+        }
+        if let value = dict["event_id"] as? String{
+            eventId = value
+        }
+        if let value = dict["name"] as? String{
+            name = value
+        }
+        if let value = dict["sgg_id"] as? String{
+            sugId = value
+        }
+        if let value = dict["rating"] as? String{
+            rating = value
+        }
+        if let value = dict["user_id"] as? String{
+            userId = value
+        }
+//        "place_files" =     (
+//            "http://preparature.copycon.in/includes/uploads/VID-20171231-WA0010__3_5.mp4",
+//            "http://preparature.copycon.in/includes/uploads/g211.jpg",
+//            "http://preparature.copycon.in/includes/uploads/1296121-dark-pink-background16.jpg"
+//        );
     }
 }
