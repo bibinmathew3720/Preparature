@@ -14,6 +14,7 @@ pod 'GoogleSignIn'
 pod 'GooglePlaces'
 pod 'GooglePlacePicker'
 pod 'GoogleMaps'
+pod 'PayPal.Checkout'
 
 
   # Pods for Preparture
