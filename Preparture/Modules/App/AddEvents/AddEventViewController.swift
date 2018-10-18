@@ -58,7 +58,10 @@ class AddEventViewController: BaseViewController {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return categoryResponseModel!.count
+        if categoryResponseModel != nil {
+            return categoryResponseModel!.count
+        }
+        return 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -122,6 +125,7 @@ class AddEventViewController: BaseViewController {
     }
     
     @IBAction func actionSubmit(_ sender: Any) {
+        addEventApi()
     }
     
     @IBAction func actionToolbarDone(_ sender: Any) {
@@ -200,7 +204,7 @@ class AddEventViewController: BaseViewController {
     }
 }
 
-extension AddEventViewController:UITextFieldDelegate {
+extension AddEventViewController:UITextFieldDelegate, UITextViewDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == tfLocation {
             if tfLocation.text?.count != 0 {
@@ -215,6 +219,27 @@ extension AddEventViewController:UITextFieldDelegate {
                     var array:[MKMapItem] = response.mapItems
                     self.mapItem = array[0]
                 }
+            }
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == tfType {
+            tfType.inputView = pickerViewType
+            tfType.inputAccessoryView = toolBarPicker
+            pickerViewType.translatesAutoresizingMaskIntoConstraints = false
+            toolBarPicker.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView == textViewTravelExp {
+            if textViewTravelExp.text == "Travel Experience" {
+                textViewTravelExp.text = ""
+            }
+        } else {
+            if textViewComments.text == "Comments" {
+                textViewComments.text = ""
             }
         }
     }

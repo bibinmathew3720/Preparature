@@ -51,6 +51,9 @@ class AddPlacesViewController: BaseViewController, GMSMapViewDelegate {
         locationMgr.startUpdatingLocation()
     }
     
+    @IBAction func actionBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 
