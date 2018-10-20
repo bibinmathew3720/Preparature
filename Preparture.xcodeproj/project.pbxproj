@@ -54,6 +54,8 @@
 		BB9FA6CA21441A4F00FB26FE /* HomeEventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9FA6C821441A4F00FB26FE /* HomeEventsViewController.xib */; };
 		BB9FA6CF2144203F00FB26FE /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9FA6CD2144203F00FB26FE /* CategoryCollectionViewCell.swift */; };
 		BB9FA6D02144203F00FB26FE /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9FA6CE2144203F00FB26FE /* CategoryCollectionViewCell.xib */; };
+		BBA7B134217BA85600BB37A8 /* AddPlacesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7B132217BA85600BB37A8 /* AddPlacesTableViewCell.swift */; };
+		BBA7B135217BA85600BB37A8 /* AddPlacesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBA7B133217BA85600BB37A8 /* AddPlacesTableViewCell.xib */; };
 		BBBAAA452122DB1B00DD7601 /* AddPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBAAA432122DB1B00DD7601 /* AddPlacesViewController.swift */; };
 		BBBAAA462122DB1B00DD7601 /* AddPlacesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBBAAA442122DB1B00DD7601 /* AddPlacesViewController.xib */; };
 		D0012C9120EEE61500074C90 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0012C8F20EEE61500074C90 /* FavoriteCell.swift */; };
@@ -172,6 +174,8 @@
 		BB9FA6C821441A4F00FB26FE /* HomeEventsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeEventsViewController.xib; sourceTree = "<group>"; };
 		BB9FA6CD2144203F00FB26FE /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		BB9FA6CE2144203F00FB26FE /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		BBA7B132217BA85600BB37A8 /* AddPlacesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlacesTableViewCell.swift; sourceTree = "<group>"; };
+		BBA7B133217BA85600BB37A8 /* AddPlacesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPlacesTableViewCell.xib; sourceTree = "<group>"; };
 		BBBAAA432122DB1B00DD7601 /* AddPlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlacesViewController.swift; sourceTree = "<group>"; };
 		BBBAAA442122DB1B00DD7601 /* AddPlacesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPlacesViewController.xib; sourceTree = "<group>"; };
 		D0012C8F20EEE61500074C90 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
@@ -528,9 +532,19 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		BBA7B131217BA81B00BB37A8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BBA7B132217BA85600BB37A8 /* AddPlacesTableViewCell.swift */,
+				BBA7B133217BA85600BB37A8 /* AddPlacesTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		BBBAAA422122DAA800DD7601 /* AddPlacesVC */ = {
 			isa = PBXGroup;
 			children = (
+				BBA7B131217BA81B00BB37A8 /* Cell */,
 				BBBAAA432122DB1B00DD7601 /* AddPlacesViewController.swift */,
 				BBBAAA442122DB1B00DD7601 /* AddPlacesViewController.xib */,
 			);
@@ -898,6 +912,7 @@
 				05D2F1EB20D81D0600E2A5C9 /* OFL.txt in Resources */,
 				05D2F1DE20D81D0600E2A5C9 /* Muli-BlackItalic.ttf in Resources */,
 				BB9FA6D02144203F00FB26FE /* CategoryCollectionViewCell.xib in Resources */,
+				BBA7B135217BA85600BB37A8 /* AddPlacesTableViewCell.xib in Resources */,
 				05D2F1E020D81D0600E2A5C9 /* Muli-BoldItalic.ttf in Resources */,
 				05B2CB6820B1E481008D0D32 /* Main.storyboard in Resources */,
 				05D2F1DD20D81D0600E2A5C9 /* Muli-Black.ttf in Resources */,
@@ -1089,6 +1104,7 @@
 				05DFA28F20FA6DE6001F676A /* SuggestionsTableViewCell.swift in Sources */,
 				059948E420D6B1C90057F673 /* SignInViewController.swift in Sources */,
 				D009800B210F487700DA1316 /* PreparatureModel.xcdatamodeld in Sources */,
+				BBA7B134217BA85600BB37A8 /* AddPlacesTableViewCell.swift in Sources */,
 				D0F164502114CB3D0030301A /* WebViewVC.swift in Sources */,
 				D0183CED210CC3CD0030D02D /* UIImageViewExtensions.swift in Sources */,
 				D06819E12114474F00AB4EF6 /* ImagesCVC.swift in Sources */,

@@ -18,6 +18,9 @@ class AddPlacesViewController: BaseViewController, GMSMapViewDelegate {
     let locationMgr = CLLocationManager()
     var userLocLatitude = 0.000000
     var userLocLongitude = 0.00000
+    @IBOutlet weak var viewPlaces: UIView!
+    @IBOutlet weak var imgvwPlaces: UIImageView!
+    @IBOutlet weak var tableViewPlaces: UITableView!
     
     override func initView() {
         super.initView()
@@ -27,6 +30,7 @@ class AddPlacesViewController: BaseViewController, GMSMapViewDelegate {
     
     func customization() {
         getLocation()
+        registerCell()
     }
 
     
@@ -51,8 +55,20 @@ class AddPlacesViewController: BaseViewController, GMSMapViewDelegate {
         locationMgr.startUpdatingLocation()
     }
     
+    //MARK:- Register cells
+    
+    func registerCell() {
+        tableViewPlaces.register(UINib.init(nibName: "AddPlacesTableViewCell", bundle: nil), forCellReuseIdentifier: "addPlacesTableViewCell")
+    }
+    
+    //MARK:- UIView action methods
+    
     @IBAction func actionBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func actionPlacesShow(_ sender: Any) {
+        
     }
 }
 
@@ -104,4 +120,39 @@ extension AddPlacesViewController:CLLocationManagerDelegate, GMSPlacePickerViewC
         mapView.selectedMarker = infoMarker
     }
 
+}
+
+extension AddPlacesViewController:UITableViewDelegate, UITableViewDataSource, AddPlacesTableViewCellDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let model = suggestionModel else {
+            return 0
+        }
+        return (model.categoryItems.count)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "addPlacesTableViewCell", for: indexPath) as! AddPlacesTableViewCell
+        //cell.setModel(model: (suggestionModel?.categoryItems[indexPath.row])!)
+        cell.tag = indexPath.row
+        cell.delegate = self
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView.init()
+    }
+    
+    //MARK:- AddPlacesTableViewCellDelegate method
+    
+    func closeAction(cell:AddPlacesTableViewCell, tag:Int) {
+        
+    }
 }
