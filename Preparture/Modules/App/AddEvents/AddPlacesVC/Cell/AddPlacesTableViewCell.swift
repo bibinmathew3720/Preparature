@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
 protocol AddPlacesTableViewCellDelegate {
     func closeAction(cell:AddPlacesTableViewCell, tag:Int)
@@ -26,6 +28,15 @@ class AddPlacesTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setModel(model: Any) {
+        if let value = model as? GMSPlace {
+            labelName.text = value.name
+        }
+        if let value = model as? GMSMarker {
+            labelName.text = value.title
+        }
     }
     
     @IBAction func actionClose(_ sender: Any) {

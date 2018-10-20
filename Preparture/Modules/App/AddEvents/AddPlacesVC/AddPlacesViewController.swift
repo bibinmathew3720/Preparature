@@ -21,6 +21,9 @@ class AddPlacesViewController: BaseViewController, GMSMapViewDelegate {
     @IBOutlet weak var viewPlaces: UIView!
     @IBOutlet weak var imgvwPlaces: UIImageView!
     @IBOutlet weak var tableViewPlaces: UITableView!
+    var arrayPlaces:NSMutableArray = NSMutableArray()
+    @IBOutlet weak var labelNoPlaces: UILabel!
+    @IBOutlet weak var viewBottom: UIView!
     
     override func initView() {
         super.initView()
@@ -68,7 +71,21 @@ class AddPlacesViewController: BaseViewController, GMSMapViewDelegate {
     }
     
     @IBAction func actionPlacesShow(_ sender: Any) {
-        
+        if viewPlaces.frame.origin.y == UIScreen.main.bounds.size.height - 50 {
+            viewPlaces.frame = CGRect(x: 0, y: viewPlaces.frame.origin.y, width: viewPlaces.frame.size.width, height: viewPlaces.frame.size.height)
+            UIView.animate(withDuration: 0.4, animations: {
+                self.viewPlaces.frame = CGRect(x: 0, y: UIScreen.main.bounds.size.height - self.viewPlaces.frame.size.height, width: self.viewPlaces.frame.size.width, height: self.viewPlaces.frame.size.height)
+            }) { (isCompleted) in
+                
+            }
+        } else {
+            self.viewPlaces.frame = CGRect(x: 0, y: UIScreen.main.bounds.size.height - self.viewPlaces.frame.size.height, width: self.viewPlaces.frame.size.width, height: self.viewPlaces.frame.size.height)
+            UIView.animate(withDuration: 0.4, animations: {
+                self.viewPlaces.frame = CGRect(x: 0, y: self.viewBottom.frame.origin.y, width: self.viewPlaces.frame.size.width, height: self.viewPlaces.frame.size.height)
+            }) { (isCompleted) in
+                
+            }
+        }
     }
 }
 
@@ -103,9 +120,21 @@ extension AddPlacesViewController:CLLocationManagerDelegate, GMSPlacePickerViewC
     }
     
     func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
-        viewController.dismiss(animated: true, completion: nil)
         print("Place name \(place.name)")
-        //placeNameLabel.text = place.name
+        arrayPlaces.add(place)
+        if !labelNoPlaces.isHidden {
+            labelNoPlaces.isHidden = true
+            tableViewPlaces.isHidden = false
+        }
+        tableViewPlaces.reloadData()
+    }
+    
+    func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
+        viewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func placePicker(_ viewController: GMSPlacePickerViewController, didFailWithError error: Error) {
+        
     }
     
     func mapView(_ mapView: GMSMapView, didTapPOIWithPlaceID placeID: String,
@@ -118,6 +147,12 @@ extension AddPlacesViewController:CLLocationManagerDelegate, GMSPlacePickerViewC
         infoMarker.infoWindowAnchor.y = 1
         infoMarker.map = mapView
         mapView.selectedMarker = infoMarker
+        arrayPlaces.add(infoMarker)
+        if !labelNoPlaces.isHidden {
+            labelNoPlaces.isHidden = true
+            tableViewPlaces.isHidden = false
+        }
+        tableViewPlaces.reloadData()
     }
 
 }
@@ -128,22 +163,19 @@ extension AddPlacesViewController:UITableViewDelegate, UITableViewDataSource, Ad
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let model = suggestionModel else {
-            return 0
-        }
-        return (model.categoryItems.count)
+        return arrayPlaces.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addPlacesTableViewCell", for: indexPath) as! AddPlacesTableViewCell
-        //cell.setModel(model: (suggestionModel?.categoryItems[indexPath.row])!)
         cell.tag = indexPath.row
         cell.delegate = self
+        cell.setModel(model: arrayPlaces[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return 60
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -153,6 +185,11 @@ extension AddPlacesViewController:UITableViewDelegate, UITableViewDataSource, Ad
     //MARK:- AddPlacesTableViewCellDelegate method
     
     func closeAction(cell:AddPlacesTableViewCell, tag:Int) {
-        
+        arrayPlaces.removeObject(at: tag)
+        tableViewPlaces.reloadData()
+        if arrayPlaces.count == 0 {
+            labelNoPlaces.isHidden = false
+            tableViewPlaces.isHidden = true
+        }
     }
 }

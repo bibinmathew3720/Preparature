@@ -135,9 +135,11 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
             return
         }
         tfType.text = code.categoryName
+        tfType.resignFirstResponder()
     }
     
     @IBAction func actionToolbarCancel(_ sender: Any) {
+        tfType.resignFirstResponder()
     }
     
     @IBAction func actionAddPlaces(_ sender: Any) {
