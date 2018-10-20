@@ -7,12 +7,23 @@
 //
 
 import UIKit
-enum MIMEType : String {
-    case JPEG
-    case PNG
-    case DOC
-    case PDF
+import Alamofire
+
+enum ErrorType : Int {
+    case noNetwork = 1
+    case dataError
+    case notFound
+    case internalServerError
+    case forbidden
+    case tokenExpired
 }
+
+class Connectivity {
+    class var isConnectedToInternet:Bool {
+        return NetworkReachabilityManager()!.isReachable
+    }
+}
+
 class CLNetworkManager: NSObject {
     func initateWebRequest(_ netWorkModel : CLNetworkModel, success:@escaping (_ result: Data)->(), failiure:@escaping (_ error:ErrorType)->()){
         if CLNetworkUtility.sharedInstance.isConnected() {
@@ -22,131 +33,36 @@ class CLNetworkManager: NSObject {
             sessionConfiguration.timeoutIntervalForResource = 30.0
             sessionConfiguration.urlCredentialStorage = nil
             let session : URLSession = URLSession(configuration: sessionConfiguration)
-            defer {
-                session.finishTasksAndInvalidate()
-            }
+            defer {session.finishTasksAndInvalidate()}
             let requestObject : URLRequest? = createWebServiceRequestWithModel(netWorkModel) as URLRequest?
             if requestObject != nil{
                 let sessionTask : URLSessionDataTask = session.dataTask(with: requestObject!, completionHandler: { (data, response , error) -> Void in
                     if let error_ = error{
                         DispatchQueue.main.async(execute: {[weak self] () -> () in
                             let errorReceived = error_ as NSError
-                            if(errorReceived.code == -1004){
-                                failiure(.internalServerError)
-                            }
-                            else if (errorReceived.code == -2103){
-                                failiure(.internalServerError)
-                            }
-                            else{
-                                failiure( (self?.getErrorTypeFromCode(errorCode: errorReceived.code))!)
-                            }
-                            
-                        })
-                    }else{
+                            if let _self = self{
+                                failiure(_self.getErrorTypeFromCode(errorCode: errorReceived.code))
+                            }else{
+                                failiure(ErrorType.dataError)}})}else{
                         DispatchQueue.main.async(execute: { () -> () in
                             if let _data = data{
                                 success(_data)
-                            }else{
-                                failiure(ErrorType.dataError)
-                            }
-                            
-                        } )           }
-                })
+                            }else{failiure(ErrorType.dataError)}} )}})
                 sessionTask.resume()
                 
             }else{
                 DispatchQueue.main.async(execute: { () -> () in
+                    //request nil
                     failiure(ErrorType.dataError)
-                    
                 })
             }
         }else{
             DispatchQueue.main.async(execute: { () -> () in
                 failiure(ErrorType.noNetwork)
-                
             })
         }
     }
-    //TODO:- UPLOAD IMAGE
-    static func upload(file:Data,type:MIMEType,ext:String,url:String,parameters:String?,headers:[String:String]?, completionHandler:@escaping([String : Any]?,Bool,ErrorType?) ->Void) ->Void {
-        
-        let config = URLSessionConfiguration.default
-        let session = URLSession.init(configuration: config, delegate: nil, delegateQueue: OperationQueue.main)
-        let characterSet = CharacterSet.urlQueryAllowed
-        let queryUrl = URL.init(string: url.addingPercentEncoding(withAllowedCharacters: characterSet)!)
-        let boundary = "---------------------------14737809831466499882746641449"
-        var request = URLRequest.init(url: queryUrl!)
-        request.httpMethod = "POST"
-        request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        if headers != nil {
-            request.allHTTPHeaderFields = headers
-        }
-        
-        let body = NSMutableData()
-        let boundaryPrefix = "--\(boundary)\r\n"
-        let uploadFile = "image." + ext
-        let mimeType = CLNetworkManager().mime(type: type)
-        
-        
-        body.appendString(boundaryPrefix)
-        body.appendString("Content-Disposition: form-data; name=\"files\"; filename=\"\(uploadFile)\"\r\n")
-        body.appendString("Content-Type: \(mimeType)\r\n\r\n")
-        body.append(file)
-        body.appendString("\r\n")
-        
-        //Text params
-        body.appendString(boundaryPrefix)
-        body.appendString("Content-Disposition: form-data; name=\"message\"\r\n\r\n")
-        body.appendString("")
-        body.appendString("\r\n")
-        
-        body.appendString("--\(boundary)--\r\n")
-        
-        request.httpBody = body as Data
-        
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            
-            if error == nil  {
-                let httpResponse = response as! HTTPURLResponse
-                print(httpResponse.statusCode)
-                if httpResponse.statusCode == 200 {
-                    do {
-                        if let jsondata = data ,
-                            let json = try JSONSerialization.jsonObject(with: jsondata, options: []) as? [String : Any] {
-                            
-                            print(json as AnyObject)
-                            /*if json["status"] as! String == APIStatus.SUCCESS {
-                             completionHandler(json,true,json["message"] as? String)
-                             }
-                             else {
-                             completionHandler(nil,false,json["message"] as? String)
-                             }*/
-                            completionHandler(json,true,nil)
-                            
-                        }
-                        else {
-                            //DATA IS NIL
-                            completionHandler(nil,false,ErrorType.dataError)
-                        }
-                    }
-                    catch {
-                        //JSON CANNOT SERIALISED
-                        completionHandler(nil,false,ErrorType.dataError)
-                    }
-                }
-                else {
-                    //BAD RESPONSE - 404,402
-                    completionHandler(nil,false,ErrorType.dataError)
-                }
-            }
-            else{
-                //BAD RESPONSE - 500
-                completionHandler(nil,false,ErrorType.noNetwork)
-            }
-        }
-        task.resume()
-    }
+    
     
     func createURLFromString(_ urlString :String)->URL?{
         let encodedUrlstring = urlString.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
@@ -197,26 +113,205 @@ class CLNetworkManager: NSObject {
             return .noNetwork
         case 404:
             return .notFound
+        case 401:
+            return .tokenExpired
+        case 403:
+            return .forbidden
         case 500:
             return .internalServerError
         default:
-            return .noNetwork
+            return .dataError
         }
     }
-    func mime(type: MIMEType) ->String {
-        switch type {
-        case .JPEG:
-            return "image/jpeg"
-        case .PNG:
-            return "image/png"
-        default:
-            return ""
+    
+    
+    //MARK: Alamofire
+    class func callApi(with body:[String:Any], method:HTTPMethod, and url:String,success:@escaping(Any)->(),failure:@escaping(_ errorType:Any)->()) -> () {
+        if Connectivity.isConnectedToInternet{
+            let header = getHeader()
+            let encode:ParameterEncoding = (method == .post || method == .put) ? JSONEncoding.default : URLEncoding.default
+            Alamofire.request(url, method: method, parameters: body, encoding: encode, headers: header).responseJSON(completionHandler: { (response) in
+                switch response.result{
+                case .success(_):
+                    guard let _statusCode = response.response?.statusCode else{
+                        return
+                    }
+                    switch _statusCode{
+                    case 200,201,203,204:
+                        guard let _value = response.result.value else{
+                            DispatchQueue.main.async {success("SUCESS")}
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            success(_value)
+                        }
+                    case 400,401,403,404:
+                        guard let _value = response.result.value else{
+                            DispatchQueue.main.async {
+                                failure(self.updateErrorValue(to: _statusCode, value: "Error"))
+                            }
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            failure(self.updateErrorValue(to: _statusCode, value: _value))
+                        }
+
+                    default:
+                        guard let _value = response.result.value else{
+                            DispatchQueue.main.async { failure(self.updateErrorValue(to: _statusCode, value: "Error"))}
+                            return
+                        }
+                        DispatchQueue.main.async {
+                             failure(self.updateErrorValue(to: _statusCode, value: _value))
+                        }
+                    }
+                    
+            case .failure(_):
+                guard let _statusCode = response.response?.statusCode else{
+                    return
+                }
+                switch _statusCode{
+                case 200,201,203,204:
+                    guard let _value = response.result.value else{
+                        DispatchQueue.main.async {success("SUCESS")}
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        success(_value)
+                    }
+                case 400,401,403,404:
+                    guard let _value = response.result.value else{
+                        DispatchQueue.main.async {
+                            failure(self.updateErrorValue(to: _statusCode, value: "Error"))
+                        }
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        failure(self.updateErrorValue(to: _statusCode, value: _value))
+                    }
+
+                default:
+                    guard let _value = response.result.value else{
+                        DispatchQueue.main.async {failure(self.updateErrorValue(to: _statusCode, value: "Error"))}
+                        return
+                    }
+                    DispatchQueue.main.async {
+                       failure(self.updateErrorValue(to: _statusCode, value: _value))
+                    }
+                    }
+                }
+            })
+        }else{
+            var dict:[String:Any] = [String:Any]()
+            dict.updateValue(Constant.GenAlerts.noNetwork, forKey: "detail")
+            dict.updateValue(1, forKey: "statusCode")
+            failure(dict)
         }
     }
-}
-extension NSMutableData {
-    func appendString(_ string: String) {
-        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)
-        append(data!)
+        
+        //Get
+       class func callGetApi(with body:[String:Any], method:HTTPMethod, and url:String,success:@escaping(Any)->(),failure:@escaping(_ errorType:Any)->()) -> () {
+         if Connectivity.isConnectedToInternet{
+            let header = getHeader()
+            Alamofire.request(url, method: method, encoding: URLEncoding.default, headers: header).responseJSON(completionHandler: { (response) in
+                switch response.result{
+                case .success(_):
+                    guard let _statusCode = response.response?.statusCode else{
+                        return
+                    }
+                    switch _statusCode{
+                    case 200,201,203,204:
+                        guard let _value = response.result.value else{
+                            DispatchQueue.main.async {success("SUCESS")}
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            success(_value)
+                        }
+                    case 400,401,403,404:
+                        guard let _value = response.result.value else{
+                            DispatchQueue.main.async {
+                               failure(self.updateErrorValue(to: _statusCode, value: "Error"))
+                            }
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            failure(self.updateErrorValue(to: _statusCode, value: _value))
+                        }
+
+                    default:
+                        guard let _value = response.result.value else{
+                            DispatchQueue.main.async {failure(self.updateErrorValue(to: _statusCode, value: "Error"))}
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            failure(self.updateErrorValue(to: _statusCode, value: _value))
+                        }
+                    }
+                    
+                case .failure(_):
+                    guard let _statusCode = response.response?.statusCode else{
+                        return
+                    }
+                    switch _statusCode{
+                    case 200,201,203,204:
+                        guard let _value = response.result.value else{
+                            DispatchQueue.main.async {success("SUCESS")}
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            success(_value)
+                        }
+                    case 400,401,403,404:
+                        guard let _value = response.result.value else{
+                            DispatchQueue.main.async {
+                                failure(self.updateErrorValue(to: _statusCode, value: "Error"))
+                            }
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            failure(self.updateErrorValue(to: _statusCode, value: _value))
+                        }
+
+                    default:
+                        guard let _value = response.result.value else{
+                            DispatchQueue.main.async {failure(self.updateErrorValue(to: _statusCode, value: "Error"))}
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            failure(self.updateErrorValue(to: _statusCode, value: _value))
+                        }
+                    }
+                }
+            })}else{
+            var dict:[String:Any] = [String:Any]()
+             dict.updateValue(Constant.GenAlerts.noNetwork, forKey: "detail")
+            dict.updateValue(1, forKey: "statusCode")
+            failure(dict)
+        }
+        }
+    
+   class func updateErrorValue(to errorCode:Int,value:Any) -> [String:Any] {
+         var dict:[String:Any] = [String:Any]()
+        if let _value = value as? [String:Any]{
+           dict = _value
+        }else{
+          dict.updateValue(value, forKey: "detail")
+        }
+       
+        dict.updateValue(errorCode, forKey: "statusCode")
+        return dict
+    }
+    
+    class func getHeader() -> [String:String] {
+        var header = [String:String]()
+         header.updateValue("application/json", forKey: "Content-Type")
+//        guard let _cLTokenModel = CLAppController.sharedInstance.cLTokenModel else {
+//            return header
+//        }
+//        header.updateValue(_cLTokenModel.tokenType+" "+_cLTokenModel.accessToken, forKey: "Authorization")
+       // header.updateValue("application/json", forKey: "Content-Type")
+        return header
     }
 }
+

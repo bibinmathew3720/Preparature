@@ -11,10 +11,11 @@ import UIKit
 class HomeEventsViewController: BaseViewController {
 
     @IBOutlet weak var collectionViewEvents: UICollectionView!
-    var categoryResponseModel:NSArray?
+    var categoryResponseModel:GetAllCategoryResponseModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(categoryResponseModel)
 
         // Do any additional setup after loading the view.
         customization()
@@ -51,7 +52,7 @@ class HomeEventsViewController: BaseViewController {
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? GetAllCategoryResponseModel{
                 //if model.statusCode == 1{
-                self.categoryResponseModel = model.categoryItems as NSArray
+                self.categoryResponseModel = model
                     self.collectionViewEvents.reloadData()
 //                }
 //                else{
@@ -77,25 +78,28 @@ class HomeEventsViewController: BaseViewController {
 
 extension HomeEventsViewController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let array = categoryResponseModel {
-            return (categoryResponseModel?.count)!
+        if let catResponse = self.categoryResponseModel {
+            return catResponse.categoryItems.count
         }
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let homeHeadingCVC : CategoryCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
+        if let catResponse = self.categoryResponseModel {
+            homeHeadingCVC.setCategoryArray(categoryItem: catResponse.categoryItems[indexPath.row])
+        }
         
-        homeHeadingCVC.setCategoryArray(categoryItem: categoryResponseModel?.object(at: indexPath.row) as! CategoryItem)
         return homeHeadingCVC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let homeVC:HomeVC = HomeVC(nibName: "HomeVC", bundle: nil)
-        homeVC.itemDetail = categoryResponseModel?.object(at: indexPath.row) as? CategoryItem
+        if let catResponse = self.categoryResponseModel{
+            homeVC.itemDetail = catResponse.categoryItems[indexPath.row]
+            homeVC.categoryResponseModel = catResponse.categoryItems as NSArray
+        }
         let nav:UINavigationController = UINavigationController.init(rootViewController: homeVC)
-        homeVC.categoryResponseModel = categoryResponseModel
-        //self.navigationController?.pushViewController(homeVC, animated: true)
         self.present(nav, animated: true, completion: nil)
     }
     

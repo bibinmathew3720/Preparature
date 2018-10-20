@@ -63,4 +63,11 @@ struct Constant{
         static let cancelBtnTitle = "Cancel"
         
     }
+    
+    struct GenAlerts {
+        static let authenticationFailed = "Authentication failed,please login and continue"
+        static let forbiddenMessage = "You do not have the permission to access/update this view."
+        static let unknownIssue = "Sorry, we are facing some technical issues, please try after some time"
+        static let noNetwork = "Seems you are offline.Please check your internet connection."
+    }
 }

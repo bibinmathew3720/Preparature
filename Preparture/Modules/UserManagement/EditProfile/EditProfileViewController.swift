@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class EditProfileViewController: BaseViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     @IBOutlet weak var cameraButton: UIButton!
@@ -200,27 +201,86 @@ class EditProfileViewController: BaseViewController,UIImagePickerControllerDeleg
     func sendProfileImage(image:UIImage, ext: String){
         let imageData = UIImageJPEGRepresentation(image, 0.25)
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        CLNetworkManager.upload(file: imageData!,
-                                type: .JPEG, ext: ext,
-                                url: BASE_URL+IMAGE_UPLOAD_URL,
-                                parameters: "files",
-                                headers: nil)
-        {
-            (response, status, error) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            if status == true {
-                if let res = response {
-                    self.fileUploadResponseModel = FileUploadResponseModel.init(dict: res)
-                    self.callingEditProfileApi()
-                }
+        callingUploadApi(imageData: imageData!)
+//        CLNetworkManager.upload(file: imageData!,
+//                                type: .JPEG, ext: ext,
+//                                url: BASE_URL+IMAGE_UPLOAD_URL,
+//                                parameters: "files",
+//                                headers: nil)
+//        {
+//            (response, status, error) in
+//            MBProgressHUD.hide(for: self.view, animated: true)
+//            if status == true {
+//                if let res = response {
+//                    self.fileUploadResponseModel = FileUploadResponseModel.init(dict: res)
+//                    self.callingEditProfileApi()
+//                }
+//            }
+//            else{
+//                if(error == .noNetwork){
+//                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+//                }
+//                else{
+//                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+//                }
+//            }
+//        }
+   }
+    
+    func callingUploadApi(imageData:Data){
+        
+        var dict:[String:String] = [String:String]()
+//        dict.updateValue(Constant.ApiKey, forKey: "apikey")
+//        dict.updateValue(CCUtility.getCurrentLanguage(), forKey: "lang")
+//        if let user = User.getUser(){
+//            dict.updateValue("\(user.userId)", forKey: "CustomerId")
+//        }
+        //let imageData: Data = UIImagePNGRepresentation(image)!
+        requestWith(endUrl: "http://preparature.copycon.in/api/file_upload", imageData: imageData, parameters: dict, onCompletion: { (success) in
+            print("Success")
+        }) { (error) in
+            print("Failure")
+        }
+    }
+    
+    
+    func requestWith(endUrl: String, imageData: Data?, parameters: [String : Any], onCompletion: ((Bool) -> Void)? = nil, onError: ((Error?) -> Void)? = nil){
+        
+        let url = "http://google.com" /* your API url */
+        
+        let headers: HTTPHeaders = [
+            /* "Authorization": "your_access_token",  in case you need authorization header */
+            "Content-type": "multipart/form-data"
+        ]
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            for (key, value) in parameters {
+              //  multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
             }
-            else{
-                if(error == .noNetwork){
-                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            
+            if let data = imageData{
+                multipartFormData.append(data, withName: "file", fileName: "image21.jpeg", mimeType: "image/jpeg")
+            }
+            
+        }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { (result) in
+            switch result{
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    
+                    print("Response:\(response)")
+                    //                    let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(response)
+                    
+                    print("Succesfully uploaded")
+                    if let err = response.error{
+                        print(err.localizedDescription)
+                        onError?(err)
+                        return
+                    }
+                    onCompletion?(true)
                 }
-                else{
-                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
-                }
+            case .failure(let error):
+                print("Error in upload: \(error.localizedDescription)")
+                onError?(error)
             }
         }
     }
