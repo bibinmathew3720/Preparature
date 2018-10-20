@@ -184,29 +184,29 @@ class SignUpViewController: BaseViewController,UIImagePickerControllerDelegate,U
     func sendProfileImage(image:UIImage, ext: String){
         let imageData = UIImageJPEGRepresentation(image, 0.25)
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        CLNetworkManager.upload(file: imageData!,
-                                type: .JPEG, ext: ext,
-                                url: BASE_URL+IMAGE_UPLOAD_URL,
-                                parameters: "files",
-                                headers: nil)
-        {
-            (response, status, error) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            if status == true {
-                if let res = response {
-                    self.fileUploadResponseModel = FileUploadResponseModel.init(dict: res)
-                    self.callingSignUpApi()
-                }
-            }
-            else{
-                if(error == .noNetwork){
-                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
-                }
-                else{
-                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
-                }
-            }
-        }
+//        CLNetworkManager.upload(file: imageData!,
+//                                type: .JPEG, ext: ext,
+//                                url: BASE_URL+IMAGE_UPLOAD_URL,
+//                                parameters: "files",
+//                                headers: nil)
+//        {
+//            (response, status, error) in
+//            MBProgressHUD.hide(for: self.view, animated: true)
+//            if status == true {
+//                if let res = response {
+//                    self.fileUploadResponseModel = FileUploadResponseModel.init(dict: res)
+//                    self.callingSignUpApi()
+//                }
+//            }
+//            else{
+//                if(error == .noNetwork){
+//                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+//                }
+//                else{
+//                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+//                }
+//            }
+//        }
     }
     
 }

@@ -1,4 +1,7 @@
 PODS:
+  - Alamofire (4.7.3)
+  - AlamofireImage (3.4.1):
+    - Alamofire (~> 4.7)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -57,6 +60,8 @@ PODS:
   - syr.core (1.5.6)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - AlamofireImage
   - FacebookCore
   - FacebookLogin
   - GoogleMaps
@@ -70,6 +75,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireImage
     - Bolts
     - FacebookCore
     - FacebookLogin
@@ -89,6 +96,8 @@ SPEC REPOS:
     - syr.core
 
 SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireImage: 78d67ccbb763d87ba44b21583d2153500a195630
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
   FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
@@ -107,6 +116,6 @@ SPEC CHECKSUMS:
   SDWebImage: 6da6c8bca115addc4de8613362e1b15f66333825
   syr.core: d8b7f39df454b70a4628e54dfa26b7dfde686e9e
 
-PODFILE CHECKSUM: 1d90964d417f4d9170d91d4922308a5186136a81
+PODFILE CHECKSUM: 77688517d512b2dcab0e5a4a44871f05b697c4db
 
 COCOAPODS: 1.5.3

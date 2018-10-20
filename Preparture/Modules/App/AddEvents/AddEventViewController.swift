@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class AddEventViewController: BaseViewController {
+class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPickerViewDelegate {
 
     @IBOutlet weak var tfType: UITextField!
     @IBOutlet var pickerViewType: UIPickerView!
@@ -27,7 +27,7 @@ class AddEventViewController: BaseViewController {
     @IBOutlet weak var buttonStarFifth: UIButton!
     var rateIndex:Int = 0
     var mapItem:MKMapItem?
-    var categoryResponseModel:NSArray?
+    var categoryResponseModel:GetAllCategoryResponseModel?
     
     override func initView() {
         super.initView()
@@ -58,15 +58,17 @@ class AddEventViewController: BaseViewController {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if categoryResponseModel != nil {
-            return categoryResponseModel!.count
+        if let catResposne = self.categoryResponseModel{
+            return catResposne.categoryItems.count
         }
         return 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let item:CategoryItem = categoryResponseModel![row] as! CategoryItem
-        return item.categoryName
+        if let catResposne = self.categoryResponseModel{
+            return catResposne.categoryItems[row].categoryName
+        }
+        return ""
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -129,11 +131,10 @@ class AddEventViewController: BaseViewController {
     }
     
     @IBAction func actionToolbarDone(_ sender: Any) {
-        guard let code = categoryResponseModel?[selectedIndex] else {
+        guard let code = categoryResponseModel?.categoryItems[selectedIndex] else {
             return
         }
-        let item:CategoryItem = code as! CategoryItem
-        tfType.text = item.categoryName
+        tfType.text = code.categoryName
     }
     
     @IBAction func actionToolbarCancel(_ sender: Any) {
@@ -193,9 +194,9 @@ class AddEventViewController: BaseViewController {
         dict.updateValue(tfAuthorName.text as AnyObject, forKey: "comments")
         
         dict.updateValue(rateIndex as AnyObject, forKey: "event_rate")
-        if let code = categoryResponseModel?[selectedIndex] {
-            let item:CategoryItem = code as! CategoryItem
-            dict.updateValue(item.categoryID as AnyObject, forKey: "category_id")
+        
+        if let code = categoryResponseModel?.categoryItems[selectedIndex] {
+            dict.updateValue(code.categoryID as AnyObject, forKey: "category_id")
         }
         
         //"event_files": "image.jpg,video.mp4" ( File names are concatenate with comma - > check API No: 17)
