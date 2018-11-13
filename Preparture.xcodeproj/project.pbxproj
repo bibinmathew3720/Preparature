@@ -67,6 +67,8 @@
 		D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003032120EDA72A00F85F11 /* HomeListTVC.swift */; };
 		D003032420EDA72A00F85F11 /* HomeListTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D003032220EDA72A00F85F11 /* HomeListTVC.xib */; };
 		D0030DCF2111609E00703B64 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0030DCE2111609E00703B64 /* EventManager.swift */; };
+		D003E3C7219A986700A55E8C /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003E3C5219A986600A55E8C /* PaymentVC.swift */; };
+		D003E3C8219A986700A55E8C /* PaymentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D003E3C6219A986600A55E8C /* PaymentVC.xib */; };
 		D0098005210F3FEF00DA1316 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0098000210F3FEF00DA1316 /* EditProfileViewController.swift */; };
 		D0098006210F3FEF00DA1316 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0098001210F3FEF00DA1316 /* EditProfileViewController.xib */; };
 		D0098007210F3FEF00DA1316 /* ChangePswdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0098003210F3FEF00DA1316 /* ChangePswdViewController.swift */; };
@@ -187,6 +189,8 @@
 		D003032120EDA72A00F85F11 /* HomeListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListTVC.swift; sourceTree = "<group>"; };
 		D003032220EDA72A00F85F11 /* HomeListTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListTVC.xib; sourceTree = "<group>"; };
 		D0030DCE2111609E00703B64 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		D003E3C5219A986600A55E8C /* PaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
+		D003E3C6219A986600A55E8C /* PaymentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentVC.xib; sourceTree = "<group>"; };
 		D0098000210F3FEF00DA1316 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		D0098001210F3FEF00DA1316 /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		D0098003210F3FEF00DA1316 /* ChangePswdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePswdViewController.swift; sourceTree = "<group>"; };
@@ -587,6 +591,15 @@
 			path = HomeListTVC;
 			sourceTree = "<group>";
 		};
+		D003E3C4219A984700A55E8C /* PaymentVC */ = {
+			isa = PBXGroup;
+			children = (
+				D003E3C5219A986600A55E8C /* PaymentVC.swift */,
+				D003E3C6219A986600A55E8C /* PaymentVC.xib */,
+			);
+			path = PaymentVC;
+			sourceTree = "<group>";
+		};
 		D0097FFF210F3FEF00DA1316 /* EditProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -748,6 +761,7 @@
 		D0F5B43420EBFB37008727CC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D003E3C4219A984700A55E8C /* PaymentVC */,
 				D0F1644D2114CAF80030301A /* WebViewVC */,
 				D0012C9420EEF5C500074C90 /* SettingsHeaderTVC */,
 				D0012C9320EEF5C500074C90 /* SettingsTVC */,
@@ -908,6 +922,7 @@
 				D0012C9C20EEF5F100074C90 /* SettingsTVC.xib in Resources */,
 				D0F5B43C20EBFC73008727CC /* SettingsVC.xib in Resources */,
 				056D4DF320F0B5B700B7F408 /* ItineraryViewController.xib in Resources */,
+				D003E3C8219A986700A55E8C /* PaymentVC.xib in Resources */,
 				056D4DF720F0B5CA00B7F408 /* SuggestionsViewController.xib in Resources */,
 				05D2F1EB20D81D0600E2A5C9 /* OFL.txt in Resources */,
 				05D2F1DE20D81D0600E2A5C9 /* Muli-BlackItalic.ttf in Resources */,
@@ -1082,6 +1097,7 @@
 				D0030DCF2111609E00703B64 /* EventManager.swift in Sources */,
 				D0F5B43F20EBFC86008727CC /* FavoritesVC.swift in Sources */,
 				059948E220D6B1A10057F673 /* AppDelegate.swift in Sources */,
+				D003E3C7219A986700A55E8C /* PaymentVC.swift in Sources */,
 				D0012C9720EEF5DC00074C90 /* SettingsHeaderTVC.swift in Sources */,
 				D0098005210F3FEF00DA1316 /* EditProfileViewController.swift in Sources */,
 				05E2B6FB20DFDD21005DD640 /* ForgotPasswordViewController.swift in Sources */,

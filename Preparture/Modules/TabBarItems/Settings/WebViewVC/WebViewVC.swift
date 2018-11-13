@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 enum PageType {
     case TermsAndCondtions
     case PrivacyPolicy

@@ -12,8 +12,8 @@ class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var settingsTableView: UITableView!
     let generalArray = ["General"," Notification","Feed back","Rate & Review","Terms & Conditions","Privacy Policy"]
     let generalImagesArray = [#imageLiteral(resourceName: "notification"),#imageLiteral(resourceName: "notification"),#imageLiteral(resourceName: "feedback"),#imageLiteral(resourceName: "rateAndReview"),#imageLiteral(resourceName: "terms"),#imageLiteral(resourceName: "terms")]
-    let accountsArray = ["Account"," Change Password", "Edit Profile", "Log out"]
-    let accountImagesArray = [#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "editIcon"),#imageLiteral(resourceName: "logout")]
+    let accountsArray = ["Account"," Change Password", "Edit Profile","Make Payment", "Log out"]
+    let accountImagesArray = [#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "editIcon"),#imageLiteral(resourceName: "logout"),#imageLiteral(resourceName: "changePassword")]
     let sectionHeaderheight = 50
     
     var settingsResponseModel:SettingsResponseModel?
@@ -102,9 +102,18 @@ class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
                 self.present(editProfile, animated: true, completion: nil)
             }
             else if indexPath.row == 3 {
-               showAlertForLogout()
+               showPaymentPage()
+            }
+            else if indexPath.row == 4 {
+                showAlertForLogout()
             }
         }
+    }
+    
+    func showPaymentPage(){
+        let paymentVC = PaymentVC.init(nibName: "PaymentVC", bundle: nil)
+        let paymentNavCntlr = UINavigationController.init(rootViewController: paymentVC)
+        self.present(paymentNavCntlr, animated: true, completion: nil)
     }
     
     func moveToAppStorePage(){
