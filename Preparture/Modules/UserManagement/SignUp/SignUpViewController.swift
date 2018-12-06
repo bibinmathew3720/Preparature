@@ -95,6 +95,11 @@ class SignUpViewController: BaseViewController,UIImagePickerControllerDelegate,U
         self.dismiss(animated: true, completion: nil)
     }
     
+   
+    @IBAction func tickButtonAction(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+    }
+    
     func isValidSignUpDetails()->Bool{
         var valid = true
         var messageString = ""

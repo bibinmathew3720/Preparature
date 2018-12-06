@@ -164,8 +164,22 @@
                                         <constraint firstAttribute="height" constant="1" id="lbH-yG-R2S"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Noi-05-ltu">
+                                    <rect key="frame" x="20" y="379" width="13" height="22"/>
+                                    <state key="normal" image="untickImage"/>
+                                    <state key="selected" image="tickImage"/>
+                                    <connections>
+                                        <action selector="tickButtonAction:" destination="-1" eventType="touchUpInside" id="6Kk-Rv-Apb"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pf6-0K-xGW">
+                                    <rect key="frame" x="43" y="381" width="98" height="19"/>
+                                    <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFL-HC-LHf">
-                                    <rect key="frame" x="20" y="387" width="295" height="40"/>
+                                    <rect key="frame" x="20" y="411" width="295" height="40"/>
                                     <color key="backgroundColor" red="0.9137254901960784" green="0.70196078431372544" blue="0.050980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="GQm-Xk-yeQ"/>
@@ -189,10 +203,12 @@
                                 <constraint firstItem="DFL-HC-LHf" firstAttribute="trailing" secondItem="O9y-Sg-xSs" secondAttribute="trailing" id="3Id-Dc-GRc"/>
                                 <constraint firstItem="8Lf-jQ-3KB" firstAttribute="top" secondItem="Qbk-2E-PeN" secondAttribute="bottom" constant="15" id="5Rw-bu-nBD"/>
                                 <constraint firstItem="m6X-m4-asz" firstAttribute="top" secondItem="CvT-Qs-MhK" secondAttribute="bottom" constant="15" id="D1Y-Nu-Q3V"/>
+                                <constraint firstItem="DFL-HC-LHf" firstAttribute="top" secondItem="Noi-05-ltu" secondAttribute="bottom" constant="10" id="EEx-ok-0wl"/>
                                 <constraint firstItem="FlB-XV-vde" firstAttribute="top" secondItem="m6X-m4-asz" secondAttribute="bottom" id="HFX-a0-Xog"/>
                                 <constraint firstItem="YvP-OD-qHO" firstAttribute="top" secondItem="CvT-Qs-MhK" secondAttribute="bottom" id="Hhb-qh-w8e"/>
                                 <constraint firstItem="v4V-80-Y7L" firstAttribute="trailing" secondItem="O9y-Sg-xSs" secondAttribute="trailing" id="Hue-lf-EFL"/>
                                 <constraint firstAttribute="trailing" secondItem="F6M-bn-coq" secondAttribute="trailing" constant="20" id="J4F-pB-s4V"/>
+                                <constraint firstItem="pf6-0K-xGW" firstAttribute="leading" secondItem="Noi-05-ltu" secondAttribute="trailing" constant="10" id="JNK-Bv-Xme"/>
                                 <constraint firstItem="F6M-bn-coq" firstAttribute="leading" secondItem="pXq-dD-I9g" secondAttribute="leading" constant="20" id="MS4-uN-PrU"/>
                                 <constraint firstItem="O9y-Sg-xSs" firstAttribute="top" secondItem="F6M-bn-coq" secondAttribute="bottom" constant="15" id="Omr-O7-PQd"/>
                                 <constraint firstItem="CvT-Qs-MhK" firstAttribute="trailing" secondItem="O9y-Sg-xSs" secondAttribute="trailing" id="PWo-eK-gsL"/>
@@ -204,13 +220,14 @@
                                 <constraint firstItem="D98-2Y-omQ" firstAttribute="leading" secondItem="m6X-m4-asz" secondAttribute="leading" id="WTD-7x-qKc"/>
                                 <constraint firstItem="CvT-Qs-MhK" firstAttribute="top" secondItem="v4V-80-Y7L" secondAttribute="bottom" constant="15" id="acj-eG-KeE"/>
                                 <constraint firstItem="O9y-Sg-xSs" firstAttribute="leading" secondItem="F6M-bn-coq" secondAttribute="leading" id="bPm-z8-jDg"/>
+                                <constraint firstItem="pf6-0K-xGW" firstAttribute="centerY" secondItem="Noi-05-ltu" secondAttribute="centerY" id="c4g-MB-Eqi"/>
                                 <constraint firstItem="8Lf-jQ-3KB" firstAttribute="centerX" secondItem="Rqp-ct-1VW" secondAttribute="centerX" id="cr3-aD-fJD"/>
                                 <constraint firstItem="0Wz-4R-21e" firstAttribute="leading" secondItem="D98-2Y-omQ" secondAttribute="leading" id="dSc-oH-KeZ"/>
                                 <constraint firstItem="F6M-bn-coq" firstAttribute="top" secondItem="8Lf-jQ-3KB" secondAttribute="bottom" constant="20" id="eIQ-Vg-YTr"/>
+                                <constraint firstItem="Noi-05-ltu" firstAttribute="top" secondItem="0Wz-4R-21e" secondAttribute="bottom" constant="11" id="en1-l6-nMw"/>
                                 <constraint firstItem="cgb-23-iPC" firstAttribute="trailing" secondItem="F6M-bn-coq" secondAttribute="trailing" id="gl2-C2-KYk"/>
                                 <constraint firstItem="O9y-Sg-xSs" firstAttribute="trailing" secondItem="F6M-bn-coq" secondAttribute="trailing" id="gsr-Tm-b9F"/>
                                 <constraint firstItem="FlB-XV-vde" firstAttribute="trailing" secondItem="m6X-m4-asz" secondAttribute="trailing" id="hXL-Zt-ylh"/>
-                                <constraint firstItem="DFL-HC-LHf" firstAttribute="top" secondItem="D98-2Y-omQ" secondAttribute="bottom" constant="20" id="hdq-Bd-lC6"/>
                                 <constraint firstItem="0Wz-4R-21e" firstAttribute="top" secondItem="D98-2Y-omQ" secondAttribute="bottom" id="hn2-ls-02K"/>
                                 <constraint firstItem="DFL-HC-LHf" firstAttribute="leading" secondItem="O9y-Sg-xSs" secondAttribute="leading" id="ik3-Ea-3Yu"/>
                                 <constraint firstItem="v4V-80-Y7L" firstAttribute="top" secondItem="O9y-Sg-xSs" secondAttribute="bottom" id="jf0-bk-cti"/>
@@ -220,6 +237,7 @@
                                 <constraint firstItem="cgb-23-iPC" firstAttribute="leading" secondItem="F6M-bn-coq" secondAttribute="leading" id="prX-4Z-Eyx"/>
                                 <constraint firstItem="FlB-XV-vde" firstAttribute="leading" secondItem="m6X-m4-asz" secondAttribute="leading" id="s61-Pb-Ne8"/>
                                 <constraint firstItem="Qbk-2E-PeN" firstAttribute="top" secondItem="Rqp-ct-1VW" secondAttribute="bottom" constant="15" id="uA1-C8-yQg"/>
+                                <constraint firstItem="Noi-05-ltu" firstAttribute="leading" secondItem="0Wz-4R-21e" secondAttribute="leading" id="uOr-hn-hJU"/>
                                 <constraint firstItem="m6X-m4-asz" firstAttribute="leading" secondItem="CvT-Qs-MhK" secondAttribute="leading" id="uU6-Jy-yfh"/>
                                 <constraint firstItem="YvP-OD-qHO" firstAttribute="leading" secondItem="CvT-Qs-MhK" secondAttribute="leading" id="uzs-dH-E6M"/>
                                 <constraint firstItem="Qbk-2E-PeN" firstAttribute="centerX" secondItem="8Lf-jQ-3KB" secondAttribute="centerX" id="vhD-Oe-WDk"/>
@@ -287,5 +305,7 @@
     <resources>
         <image name="bgImage" width="375" height="666"/>
         <image name="cameraIcon" width="33" height="33"/>
+        <image name="tickImage" width="13" height="13"/>
+        <image name="untickImage" width="13" height="13"/>
     </resources>
 </document>

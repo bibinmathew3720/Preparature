@@ -23,9 +23,9 @@ class PaymentVC: BaseViewController,UIWebViewDelegate {
        // instance.setWebView(ppwbeview);
         paymentWebview.loadRequest(requestObj);
         
-        let paypalCheckOut = PYPLCheckout()
-        paypalCheckOut.webBrowserOnlyMode = true
-        paypalCheckOut.interceptWebView(paymentWebview, withDelegate: self)
+//        let paypalCheckOut = PYPLCheckout()
+//        paypalCheckOut.webBrowserOnlyMode = true
+//        paypalCheckOut.interceptWebView(paymentWebview, withDelegate: self)
     }
 
     override func didReceiveMemoryWarning() {

@@ -6,8 +6,6 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<string>com.paypal.ppclient.touch.v1</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -20,8 +18,46 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<string>com.paypal.ppclient.touch.v1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>This app requires to access your camera to add profile image and Event photos</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app requires to access your location</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app requires to access your photo library to add profile image and Event photos</string>
+	<key>Paypal_Client_Id</key>
+	<string>AfsOz6PexuEhDG0JjhSADFHoIdwSqTsrDz5gqP2IzJsbjLAB61USJkOc5x2-L8TIgLsSk_wkhEIAUO9Z</string>
+	<key>Paypal_Deep_Link</key>
+	<string>AfsOz6PexuEhDG0JjhSADFHoIdwSqTsrDz5gqP2IzJsbjLAB61USJkOc5x2-L8TIgLsSk_wkhEIAUO9Z://paypal/authorize</string>
+	<key>Paypal_Universal_Link</key>
+	<string>https://mydomain.com/universal_link</string>
+	<key>Paypal_Url_Scheme</key>
+	<string>com.paypal.ppclient.touch.v1</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Muli-Black.ttf</string>
+		<string>Muli-BlackItalic.ttf</string>
+		<string>Muli-Bold.ttf</string>
+		<string>Muli-BoldItalic.ttf</string>
+		<string>Muli-ExtraBold.ttf</string>
+		<string>Muli-ExtraBoldItalic.ttf</string>
+		<string>Muli-ExtraLight.ttf</string>
+		<string>Muli-ExtraLightItalic.ttf</string>
+		<string>Muli-Italic.ttf</string>
+		<string>Muli-Light.ttf</string>
+		<string>Muli-LightItalic.ttf</string>
+		<string>Muli-Regular.ttf</string>
+		<string>Muli-SemiBold.ttf</string>
+		<string>Muli-SemiBoldItalic.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -43,41 +79,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Muli-Black.ttf</string>
-		<string>Muli-BlackItalic.ttf</string>
-		<string>Muli-Bold.ttf</string>
-		<string>Muli-BoldItalic.ttf</string>
-		<string>Muli-ExtraBold.ttf</string>
-		<string>Muli-ExtraBoldItalic.ttf</string>
-		<string>Muli-ExtraLight.ttf</string>
-		<string>Muli-ExtraLightItalic.ttf</string>
-		<string>Muli-Italic.ttf</string>
-		<string>Muli-Light.ttf</string>
-		<string>Muli-LightItalic.ttf</string>
-		<string>Muli-Regular.ttf</string>
-		<string>Muli-SemiBold.ttf</string>
-		<string>Muli-SemiBoldItalic.ttf</string>
-	</array>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app requires to access your photo library to add profile image and Event photos</string>
-	<key>NSCameraUsageDescription</key>
-	<string>This app requires to access your camera to add profile image and Event photos</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app requires to access your location</string>
-	<key>Paypal_Deep_Link</key>
-	<string>AfsOz6PexuEhDG0JjhSADFHoIdwSqTsrDz5gqP2IzJsbjLAB61USJkOc5x2-L8TIgLsSk_wkhEIAUO9Z://paypal/authorize</string>
-	<key>Paypal_Url_Scheme</key>
-	<string>com.paypal.ppclient.touch.v1</string>
-	<key>Paypal_Client_Id</key>
-	<string>AfsOz6PexuEhDG0JjhSADFHoIdwSqTsrDz5gqP2IzJsbjLAB61USJkOc5x2-L8TIgLsSk_wkhEIAUO9Z</string>
-	<key>Paypal_Universal_Link</key>
-	<string>https://mydomain.com/universal_link</string>
 </dict>
 </plist>

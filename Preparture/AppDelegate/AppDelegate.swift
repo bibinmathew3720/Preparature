@@ -29,17 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        return PYPLCheckout().handleReturn(fromPaypal: url)
-    }
-    
-//    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
-//        return PYPLCheckout().app
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+//        return PYPLCheckout().handleReturn(fromPaypal: url)
 //    }
     
-    func application(_ application: UIApplication, didChangeStatusBarFrame oldStatusBarFrame: CGRect) {
-         PYPLCheckout().application(application, didChangeStatusBarFrame: oldStatusBarFrame)
-    }
+
+    
+//    func application(_ application: UIApplication, didChangeStatusBarFrame oldStatusBarFrame: CGRect) {
+//         PYPLCheckout().application(application, didChangeStatusBarFrame: oldStatusBarFrame)
+//    }
     
     //MARK: - Notification Observer Action
     

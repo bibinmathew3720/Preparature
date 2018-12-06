@@ -8,7 +8,7 @@
 #import "Reachability.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <NativeCheckout/PYPLCheckout.h>
+//#import <NativeCheckout/PYPLCheckout.h>
 #ifndef Preparature_Bridging_Header_h
 #define Preparature_Bridging_Header_h
 
