@@ -34,13 +34,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgImage" translatesAutoresizingMaskIntoConstraints="NO" id="yyy-Ze-Rzl">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iXp-VK-6ad">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXq-dD-I9g">
-                            <rect key="frame" x="20" y="60" width="335" height="522"/>
+                            <rect key="frame" x="20" y="60" width="335" height="542"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rqp-ct-1VW">
                                     <rect key="frame" x="128" y="-40" width="80" height="80"/>
@@ -262,7 +262,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjz-Aa-Mfp">
-                            <rect key="frame" x="132" y="592" width="111" height="40"/>
+                            <rect key="frame" x="132" y="612" width="111" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="8T7-p8-Mvh"/>
                             </constraints>
@@ -290,7 +290,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="top" secondItem="yyy-Ze-Rzl" secondAttribute="top" constant="-20" id="EiZ-cH-flM"/>
+                <constraint firstAttribute="top" secondItem="yyy-Ze-Rzl" secondAttribute="top" id="EiZ-cH-flM"/>
                 <constraint firstItem="iXp-VK-6ad" firstAttribute="top" secondItem="yyy-Ze-Rzl" secondAttribute="top" id="V1y-9w-OGY"/>
                 <constraint firstItem="iXp-VK-6ad" firstAttribute="bottom" secondItem="yyy-Ze-Rzl" secondAttribute="bottom" id="V7q-z9-eyt"/>
                 <constraint firstAttribute="bottom" secondItem="yyy-Ze-Rzl" secondAttribute="bottom" id="Vgb-69-nw5"/>
