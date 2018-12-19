@@ -15,7 +15,7 @@ pod 'GooglePlaces'
 pod 'GooglePlacePicker'
 pod 'GoogleMaps'
 #pod 'PayPal.Checkout'
-pod 'Alamofire', '~> 4.7'
+pod 'Alamofire'
 pod 'AlamofireImage'
 
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class UserManager: CLBaseService {
     
@@ -419,6 +420,44 @@ class UserManager: CLBaseService {
         let addToFavoriteReponseModel = GetAllCategoryResponseModel.init(dict:dict)
         return addToFavoriteReponseModel
     }
+    
+    func requestWith(endUrl: String, imagesDatas: [Data], parameters: [String : Any], onCompletion: ((FileUploadResponseModel?) -> Void)? = nil, onError: ((Error?) -> Void)? = nil){
+        let url = endUrl
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+//            for (key, value) in parameters {
+//                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+//            }
+            
+            for imageData in imagesDatas {
+                multipartFormData.append(imageData, withName: "files[]", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
+            }
+            
+//            if let data = imageData{
+//                multipartFormData.append(data, withName: "files[]", fileName: "file.jpg", mimeType: "image/jpg")
+//
+//            }
+        }, usingThreshold: UInt64.init(), to: url, method: .post, headers: nil) { (result) in
+            switch result{
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    if let result = response.result.value {
+                        if let resultJ = result as? [String:Any?]{
+                            let model = FileUploadResponseModel.init(dict:resultJ )
+                            onCompletion!(model)
+                        }
+                    }
+                    
+                    if let err = response.error{
+                        onError?(err)
+                        return
+                    }
+                }
+            case .failure(let error):
+                print("Error in upload: \(error.localizedDescription)")
+                onError?(error)
+            }
+        }
+    }
 }
     
 class LogInResponseModel : NSObject{
@@ -642,15 +681,15 @@ class CategoryItem : NSObject{
     }
 }
 class FileUploadResponseModel : NSObject{
-    var statusMessage:String = ""
+    var statusCode:Int = 0
     var uploadedImageName:String = ""
     //var statusCode:Int = 0
     init(dict:[String:Any?]) {
-        if let value = dict["status"] as? String{
-            statusMessage = value
+        if let value = dict["status"] as? Int{
+            statusCode = value
         }
-        if let imageName = dict["image_name"] as? String{
-            uploadedImageName = imageName
+        if let value = dict["file_names"] as? String{
+            uploadedImageName = value
         }
         
     }

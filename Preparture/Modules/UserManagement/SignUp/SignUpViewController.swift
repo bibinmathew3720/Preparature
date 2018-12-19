@@ -16,6 +16,7 @@ class SignUpViewController: BaseViewController,UIImagePickerControllerDelegate,U
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var tfConfirmPassword: UITextField!
+    @IBOutlet weak var tickButton: UIButton!
     
     var fileUploadResponseModel:FileUploadResponseModel?
     var selImage:UIImage?
@@ -85,8 +86,17 @@ class SignUpViewController: BaseViewController,UIImagePickerControllerDelegate,U
         if let password = self.tfPassword.text {
             dict.updateValue(password as AnyObject, forKey: "password")
         }
+        if tickButton.isSelected{
+            dict.updateValue("2" as AnyObject, forKey: "user_type")
+        }
+        else{
+            dict.updateValue("0" as AnyObject, forKey: "user_type")
+        }
         if let filUploadResponse = self.fileUploadResponseModel {
            dict.updateValue(filUploadResponse.uploadedImageName as AnyObject, forKey: "user_image")
+        }
+        else{
+             dict.updateValue("" as AnyObject, forKey: "user_image")
         }
         return CCUtility.getJSONfrom(dictionary: dict)
     }
@@ -131,6 +141,7 @@ class SignUpViewController: BaseViewController,UIImagePickerControllerDelegate,U
             messageString = "Password mismatch"
             valid = false
         }
+        
         if !valid {
             CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: messageString, parentController: self)
         }
@@ -188,30 +199,19 @@ class SignUpViewController: BaseViewController,UIImagePickerControllerDelegate,U
     
     func sendProfileImage(image:UIImage, ext: String){
         let imageData = UIImageJPEGRepresentation(image, 0.25)
+        let imagesDataArray = [imageData]
         MBProgressHUD.showAdded(to: self.view, animated: true)
-//        CLNetworkManager.upload(file: imageData!,
-//                                type: .JPEG, ext: ext,
-//                                url: BASE_URL+IMAGE_UPLOAD_URL,
-//                                parameters: "files",
-//                                headers: nil)
-//        {
-//            (response, status, error) in
-//            MBProgressHUD.hide(for: self.view, animated: true)
-//            if status == true {
-//                if let res = response {
-//                    self.fileUploadResponseModel = FileUploadResponseModel.init(dict: res)
-//                    self.callingSignUpApi()
-//                }
-//            }
-//            else{
-//                if(error == .noNetwork){
-//                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
-//                }
-//                else{
-//                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
-//                }
-//            }
-//        }
+        let imageUploadUrl = BASE_URL + IMAGE_UPLOAD_URL
+        UserManager().requestWith(endUrl: imageUploadUrl, imagesDatas: imagesDataArray as! [Data], parameters: ["":""], onCompletion: { (response) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            self.fileUploadResponseModel = response
+            self.callingSignUpApi()
+            print(response)
+        }) { (error) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            print(error)
+        }
+        
     }
     
 }

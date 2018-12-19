@@ -25,6 +25,7 @@
                 <outlet property="tfName" destination="F6M-bn-coq" id="kv5-8Y-5Xu"/>
                 <outlet property="tfPassword" destination="m6X-m4-asz" id="aFg-xm-47D"/>
                 <outlet property="tfUserName" destination="O9y-Sg-xSs" id="exr-yg-KKM"/>
+                <outlet property="tickButton" destination="Noi-05-ltu" id="fLJ-bd-a5N"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
