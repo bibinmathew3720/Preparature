@@ -195,7 +195,7 @@ class SignUpViewController: BaseViewController,UIImagePickerControllerDelegate,U
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: Sending Chat Image
+    //MARK: Upload Profile Image
     
     func sendProfileImage(image:UIImage, ext: String){
         let imageData = UIImageJPEGRepresentation(image, 0.25)
