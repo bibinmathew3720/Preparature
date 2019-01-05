@@ -15,13 +15,17 @@ class FavoritesVC: BaseViewController,UITableViewDataSource,UITableViewDelegate 
         super.initView()
         tableCellRegistration()
         self.navigationController?.navigationBar.isHidden = true
-         callingListAllFavoriteApi()
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        callingListAllFavoriteApi()
     }
     
     func tableCellRegistration(){

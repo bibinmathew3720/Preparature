@@ -87,6 +87,8 @@
 		D01A848D20F96FF6004ED6FB /* ItineraryTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A848B20F96FF6004ED6FB /* ItineraryTVC.xib */; };
 		D06819E12114474F00AB4EF6 /* ImagesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06819DF2114474F00AB4EF6 /* ImagesCVC.swift */; };
 		D06819E22114474F00AB4EF6 /* ImagesCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06819E02114474F00AB4EF6 /* ImagesCVC.xib */; };
+		D080183121E045B2008A2CAA /* EventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D080182F21E045B2008A2CAA /* EventsVC.swift */; };
+		D080183221E045B2008A2CAA /* EventsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D080183021E045B2008A2CAA /* EventsVC.xib */; };
 		D095507F20E32B4F00D8BBD9 /* CLBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507820E32B4E00D8BBD9 /* CLBaseService.swift */; };
 		D095508020E32B4F00D8BBD9 /* CLNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507920E32B4E00D8BBD9 /* CLNetworkManager.swift */; };
 		D095508120E32B4F00D8BBD9 /* CLNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507A20E32B4E00D8BBD9 /* CLNetworkModel.swift */; };
@@ -209,6 +211,8 @@
 		D01A848B20F96FF6004ED6FB /* ItineraryTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItineraryTVC.xib; sourceTree = "<group>"; };
 		D06819DF2114474F00AB4EF6 /* ImagesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCVC.swift; sourceTree = "<group>"; };
 		D06819E02114474F00AB4EF6 /* ImagesCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesCVC.xib; sourceTree = "<group>"; };
+		D080182F21E045B2008A2CAA /* EventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsVC.swift; sourceTree = "<group>"; };
+		D080183021E045B2008A2CAA /* EventsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsVC.xib; sourceTree = "<group>"; };
 		D095507820E32B4E00D8BBD9 /* CLBaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBaseService.swift; sourceTree = "<group>"; };
 		D095507920E32B4E00D8BBD9 /* CLNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLNetworkManager.swift; sourceTree = "<group>"; };
 		D095507A20E32B4E00D8BBD9 /* CLNetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLNetworkModel.swift; sourceTree = "<group>"; };
@@ -689,6 +693,15 @@
 			path = ImageCVC;
 			sourceTree = "<group>";
 		};
+		D080182E21E0457E008A2CAA /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				D080182F21E045B2008A2CAA /* EventsVC.swift */,
+				D080183021E045B2008A2CAA /* EventsVC.xib */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		D095507720E32B4E00D8BBD9 /* BaseNetworkManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -730,6 +743,7 @@
 		D0F5B43120EBFB37008727CC /* TabBarItems */ = {
 			isa = PBXGroup;
 			children = (
+				D080182E21E0457E008A2CAA /* Events */,
 				D0F5B43220EBFB37008727CC /* Favorites */,
 				D0F5B43320EBFB37008727CC /* Home */,
 				D0F5B43420EBFB37008727CC /* Settings */,
@@ -898,6 +912,7 @@
 				05D2F1E220D81D0600E2A5C9 /* Muli-ExtraBoldItalic.ttf in Resources */,
 				D0012C9820EEF5DC00074C90 /* SettingsHeaderTVC.xib in Resources */,
 				05D2F1E520D81D0600E2A5C9 /* Muli-Italic.ttf in Resources */,
+				D080183221E045B2008A2CAA /* EventsVC.xib in Resources */,
 				05D2F1E720D81D0600E2A5C9 /* Muli-LightItalic.ttf in Resources */,
 				D0098006210F3FEF00DA1316 /* EditProfileViewController.xib in Resources */,
 				D01A848D20F96FF6004ED6FB /* ItineraryTVC.xib in Resources */,
@@ -1089,6 +1104,7 @@
 				05E2B6FF20DFDD35005DD640 /* SignUpViewController.swift in Sources */,
 				D0F5B43720EBFB78008727CC /* HomeVC.swift in Sources */,
 				D0098007210F3FEF00DA1316 /* ChangePswdViewController.swift in Sources */,
+				D080183121E045B2008A2CAA /* EventsVC.swift in Sources */,
 				D0183CEC210CC3CD0030D02D /* UIColorExtension.swift in Sources */,
 				D0030DCF2111609E00703B64 /* EventManager.swift in Sources */,
 				D0F5B43F20EBFC86008727CC /* FavoritesVC.swift in Sources */,

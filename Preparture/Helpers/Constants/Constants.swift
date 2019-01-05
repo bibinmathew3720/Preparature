@@ -20,8 +20,10 @@ struct Constant{
     struct ImageNames{
         static let placeholderImage = "placeHolder"
         struct  tabImages {
-            static let homeTabIcon = "homeTab"
-            static let homeTabSelected = "homeTabSelected"
+            static let eventsTabIcon = "eventsTab"
+            static let eventsTabSelected = "eventsTabSelected"
+            static let dashBoardTabIcon = "dashBoardTab"
+            static let dashBoardTabSelected = "dashboardTabSelected"
             static let favoriteTabIcon = "favoritesTab"
             static let favoritesTabSelected = "favoritesTabSelected"
             static let settingsIcon = "settings"
@@ -30,7 +32,8 @@ struct Constant{
     }
     
     struct Titles{
-        static let HomeTitle = "Home"
+        static let EventsTitle = "Events"
+        static let DashBoardTitle = "Dashboard"
         static let FavoritesTitle = "Favorite"
         static let SettingsTitle = "Settings"
     }

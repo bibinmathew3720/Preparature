@@ -66,9 +66,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func initialisingTabBar(){
         let tabBarController = UITabBarController.init()
         
+        let eventsVC:EventsVC = EventsVC(nibName: "EventsVC", bundle: nil)
+        let eventsNavVC = UINavigationController.init(rootViewController: eventsVC)
+        eventsNavVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.eventsTabSelected, unselectedImage: Constant.ImageNames.tabImages.eventsTabIcon, title: Constant.Titles.EventsTitle)
+        
         let homeVC:HomeEventsViewController = HomeEventsViewController(nibName: "HomeEventsViewController", bundle: nil)
         let homeNavVC = UINavigationController.init(rootViewController: homeVC)
-        homeVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.homeTabSelected, unselectedImage: Constant.ImageNames.tabImages.homeTabIcon, title: Constant.Titles.HomeTitle)
+        homeVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.dashBoardTabSelected, unselectedImage: Constant.ImageNames.tabImages.dashBoardTabIcon, title: Constant.Titles.DashBoardTitle)
         
 //        let homeVC:HomeVC = HomeVC(nibName: "HomeVC", bundle: nil)
 //        let homeNavVC = UINavigationController.init(rootViewController: homeVC)
@@ -82,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let settingsNavVC = UINavigationController.init(rootViewController: settingsVC)
         settingsVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.settingsTabSelected, unselectedImage: Constant.ImageNames.tabImages.settingsIcon, title: Constant.Titles.SettingsTitle)
         
-        tabBarController.viewControllers = [homeNavVC,favoritesNavVC,settingsNavVC];
+        tabBarController.viewControllers = [eventsNavVC,homeNavVC,favoritesNavVC,settingsNavVC];
         customisingTabBarController(tabBarCnlr: tabBarController)
         self.window?.rootViewController = tabBarController
     }
