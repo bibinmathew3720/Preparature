@@ -55,6 +55,10 @@ class FavoritesVC: BaseViewController,UITableViewDataSource,UITableViewDelegate 
         return 250
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
     //MARK:- Add To Favorite Api integration
     
     func callingListAllFavoriteApi(){

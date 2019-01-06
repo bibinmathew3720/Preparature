@@ -41,7 +41,7 @@ class FavoriteCell: UITableViewCell {
         locationLabel.text = favorite.location
         dateLabel.text = favorite.eventDate
         priceLabel.text = favorite.eventCost
-        ratingLabel.text = String(format: "%d ", favorite.rating)
+        ratingLabel.text = String(format: "%d", favorite.rating)
         if favorite.eventImages.count>0{
             if let eventImage = favorite.eventImages.first {
                 favoriteImageView.sd_setImage(with: URL(string: eventImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
