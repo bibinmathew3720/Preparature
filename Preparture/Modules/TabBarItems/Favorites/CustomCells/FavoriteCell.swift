@@ -15,7 +15,15 @@ class FavoriteCell: UITableViewCell {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var categoryTypeLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    
+    @IBOutlet weak var star1Button: UIButton!
+    @IBOutlet weak var star2Button: UIButton!
+    @IBOutlet weak var star3Button: UIButton!
+    @IBOutlet weak var star4Button: UIButton!
+    @IBOutlet weak var star5Button: UIButton!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,15 +37,51 @@ class FavoriteCell: UITableViewCell {
     }
     
     func setFavoriteitem(favorite:FavoriteItem){
-        if favorite.placeImages.count>0{
-            if let placeImage = favorite.placeImages.first {
-                favoriteImageView.sd_setImage(with: URL(string: placeImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
+        nameLabel.text = favorite.name
+        locationLabel.text = favorite.location
+        dateLabel.text = favorite.eventDate
+        priceLabel.text = favorite.eventCost
+        ratingLabel.text = String(format: "%d ", favorite.rating)
+        if favorite.eventImages.count>0{
+            if let eventImage = favorite.eventImages.first {
+                favoriteImageView.sd_setImage(with: URL(string: eventImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
             }
         }
-        categoryLabel.text = favorite.placeType.uppercased()
-        nameLabel.text = favorite.name
-        locationLabel.text = favorite.placeLocation
-        categoryTypeLabel.text = favorite.placeName
+        setRatingStar(rating: favorite.rating)
+        //categoryLabel.text = favorite.placeType.uppercased()
+    }
+    
+    func setRatingStar(rating:Int){
+        self.star1Button.isSelected = false
+        self.star2Button.isSelected = false
+        self.star3Button.isSelected = false
+        self.star4Button.isSelected = false
+        self.star5Button.isSelected = false
+        if (rating == 1){
+            self.star1Button.isSelected = true
+        }
+        else if (rating == 2){
+            self.star1Button.isSelected = true
+            self.star2Button.isSelected = true
+        }
+        else if (rating == 3){
+            self.star1Button.isSelected = true
+            self.star2Button.isSelected = true
+            self.star3Button.isSelected = true
+        }
+        else if (rating == 4){
+            self.star1Button.isSelected = true
+            self.star2Button.isSelected = true
+            self.star3Button.isSelected = true
+            self.star4Button.isSelected = true
+        }
+        else if (rating == 5){
+            self.star1Button.isSelected = true
+            self.star2Button.isSelected = true
+            self.star3Button.isSelected = true
+            self.star4Button.isSelected = true
+            self.star5Button.isSelected = true
+        }
     }
     
 }
