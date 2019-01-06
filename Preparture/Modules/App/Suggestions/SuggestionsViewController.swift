@@ -29,7 +29,7 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var buttonStarFifth: UIButton!
     @IBOutlet weak var buttonAddImg: UIButton!
     @IBOutlet weak var collectionViewVdo: UICollectionView!
-    var eventItem:SuggestionItems?
+    var eventItem:EventItem?
     var arraySuggestions = NSMutableArray()
     @IBOutlet weak var labelNoSuggestions: UILabel!
     

@@ -36,11 +36,11 @@ class FavoriteCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setFavoriteitem(favorite:FavoriteItem){
+    func setFavoriteitem(favorite:EventItem){
         nameLabel.text = favorite.name
         locationLabel.text = favorite.location
         dateLabel.text = favorite.eventDate
-        priceLabel.text = favorite.eventCost
+        priceLabel.text = String(format: "%0.2f", favorite.eventCost)
         ratingLabel.text = String(format: "%d", favorite.rating)
         if favorite.eventImages.count>0{
             if let eventImage = favorite.eventImages.first {

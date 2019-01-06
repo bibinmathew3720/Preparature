@@ -569,7 +569,7 @@ class AddToFavoriteResponseModel : NSObject{
 class ListAllFavoriteResponseModel : NSObject{
     var statusMessage:String = ""
     var statusCode:Int = 0
-    var favoriteItems = [FavoriteItem]()
+    var favoriteItems = [EventItem]()
     init(dict:[String:Any?]) {
         if let value = dict["message"] as? String{
             statusMessage = value
@@ -579,7 +579,7 @@ class ListAllFavoriteResponseModel : NSObject{
         }
         if let value = dict["favorites"] as? NSArray {
             for item in value {
-                favoriteItems.append(FavoriteItem.init(dict: item as! [String : Any?]))
+                favoriteItems.append(EventItem.init(dict: item as! [String : Any?]))
             }
         }
     }
@@ -605,100 +605,7 @@ class GetAllCategoryResponseModel : NSObject{
     }
 }
 
-class FavoriteItem : NSObject{
-    var name:String = ""
-    var location:String = ""
-    var eventDate:String = ""
-    var eventCost:String = ""
-    var rating:Int = 0
-    var reviewsCount:Int = 0
-    var eventImages = [String]()
-    
-    var comments:String = ""
-    var createdDate:String = ""
-    var eventId:Int = 0
-    var placeImages = [String]()
-    var placeLocation:String = ""
-    var placeName:String = ""
-    var placeType:String = ""
-    
-    var sugId:Int = 0
-    var updatedDate:String = ""
-    var userId:Int = 0
-    var userImage:String = ""
-    init(dict:[String:Any?]) {
-        
-        if let value = dict["event_name"] as? String{
-            name = value
-        }
-        if let value = dict["location"] as? String{
-            location = value
-        }
-        if let value = dict["event_date"] as? String{
-            eventDate = value
-        }
-        if let value = dict["event_cost"] as? String{
-            eventCost = value
-        }
-        if let value = dict["total"] as? String{
-            if let total = Int(value){
-                rating = total
-            }
-        }
-        if let value = dict["total_reviews"] as? String{
-            if let reviewCount = Int(value){
-                reviewsCount = reviewCount
-            }
-        }
-        if let filesArray = dict["event_files"] as? NSArray{
-            for item in filesArray {
-                if let image = item as? String {
-                    eventImages.append(image)
-                }
-            }
-        }
-        
-        
-        
-//        if let value = dict["comments"] as? String{
-//            comments = value
-//        }
-//        if let value = dict["created_date"] as? String{
-//            createdDate = value
-//        }
-//        if let value = dict["event_id"] as? String{
-//            eventId = Int(value)!
-//        }
-//        
-//        if let value = dict["place_files"] as? NSArray{
-//            for item in value {
-//                placeImages.append(item as! String)
-//            }
-//        }
-//        if let value = dict["place_location"] as? String{
-//            placeLocation = value
-//        }
-//        if let value = dict["place_name"] as? String{
-//            placeName = value
-//        }
-//        if let value = dict["place_type"] as? String{
-//            placeType = value
-//        }
-//       
-//        if let value = dict["sgg_id"] as? String{
-//            sugId = Int(value)!
-//        }
-//        if let value = dict["updated_date"] as? String{
-//            updatedDate = value
-//        }
-//        if let value = dict["user_id"] as? String{
-//            userId = Int(value)!
-//        }
-//        if let value = dict["user_image"] as? String{
-//            userImage = value
-//        }
-    }
-}
+
 
 class CategoryItem : NSObject{
     var categoryID:String = ""

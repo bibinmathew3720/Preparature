@@ -156,7 +156,10 @@ class CCUtility: NSObject {
         inputFormatter.dateFormat = inputDateFormat
         let showDate = inputFormatter.date(from: inputDate)
         inputFormatter.dateFormat = outputDateFormat
-        let resultString = inputFormatter.string(from: showDate!)
+        var resultString = ""
+        if let shDate = showDate {
+            resultString = inputFormatter.string(from: shDate)
+        }
         return resultString
         
     }

@@ -67,11 +67,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGD-ob-Roj">
-                                <rect key="frame" x="339.5" y="98" width="207.5" height="42"/>
+                                <rect key="frame" x="348" y="98" width="199" height="42"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVJ-tu-f2q">
-                                        <rect key="frame" x="125" y="11" width="62.5" height="19"/>
-                                        <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
+                                        <rect key="frame" x="125" y="12.5" width="54" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="Muli-Light" family="Muli" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>

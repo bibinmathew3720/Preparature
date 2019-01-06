@@ -10,29 +10,32 @@ import UIKit
 
 class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     
-    var eventItem:SuggestionItems?
+    var eventItem:EventItem?
     @IBOutlet weak var topCollectionView: UICollectionView!
-    
-    @IBOutlet weak var scrollFull: UIScrollView!
-    @IBOutlet weak var viewScrollFull: UIView!
-    @IBOutlet weak var scrollTop: UIScrollView!
-    @IBOutlet weak var viewScrollTop: UIView!
-    @IBOutlet weak var imageTop: UIImageView!
-    @IBOutlet weak var pageControllTop: UIPageControl!
-    @IBOutlet weak var labelTopName: UILabel!
     @IBOutlet weak var labelReviewsCount: UILabel!
-    @IBOutlet weak var starTopFirst: UIImageView!
-    @IBOutlet weak var starTopSecond: UIImageView!
-    @IBOutlet weak var starTopThird: UIImageView!
-    @IBOutlet weak var starTopFourth: UIImageView!
-    @IBOutlet weak var starTopFifth: UIImageView!
-    @IBOutlet weak var labelAmount: UILabel!
-    @IBOutlet weak var labelPerDay: UILabel!
-    @IBOutlet weak var labelEventName: UILabel!
+    @IBOutlet weak var labelTopName: UILabel!
+    @IBOutlet weak var star1Button: UIButton!
+    @IBOutlet weak var star2Button: UIButton!
+    @IBOutlet weak var star3Button: UIButton!
+    @IBOutlet weak var star4Button: UIButton!
+    @IBOutlet weak var star5Button: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var eventPriceLabel: UILabel!
+    @IBOutlet weak var labelEventOwnerName: UILabel!
     @IBOutlet weak var labelEventPlace: UILabel!
     @IBOutlet weak var labelEventDate: UILabel!
     @IBOutlet weak var labelTravelExp: UILabel!
     @IBOutlet weak var labelComments: UILabel!
+    
+    @IBOutlet weak var viewScrollFull: UIView!
+    @IBOutlet weak var pageControllTop: UIPageControl!
+    
+    
+    
+    
+    
+    
+    
     @IBOutlet weak var imageReviewer: UIImageView!
     @IBOutlet weak var labelReviewerName: UILabel!
     @IBOutlet weak var labelReviewerDate: UILabel!
@@ -54,19 +57,16 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     override func initView() {
         super.initView()
         customization()
-        populateSuggestionDetails()
-        //callingGetSuggestionDetailsApi()
+        populateEventDetails()
+        callingGetEventDetailsApi()
     }
     
     func customization() {
-        self.scrollTop.delegate = self
         topCollectionView.register(UINib(nibName: "ImagesCVC", bundle: nil), forCellWithReuseIdentifier:"imageCVC" )
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        self.constraintSrollTopWidth.constant = UIScreen.main.bounds.width * CGFloat(colors.count)
     }
 
     //MARK:- UIScrollView Delegate Methods
@@ -88,27 +88,26 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     
     @IBAction func actionPageControllValueChanged(_ sender: UIPageControl) {
         let x = CGFloat(pageControllTop.currentPage) * UIScreen.main.bounds.size.width
-        scrollTop.setContentOffset(CGPoint(x:x, y:0), animated: true)
     }
     
     @IBAction func actionReadReviews(_ sender: Any) {
         let suggestionsVC = SuggestionsViewController(nibName: "SuggestionsViewController", bundle: nil)
-        suggestionsVC.eventItem = eventItem
+        //suggestionsVC.eventItem = eventItem
         suggestionsVC.categoryResponseModel = categoryResponseModel
         self.present(suggestionsVC, animated: true, completion: nil)
     }
     
-    //MARK:- Add To Favorite Api integration
+    //MARK:- Get Event Details Api Integration
     
-    func callingGetSuggestionDetailsApi(){
+    func callingGetEventDetailsApi(){
         MBProgressHUD.showAdded(to: self.view!, animated: true)
-        EventManager().callingSuggestionDetailsApi(with: getSuggestionDetailsRequestBody(), success: {
+        EventManager().callingEventDetailsApi(with: getEventDetailsRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            if let model = model as? SuggestionDetailResponseModel{
+            if let model = model as? EventDetailResponseModel{
                 if model.statusCode == 1{
-                   self.eventItem = model.suggestionItem
-                    self.populateSuggestionDetails()
+                   self.eventItem = model.eventItem
+                    self.populateEventDetails()
                 }
                 else{
                     CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
@@ -125,56 +124,84 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
         }
     }
     
-    func getSuggestionDetailsRequestBody()->String{
+    func getEventDetailsRequestBody()->String{
         var dict:[String:AnyObject] = [String:AnyObject]()
-        if let sugIt = eventItem {
-            dict.updateValue(sugIt.eventId as AnyObject, forKey: "event_id")
+        if let eventIt = eventItem {
+            dict.updateValue(eventIt.eventId as AnyObject, forKey: "event_id")
+        }
+        if let user = User.getUser(){
+            dict.updateValue(user.userId as AnyObject, forKey: "user_id")
         }
         return CCUtility.getJSONfrom(dictionary: dict)
     }
     
-    func populateSuggestionDetails(){
-        self.labelTopName.text = self.eventItem?.name
-        self.labelComments.text = self.eventItem?.comments
-        if self.labelComments.text == "" {
-            self.labelComments.text = "No comments"
-        }
-        self.labelEventName.text = self.eventItem?.placeName
-        self.labelEventPlace.text = self.eventItem?.placeLocation
-        self.labelEventDate.text = CCUtility.convertToDateToFormat(inputDate: (self.eventItem?.createdDate)!, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "dd/MM/yyyy")
-        self.labelTravelExp.text = eventItem?.travelExp
-        if self.labelTravelExp.text == "" {
-            self.labelTravelExp.text = "No travel experience"
-        }
-        labelReviewsCount.text = eventItem?.totalReviews
-        self.topCollectionView.reloadData()
-        if eventItem?.totalReviews == "0" {
-            viewReviewFull.isHidden = true
-            labelNoSuggestions.isHidden = false
-        } else {
-            viewReviewFull.isHidden = false
-            labelNoSuggestions.isHidden = true
-        }
-        populateEventImages()
-    }
-    
-    func populateEventImages(){
-        let imagesCount = self.eventItem?.placeImages.count
-        self.pageControllTop.numberOfPages = imagesCount!
-        if let imgCont = imagesCount {
-            for index in 0..<imgCont {
-                frame.origin.x = UIScreen.main.bounds.size.width * CGFloat(index)
-                frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: self.scrollTop.frame.size.height)
-                
-                let subView = UIImageView(frame: frame)
-                subView.sd_setImage(with: URL(string: (self.eventItem?.placeImages[index])!), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
-                self.viewScrollTop.addSubview(subView)
+    func populateEventDetails(){
+        if let eventIt = self.eventItem {
+            self.labelTopName.text = eventIt.name
+            self.pageControllTop.numberOfPages = eventIt.eventImages.count
+            self.favoriteButton.isSelected = eventIt.isFavourite
+            self.setTopRatingStar(rating: eventIt.rating)
+            self.eventPriceLabel.text = String (format: "%0.2f", eventIt.eventCost)
+            self.labelEventOwnerName.text = eventIt.eventOwnerName
+            self.labelEventPlace.text = eventIt.location
+            self.labelEventDate.text = CCUtility.convertToDateToFormat(inputDate: eventIt.eventDate, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "dd/MM/yyyy")
+            if self.labelTravelExp.text == "" {
+                self.labelTravelExp.text = "No travel experience"
+            }
+            else{
+               self.labelTravelExp.text = eventIt.travelExperience
+            }
+            if eventIt.comments == "" {
+                self.labelComments.text = "No comments"
+            }
+            else{
+               self.labelComments.text = eventIt.comments
+            }
+            
+            
+            labelReviewsCount.text = String (format: "%d", (eventItem?.reviewsCount)!)
+            self.topCollectionView.reloadData()
+            if eventItem?.reviewsCount == 0 {
+                viewReviewFull.isHidden = true
+                labelNoSuggestions.isHidden = false
+            } else {
+                viewReviewFull.isHidden = false
+                labelNoSuggestions.isHidden = true
             }
         }
-        self.viewScrollTop.bringSubview(toFront: labelTopName)
-        self.viewScrollTop.bringSubview(toFront: pageControllTop)
-        self.viewScrollTop.bringSubview(toFront: viewTopStar)
-
+    }
+    
+    func setTopRatingStar(rating:Int){
+        self.star1Button.isSelected = false
+        self.star2Button.isSelected = false
+        self.star3Button.isSelected = false
+        self.star4Button.isSelected = false
+        self.star5Button.isSelected = false
+        if (rating == 1){
+            self.star1Button.isSelected = true
+        }
+        else if (rating == 2){
+            self.star1Button.isSelected = true
+            self.star2Button.isSelected = true
+        }
+        else if (rating == 3){
+            self.star1Button.isSelected = true
+            self.star2Button.isSelected = true
+            self.star3Button.isSelected = true
+        }
+        else if (rating == 4){
+            self.star1Button.isSelected = true
+            self.star2Button.isSelected = true
+            self.star3Button.isSelected = true
+            self.star4Button.isSelected = true
+        }
+        else if (rating == 5){
+            self.star1Button.isSelected = true
+            self.star2Button.isSelected = true
+            self.star3Button.isSelected = true
+            self.star4Button.isSelected = true
+            self.star5Button.isSelected = true
+        }
     }
 }
 
@@ -185,11 +212,16 @@ extension HomeDetailViewController :UICollectionViewDelegate,UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (self.eventItem?.placeImages.count)!
+        if let eventIt = self.eventItem {
+            return eventIt.eventImages.count
+        }
+        return 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCVC", for: indexPath) as! ImagesCVC
-        cell.setImageUrlString(imageUrlString: (self.eventItem?.placeImages[indexPath.row])!)
+        if let eventIt = self.eventItem {
+            cell.setImageUrlString(imageUrlString: (eventIt.eventImages[indexPath.row]))
+        }
         return cell
     }
     

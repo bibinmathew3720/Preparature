@@ -44,16 +44,16 @@ class EventManager: CLBaseService {
         return suggestionReponseModel
     }
     
-    //MARK : Get Suggestion Details Api
+    //MARK : Get Event Details Api
     
-    func callingSuggestionDetailsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForGetSuggestionDetails(with:body), success: {
+    func callingEventDetailsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetEventDetails(with:body), success: {
             (resultData) in
             let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
             if error == nil {
                 if let jdict = jsonDict{
                     print(jsonDict as Any)
-                    success(self.getSuggestionsDetailResponseModel(dict: jdict) as Any)
+                    success(self.getEventDetailResponseModel(dict: jdict) as Any)
                 }else{
                     failure(ErrorType.dataError)
                 }
@@ -67,22 +67,22 @@ class EventManager: CLBaseService {
         
     }
     
-    func networkModelForGetSuggestionDetails(with body:String)->CLNetworkModel{
-        let getSuggestionsModel = CLNetworkModel.init(url: BASE_URL+GET_SUGGESTION_DETAILS, requestMethod_: "POST")
+    func networkModelForGetEventDetails(with body:String)->CLNetworkModel{
+        let getSuggestionsModel = CLNetworkModel.init(url: BASE_URL+GET_EVENT_DETAILS, requestMethod_: "POST")
         getSuggestionsModel.requestBody = body
         return getSuggestionsModel
     }
     
-    func getSuggestionsDetailResponseModel(dict:[String : Any?]) -> Any? {
-        let suggestionDetailReponseModel = SuggestionDetailResponseModel.init(dict:dict)
-        return suggestionDetailReponseModel
+    func getEventDetailResponseModel(dict:[String : Any?]) -> Any? {
+        let eventDetailReponseModel = EventDetailResponseModel.init(dict:dict)
+        return eventDetailReponseModel
     }
 }
 
 class SuggestionsResponseModel : NSObject{
     var statusMessage:String = ""
     var statusCode:Int = 0
-    var suggestions = [SuggestionItems]()
+    var events = [EventItem]()
     init(dict:[String:Any?]) {
         if let value = dict["message"] as? String{
             statusMessage = value
@@ -92,80 +92,16 @@ class SuggestionsResponseModel : NSObject{
         }
         if let value = dict["result"] as? NSArray{
             for item in value {
-                suggestions.append(SuggestionItems.init(dict: item as! [String : Any?]))
+                events.append(EventItem.init(dict: item as! [String : Any?]))
             }
-        }
-    }
-}
-class SuggestionItems : NSObject{
-    var comments:String = ""
-    var createdDate:String = ""
-    var eventId:Int = 0
-    var name:String = ""
-    var placeImages = [String]()
-    var placeLocation:String = ""
-    var placeName:String = ""
-    var travelExp:String = ""
-    var rating:Float = 0.0
-    var totalReviews:String = ""
-    var updatedDate:String = ""
-    var userId:Int = 0
-    var userImage:String = ""
-    var isFavorited:Bool = false
-    var authorName:String = ""
-    
-    init(dict:[String:Any?]) {
-        if let value = dict["comments"] as? String{
-            comments = value
-        }
-        if let value = dict["created_date"] as? String{
-            createdDate = value
-        }
-        if let value = dict["event_id"] as? String{
-            eventId = Int(value)!
-        }
-        if let value = dict["name"] as? String{
-            name = value
-        }
-        if let value = dict["event_files"] as? NSArray{
-            for item in value {
-                placeImages.append(item as! String)
-            }
-        }
-        if let value = dict["location"] as? String{
-            placeLocation = value
-        }
-        if let value = dict["event_name"] as? String{
-            placeName = value
-        }
-        if let value = dict["author_name"] as? String{
-            authorName = value
-        }
-        if let value = dict["travel_experience"] as? String{
-            travelExp = value
-        }
-        if let value = dict["event_rate"] as? String{
-            rating = Float(value)!
-        }
-        if let value = dict["total_reviews"] as? String{
-            totalReviews = value
-        }
-        if let value = dict["updated_date"] as? String{
-            updatedDate = value
-        }
-        if let value = dict["user_id"] as? String{
-            userId = Int(value)!
-        }
-        if let value = dict["user_image"] as? String{
-            userImage = value
         }
     }
 }
 
-class SuggestionDetailResponseModel : NSObject{
+class EventDetailResponseModel : NSObject{
     var statusMessage:String = ""
     var statusCode:Int = 0
-    var suggestionItem:SuggestionItems?
+    var eventItem:EventItem?
     init(dict:[String:Any?]) {
         if let value = dict["message"] as? String{
             statusMessage = value
@@ -173,8 +109,121 @@ class SuggestionDetailResponseModel : NSObject{
         if let value = dict["status"] as? Int{
             statusCode = value
         }
-        if let value = dict["suggestions"] as? [String : Any?]{
-            suggestionItem = SuggestionItems.init(dict: value )
+        if let value = dict["result"] as? [String : Any?]{
+            eventItem = EventItem.init(dict: value )
         }
+    }
+}
+
+class EventItem : NSObject{
+    var eventId:Int = 0
+    var name:String = ""
+    var location:String = ""
+    var eventDate:String = ""
+    var eventCost:Double = 0.0
+    var rating:Int = 0
+    var reviewsCount:Int = 0
+    var eventImages = [String]()
+    var isFavourite:Bool = false
+    var eventOwnerName:String = ""
+    var travelExperience:String = ""
+    var comments:String = ""
+    
+    var createdDate:String = ""
+    
+    var placeImages = [String]()
+    
+    var placeName:String = ""
+    var placeType:String = ""
+    
+    var sugId:Int = 0
+    var updatedDate:String = ""
+    var userId:Int = 0
+    var userImage:String = ""
+    init(dict:[String:Any?]) {
+        if let value = dict["event_id"] as? String{
+            if let evId = Int(value){
+                eventId = evId
+            }
+        }
+        if let value = dict["event_name"] as? String{
+            name = value
+        }
+        if let value = dict["author_name"] as? String{
+            eventOwnerName = value
+        }
+        if let value = dict["location"] as? String{
+            location = value
+        }
+        if let value = dict["event_date"] as? String{
+            eventDate = value
+        }
+        if let value = dict["event_cost"] as? String{
+            if let n = NumberFormatter().number(from: value) {
+                eventCost = Double(truncating: n)
+            }
+        }
+        if let value = dict["total"] as? String{
+            if let total = Int(value){
+                rating = total
+            }
+        }
+        if let value = dict["total_reviews"] as? String{
+            if let reviewCount = Int(value){
+                reviewsCount = reviewCount
+            }
+        }
+        if let filesArray = dict["event_files"] as? NSArray{
+            for item in filesArray {
+                if let image = item as? String {
+                    eventImages.append(image)
+                }
+            }
+        }
+        if let value = dict["favorite_status"] as? Int{
+            if value == 1{
+                isFavourite = true
+            }
+            else{
+                isFavourite = false
+            }
+        }
+        if let value = dict["travel_experience"] as? String{
+            travelExperience = value
+        }
+        if let value = dict["comments"] as? String{
+            comments = value
+        }
+        
+        //        if let value = dict["created_date"] as? String{
+        //            createdDate = value
+        //        }
+        
+        //
+        //        if let value = dict["place_files"] as? NSArray{
+        //            for item in value {
+        //                placeImages.append(item as! String)
+        //            }
+        //        }
+        
+        //        if let value = dict["place_name"] as? String{
+        //            placeName = value
+        //        }
+        //        if let value = dict["place_type"] as? String{
+        //            placeType = value
+        //        }
+        //
+        //        if let value = dict["sgg_id"] as? String{
+        //            sugId = Int(value)!
+        //        }
+        //        if let value = dict["updated_date"] as? String{
+        //            updatedDate = value
+        //        }
+        //        if let value = dict["user_id"] as? String{
+        //            userId = Int(value)!
+        //        }
+        //        if let value = dict["user_image"] as? String{
+        //            userImage = value
+        //        }
     }
 }

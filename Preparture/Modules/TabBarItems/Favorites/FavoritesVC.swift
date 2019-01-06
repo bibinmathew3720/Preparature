@@ -56,7 +56,13 @@ class FavoritesVC: BaseViewController,UITableViewDataSource,UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if let favResponse = self.favoriteResponseModel {
+            let favoriteItem:EventItem = favResponse.favoriteItems[indexPath.row]
+            let detailVC = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
+            detailVC.eventItem = favoriteItem
+            //detailVC.categoryResponseModel = categoryResponseModel
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
     
     //MARK:- Add To Favorite Api integration

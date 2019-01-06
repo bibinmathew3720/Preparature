@@ -48,7 +48,7 @@ class HomeVC: BaseViewController {
                 if model.statusCode == 1{
                     self.currentPage = self.currentPage + 1
                     self.suggestionResponseModel = model
-                    self.suggestionsArray?.addObjects(from: (self.suggestionResponseModel?.suggestions)!)
+                    self.suggestionsArray?.addObjects(from: (self.suggestionResponseModel?.events)!)
                     self.tableViewList.reloadData()
                 }
                 else{
@@ -85,14 +85,14 @@ class HomeVC: BaseViewController {
     
     //MARK:- Add To Favorite Api integration
     
-    func callingAddToFavoriteApi(suggestionItem:SuggestionItems){
+    func callingAddToFavoriteApi(suggestionItem:EventItem){
         MBProgressHUD.showAdded(to: self.view!, animated: true)
         UserManager().addToFavoriteApi(with: addToFavoriteRequestBody(suggestion:suggestionItem), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? AddToFavoriteResponseModel{
                 if model.statusCode == 1{
-                    suggestionItem.isFavorited = true
+                   // suggestionItem.isFavorited = true
                     self.tableViewList.reloadData()
                 }
                 else{
@@ -110,7 +110,7 @@ class HomeVC: BaseViewController {
         }
     }
     
-    func addToFavoriteRequestBody(suggestion:SuggestionItems)->String{
+    func addToFavoriteRequestBody(suggestion:EventItem)->String{
         var dict:[String:AnyObject] = [String:AnyObject]()
         if let user = User.getUser() {
             dict.updateValue(user.userId as AnyObject, forKey: "user_id")
@@ -144,7 +144,7 @@ extension HomeVC:UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeListCell", for: indexPath) as!HomeListTVC
         if let sugArray = self.suggestionsArray{
-            cell.setSuggestionItem(suggestion:sugArray[indexPath.row] as! SuggestionItems)
+            cell.setSuggestionItem(suggestion:sugArray[indexPath.row] as! EventItem)
         }
         cell.tag = indexPath.row
         cell.delegate = self
@@ -156,9 +156,9 @@ extension HomeVC:UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let suggestion:SuggestionItems = self.suggestionsArray![indexPath.row] as! SuggestionItems
+        let suggestion:EventItem = self.suggestionsArray![indexPath.row] as! EventItem
         let detailVC = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
-        detailVC.eventItem = suggestion
+        //detailVC.eventItem = suggestion
         detailVC.categoryResponseModel = categoryResponseModel
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
@@ -166,7 +166,7 @@ extension HomeVC:UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
     //MARK:- HomeListTVC Delegate method
     
     func addToFavorite(tag:NSInteger) {
-        let suggestion:SuggestionItems = self.suggestionsArray![tag] as! SuggestionItems
+        let suggestion:EventItem = self.suggestionsArray![tag] as! EventItem
         callingAddToFavoriteApi(suggestionItem:suggestion)
     }
     
@@ -175,7 +175,7 @@ extension HomeVC:UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
     }
     
     func shareAction(tag:NSInteger){
-        let suggestion:SuggestionItems = self.suggestionsArray![tag] as! SuggestionItems
+        let suggestion:EventItem = self.suggestionsArray![tag] as! EventItem
         let textToShare = "\(suggestion.name)"
         let objectsToShare = [textToShare]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
