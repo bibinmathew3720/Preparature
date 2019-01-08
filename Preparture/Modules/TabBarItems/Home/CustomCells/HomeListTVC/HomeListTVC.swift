@@ -47,16 +47,16 @@ class HomeListTVC: UITableViewCell {
     
     func setSuggestionItem(suggestion:EventItem){
        // self.headingLabel.text = suggestion.authorName
-        self.subHeadingLabel.text = suggestion.placeName
+        //self.subHeadingLabel.text = suggestion.placeName
         self.descriptionLabel.text = suggestion.location
         self.ratingLabel.text = String(suggestion.rating)
-        if suggestion.placeImages.count>0{
-            if let placeImage = suggestion.placeImages.first {
-                itemImageView.sd_setImage(with: URL(string: placeImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
-            }
-        }
+//        if suggestion.placeImages.count>0{
+//            if let placeImage = suggestion.placeImages.first {
+//                itemImageView.sd_setImage(with: URL(string: placeImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
+//            }
+//        }
         //favoriteButton.isSelected = suggestion.isFavorited
-        self.dateLabel.text = CCUtility.convertToDateToFormat(inputDate: suggestion.createdDate, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "dd/MM/yyyy")
+       // self.dateLabel.text = CCUtility.convertToDateToFormat(inputDate: suggestion.createdDate, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "dd/MM/yyyy")
     }
     
 }
