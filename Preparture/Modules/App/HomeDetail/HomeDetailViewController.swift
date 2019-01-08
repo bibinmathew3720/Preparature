@@ -30,26 +30,21 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     @IBOutlet weak var viewScrollFull: UIView!
     @IBOutlet weak var pageControllTop: UIPageControl!
     
-    
-    
-    
-    
+    @IBOutlet weak var reviewerStar1Button: UIButton!
+    @IBOutlet weak var reviewerStar2Button: UIButton!
+    @IBOutlet weak var reviewerStar3Button: UIButton!
+    @IBOutlet weak var reviewrStar4Button: UIButton!
+    @IBOutlet weak var reviewerStar5Button: UIButton!
     
     
     @IBOutlet weak var imageReviewer: UIImageView!
     @IBOutlet weak var labelReviewerName: UILabel!
     @IBOutlet weak var labelReviewerDate: UILabel!
-    @IBOutlet weak var starReviewerFirst: UIImageView!
-    @IBOutlet weak var starReviewerSecond: UIImageView!
-    @IBOutlet weak var starReviewerThird: UIImageView!
-    @IBOutlet weak var starReviewerFourth: UIImageView!
-    @IBOutlet weak var starReviewerFifth: UIImageView!
     @IBOutlet weak var labelReviewComments: UILabel!
     @IBOutlet weak var imageReview: UIImageView!
     var colors:[UIColor] = [UIColor.red, UIColor.blue, UIColor.green, UIColor.yellow]
-    var frame: CGRect = CGRect(x:0, y:0, width:0, height:0)
-    @IBOutlet weak var viewTopStar: UIView!
-    @IBOutlet weak var constraintSrollTopWidth: NSLayoutConstraint!
+    //var frame: CGRect = CGRect(x:0, y:0, width:0, height:0)
+    
     @IBOutlet weak var viewReviewFull: UIView!
     @IBOutlet weak var labelNoSuggestions: UILabel!
     var categoryResponseModel:NSArray?
@@ -157,11 +152,9 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
             else{
                self.labelComments.text = eventIt.comments
             }
-            
-            
-            labelReviewsCount.text = String (format: "%d", (eventItem?.reviewsCount)!)
+            labelReviewsCount.text = String (format: "%d", eventIt.reviewsCount)
             self.topCollectionView.reloadData()
-            if eventItem?.reviewsCount == 0 {
+            if eventIt.reviewsCount == 0 {
                 viewReviewFull.isHidden = true
                 labelNoSuggestions.isHidden = false
             } else {

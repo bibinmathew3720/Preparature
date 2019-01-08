@@ -129,17 +129,6 @@ class EventItem : NSObject{
     var travelExperience:String = ""
     var comments:String = ""
     
-    var createdDate:String = ""
-    
-    var placeImages = [String]()
-    
-    var placeName:String = ""
-    var placeType:String = ""
-    
-    var sugId:Int = 0
-    var updatedDate:String = ""
-    var userId:Int = 0
-    var userImage:String = ""
     init(dict:[String:Any?]) {
         if let value = dict["event_id"] as? String{
             if let evId = Int(value){
@@ -194,36 +183,5 @@ class EventItem : NSObject{
         if let value = dict["comments"] as? String{
             comments = value
         }
-        
-        //        if let value = dict["created_date"] as? String{
-        //            createdDate = value
-        //        }
-        
-        //
-        //        if let value = dict["place_files"] as? NSArray{
-        //            for item in value {
-        //                placeImages.append(item as! String)
-        //            }
-        //        }
-        
-        //        if let value = dict["place_name"] as? String{
-        //            placeName = value
-        //        }
-        //        if let value = dict["place_type"] as? String{
-        //            placeType = value
-        //        }
-        //
-        //        if let value = dict["sgg_id"] as? String{
-        //            sugId = Int(value)!
-        //        }
-        //        if let value = dict["updated_date"] as? String{
-        //            updatedDate = value
-        //        }
-        //        if let value = dict["user_id"] as? String{
-        //            userId = Int(value)!
-        //        }
-        //        if let value = dict["user_image"] as? String{
-        //            userImage = value
-        //        }
     }
 }
