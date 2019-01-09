@@ -17,10 +17,7 @@ enum AttachmentType: String{
 class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate, UIDocumentMenuDelegate {
 
     @IBOutlet weak var tableviewReviews: UITableView!
-    @IBOutlet weak var tfType: UITextField!
     @IBOutlet weak var textViewSuggestions: UITextView!
-    @IBOutlet var pickerViewType: UIPickerView!
-    @IBOutlet var toolBarPicker: UIToolbar!
     @IBOutlet weak var buttonStarFirst: UIButton!
     var selectedIndex:NSInteger = 0
     @IBOutlet weak var buttonStarSecond: UIButton!
@@ -49,10 +46,6 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     
     func customization() {
         tableCellRegistration()
-        tfType.inputView = pickerViewType
-        tfType.inputAccessoryView = toolBarPicker
-        pickerViewType.translatesAutoresizingMaskIntoConstraints = false
-        toolBarPicker.translatesAutoresizingMaskIntoConstraints = false
         getAllSuggestionsApi()
     }
     
@@ -140,19 +133,6 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     
     @IBAction func actionSubmit(_ sender: Any) {
         postSuggestionsApi()
-    }
-    
-    @IBAction func actionToolbarDone(_ sender: Any) {
-        guard let code = categoryResponseModel?[selectedIndex] else {
-            return
-        }
-        let item:CategoryItem = code as! CategoryItem
-        tfType.text = item.categoryName
-        tfType.resignFirstResponder()
-    }
-    
-    @IBAction func actionToolbarCancel(_ sender: Any) {
-        tfType.resignFirstResponder()
     }
     
     
