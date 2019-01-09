@@ -130,13 +130,13 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Duz-bp-233" secondAttribute="trailing" constant="20" id="4bz-Ny-Myg"/>
                     <constraint firstAttribute="trailing" secondItem="bJB-z8-8B8" secondAttribute="trailing" constant="20" id="4gW-3h-9AE"/>
                     <constraint firstAttribute="bottom" secondItem="bJB-z8-8B8" secondAttribute="bottom" constant="10" id="9cG-Ug-I6F"/>
-                    <constraint firstItem="Duz-bp-233" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="FQ9-av-bdd"/>
                     <constraint firstAttribute="bottom" secondItem="Duz-bp-233" secondAttribute="bottom" id="RD4-gs-aQT"/>
                     <constraint firstItem="bJB-z8-8B8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Vi9-MG-Rap"/>
+                    <constraint firstItem="Duz-bp-233" firstAttribute="trailing" secondItem="bJB-z8-8B8" secondAttribute="trailing" id="XMS-6Q-Xpc"/>
                     <constraint firstItem="bJB-z8-8B8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="pOW-gM-Y3c"/>
+                    <constraint firstItem="Duz-bp-233" firstAttribute="leading" secondItem="bJB-z8-8B8" secondAttribute="leading" id="uDL-N9-d6h"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
