@@ -674,7 +674,7 @@ class SettingItem : NSObject{
 class GetSuggestionsResponseModel : NSObject{
     var statusMessage:String = ""
     var statusCode:Int = 0
-    var categoryItems = [SuggestionItem]()
+    var userSuggestions = [UserSuggestion]()
     init(dict:[String:Any?]) {
         if let value = dict["message"] as? String{
             statusMessage = value
@@ -684,7 +684,7 @@ class GetSuggestionsResponseModel : NSObject{
         }
         if let value = dict["result"] as? NSArray {
             for item in value {
-                categoryItems.append(SuggestionItem.init(dict: item as! [String : Any?]))
+                userSuggestions.append(UserSuggestion.init(dict: item as! [String : Any?]))
             }
         }
     }

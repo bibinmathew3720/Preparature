@@ -44,7 +44,6 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     
     override func initView() {
         super.initView()
-        
         customization()
     }
     
@@ -54,13 +53,6 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
         tfType.inputAccessoryView = toolBarPicker
         pickerViewType.translatesAutoresizingMaskIntoConstraints = false
         toolBarPicker.translatesAutoresizingMaskIntoConstraints = false
-        if arraySuggestions.count == 0 {
-            labelNoSuggestions.isHidden = false
-            tableviewReviews.isHidden = true
-        } else {
-            labelNoSuggestions.isHidden = true
-            tableviewReviews.isHidden = false
-        }
         getAllSuggestionsApi()
     }
     
@@ -259,9 +251,13 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? GetSuggestionsResponseModel{
                 if model.statusCode == 1{
-                    if model.categoryItems.count != 0 {
+                    if model.userSuggestions.count != 0 {
                         self.labelNoSuggestions.isHidden = true
                         self.tableviewReviews.isHidden = false
+                    }
+                    else{
+                        self.labelNoSuggestions.isHidden = false
+                        self.tableviewReviews.isHidden = true
                     }
                     self.suggestionModel = model
                     self.tableviewReviews.reloadData()
@@ -359,12 +355,14 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
         guard let model = suggestionModel else {
             return 0
         }
-        return (model.categoryItems.count)
+        return (model.userSuggestions.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellSuggestions", for: indexPath) as! SuggestionsTableViewCell
-        cell.setModel(model: (suggestionModel?.categoryItems[indexPath.row])!)
+        if let sugModel = self.suggestionModel {
+            cell.setModel(model:sugModel.userSuggestions[indexPath.row])
+        }
         return cell
     }
     
