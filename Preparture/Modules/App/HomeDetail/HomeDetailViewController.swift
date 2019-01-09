@@ -154,12 +154,20 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
             }
             labelReviewsCount.text = String (format: "%d", eventIt.reviewsCount)
             self.topCollectionView.reloadData()
-            if eventIt.reviewsCount == 0 {
+            if eventIt.suggestions.count == 0 {
                 viewReviewFull.isHidden = true
                 labelNoSuggestions.isHidden = false
             } else {
                 viewReviewFull.isHidden = false
                 labelNoSuggestions.isHidden = true
+                let userSug = eventIt.suggestions.first
+                if let userSuggestion = userSug {
+                    labelReviewerName.text = userSuggestion.userName
+                    labelReviewerDate.text = userSuggestion.updatedDate
+                    setReviewerRatingStar(rating: userSuggestion.rating)
+                    imageReviewer.sd_setImage(with: URL(string: userSuggestion.userProfImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
+                    labelReviewComments.text = userSuggestion.comments
+                }
             }
         }
     }
@@ -194,6 +202,39 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
             self.star3Button.isSelected = true
             self.star4Button.isSelected = true
             self.star5Button.isSelected = true
+        }
+    }
+    
+    func setReviewerRatingStar(rating:Int){
+        self.reviewerStar1Button.isSelected = false
+        self.reviewerStar2Button.isSelected = false
+        self.reviewerStar3Button.isSelected = false
+        self.reviewrStar4Button.isSelected = false
+        self.reviewerStar5Button.isSelected = false
+        if (rating == 1){
+            self.reviewerStar1Button.isSelected = true
+        }
+        else if (rating == 2){
+            self.reviewerStar1Button.isSelected = true
+            self.reviewerStar2Button.isSelected = true
+        }
+        else if (rating == 3){
+            self.reviewerStar1Button.isSelected = true
+            self.reviewerStar2Button.isSelected = true
+            self.reviewerStar3Button.isSelected = true
+        }
+        else if (rating == 4){
+            self.reviewerStar1Button.isSelected = true
+            self.reviewerStar2Button.isSelected = true
+            self.reviewerStar3Button.isSelected = true
+            self.reviewrStar4Button.isSelected = true
+        }
+        else if (rating == 5){
+            self.reviewerStar1Button.isSelected = true
+            self.reviewerStar2Button.isSelected = true
+            self.reviewerStar3Button.isSelected = true
+            self.reviewrStar4Button.isSelected = true
+            self.reviewerStar5Button.isSelected = true
         }
     }
 }

@@ -129,6 +129,7 @@ class EventItem : NSObject{
     var travelExperience:String = ""
     var comments:String = ""
     
+    var suggestions = [UserSuggestion]()
     init(dict:[String:Any?]) {
         if let value = dict["event_id"] as? String{
             if let evId = Int(value){
@@ -182,6 +183,62 @@ class EventItem : NSObject{
         }
         if let value = dict["comments"] as? String{
             comments = value
+        }
+        if let sugns = dict["reviews"]  as? NSArray {
+            for item in sugns {
+                suggestions.append(UserSuggestion.init(dict: item as! [String : Any?]))
+            }
+        }
+        
+    }
+}
+
+class UserSuggestion : NSObject{
+    var sugId:Int = 0
+    var eventId:Int = 0
+    var userId:Int = 0
+    var userName:String = ""
+    var userProfImage:String = ""
+    var comments:String = ""
+    var rating:Int = 0
+    var title:String = ""
+    var updatedDate:String = ""
+    
+    init(dict:[String:Any?]) {
+        if let value = dict["sgg_id"] as? String{
+            if let suId = Int(value){
+                sugId = suId
+            }
+        }
+        if let value = dict["event_id"] as? String{
+            if let eveId = Int(value){
+                eventId = eveId
+            }
+        }
+        if let value = dict["name"] as? String{
+            userName = value
+        }
+        if let value = dict["title"] as? String{
+            title = value
+        }
+        if let value = dict["updated_date"] as? String{
+            updatedDate = value
+        }
+        if let value = dict["user_id"] as? String{
+            if let usId = Int(value){
+                userId = usId
+            }
+        }
+        if let value = dict["user_image"] as? String{
+            userProfImage = value
+        }
+        if let value = dict["comments"] as? String{
+            comments = value
+        }
+        if let value = dict["rating"] as? String{
+            if let total = Int(value){
+                rating = total
+            }
         }
     }
 }
