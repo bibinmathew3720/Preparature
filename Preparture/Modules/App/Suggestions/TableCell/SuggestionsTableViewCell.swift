@@ -14,13 +14,12 @@ class SuggestionsTableViewCell: UITableViewCell {
     @IBOutlet weak var imageReviewer: UIImageView!
     @IBOutlet weak var labelReviewerName: UILabel!
     @IBOutlet weak var labelReviewerDate: UILabel!
-    @IBOutlet weak var starReviewerFirst: UIImageView!
-    @IBOutlet weak var starReviewerSecond: UIImageView!
-    @IBOutlet weak var starReviewerThird: UIImageView!
-    @IBOutlet weak var starReviewerFourth: UIImageView!
-    @IBOutlet weak var starReviewerFifth: UIImageView!
+    @IBOutlet weak var starButton1: UIButton!
+    @IBOutlet weak var starButton2: UIButton!
+    @IBOutlet weak var starButton3: UIButton!
+    @IBOutlet weak var starButton4: UIButton!
+    @IBOutlet weak var starButton5: UIButton!
     @IBOutlet weak var labelReviewComments: UILabel!
-    @IBOutlet weak var imageReview: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,44 +37,39 @@ class SuggestionsTableViewCell: UITableViewCell {
         labelReviewComments.text = model.comments
         imageReviewer.sd_setImage(with: URL(string: model.userProfImage), completed: nil)
         self.labelReviewerDate.text = CCUtility.convertToDateToFormat(inputDate: model.updatedDate, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "MMM yyyy")
-        if model.rating == 0 {
-            starReviewerFirst.image = #imageLiteral(resourceName: "starUnSelected")
-            starReviewerSecond.image = #imageLiteral(resourceName: "starUnSelected")
-            starReviewerThird.image = #imageLiteral(resourceName: "starUnSelected")
-            starReviewerFourth.image = #imageLiteral(resourceName: "starUnSelected")
-            starReviewerFifth.image = #imageLiteral(resourceName: "starUnSelected")
-        } else if model.rating == 1 {
-            starReviewerFirst.image = #imageLiteral(resourceName: "starSelected")
-            starReviewerSecond.image = #imageLiteral(resourceName: "starUnSelected")
-            starReviewerThird.image = #imageLiteral(resourceName: "starUnSelected")
-            starReviewerFourth.image = #imageLiteral(resourceName: "starUnSelected")
-            starReviewerFifth.image = #imageLiteral(resourceName: "starUnSelected")
-        } else if model.rating == 2 {
-            starReviewerFirst.image = #imageLiteral(resourceName: "starSelected")
-            starReviewerSecond.image = #imageLiteral(resourceName: "starSelected")
-            starReviewerThird.image = #imageLiteral(resourceName: "starUnSelected")
-            starReviewerFourth.image = #imageLiteral(resourceName: "starUnSelected")
-            starReviewerFifth.image = #imageLiteral(resourceName: "starUnSelected")
-        } else if model.rating == 3 {
-            starReviewerFirst.image = #imageLiteral(resourceName: "starSelected")
-            starReviewerSecond.image = #imageLiteral(resourceName: "starSelected")
-            starReviewerThird.image = #imageLiteral(resourceName: "starSelected")
-            starReviewerFourth.image = #imageLiteral(resourceName: "starUnSelected")
-            starReviewerFifth.image = #imageLiteral(resourceName: "starUnSelected")
-        } else if model.rating == 4 {
-            starReviewerFirst.image = #imageLiteral(resourceName: "starSelected")
-            starReviewerSecond.image = #imageLiteral(resourceName: "starSelected")
-            starReviewerThird.image = #imageLiteral(resourceName: "starSelected")
-            starReviewerFourth.image = #imageLiteral(resourceName: "starSelected")
-            starReviewerFifth.image = #imageLiteral(resourceName: "starUnSelected")
-        } else if model.rating == 5 {
-            starReviewerFirst.image = #imageLiteral(resourceName: "starSelected")
-            starReviewerSecond.image = #imageLiteral(resourceName: "starSelected")
-            starReviewerThird.image = #imageLiteral(resourceName: "starSelected")
-            starReviewerFourth.image = #imageLiteral(resourceName: "starSelected")
-            starReviewerFifth.image = #imageLiteral(resourceName: "starSelected")
-        } else {
-            
+        settingRating(rating: model.rating)
+    }
+    
+    func settingRating(rating:Int){
+        starButton1.isSelected = false
+        starButton2.isSelected = false
+        starButton3.isSelected = false
+        starButton4.isSelected = false
+        starButton5.isSelected = false
+        if rating == 1 {
+            starButton1.isSelected = true
+        }
+        else if (rating == 2){
+            starButton1.isSelected = true
+            starButton2.isSelected = true
+        }
+        else if (rating == 3){
+            starButton1.isSelected = true
+            starButton2.isSelected = true
+            starButton3.isSelected = true
+        }
+        else if (rating == 4){
+            starButton1.isSelected = true
+            starButton2.isSelected = true
+            starButton3.isSelected = true
+            starButton4.isSelected = true
+        }
+        else if (rating == 5){
+            starButton1.isSelected = true
+            starButton2.isSelected = true
+            starButton3.isSelected = true
+            starButton4.isSelected = true
+            starButton5.isSelected = true
         }
     }
 }
