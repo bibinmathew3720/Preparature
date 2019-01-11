@@ -14,16 +14,19 @@ import MobileCoreServices
 enum AttachmentType: String{
     case camera, video, photoLibrary
 }
-class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate, UIDocumentMenuDelegate {
-
+class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate, UIDocumentMenuDelegate {
+ 
+    let SuggestionTextViewPlaceholder = "Write your suggestions"
+    
     @IBOutlet weak var tableviewReviews: UITableView!
     @IBOutlet weak var textViewSuggestions: UITextView!
     @IBOutlet weak var buttonStarFirst: UIButton!
-    var selectedIndex:NSInteger = 0
     @IBOutlet weak var buttonStarSecond: UIButton!
     @IBOutlet weak var buttonStarThird: UIButton!
     @IBOutlet weak var buttonStarForth: UIButton!
     @IBOutlet weak var buttonStarFifth: UIButton!
+    
+    @IBOutlet weak var suggestionImageView: UIImageView!
     @IBOutlet weak var buttonAddImg: UIButton!
     @IBOutlet weak var collectionViewVdo: UICollectionView!
     var eventItem:EventItem?
@@ -35,9 +38,11 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     var videoPickedBlock: ((NSURL) -> Void)?
     var filePickedBlock: ((URL) -> Void)?
     var imageArray = NSMutableArray()
+    
     var rateIndex:Int = 0
-    var categoryResponseModel:NSArray?
+    var selImage:UIImage?
     var suggestionModel:GetSuggestionsResponseModel?
+    var fileUploadResponseModel:FileUploadResponseModel?
     
     override func initView() {
         super.initView()
@@ -64,7 +69,7 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
         if(text == "\n") {
             textView.resignFirstResponder()
             if textView.text.count == 0 {
-                textView.text = "Write your suggestions"
+                textView.text = ""
             }
             return false
         }
@@ -72,28 +77,9 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "Write your suggestions" {
+        if textView.text == SuggestionTextViewPlaceholder {
             textView.text = ""
         }
-    }
-
-    //MARK: -> ------ UIPickerView Delegates ------
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return categoryResponseModel!.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let item:CategoryItem = categoryResponseModel![row] as! CategoryItem
-        return item.categoryName
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedIndex = row
     }
     
     //MARK:- UIView Action Methods
@@ -132,15 +118,54 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func actionSubmit(_ sender: Any) {
-        postSuggestionsApi()
+        if (isValidSuggestion()){
+            if let seletedImage = self.selImage {
+                sendSuggestionImage(image: seletedImage, ext: "")
+            }
+        }
     }
     
+    func isValidSuggestion()->Bool{
+        var isValid = true
+        var messageString = ""
+        if self.rateIndex == 0 {
+            messageString = "Please rate the event"
+            isValid = false
+        }
+        else if let commentTV = self.textViewSuggestions {
+            if (commentTV.text.count == 0 || (commentTV.text == SuggestionTextViewPlaceholder)){
+                messageString = "Please enter your comment that helps others to analyse the event"
+                isValid = false
+            }
+            else{
+                if let seImage = self.selImage {
+                    
+                }
+                else{
+                    messageString = "Please add event images"
+                    isValid = false
+                }
+            }
+        }
+        if !isValid {
+            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: messageString, parentController: self)
+        }
+        return isValid
+    }
+    
+    func displayImage(){
+        if let selectedImage = self.selImage {
+            self.suggestionImageView.image = selectedImage
+        }
+    }
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         // To handle image
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.imagePickedBlock?(image)
+            self.selImage = image
+            self.displayImage()
             if let urlName = info[UIImagePickerControllerReferenceURL] as? URL {
                 imageArray.add(urlName)
                 collectionViewVdo.reloadData()
@@ -222,6 +247,25 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
         buttonStarFifth.isSelected = isFifth
     }
     
+    //MARK: Upload Suggestion Image
+    
+    func sendSuggestionImage(image:UIImage, ext: String){
+        let imageData = UIImageJPEGRepresentation(image, 0.25)
+        let imagesDataArray = [imageData]
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        let imageUploadUrl = BASE_URL + IMAGE_UPLOAD_URL
+        UserManager().requestWith(endUrl: imageUploadUrl, imagesDatas: imagesDataArray as! [Data], parameters: ["":""], onCompletion: { (response) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            self.fileUploadResponseModel = response
+            self.postSuggestionsApi()
+            print(response)
+        }) { (error) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            print(error)
+        }
+        
+    }
+    
     //MARK:- Get Suggestions Api integration
     
     func getAllSuggestionsApi(){
@@ -277,11 +321,14 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? GetAllCategoryResponseModel{
-                //if model.statusCode == 1{
-                //                }
-                //                else{
-                //                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
-                //                }
+                if model.statusCode == 1{
+                    CCUtility.showDefaultAlertwithCompletionHandler(_title: Constant.AppName, _message: "Suggestion created Successfully", parentController: self, completion: { (status) in
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                }
+                else{
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                }
             } else {
                 //                if let model = model as? stat{
                 //                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
@@ -300,19 +347,22 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     
     func postSuggestionsRequestBody()->String{
         var dict:[String:AnyObject] = [String:AnyObject]()
-        if let eventId = eventItem?.eventId {
-            dict.updateValue(eventId as AnyObject, forKey: "event_id")
-        }
         if let user = User.getUser() {
             dict.updateValue(user.userId as AnyObject, forKey: "user_id")
         }
-        dict.updateValue(rateIndex as AnyObject, forKey: "rating")
-        if let code = categoryResponseModel?[selectedIndex] {
-            let item:CategoryItem = code as! CategoryItem
-            dict.updateValue(item.categoryID as AnyObject, forKey: "category_id")
+        if let eveItem = self.eventItem{
+            dict.updateValue(eveItem.eventId as AnyObject, forKey: "event_id")
+            dict.updateValue(eveItem.categoryId as AnyObject, forKey: "category_id")
         }
+        dict.updateValue(rateIndex as AnyObject, forKey: "rating")
         dict.updateValue(textViewSuggestions.text as AnyObject, forKey: "comments")
-        
+        dict.updateValue("" as AnyObject, forKey: "title")
+        if let fileUploadRes = self.fileUploadResponseModel {
+            dict.updateValue(fileUploadRes.uploadedImageName as AnyObject, forKey: "place_files")
+        }
+        else{
+            dict.updateValue("" as AnyObject, forKey: "place_files")
+        }
         //"place_files": "image.jpg,video.mp4" ( File names are concatenate with comma - > check API No: 17)
         
         return CCUtility.getJSONfrom(dictionary: dict)
@@ -365,14 +415,14 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
             self.authorisationStatus(attachmentTypeEnum: .photoLibrary, vc: self)
         }))
         
-        actionSheet.addAction(UIAlertAction(title: Constant.PhotoLibrary.video, style: .default, handler: { (action) -> Void in
-            self.authorisationStatus(attachmentTypeEnum: .video, vc: self)
-            
-        }))
+//        actionSheet.addAction(UIAlertAction(title: Constant.PhotoLibrary.video, style: .default, handler: { (action) -> Void in
+//            self.authorisationStatus(attachmentTypeEnum: .video, vc: self)
+//
+//        }))
         
-        actionSheet.addAction(UIAlertAction(title: Constant.PhotoLibrary.file, style: .default, handler: { (action) -> Void in
-            self.documentPicker()
-        }))
+//        actionSheet.addAction(UIAlertAction(title: Constant.PhotoLibrary.file, style: .default, handler: { (action) -> Void in
+//            self.documentPicker()
+//        }))
         
         actionSheet.addAction(UIAlertAction(title: Constant.PhotoLibrary.cancelBtnTitle, style: .cancel, handler: nil))
         

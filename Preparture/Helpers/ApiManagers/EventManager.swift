@@ -117,6 +117,7 @@ class EventDetailResponseModel : NSObject{
 
 class EventItem : NSObject{
     var eventId:Int = 0
+    var categoryId:Int = 0
     var name:String = ""
     var location:String = ""
     var eventDate:String = ""
@@ -138,6 +139,11 @@ class EventItem : NSObject{
         }
         if let value = dict["event_name"] as? String{
             name = value
+        }
+        if let value = dict["category_id"] as? String{
+            if let catId = Int(value){
+                categoryId = catId
+            }
         }
         if let value = dict["author_name"] as? String{
             eventOwnerName = value

@@ -88,7 +88,6 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     @IBAction func actionReadReviews(_ sender: Any) {
         let suggestionsVC = SuggestionsViewController(nibName: "SuggestionsViewController", bundle: nil)
          suggestionsVC.eventItem = eventItem
-        suggestionsVC.categoryResponseModel = categoryResponseModel
         self.present(suggestionsVC, animated: true, completion: nil)
     }
     

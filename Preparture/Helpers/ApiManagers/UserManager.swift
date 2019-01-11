@@ -377,9 +377,9 @@ class UserManager: CLBaseService {
     }
     
     func networkModelForaddSuggestions(with body:String)->CLNetworkModel{
-        let addToFavoriteRequestModel = CLNetworkModel.init(url: BASE_URL+ADD_SUGGESTIONS_URL, requestMethod_: "POST")
-        addToFavoriteRequestModel.requestBody = body
-        return addToFavoriteRequestModel
+        let addSuggestionRequestModel = CLNetworkModel.init(url: BASE_URL+ADD_SUGGESTIONS_URL, requestMethod_: "POST")
+        addSuggestionRequestModel.requestBody = body
+        return addSuggestionRequestModel
     }
     
     func addSuggestionsResponseModel(dict:[String : Any?]) -> Any? {
