@@ -9,7 +9,7 @@
 import UIKit
 
 protocol HomeListTVCDelegate {
-    func addToFavorite(tag:NSInteger)
+    func addToFavorite(tag:NSInteger, favButton:UIButton)
     func shareAction(tag:NSInteger)
     func doubleArrowButtonAction(tag:NSInteger)
 }
@@ -36,7 +36,7 @@ class HomeListTVC: UITableViewCell {
     }
     
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
-        delegate?.addToFavorite(tag: self.tag)
+        delegate?.addToFavorite(tag: self.tag, favButton: sender)
     }
     @IBAction func doubleArrowAction(_ sender: UIButton) {
         delegate?.doubleArrowButtonAction(tag: self.tag)
@@ -46,17 +46,17 @@ class HomeListTVC: UITableViewCell {
     }
     
     func eventItem(event:EventItem){
-       // self.headingLabel.text = suggestion.authorName
-        //self.subHeadingLabel.text = suggestion.placeName
-        self.descriptionLabel.text = event.location
-        self.ratingLabel.text = String(event.rating)
-//        if suggestion.placeImages.count>0{
-//            if let placeImage = suggestion.placeImages.first {
-//                itemImageView.sd_setImage(with: URL(string: placeImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
-//            }
-//        }
-        //favoriteButton.isSelected = suggestion.isFavorited
-       // self.dateLabel.text = CCUtility.convertToDateToFormat(inputDate: suggestion.createdDate, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "dd/MM/yyyy")
+        self.headingLabel.text = event.name
+        self.subHeadingLabel.text = event.location
+        self.descriptionLabel.text = event.travelExperience
+        self.ratingLabel.text = String(format: "%@.0", String(event.rating))
+        if event.eventImages.count>0{
+            if let eventImage = event.eventImages.first {
+                itemImageView.sd_setImage(with: URL(string: eventImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
+            }
+        }
+        favoriteButton.isSelected = event.isFavourite
+        self.dateLabel.text = CCUtility.convertToDateToFormat(inputDate: event.eventDate, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "MMM dd, yy")
     }
     
 }

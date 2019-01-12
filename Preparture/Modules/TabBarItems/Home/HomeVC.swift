@@ -13,7 +13,7 @@ class HomeVC: BaseViewController {
     @IBOutlet weak var searchTF: UITextField!
     
     var itemDetail:CategoryItem?
-    var eventsArray:NSMutableArray?
+    var eventsArray = [EventItem]()
     var eventsResponseModel:EventsResponseModel?
     
     @IBOutlet weak var labelHeading: UILabel!
@@ -23,13 +23,18 @@ class HomeVC: BaseViewController {
     
     override func initView() {
         super.initView()
-        eventsArray = NSMutableArray()
+       // eventsArray = NSMutableArray()
         self.navigationController?.navigationBar.isHidden = true
         labelHeading.text = itemDetail?.categoryName
         addShadowToAView(shadowView: searchView)
         tableCellRegistration()
         getSuggestions()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tableViewList.reloadData()
     }
     
     
@@ -48,7 +53,8 @@ class HomeVC: BaseViewController {
                 if model.statusCode == 1{
                     self.currentPage = self.currentPage + 1
                     self.eventsResponseModel = model
-                    self.eventsArray?.addObjects(from: model.events)
+                    self.eventsArray.append(contentsOf: model.events)
+                   // self.eventsArray.addObjects(from: model.events)
                     self.tableViewList.reloadData()
                 }
                 else{
@@ -105,17 +111,12 @@ extension HomeVC:UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let eveArray = self.eventsArray{
-            return eveArray.count
-        }
-        return 0
+        return self.eventsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeListCell", for: indexPath) as!HomeListTVC
-        if let eveArray = self.eventsArray{
-            cell.eventItem(event:eveArray[indexPath.row] as! EventItem)
-        }
+        cell.eventItem(event:self.eventsArray[indexPath.row] )
         cell.tag = indexPath.row
         cell.delegate = self
         return cell
@@ -126,22 +127,29 @@ extension HomeVC:UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let eveArray = self.eventsArray{
-            let eventItem:EventItem = eveArray[indexPath.row] as! EventItem
-            let detailVC = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
-            detailVC.eventItem = eventItem
-            self.navigationController?.pushViewController(detailVC, animated: true)
-        }
+        let eventItem:EventItem = self.eventsArray[indexPath.row]
+        let detailVC = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
+        detailVC.eventItem = eventItem
+        self.navigationController?.pushViewController(detailVC, animated: true)
         
     }
     
     //MARK:- HomeListTVC Delegate method
     
-    func addToFavorite(tag:NSInteger) {
-        if let eveArray = self.eventsArray{
-            let eveItem:EventItem = eveArray[tag] as! EventItem
+    func addToFavorite(tag:NSInteger, favButton:UIButton) {
+        let eveItem:EventItem = self.eventsArray[tag] as! EventItem
+        if favButton.isSelected {
+            self.callingRemoveFromFavoriteApi(suggestionItem: eveItem) { (status) in
+                if status {
+                    eveItem.isFavourite = false
+                    self.tableViewList.reloadData()
+                }
+            }
+        }
+        else{
             self.callingAddToFavoriteApi(suggestionItem: eveItem) { (status) in
                 if status {
+                    eveItem.isFavourite = true
                     self.tableViewList.reloadData()
                 }
             }
@@ -153,15 +161,13 @@ extension HomeVC:UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
     }
     
     func shareAction(tag:NSInteger){
-        if let eveArray = self.eventsArray{
-            let suggestion:EventItem = eveArray[tag] as! EventItem
-            let textToShare = "\(suggestion.name)"
-            let objectsToShare = [textToShare]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            activityVC.popoverPresentationController?.sourceView = self.view
-            DispatchQueue.main.async {
-                self.present(activityVC, animated: true, completion: nil)
-            }
+        let suggestion:EventItem = self.eventsArray[tag]
+        let textToShare = "\(suggestion.name)"
+        let objectsToShare = [textToShare]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        DispatchQueue.main.async {
+            self.present(activityVC, animated: true, completion: nil)
         }
     }
 }

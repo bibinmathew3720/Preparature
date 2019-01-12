@@ -121,6 +121,7 @@ class EventItem : NSObject{
     var name:String = ""
     var location:String = ""
     var eventDate:String = ""
+    var createdDate:String = ""
     var eventCost:Double = 0.0
     var rating:Int = 0
     var reviewsCount:Int = 0
@@ -154,6 +155,9 @@ class EventItem : NSObject{
         if let value = dict["event_date"] as? String{
             eventDate = value
         }
+        if let value = dict["created_date"] as? String{
+            createdDate = value
+        }
         if let value = dict["event_cost"] as? String{
             if let n = NumberFormatter().number(from: value) {
                 eventCost = Double(truncating: n)
@@ -177,6 +181,14 @@ class EventItem : NSObject{
             }
         }
         if let value = dict["favorite_status"] as? Int{
+            if value == 1{
+                isFavourite = true
+            }
+            else{
+                isFavourite = false
+            }
+        }
+        if let value = dict["user_favorite_status"] as? Int{
             if value == 1{
                 isFavourite = true
             }

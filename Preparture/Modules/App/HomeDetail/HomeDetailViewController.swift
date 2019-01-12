@@ -180,7 +180,7 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
                 let userSug = eventIt.suggestions.first
                 if let userSuggestion = userSug {
                     labelReviewerName.text = userSuggestion.userName
-                    labelReviewerDate.text = userSuggestion.updatedDate
+                    labelReviewerDate.text = userSuggestion.createdDate
                     setReviewerRatingStar(rating: userSuggestion.rating)
                     imageReviewer.sd_setImage(with: URL(string: userSuggestion.userProfImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
                     labelReviewComments.text = userSuggestion.comments

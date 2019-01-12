@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -51,19 +51,19 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liza Manual" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kb6-hg-7NH">
-                                                <rect key="frame" x="23" y="14" width="357" height="20.5"/>
+                                                <rect key="frame" x="25" y="14" width="355" height="20.5"/>
                                                 <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="16"/>
                                                 <color key="textColor" red="0.086274509803921567" green="0.086274509803921567" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Musical Symphony" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwc-yG-6HK">
-                                                <rect key="frame" x="23" y="37.5" width="357" height="18"/>
+                                                <rect key="frame" x="25" y="37.5" width="355" height="18"/>
                                                 <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="14"/>
                                                 <color key="textColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolar sit amet, consectuer adipiscing egegeg egegegge egegen" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raX-ea-t1a">
-                                                <rect key="frame" x="23" y="58.5" width="357" height="33"/>
+                                                <rect key="frame" x="25" y="58.5" width="355" height="33"/>
                                                 <fontDescription key="fontDescription" name="Muli-ExtraLight" family="Muli" pointSize="13"/>
                                                 <color key="textColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -90,8 +90,8 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXK-cj-jYR">
                                                         <rect key="frame" x="0.0" y="0.0" width="127.5" height="50"/>
-                                                        <state key="normal" image="favorite"/>
-                                                        <state key="selected" image="favorite"/>
+                                                        <state key="normal" image="favoritesTab"/>
+                                                        <state key="selected" image="favoritesTabSelected"/>
                                                         <connections>
                                                             <action selector="favoriteButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="obV-IO-THS"/>
                                                         </connections>
@@ -235,7 +235,7 @@
                             <constraint firstItem="fe1-ZD-ete" firstAttribute="leading" secondItem="5eN-YK-y2W" secondAttribute="leading" constant="10" id="Tym-bE-REn"/>
                             <constraint firstItem="kb6-hg-7NH" firstAttribute="top" secondItem="345-Mp-p8p" secondAttribute="top" id="XRS-P9-xwg"/>
                             <constraint firstAttribute="bottom" secondItem="ZDc-u2-Ld3" secondAttribute="bottom" constant="10" id="arE-r8-yAe"/>
-                            <constraint firstItem="kb6-hg-7NH" firstAttribute="leading" secondItem="345-Mp-p8p" secondAttribute="trailing" constant="3" id="oom-V3-9Qe"/>
+                            <constraint firstItem="kb6-hg-7NH" firstAttribute="leading" secondItem="345-Mp-p8p" secondAttribute="trailing" constant="5" id="oom-V3-9Qe"/>
                             <constraint firstItem="fe1-ZD-ete" firstAttribute="centerY" secondItem="5eN-YK-y2W" secondAttribute="centerY" id="qGW-iw-jeg"/>
                             <constraint firstItem="ZDc-u2-Ld3" firstAttribute="top" secondItem="5eN-YK-y2W" secondAttribute="top" constant="10" id="roP-ga-GWV"/>
                         </constraints>
@@ -265,7 +265,8 @@
     </objects>
     <resources>
         <image name="doubleArrow" width="23" height="23"/>
-        <image name="favorite" width="23" height="19"/>
+        <image name="favoritesTab" width="22" height="22"/>
+        <image name="favoritesTabSelected" width="22" height="22"/>
         <image name="share" width="19" height="17"/>
     </resources>
 </document>
