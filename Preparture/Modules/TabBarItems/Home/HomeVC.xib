@@ -95,7 +95,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2t4-Uc-uXk">
-                    <rect key="frame" x="0.0" y="155" width="375" height="472"/>
+                    <rect key="frame" x="0.0" y="155" width="375" height="502"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="iqL-II-kQq"/>
@@ -113,7 +113,7 @@
                 <constraint firstItem="6qq-Ki-6hA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JZa-Vj-cq9"/>
                 <constraint firstItem="2t4-Uc-uXk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bY4-6W-Gt7"/>
                 <constraint firstAttribute="trailing" secondItem="LUY-Ht-ZWM" secondAttribute="trailing" constant="10" id="hfw-v5-XMg"/>
-                <constraint firstAttribute="bottom" secondItem="2t4-Uc-uXk" secondAttribute="bottom" constant="40" id="mQ0-Cm-aTx"/>
+                <constraint firstAttribute="bottom" secondItem="2t4-Uc-uXk" secondAttribute="bottom" constant="10" id="mQ0-Cm-aTx"/>
                 <constraint firstAttribute="trailing" secondItem="6qq-Ki-6hA" secondAttribute="trailing" id="mUT-4B-xJZ"/>
                 <constraint firstAttribute="trailing" secondItem="2t4-Uc-uXk" secondAttribute="trailing" id="o2a-Fx-EPK"/>
                 <constraint firstItem="QGX-jz-cns" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oTT-FI-WE4"/>
