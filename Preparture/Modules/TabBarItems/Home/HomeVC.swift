@@ -131,13 +131,18 @@ extension HomeVC:UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
         let detailVC = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
         detailVC.eventItem = eventItem
         self.navigationController?.pushViewController(detailVC, animated: true)
-        
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if(indexPath.row == (eventsArray.count-1)){
+            self.getSuggestions()
+        }
     }
     
     //MARK:- HomeListTVC Delegate method
     
     func addToFavorite(tag:NSInteger, favButton:UIButton) {
-        let eveItem:EventItem = self.eventsArray[tag] as! EventItem
+        let eveItem:EventItem = self.eventsArray[tag]
         if favButton.isSelected {
             self.callingRemoveFromFavoriteApi(suggestionItem: eveItem) { (status) in
                 if status {
