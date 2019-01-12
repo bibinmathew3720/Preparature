@@ -20,6 +20,7 @@ class SuggestionsTableViewCell: UITableViewCell {
     @IBOutlet weak var starButton4: UIButton!
     @IBOutlet weak var starButton5: UIButton!
     @IBOutlet weak var labelReviewComments: UILabel!
+    @IBOutlet weak var suggestionImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,7 +37,12 @@ class SuggestionsTableViewCell: UITableViewCell {
         labelReviewerName.text = model.userName
         labelReviewComments.text = model.comments
         imageReviewer.sd_setImage(with: URL(string: model.userProfImage), completed: nil)
-        self.labelReviewerDate.text = CCUtility.convertToDateToFormat(inputDate: model.updatedDate, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "MMM yyyy")
+        self.labelReviewerDate.text = CCUtility.convertToDateToFormat(inputDate: model.createdDate, inputDateFormat: "yyyy-MM-dd HH:mm:ss", outputDateFormat: "MMM dd, yyyy")
+        if model.placeFiles.count>0{
+            if let placeFile = model.placeFiles.first {
+                suggestionImageView.sd_setImage(with: URL(string: placeFile), completed: nil)
+            }
+        }
         settingRating(rating: model.rating)
     }
     

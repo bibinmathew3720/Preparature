@@ -208,7 +208,9 @@ class UserSuggestion : NSObject{
     var comments:String = ""
     var rating:Int = 0
     var title:String = ""
+    var createdDate:String = ""
     var updatedDate:String = ""
+    var placeFiles = [String]()
     
     init(dict:[String:Any?]) {
         if let value = dict["sgg_id"] as? String{
@@ -220,6 +222,9 @@ class UserSuggestion : NSObject{
             if let eveId = Int(value){
                 eventId = eveId
             }
+        }
+        if let value = dict["created_date"] as? String{
+            createdDate = value
         }
         if let value = dict["name"] as? String{
             userName = value
@@ -244,6 +249,13 @@ class UserSuggestion : NSObject{
         if let value = dict["rating"] as? String{
             if let total = Int(value){
                 rating = total
+            }
+        }
+        if let value = dict["place_files"] as? NSArray{
+            for item in value {
+                if let image = item as? String {
+                    placeFiles.append(image)
+                }
             }
         }
     }
