@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,11 +12,15 @@
         <array key="Muli-Bold.ttf">
             <string>Muli-Bold</string>
         </array>
+        <array key="Muli-Regular.ttf">
+            <string>Muli-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoritesVC" customModule="Preparture" customModuleProvider="target">
             <connections>
                 <outlet property="favoriteTableView" destination="BCb-u5-3sU" id="2d7-aQ-ZhP"/>
+                <outlet property="noItemsFoundLabel" destination="mh1-wg-Kiy" id="ZlL-2w-dRg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -62,16 +66,24 @@
                         <constraint firstAttribute="trailing" secondItem="BCb-u5-3sU" secondAttribute="trailing" id="bZX-Dn-hMi"/>
                     </constraints>
                 </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, no items found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh1-wg-Kiy">
+                    <rect key="frame" x="104.5" y="323.5" width="166.5" height="21.5"/>
+                    <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="17"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="wct-XF-DZS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ADK-pW-fvf"/>
+                <constraint firstItem="mh1-wg-Kiy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="SPz-aH-yid"/>
                 <constraint firstAttribute="bottom" secondItem="wct-XF-DZS" secondAttribute="bottom" id="Sy6-3I-7L8"/>
                 <constraint firstAttribute="trailing" secondItem="wct-XF-DZS" secondAttribute="trailing" id="UrK-ZI-DCv"/>
                 <constraint firstItem="wct-XF-DZS" firstAttribute="top" secondItem="EKr-JR-4v3" secondAttribute="bottom" id="bo5-mi-to0"/>
                 <constraint firstItem="EKr-JR-4v3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lc9-hI-tqN"/>
                 <constraint firstItem="EKr-JR-4v3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="p1d-Hn-u0a"/>
                 <constraint firstAttribute="trailing" secondItem="EKr-JR-4v3" secondAttribute="trailing" id="uXU-VK-uZV"/>
+                <constraint firstItem="mh1-wg-Kiy" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="xSB-7s-Au3"/>
             </constraints>
             <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>

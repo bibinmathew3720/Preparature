@@ -215,6 +215,35 @@ class UserManager: CLBaseService {
         return addToFavoriteReponseModel
     }
     
+    //MARK : Remmove from Favorite Api
+    
+    func removeFromFavoriteApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForRemoveFromFavorite(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict as Any)
+                    success(self.getAddToFavoriteResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForRemoveFromFavorite(with body:String)->CLNetworkModel{
+        let removeFromFavoriteRequestModel = CLNetworkModel.init(url: BASE_URL+REMOVE_FROM_FAVORITE_URL, requestMethod_: "POST")
+        removeFromFavoriteRequestModel.requestBody = body
+        return removeFromFavoriteRequestModel
+    }
+    
     
     //MARK : Get All Favorite Api
     

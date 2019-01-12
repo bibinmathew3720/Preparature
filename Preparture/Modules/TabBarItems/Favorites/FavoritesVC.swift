@@ -9,6 +9,7 @@
 import UIKit
 
 class FavoritesVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
+    @IBOutlet weak var noItemsFoundLabel: UILabel!
     @IBOutlet weak var favoriteTableView: UITableView!
     var favoriteResponseModel:ListAllFavoriteResponseModel?
     override func initView() {
@@ -76,8 +77,12 @@ class FavoritesVC: BaseViewController,UITableViewDataSource,UITableViewDelegate 
                 if model.statusCode == 1{
                    self.favoriteResponseModel = model
                    self.favoriteTableView.reloadData()
+                   self.setNoItemsFoundLabel()
                 }
                 else{
+                    self.favoriteResponseModel = nil
+                    self.favoriteTableView.reloadData()
+                    self.setNoItemsFoundLabel()
                     CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
                 }
             }
@@ -98,6 +103,20 @@ class FavoritesVC: BaseViewController,UITableViewDataSource,UITableViewDelegate 
             dict.updateValue(user.userId as AnyObject, forKey: "user_id")
         }
         return CCUtility.getJSONfrom(dictionary: dict)
+    }
+    
+    func setNoItemsFoundLabel(){
+        if let favModel = self.favoriteResponseModel{
+            if (favModel.favoriteItems.count != 0){
+                self.noItemsFoundLabel.isHidden = true
+            }
+            else{
+                self.noItemsFoundLabel.isHidden = false
+            }
+        }
+        else{
+            self.noItemsFoundLabel.isHidden = false
+        }
     }
     
 

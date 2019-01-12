@@ -83,41 +83,6 @@ class HomeVC: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK:- Add To Favorite Api integration
-    
-    func callingAddToFavoriteApi(suggestionItem:EventItem){
-        MBProgressHUD.showAdded(to: self.view!, animated: true)
-        UserManager().addToFavoriteApi(with: addToFavoriteRequestBody(suggestion:suggestionItem), success: {
-            (model) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            if let model = model as? AddToFavoriteResponseModel{
-                if model.statusCode == 1{
-                   // suggestionItem.isFavorited = true
-                    self.tableViewList.reloadData()
-                }
-                else{
-                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
-                }
-            }
-        }) { (ErrorType) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            if(ErrorType == .noNetwork){
-                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
-            } else {
-                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
-            }
-            print(ErrorType)
-        }
-    }
-    
-    func addToFavoriteRequestBody(suggestion:EventItem)->String{
-        var dict:[String:AnyObject] = [String:AnyObject]()
-        if let user = User.getUser() {
-            dict.updateValue(user.userId as AnyObject, forKey: "user_id")
-        }
-        dict.updateValue(suggestion.eventId as AnyObject, forKey: "event_id")
-        return CCUtility.getJSONfrom(dictionary: dict)
-    }
     
     //MARK:- UIView Action Methods
     
@@ -167,7 +132,11 @@ extension HomeVC:UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
     
     func addToFavorite(tag:NSInteger) {
         let suggestion:EventItem = self.suggestionsArray![tag] as! EventItem
-        callingAddToFavoriteApi(suggestionItem:suggestion)
+        self.callingAddToFavoriteApi(suggestionItem: suggestion) { (status) in
+            if status {
+                 self.tableViewList.reloadData()
+            }
+        }
     }
     
     func doubleArrowButtonAction(tag:NSInteger){

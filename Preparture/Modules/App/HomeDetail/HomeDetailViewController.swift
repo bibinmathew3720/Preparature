@@ -79,6 +79,24 @@ class HomeDetailViewController: BaseViewController, UIScrollViewDelegate {
     }
     
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
+        if let event = self.eventItem {
+            if sender.isSelected {
+                self.callingRemoveFromFavoriteApi(suggestionItem: event) { (status) in
+                    if (status){
+                        event.isFavourite = false
+                        self.populateEventDetails()
+                    }
+                }
+            }
+            else{
+                self.callingAddToFavoriteApi(suggestionItem: event) { (status) in
+                    if (status){
+                        event.isFavourite = true
+                        self.populateEventDetails()
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func actionPageControllValueChanged(_ sender: UIPageControl) {
