@@ -9,13 +9,13 @@
 import UIKit
 
 class HomeVC: BaseViewController {
-    
-    
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchTF: UITextField!
+    
     var itemDetail:CategoryItem?
-    var suggestionsArray:NSMutableArray?
-    var suggestionResponseModel:SuggestionsResponseModel?
+    var eventsArray:NSMutableArray?
+    var eventsResponseModel:EventsResponseModel?
+    
     @IBOutlet weak var labelHeading: UILabel!
     @IBOutlet weak var tableViewList: UITableView!
     var currentPage:Int = 0
@@ -23,7 +23,7 @@ class HomeVC: BaseViewController {
     
     override func initView() {
         super.initView()
-        suggestionsArray = NSMutableArray()
+        eventsArray = NSMutableArray()
         self.navigationController?.navigationBar.isHidden = true
         labelHeading.text = itemDetail?.categoryName
         addShadowToAView(shadowView: searchView)
@@ -41,14 +41,14 @@ class HomeVC: BaseViewController {
     
     func getSuggestions(){
         MBProgressHUD.showAdded(to: self.view!, animated: true)
-        EventManager().callingSuggestionsApi(with: listAllEventRequestBody(), success: {
+        EventManager().callingEventsApi(with: listAllEventRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            if let model = model as? SuggestionsResponseModel{
+            if let model = model as? EventsResponseModel{
                 if model.statusCode == 1{
                     self.currentPage = self.currentPage + 1
-                    self.suggestionResponseModel = model
-                    self.suggestionsArray?.addObjects(from: (self.suggestionResponseModel?.events)!)
+                    self.eventsResponseModel = model
+                    self.eventsArray?.addObjects(from: model.events)
                     self.tableViewList.reloadData()
                 }
                 else{
@@ -72,9 +72,14 @@ class HomeVC: BaseViewController {
     
     func listAllEventRequestBody()->String{
         var dict:[String:AnyObject] = [String:AnyObject]()
-        dict.updateValue(itemDetail?.categoryID as AnyObject, forKey: "category_id")
+        if let cat = itemDetail {
+            dict.updateValue(cat.categoryID as AnyObject, forKey: "category_id")
+        }
         dict.updateValue(currentPage as AnyObject, forKey: "currentpage")
         dict.updateValue(10 as AnyObject, forKey: "rowsperpage")
+        if let user = User.getUser(){
+            dict.updateValue(user.userId as AnyObject, forKey: "user_id")
+        }
         return CCUtility.getJSONfrom(dictionary: dict)
     }
     
@@ -100,16 +105,16 @@ extension HomeVC:UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let sugArray = self.suggestionsArray{
-            return sugArray.count
+        if let eveArray = self.eventsArray{
+            return eveArray.count
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeListCell", for: indexPath) as!HomeListTVC
-        if let sugArray = self.suggestionsArray{
-            cell.setSuggestionItem(suggestion:sugArray[indexPath.row] as! EventItem)
+        if let eveArray = self.eventsArray{
+            cell.eventItem(event:eveArray[indexPath.row] as! EventItem)
         }
         cell.tag = indexPath.row
         cell.delegate = self
@@ -121,20 +126,24 @@ extension HomeVC:UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let suggestion:EventItem = self.suggestionsArray![indexPath.row] as! EventItem
-        let detailVC = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
-        //detailVC.eventItem = suggestion
-        detailVC.categoryResponseModel = categoryResponseModel
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        if let eveArray = self.eventsArray{
+            let eventItem:EventItem = eveArray[indexPath.row] as! EventItem
+            let detailVC = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
+            detailVC.eventItem = eventItem
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
+        
     }
     
     //MARK:- HomeListTVC Delegate method
     
     func addToFavorite(tag:NSInteger) {
-        let suggestion:EventItem = self.suggestionsArray![tag] as! EventItem
-        self.callingAddToFavoriteApi(suggestionItem: suggestion) { (status) in
-            if status {
-                 self.tableViewList.reloadData()
+        if let eveArray = self.eventsArray{
+            let eveItem:EventItem = eveArray[tag] as! EventItem
+            self.callingAddToFavoriteApi(suggestionItem: eveItem) { (status) in
+                if status {
+                    self.tableViewList.reloadData()
+                }
             }
         }
     }
@@ -144,13 +153,15 @@ extension HomeVC:UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
     }
     
     func shareAction(tag:NSInteger){
-        let suggestion:EventItem = self.suggestionsArray![tag] as! EventItem
-        let textToShare = "\(suggestion.name)"
-        let objectsToShare = [textToShare]
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        activityVC.popoverPresentationController?.sourceView = self.view
-        DispatchQueue.main.async {
-            self.present(activityVC, animated: true, completion: nil)
+        if let eveArray = self.eventsArray{
+            let suggestion:EventItem = eveArray[tag] as! EventItem
+            let textToShare = "\(suggestion.name)"
+            let objectsToShare = [textToShare]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.popoverPresentationController?.sourceView = self.view
+            DispatchQueue.main.async {
+                self.present(activityVC, animated: true, completion: nil)
+            }
         }
     }
 }

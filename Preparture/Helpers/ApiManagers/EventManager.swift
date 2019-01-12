@@ -10,16 +10,16 @@ import UIKit
 
 class EventManager: CLBaseService {
     
-    //MARK : Get Suggestions Api
+    //MARK : Get Events Api
     
-    func callingSuggestionsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
-        CLNetworkManager().initateWebRequest(networkModelForGetSuggestions(with:body), success: {
+    func callingEventsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetEvents(with:body), success: {
             (resultData) in
             let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
             if error == nil {
                 if let jdict = jsonDict{
                     print(jsonDict as Any)
-                    success(self.getSuggestionsResponseModel(dict: jdict) as Any)
+                    success(self.getEventsResponseModel(dict: jdict) as Any)
                 }else{
                     failure(ErrorType.dataError)
                 }
@@ -33,15 +33,15 @@ class EventManager: CLBaseService {
         
     }
     
-    func networkModelForGetSuggestions(with body:String)->CLNetworkModel{
+    func networkModelForGetEvents(with body:String)->CLNetworkModel{
         let getSuggestionsModel = CLNetworkModel.init(url: BASE_URL+GET_PARTICULAR_EVENTITEMS_URL, requestMethod_: "POST")
         getSuggestionsModel.requestBody = body
         return getSuggestionsModel
     }
     
-    func getSuggestionsResponseModel(dict:[String : Any?]) -> Any? {
-        let suggestionReponseModel = SuggestionsResponseModel.init(dict:dict)
-        return suggestionReponseModel
+    func getEventsResponseModel(dict:[String : Any?]) -> Any? {
+        let eventsReponseModel = EventsResponseModel.init(dict:dict)
+        return eventsReponseModel
     }
     
     //MARK : Get Event Details Api
@@ -79,7 +79,7 @@ class EventManager: CLBaseService {
     }
 }
 
-class SuggestionsResponseModel : NSObject{
+class EventsResponseModel : NSObject{
     var statusMessage:String = ""
     var statusCode:Int = 0
     var events = [EventItem]()

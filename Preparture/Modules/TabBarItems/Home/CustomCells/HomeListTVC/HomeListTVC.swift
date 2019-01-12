@@ -45,11 +45,11 @@ class HomeListTVC: UITableViewCell {
         delegate?.shareAction(tag: self.tag)
     }
     
-    func setSuggestionItem(suggestion:EventItem){
+    func eventItem(event:EventItem){
        // self.headingLabel.text = suggestion.authorName
         //self.subHeadingLabel.text = suggestion.placeName
-        self.descriptionLabel.text = suggestion.location
-        self.ratingLabel.text = String(suggestion.rating)
+        self.descriptionLabel.text = event.location
+        self.ratingLabel.text = String(event.rating)
 //        if suggestion.placeImages.count>0{
 //            if let placeImage = suggestion.placeImages.first {
 //                itemImageView.sd_setImage(with: URL(string: placeImage), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
