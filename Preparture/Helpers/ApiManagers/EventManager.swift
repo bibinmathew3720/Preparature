@@ -285,7 +285,7 @@ class AddEvent : NSObject{
     var location:String = ""
     var latitude:Double = 0.0
     var longitude:Double = 0.0
-    var category:Int = 0
+    var category:String = ""
     var eventRating:Int = 0
     var travelExperience:String = ""
     var comment:String = ""
@@ -302,7 +302,7 @@ class AddEvent : NSObject{
         dict.updateValue(eventCost, forKey: "event_cost")
         dict.updateValue(eventDate, forKey: "event_date")
         dict.updateValue(eventTime, forKey: "event_time")
-        dict.updateValue(String(format: "%d", category), forKey: "category_id")
+        dict.updateValue(category, forKey: "category_id")
         dict.updateValue(String(format: "%f", latitude), forKey: "latitude")
         dict.updateValue(String(format: "%f", longitude), forKey: "longitude")
         dict.updateValue(location, forKey: "location")

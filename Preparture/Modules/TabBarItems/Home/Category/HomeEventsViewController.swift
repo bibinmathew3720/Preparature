@@ -15,53 +15,28 @@ class HomeEventsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(categoryResponseModel)
-
         // Do any additional setup after loading the view.
         customization()
+        callingGetCategoriesApi()
+    }
+    
+    func callingGetCategoriesApi(){
+        self.getAllCategoryApi { (status, categoryResponse) in
+            if status{
+                self.categoryResponseModel = categoryResponse
+                self.collectionViewEvents.reloadData()
+            }
+        }
     }
 
     func customization() {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.collectionViewEvents.register(UINib.init(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "categoryCollectionViewCell")
-
-        getAllCategoryApi()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    //MARK:- Get All Categories Api integration
-    
-    func getAllCategoryApi(){
-        MBProgressHUD.showAdded(to: self.view!, animated: true)
-        UserManager().getCategoryApi(with: "", success: {
-            (model) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            if let model = model as? GetAllCategoryResponseModel{
-                //if model.statusCode == 1{
-                self.categoryResponseModel = model
-                    self.collectionViewEvents.reloadData()
-//                }
-//                else{
-//                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
-//                }
-            } else {
-//                if let model = model as? stat{
-//                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
-//                }
-            }
-        }) { (ErrorType) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            if(ErrorType == .noNetwork){
-                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
-            } else {
-                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
-            }
-            print(ErrorType)
-        }
     }
     
 }

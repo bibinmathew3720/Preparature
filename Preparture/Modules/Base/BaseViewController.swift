@@ -111,6 +111,28 @@ class BaseViewController: UIViewController {
         dict.updateValue(suggestion.eventId as AnyObject, forKey: "event_id")
         return CCUtility.getJSONfrom(dictionary: dict)
     }
+    
+    //MARK:- Get All Categories Api integration
+    
+    func getAllCategoryApi(success : @escaping (Bool,GetAllCategoryResponseModel?)->()){
+        MBProgressHUD.showAdded(to: self.view!, animated: true)
+        UserManager().getCategoryApi(with: "", success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? GetAllCategoryResponseModel{
+                success(true,model)
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            success(false,nil)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            } else {
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            print(ErrorType)
+        }
+    }
 
     /*
     // MARK: - Navigation

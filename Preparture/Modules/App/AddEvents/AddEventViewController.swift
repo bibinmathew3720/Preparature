@@ -20,7 +20,6 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     @IBOutlet weak var tfType: UITextField!
     @IBOutlet var pickerViewType: UIPickerView!
     @IBOutlet var toolBarPicker: UIToolbar!
-    var selectedIndex:NSInteger = 0
     @IBOutlet weak var tfEventName: UITextField!
     @IBOutlet weak var tfAuthorName: UITextField!
     @IBOutlet weak var tfExpense: UITextField!
@@ -28,7 +27,6 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     @IBOutlet weak var tfTime: UITextField!
     @IBOutlet weak var tfLocation: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
-    
     @IBOutlet weak var textViewTravelExp: UITextView!
     @IBOutlet weak var textViewComments: UITextView!
     @IBOutlet weak var buttonStarFirst: UIButton!
@@ -36,10 +34,9 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     @IBOutlet weak var buttonStarThird: UIButton!
     @IBOutlet weak var buttonStarFourth: UIButton!
     @IBOutlet weak var buttonStarFifth: UIButton!
-    var rateIndex:Int = 0
+    @IBOutlet weak var categoryView: UIView!
     var mapItem:MKMapItem?
     var categoryResponseModel:GetAllCategoryResponseModel?
-    
     var pickType:PickerType = .dateOnlyPickerType
     var addEvent = AddEvent()
     
@@ -47,6 +44,16 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
         super.initView()
         initialisation()
         customization()
+        callingGetCategoriesApi()
+    }
+    
+    func callingGetCategoriesApi(){
+        self.getAllCategoryApi { (status, categoryResponse) in
+            if status{
+                self.categoryResponseModel = categoryResponse
+                self.pickerViewType.reloadComponent(0)
+            }
+        }
     }
     
     func initialisation(){
@@ -54,6 +61,7 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
         tfDate.inputView = datePicker
         tfTime.inputAccessoryView = toolBarPicker
         tfTime.inputView = datePicker
+        categoryView.layer.borderColor = Constant.Colors.AppCommonGreyColor.cgColor
     }
     
     func customization() {
@@ -83,6 +91,11 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
                 addEvent.authorName = textString
             }
         }
+        else if sender == tfLocation{
+            if let textString = sender.text{
+                addEvent.location = textString
+            }
+        }
         else if sender == tfExpense{
             if let textString = sender.text{
                 addEvent.eventCost = textString
@@ -110,7 +123,7 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedIndex = row
+        
     }
     
     //MARK:- UIView Action Methods
@@ -158,15 +171,18 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     }
     
     @IBAction func actionSubmit(_ sender: Any) {
-        addEventApi()
+        if isValid(){
+            addEventApi()
+        }
     }
     
     @IBAction func actionToolbarDone(_ sender: Any) {
         if pickType == .categoryPicker {
-            guard let code = categoryResponseModel?.categoryItems[selectedIndex] else {
+            guard let code = categoryResponseModel?.categoryItems[pickerViewType.selectedRow(inComponent: 0)] else {
                 return
             }
             tfType.text = code.categoryName
+            addEvent.category = code.categoryID
         }
         else if pickType == .dateOnlyPickerType{
             let dateString = CCUtility.stringFromDateWithYear(date:datePicker.date)
@@ -221,6 +237,70 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
                 CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
             }
             print(ErrorType)
+        }
+    }
+    
+    func isValid()->Bool{
+        if  !addEvent.eventName.isValidString(){
+            if  !addEvent.authorName.isValidString(){
+                if !addEvent.eventCost.isValidString() {
+                    if !addEvent.eventDate.isValidString(){
+                        if !addEvent.eventTime.isValidString(){
+                            if !addEvent.location.isValidString(){
+                                if !addEvent.category.isValidString(){
+                                    if addEvent.eventRating != 0 {
+                                        if !addEvent.travelExperience.isValidString(){
+                                            if !addEvent.comment.isValidString(){
+                                                return true
+                                            }
+                                            else{
+                                                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "Please enter your comment that helps others to analyse the event", parentController: self)
+                                                return false
+                                            }
+                                        }
+                                        else{
+                                            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "Please enter your experience of the event", parentController: self)
+                                            return false
+                                        }
+                                    }
+                                    else{
+                                        CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "Please rate the event", parentController: self)
+                                        return false
+                                    }
+                                }
+                                else{
+                                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "Please select category", parentController: self)
+                                    return false
+                                }
+                            }
+                            else{
+                                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "Please enter event location", parentController: self)
+                                return false
+                            }
+                        }
+                        else{
+                            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "Please select the time", parentController: self)
+                            return false
+                        }
+                    }
+                    else{
+                        CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "Please select the date", parentController: self)
+                        return false
+                    }
+                }
+                else{
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "Please enter approximate cost of event", parentController: self)
+                    return false
+                }
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "Please enter event author name", parentController: self)
+                return false
+            }
+        }
+        else{
+            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "Please enter event name", parentController: self)
+            return false
         }
     }
 }
