@@ -33,16 +33,6 @@ class HomeEventsViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK:- UIView Action method
-    
-    @IBAction func actionAdd(_ sender: Any) {
-        let vc:AddEventViewController = AddEventViewController(nibName: "AddEventViewController", bundle: nil)
-        let navController:UINavigationController = UINavigationController(rootViewController: vc)
-        vc.categoryResponseModel = categoryResponseModel
-        navController.modalPresentationStyle = .overFullScreen
-        self.present(navController, animated: false, completion: nil)
-    }
-    
     //MARK:- Get All Categories Api integration
     
     func getAllCategoryApi(){

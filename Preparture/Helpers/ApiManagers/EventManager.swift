@@ -272,3 +272,44 @@ class UserSuggestion : NSObject{
         }
     }
 }
+
+//Output Classes
+
+class AddEvent : NSObject{
+    var userId:String = ""
+    var eventName:String = ""
+    var authorName:String = ""
+    var eventCost:String = ""
+    var eventDate:String = ""
+    var eventTime:String = ""
+    var location:String = ""
+    var latitude:Double = 0.0
+    var longitude:Double = 0.0
+    var category:Int = 0
+    var eventRating:Int = 0
+    var travelExperience:String = ""
+    var comment:String = ""
+    var eventFiles = [String]()
+    func getRequestBody()->String{
+        var dict:[String:String] = [String:String]()
+        if let user = User.getUser(){
+            if let userIdString = user.userId{
+                dict.updateValue(userIdString, forKey: "user_id")
+            }
+        }
+        dict.updateValue(eventName, forKey: "event_name")
+        dict.updateValue(authorName, forKey: "author_name")
+        dict.updateValue(eventCost, forKey: "event_cost")
+        dict.updateValue(eventDate, forKey: "event_date")
+        dict.updateValue(eventTime, forKey: "event_time")
+        dict.updateValue(String(format: "%d", category), forKey: "category_id")
+        dict.updateValue(String(format: "%f", latitude), forKey: "latitude")
+        dict.updateValue(String(format: "%f", longitude), forKey: "longitude")
+        dict.updateValue(location, forKey: "location")
+        dict.updateValue(String(format: "%d", eventRating), forKey: "event_rate")
+        dict.updateValue(travelExperience, forKey: "travel_experience")
+        dict.updateValue(comment, forKey: "comments")
+        return CCUtility.getJSONfrom(dictionary: dict)
+    }
+    
+}

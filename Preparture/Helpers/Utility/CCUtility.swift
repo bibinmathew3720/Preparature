@@ -124,6 +124,20 @@ class CCUtility: NSObject {
         return dateString
     }
     
+    class func stringFromDateWithYear(date:Date)->String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM, dd yyyy"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+    
+    class func stringFromDateOnlyYear(date:Date)->String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm a"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+    
     class func dateString(with dateString : String,from dateFormat:String, to format:String) -> String
     {
         

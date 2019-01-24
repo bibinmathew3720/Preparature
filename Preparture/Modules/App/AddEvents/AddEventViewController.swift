@@ -9,6 +9,12 @@
 import UIKit
 import MapKit
 
+enum PickerType{
+    case dateOnlyPickerType
+    case timeOnlyPickerType
+    case categoryPicker
+}
+
 class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPickerViewDelegate {
 
     @IBOutlet weak var tfType: UITextField!
@@ -16,8 +22,13 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     @IBOutlet var toolBarPicker: UIToolbar!
     var selectedIndex:NSInteger = 0
     @IBOutlet weak var tfEventName: UITextField!
-    @IBOutlet weak var tfLocation: UITextField!
     @IBOutlet weak var tfAuthorName: UITextField!
+    @IBOutlet weak var tfExpense: UITextField!
+    @IBOutlet weak var tfDate: UITextField!
+    @IBOutlet weak var tfTime: UITextField!
+    @IBOutlet weak var tfLocation: UITextField!
+    @IBOutlet var datePicker: UIDatePicker!
+    
     @IBOutlet weak var textViewTravelExp: UITextView!
     @IBOutlet weak var textViewComments: UITextView!
     @IBOutlet weak var buttonStarFirst: UIButton!
@@ -29,10 +40,20 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     var mapItem:MKMapItem?
     var categoryResponseModel:GetAllCategoryResponseModel?
     
+    var pickType:PickerType = .dateOnlyPickerType
+    var addEvent = AddEvent()
+    
     override func initView() {
         super.initView()
-        
+        initialisation()
         customization()
+    }
+    
+    func initialisation(){
+        tfDate.inputAccessoryView = toolBarPicker
+        tfDate.inputView = datePicker
+        tfTime.inputAccessoryView = toolBarPicker
+        tfTime.inputView = datePicker
     }
     
     func customization() {
@@ -51,6 +72,23 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
+    @IBAction func textFieldAction(_ sender: UITextField) {
+        if sender == tfEventName{
+            if let textString = sender.text{
+                addEvent.eventName = textString
+            }
+        }
+        else if sender == tfAuthorName{
+            if let textString = sender.text{
+                addEvent.authorName = textString
+            }
+        }
+        else if sender == tfExpense{
+            if let textString = sender.text{
+                addEvent.eventCost = textString
+            }
+        }
+    }
     //MARK: -> ------ UIPickerView Delegates ------
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -81,49 +119,42 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
         self.dismiss(animated: false, completion: nil)
     }
     
-    @IBAction func actionStarFirst(_ sender: Any) {
-        rateIndex = 1
-        buttonStarFirst.isSelected = true
+    @IBAction func starButtonAction(_ sender: UIButton) {
+        settingRating(rating: sender.tag)
+    }
+    
+    func settingRating(rating:Int){
+        addEvent.eventRating = rating
+        buttonStarFirst.isSelected = false
         buttonStarSecond.isSelected = false
         buttonStarThird.isSelected = false
         buttonStarFourth.isSelected = false
         buttonStarFifth.isSelected = false
-    }
-    
-    @IBAction func actionStarSecond(_ sender: Any) {
-        rateIndex = 2
-        buttonStarFirst.isSelected = true
-        buttonStarSecond.isSelected = true
-        buttonStarThird.isSelected = false
-        buttonStarFourth.isSelected = false
-        buttonStarFifth.isSelected = false
-    }
-    
-    @IBAction func actionStarThird(_ sender: Any) {
-        rateIndex = 3
-        buttonStarFirst.isSelected = true
-        buttonStarSecond.isSelected = true
-        buttonStarThird.isSelected = true
-        buttonStarFourth.isSelected = false
-        buttonStarFifth.isSelected = false
-    }
-    
-    @IBAction func actionStarFourth(_ sender: Any) {
-        rateIndex = 4
-        buttonStarFirst.isSelected = true
-        buttonStarSecond.isSelected = true
-        buttonStarThird.isSelected = true
-        buttonStarFourth.isSelected = true
-        buttonStarFifth.isSelected = false
-    }
-    
-    @IBAction func actionStarFifth(_ sender: Any) {
-        rateIndex = 5
-        buttonStarFirst.isSelected = true
-        buttonStarSecond.isSelected = true
-        buttonStarThird.isSelected = true
-        buttonStarFourth.isSelected = true
-        buttonStarFifth.isSelected = true
+        if rating == 1 {
+            buttonStarFirst.isSelected = true
+        }
+        else if (rating == 2){
+            buttonStarFirst.isSelected = true
+            buttonStarSecond.isSelected = true
+        }
+        else if (rating == 3){
+            buttonStarFirst.isSelected = true
+            buttonStarSecond.isSelected = true
+            buttonStarThird.isSelected = true
+        }
+        else if (rating == 4){
+            buttonStarFirst.isSelected = true
+            buttonStarSecond.isSelected = true
+            buttonStarThird.isSelected = true
+            buttonStarFourth.isSelected = true
+        }
+        else if (rating == 5){
+            buttonStarFirst.isSelected = true
+            buttonStarSecond.isSelected = true
+            buttonStarThird.isSelected = true
+            buttonStarFourth.isSelected = true
+            buttonStarFifth.isSelected = true
+        }
     }
     
     @IBAction func actionSubmit(_ sender: Any) {
@@ -131,15 +162,29 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     }
     
     @IBAction func actionToolbarDone(_ sender: Any) {
-        guard let code = categoryResponseModel?.categoryItems[selectedIndex] else {
-            return
+        if pickType == .categoryPicker {
+            guard let code = categoryResponseModel?.categoryItems[selectedIndex] else {
+                return
+            }
+            tfType.text = code.categoryName
         }
-        tfType.text = code.categoryName
-        tfType.resignFirstResponder()
+        else if pickType == .dateOnlyPickerType{
+            let dateString = CCUtility.stringFromDateWithYear(date:datePicker.date)
+            tfDate.text = dateString
+            addEvent.eventDate = CCUtility.dateString(with:dateString , from: "MMM, dd yyyy", to: "yyyy-MM-dd")
+            print(addEvent.eventDate)
+        }
+        else if pickType == .timeOnlyPickerType{
+            let timeString = CCUtility.stringFromDateOnlyYear(date:datePicker.date)
+            tfTime.text = timeString
+            addEvent.eventTime = CCUtility.dateString(with: timeString, from: "hh:mm a", to: "hh:mm a")
+            print(addEvent.eventTime)
+        }
+        view.endEditing(true)
     }
     
     @IBAction func actionToolbarCancel(_ sender: Any) {
-        tfType.resignFirstResponder()
+         view.endEditing(true)
     }
     
     @IBAction func actionAddPlaces(_ sender: Any) {
@@ -151,8 +196,7 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     
     func addEventApi(){
         MBProgressHUD.showAdded(to: self.view!, animated: true)
-        print(addEventRequestBody())
-        UserManager().addEventApi(with:addEventRequestBody(), success: {
+        UserManager().addEventApi(with:addEvent.getRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? GetAllCategoryResponseModel{
@@ -179,32 +223,6 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
             print(ErrorType)
         }
     }
-    
-    func addEventRequestBody()->String{
-        var dict:[String:AnyObject] = [String:AnyObject]()
-        if let user = User.getUser() {
-            dict.updateValue(user.userId as AnyObject, forKey: "user_id")
-        }
-        dict.updateValue(tfEventName.text as AnyObject, forKey: "event_name")
-        dict.updateValue(tfAuthorName.text as AnyObject, forKey: "author_name")
-        if mapItem != nil {
-            dict.updateValue(mapItem?.placemark.coordinate.latitude as AnyObject, forKey: "latitude")
-            dict.updateValue(mapItem?.placemark.coordinate.longitude as AnyObject, forKey: "longitude")
-            dict.updateValue(mapItem?.name as AnyObject, forKey: "location")
-        }
-        dict.updateValue(tfAuthorName.text as AnyObject, forKey: "travel_experience")
-        dict.updateValue(tfAuthorName.text as AnyObject, forKey: "comments")
-        
-        dict.updateValue(rateIndex as AnyObject, forKey: "event_rate")
-        
-        if let code = categoryResponseModel?.categoryItems[selectedIndex] {
-            dict.updateValue(code.categoryID as AnyObject, forKey: "category_id")
-        }
-        
-        //"event_files": "image.jpg,video.mp4" ( File names are concatenate with comma - > check API No: 17)
-        
-        return CCUtility.getJSONfrom(dictionary: dict)
-    }
 }
 
 extension AddEventViewController:UITextFieldDelegate, UITextViewDelegate {
@@ -226,6 +244,21 @@ extension AddEventViewController:UITextFieldDelegate, UITextViewDelegate {
         }
     }
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == tfDate{
+            pickType = .dateOnlyPickerType
+            datePicker.datePickerMode = .date
+        }
+        else if textField == tfTime {
+            pickType = .timeOnlyPickerType
+            datePicker.datePickerMode = .time
+        }
+        else if textField == tfType {
+            pickType = .categoryPicker
+        }
+        return true
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == tfType {
             tfType.inputView = pickerViewType
@@ -245,5 +278,31 @@ extension AddEventViewController:UITextFieldDelegate, UITextViewDelegate {
                 textViewComments.text = ""
             }
         }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        print(textView.text)
+        if textView == textViewTravelExp{
+            if let textString = textView.text{
+                addEvent.travelExperience = textString
+            }
+        }
+        else if textView == textViewComments{
+            if let textString = textView.text{
+                addEvent.comment = textString
+            }
+        }
+        print(textView.text)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == tfEventName{
+            tfAuthorName.becomeFirstResponder()
+        }
+        else if textField == tfAuthorName{
+            tfExpense.becomeFirstResponder()
+        }
+        
+        return true
     }
 }
