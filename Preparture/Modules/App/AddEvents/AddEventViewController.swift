@@ -35,6 +35,9 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     @IBOutlet weak var buttonStarFourth: UIButton!
     @IBOutlet weak var buttonStarFifth: UIButton!
     @IBOutlet weak var categoryView: UIView!
+    @IBOutlet weak var collectionViewHeiConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imagesCV: UICollectionView!
+    
     var mapItem:MKMapItem?
     var categoryResponseModel:GetAllCategoryResponseModel?
     var pickType:PickerType = .dateOnlyPickerType
@@ -384,5 +387,35 @@ extension AddEventViewController:UITextFieldDelegate, UITextViewDelegate {
         }
         
         return true
+    }
+}
+
+extension AddEventViewController :UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCVC", for: indexPath) as! ImagesCVC
+//        if let eventIt = self.eventItem {
+//            cell.setImageUrlString(imageUrlString: (eventIt.eventImages[indexPath.row]))
+//        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.size.height, height: collectionView.frame.size.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
