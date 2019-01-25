@@ -405,6 +405,7 @@ class SuggestionsViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func showAttachmentActionSheet(vc: UIViewController) {
+        view.endEditing(true)
         let actionSheet = UIAlertController(title: Constant.PhotoLibrary.actionFileTypeHeading, message: Constant.PhotoLibrary.actionFileTypeDescription, preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: Constant.PhotoLibrary.camera, style: .default, handler: { (action) -> Void in

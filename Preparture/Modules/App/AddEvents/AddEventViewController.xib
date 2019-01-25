@@ -354,19 +354,33 @@
                                         </textView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubx-qR-M5o">
                                             <rect key="frame" x="314" y="586" width="30" height="30"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYe-tY-aIM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.77647058820000003" green="0.094117647060000004" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="plusButtonAction:" destination="-1" eventType="touchUpInside" id="sjv-vu-ekr"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="LD8-Qg-154"/>
+                                                <constraint firstItem="PYe-tY-aIM" firstAttribute="leading" secondItem="ubx-qR-M5o" secondAttribute="leading" id="O2q-pc-rK4"/>
+                                                <constraint firstAttribute="trailing" secondItem="PYe-tY-aIM" secondAttribute="trailing" id="Qg1-ZN-bDm"/>
+                                                <constraint firstAttribute="bottom" secondItem="PYe-tY-aIM" secondAttribute="bottom" id="tf5-0W-vFY"/>
                                                 <constraint firstAttribute="width" constant="30" id="trj-ZA-xf6"/>
+                                                <constraint firstItem="PYe-tY-aIM" firstAttribute="top" secondItem="ubx-qR-M5o" secondAttribute="top" id="wxi-mJ-BAB"/>
                                             </constraints>
                                         </view>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Pjq-QG-JA4">
                                             <rect key="frame" x="10" y="636" width="334" height="100"/>
-                                            <color key="backgroundColor" red="0.99607843139999996" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="jKR-9M-oTr"/>
                                             </constraints>
-                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cwI-WN-DbY">
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cwI-WN-DbY">
                                                 <size key="itemSize" width="50" height="50"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>

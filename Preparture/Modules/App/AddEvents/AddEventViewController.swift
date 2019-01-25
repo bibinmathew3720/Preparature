@@ -8,6 +8,8 @@
 
 import UIKit
 import MapKit
+import PhotosUI
+import AVFoundation
 
 enum PickerType{
     case dateOnlyPickerType
@@ -15,7 +17,7 @@ enum PickerType{
     case categoryPicker
 }
 
-class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPickerViewDelegate {
+class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPickerViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     @IBOutlet weak var tfType: UITextField!
     @IBOutlet var pickerViewType: UIPickerView!
@@ -41,6 +43,7 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     var mapItem:MKMapItem?
     var categoryResponseModel:GetAllCategoryResponseModel?
     var pickType:PickerType = .dateOnlyPickerType
+    var imageArray = [UIImage]()
     var addEvent = AddEvent()
     
     override func initView() {
@@ -65,6 +68,7 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
         tfTime.inputAccessoryView = toolBarPicker
         tfTime.inputView = datePicker
         categoryView.layer.borderColor = Constant.Colors.AppCommonGreyColor.cgColor
+        imagesCV.register(UINib.init(nibName: "ImagesCVC", bundle: nil), forCellWithReuseIdentifier: "imageCVC")
     }
     
     func customization() {
@@ -130,6 +134,10 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     }
     
     //MARK:- UIView Action Methods
+    
+    @IBAction func plusButtonAction(_ sender: UIButton) {
+       self.showAttachmentActionSheet(vc: self)
+    }
     
     @IBAction func actionBack(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
@@ -306,6 +314,94 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
             return false
         }
     }
+    
+    func showAttachmentActionSheet(vc: UIViewController) {
+        self.view.endEditing(true)
+        let actionSheet = UIAlertController(title: Constant.PhotoLibrary.actionFileTypeHeading, message: Constant.PhotoLibrary.actionFileTypeDescription, preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: Constant.PhotoLibrary.camera, style: .default, handler: { (action) -> Void in
+            self.authorisationStatus(attachmentTypeEnum: .camera, vc: self)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: Constant.PhotoLibrary.phoneLibrary, style: .default, handler: { (action) -> Void in
+            self.authorisationStatus(attachmentTypeEnum: .photoLibrary, vc: self)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: Constant.PhotoLibrary.cancelBtnTitle, style: .cancel, handler: nil))
+        
+        vc.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func authorisationStatus(attachmentTypeEnum: AttachmentType, vc: UIViewController){
+        
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized:
+            if attachmentTypeEnum == AttachmentType.camera{
+                openCamera()
+            }
+            if attachmentTypeEnum == AttachmentType.photoLibrary{
+                photoLibrary()
+            }
+        case .denied:
+            print("permission denied")
+        //self.addAlertForSettings(attachmentTypeEnum)
+        case .notDetermined:
+            print("Permission Not Determined")
+            PHPhotoLibrary.requestAuthorization({ (status) in
+                if status == PHAuthorizationStatus.authorized{
+                    // photo library access given
+                    print("access given")
+                    if attachmentTypeEnum == AttachmentType.camera{
+                        self.openCamera()
+                    }
+                    if attachmentTypeEnum == AttachmentType.photoLibrary{
+                        self.photoLibrary()
+                    }
+                }else{
+                    print("restriced manually")
+                    //self.addAlertForSettings(attachmentTypeEnum)
+                }
+            })
+        case .restricted:
+            print("permission restricted")
+        //self.addAlertForSettings(attachmentTypeEnum)
+        default:
+            break
+        }
+    }
+    
+    func openCamera(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            let myPickerController = UIImagePickerController()
+            myPickerController.delegate = self
+            myPickerController.sourceType = .camera
+            self.present(myPickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func photoLibrary(){
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            let myPickerController = UIImagePickerController()
+            myPickerController.delegate = self
+            myPickerController.sourceType = .photoLibrary
+            self.present(myPickerController, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        // To handle image
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            //if let urlName = info[UIImagePickerControllerReferenceURL] as? URL {
+                imageArray.append(image)
+                imagesCV.reloadData()
+           // }
+        } else{
+            print("Something went wrong in  image")
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension AddEventViewController:UITextFieldDelegate, UITextViewDelegate {
@@ -397,13 +493,11 @@ extension AddEventViewController :UICollectionViewDelegate,UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return imageArray.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCVC", for: indexPath) as! ImagesCVC
-//        if let eventIt = self.eventItem {
-//            cell.setImageUrlString(imageUrlString: (eventIt.eventImages[indexPath.row]))
-//        }
+        cell.setImage(image:imageArray[indexPath.row])
         return cell
     }
     
@@ -416,6 +510,6 @@ extension AddEventViewController :UICollectionViewDelegate,UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 10
     }
 }
