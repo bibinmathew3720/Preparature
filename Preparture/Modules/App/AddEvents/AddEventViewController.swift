@@ -262,7 +262,13 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
                                     if addEvent.eventRating != 0 {
                                         if !addEvent.travelExperience.isValidString(){
                                             if !addEvent.comment.isValidString(){
-                                                return true
+                                                if imageArray.count != 0{
+                                                    return true
+                                                }
+                                                else{
+                                                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "Please add event images", parentController: self)
+                                                    return false
+                                                }
                                             }
                                             else{
                                                 CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "Please enter your comment that helps others to analyse the event", parentController: self)
