@@ -96,6 +96,8 @@
 		D095508320E32B4F00D8BBD9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D095507E20E32B4E00D8BBD9 /* Reachability.m */; };
 		D0C334CB21FC0D3300DF00B9 /* FeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C334C921FC0D2F00DF00B9 /* FeedbackVC.swift */; };
 		D0C334CC21FC0D3300DF00B9 /* FeedbackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C334CA21FC0D3000DF00B9 /* FeedbackVC.xib */; };
+		D0DC44DB21FCC106007B77C0 /* ItineraryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DC44D921FCC106007B77C0 /* ItineraryListVC.swift */; };
+		D0DC44DC21FCC106007B77C0 /* ItineraryListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DC44DA21FCC106007B77C0 /* ItineraryListVC.xib */; };
 		D0F164502114CB3D0030301A /* WebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F1644E2114CB3D0030301A /* WebViewVC.swift */; };
 		D0F164512114CB3D0030301A /* WebViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F1644F2114CB3D0030301A /* WebViewVC.xib */; };
 		D0F5B43720EBFB78008727CC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5B43520EBFB78008727CC /* HomeVC.swift */; };
@@ -224,6 +226,8 @@
 		D095508520E32CB300D8BBD9 /* Preparature-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Preparature-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0C334C921FC0D2F00DF00B9 /* FeedbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackVC.swift; sourceTree = "<group>"; };
 		D0C334CA21FC0D3000DF00B9 /* FeedbackVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackVC.xib; sourceTree = "<group>"; };
+		D0DC44D921FCC106007B77C0 /* ItineraryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryListVC.swift; sourceTree = "<group>"; };
+		D0DC44DA21FCC106007B77C0 /* ItineraryListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItineraryListVC.xib; sourceTree = "<group>"; };
 		D0F1644E2114CB3D0030301A /* WebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewVC.swift; sourceTree = "<group>"; };
 		D0F1644F2114CB3D0030301A /* WebViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewVC.xib; sourceTree = "<group>"; };
 		D0F5B43520EBFB78008727CC /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 		056D4DD920F0A7BE00B7F408 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				D0DC44D521FCC07B007B77C0 /* Itinerary_New */,
 				056D4DDA20F0A7BE00B7F408 /* AddEvents */,
 				056D4DDD20F0A7BE00B7F408 /* HomeDetail */,
 				056D4DDE20F0A7BE00B7F408 /* Itinerary */,
@@ -744,6 +749,23 @@
 			path = FeedbackVC;
 			sourceTree = "<group>";
 		};
+		D0DC44D521FCC07B007B77C0 /* Itinerary_New */ = {
+			isa = PBXGroup;
+			children = (
+				D0DC44D621FCC0A3007B77C0 /* ItineraryListVC */,
+			);
+			path = Itinerary_New;
+			sourceTree = "<group>";
+		};
+		D0DC44D621FCC0A3007B77C0 /* ItineraryListVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0DC44D921FCC106007B77C0 /* ItineraryListVC.swift */,
+				D0DC44DA21FCC106007B77C0 /* ItineraryListVC.xib */,
+			);
+			path = ItineraryListVC;
+			sourceTree = "<group>";
+		};
 		D0F1644D2114CAF80030301A /* WebViewVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -919,6 +941,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0DC44DC21FCC106007B77C0 /* ItineraryListVC.xib in Resources */,
 				BB9FA6CA21441A4F00FB26FE /* HomeEventsViewController.xib in Resources */,
 				D003032420EDA72A00F85F11 /* HomeListTVC.xib in Resources */,
 				05D2F1E920D81D0600E2A5C9 /* Muli-SemiBold.ttf in Resources */,
@@ -1140,6 +1163,7 @@
 				D01A848C20F96FF6004ED6FB /* ItineraryTVC.swift in Sources */,
 				D0183CE3210CB1A80030D02D /* UserManager.swift in Sources */,
 				056D4DEE20F0B5A600B7F408 /* HomeDetailViewController.swift in Sources */,
+				D0DC44DB21FCC106007B77C0 /* ItineraryListVC.swift in Sources */,
 				D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */,
 				05B2CB6520B1E481008D0D32 /* ViewController.swift in Sources */,
 				D095508020E32B4F00D8BBD9 /* CLNetworkManager.swift in Sources */,

@@ -132,6 +132,7 @@ class EventItem : NSObject{
     var comments:String = ""
     
     var suggestions = [UserSuggestion]()
+    var itineraries = [ItineraryDetails]()
     init(dict:[String:Any?]) {
         if let value = dict["event_id"] as? String{
             if let evId = Int(value){
@@ -207,6 +208,11 @@ class EventItem : NSObject{
                 suggestions.append(UserSuggestion.init(dict: item as! [String : Any?]))
             }
         }
+        if let itineries = dict["itinerary_details"]  as? NSArray {
+            for item in itineries {
+                itineraries.append(ItineraryDetails.init(dict: item as! [String : Any?]))
+            }
+        }
         
     }
 }
@@ -269,6 +275,74 @@ class UserSuggestion : NSObject{
                     placeFiles.append(image)
                 }
             }
+        }
+    }
+}
+
+class ItineraryDetails : NSObject{
+    var categoryId:String = ""
+    var createdDate:String = ""
+    var endDate:String = ""
+    var eventID:String = ""
+    var itineraryID:String = ""
+    var itineraryName:String = ""
+    var landMarks = [LandMarkDetails]()
+    init(dict:[String:Any?]) {
+        if let value = dict["category_id"] as? String{
+            categoryId = value
+        }
+        if let value = dict["created_date"] as? String{
+            createdDate = value
+        }
+        if let value = dict["end_date"] as? String{
+            endDate = value
+        }
+        if let value = dict["event_id"] as? String{
+            eventID = value
+        }
+        if let value = dict["itinerary_id"] as? String{
+            itineraryID = value
+        }
+        if let value = dict["itinerary_name"] as? String{
+            itineraryName = value
+        }
+        if let value = dict["landmark_details"] as? NSArray{
+            for item in value {
+                landMarks.append(LandMarkDetails.init(dict: item as! [String : Any?]))
+            }
+        }
+    }
+}
+
+class LandMarkDetails : NSObject{
+    var checkIn:String = ""
+    var checkOut:String = ""
+    var itineraryID:String = ""
+    var itineraryLandMarkId:String = ""
+    var landLatitude:String = ""
+    var landLongitude:String = ""
+    var landMarkName:String = ""
+    init(dict:[String:Any?]) {
+        if let value = dict["check_in"] as? String{
+            checkIn = value
+        }
+        if let value = dict["check_out"] as? String{
+            checkOut = value
+        }
+        if let value = dict["itinerary_id"] as? String{
+            itineraryID = value
+        }
+        if let value = dict["itinerary_landmark_id"] as? String{
+            itineraryLandMarkId = value
+        }
+        if let value = dict["land_latitude"] as? String{
+            landLatitude = value
+        }
+        if let value = dict["land_longitude"] as? String{
+            landLongitude = value
+        }
+        if let value = dict["landmark_name"] as? String{
+            landMarkName = value
         }
     }
 }
