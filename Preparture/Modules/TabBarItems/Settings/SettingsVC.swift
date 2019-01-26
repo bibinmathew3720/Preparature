@@ -12,8 +12,8 @@ class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var settingsTableView: UITableView!
     let generalArray = ["General"," Notification","Feed back","Rate & Review","Terms & Conditions","Privacy Policy"]
     let generalImagesArray = [#imageLiteral(resourceName: "notification"),#imageLiteral(resourceName: "notification"),#imageLiteral(resourceName: "feedback"),#imageLiteral(resourceName: "rateAndReview"),#imageLiteral(resourceName: "terms"),#imageLiteral(resourceName: "terms")]
-    let accountsArray = ["Account"," Change Password", "Edit Profile","Make Payment", "Log out"]
-    let accountImagesArray = [#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "editIcon"),#imageLiteral(resourceName: "logout"),#imageLiteral(resourceName: "changePassword")]
+    let accountsArray = ["Account"," Change Password", "View Profile","Make Payment", "Log out"]
+    let accountImagesArray = [#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "changePassword"),#imageLiteral(resourceName: "profile"),#imageLiteral(resourceName: "makePayment"),#imageLiteral(resourceName: "logout")]
     let sectionHeaderheight = 50
     
     var settingsResponseModel:SettingsResponseModel?
