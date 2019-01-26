@@ -401,12 +401,22 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             //if let urlName = info[UIImagePickerControllerReferenceURL] as? URL {
                 imageArray.append(image)
-                imagesCV.reloadData()
+                setCollectionViewHeight()
            // }
         } else{
             print("Something went wrong in  image")
         }
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func setCollectionViewHeight(){
+        if imageArray.count != 0{
+            collectionViewHeiConstraint.constant = 100
+        }
+//        else{
+//           collectionViewHeiConstraint.constant = 100
+//        }
+        imagesCV.reloadData()
     }
 }
 
@@ -499,10 +509,13 @@ extension AddEventViewController :UICollectionViewDelegate,UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(imageArray.count)
         return imageArray.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCVC", for: indexPath) as! ImagesCVC
+        cell.imagesCVCDelegate = self
+        cell.tag = indexPath.row
         cell.setImage(image:imageArray[indexPath.row])
         return cell
     }
@@ -517,5 +530,12 @@ extension AddEventViewController :UICollectionViewDelegate,UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
+    }
+}
+
+extension AddEventViewController:ImagesCVCDelegate{
+    func closeButtonActionDelegate(tag: NSInteger) {
+        imageArray.remove(at: tag)
+        setCollectionViewHeight()
     }
 }

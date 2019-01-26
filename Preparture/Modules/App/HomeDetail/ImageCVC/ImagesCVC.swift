@@ -8,9 +8,16 @@
 
 import UIKit
 
-class ImagesCVC: UICollectionViewCell {
+protocol ImagesCVCDelegate {
+    func closeButtonActionDelegate(tag:NSInteger)
+}
 
+class ImagesCVC: UICollectionViewCell {
+    @IBOutlet weak var closeButtonHeightConsnt: NSLayoutConstraint!
+    @IBOutlet weak var closeButtonWidthConstrnt: NSLayoutConstraint!
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var eventImageView: UIImageView!
+    var imagesCVCDelegate:ImagesCVCDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,7 +32,13 @@ class ImagesCVC: UICollectionViewCell {
     }
     
     func setImage(image:UIImage){
+        closeButton.isHidden = false
+        closeButtonHeightConsnt.constant = 32
+        closeButtonWidthConstrnt.constant = 32
         eventImageView.image = image
     }
 
+    @IBAction func closeButtonAction(_ sender: UIButton) {
+        imagesCVCDelegate?.closeButtonActionDelegate(tag: self.tag)
+    }
 }

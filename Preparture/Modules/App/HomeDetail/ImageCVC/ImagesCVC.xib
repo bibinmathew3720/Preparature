@@ -20,22 +20,47 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dQD-Ew-h58">
-                        <rect key="frame" x="0.0" y="0.0" width="191" height="88"/>
+                        <rect key="frame" x="0.0" y="-15" width="206" height="103"/>
                     </imageView>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="979-uw-hnf">
+                        <rect key="frame" x="191" y="0.0" width="0.0" height="0.0"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" id="4MY-tc-S2w"/>
+                            <constraint firstAttribute="height" id="6di-Qh-9gW"/>
+                        </constraints>
+                        <state key="normal" image="closeIconBlack"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="closeButtonAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="1bd-eI-UpJ"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="dQD-Ew-h58" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="8kC-xd-45Z"/>
+                <constraint firstItem="dQD-Ew-h58" firstAttribute="top" secondItem="979-uw-hnf" secondAttribute="bottom" constant="-15" id="Mw2-WS-i8B"/>
+                <constraint firstItem="979-uw-hnf" firstAttribute="leading" secondItem="dQD-Ew-h58" secondAttribute="trailing" constant="-15" id="XPz-ca-AnR"/>
                 <constraint firstItem="dQD-Ew-h58" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="giJ-Hv-VUZ"/>
-                <constraint firstItem="dQD-Ew-h58" firstAttribute="trailing" secondItem="ZTg-uK-7eu" secondAttribute="trailing" id="wEG-mO-ttV"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="979-uw-hnf" secondAttribute="trailing" id="nFn-xO-1hl"/>
+                <constraint firstItem="979-uw-hnf" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="xVJ-ZE-amB"/>
                 <constraint firstItem="dQD-Ew-h58" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" id="xje-Ad-nYN"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="191" height="88"/>
             <connections>
+                <outlet property="closeButton" destination="979-uw-hnf" id="3rz-UB-bIz"/>
+                <outlet property="closeButtonHeightConsnt" destination="6di-Qh-9gW" id="Dzh-Wn-y6H"/>
+                <outlet property="closeButtonWidthConstrnt" destination="4MY-tc-S2w" id="N3f-e8-p5S"/>
                 <outlet property="eventImageView" destination="dQD-Ew-h58" id="w1u-Z7-2XP"/>
             </connections>
-            <point key="canvasLocation" x="57" y="113"/>
+            <point key="canvasLocation" x="-83" y="98"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="closeIconBlack" width="32" height="32"/>
+    </resources>
 </document>
