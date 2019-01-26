@@ -181,6 +181,35 @@ class UserManager: CLBaseService {
         return editProfileReponseModel
     }
     
+    //MARK : Feedback Api
+    
+    func callingFeedbackApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForFeedback(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict as Any)
+                    success(self.getForgotResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForFeedback(with body:String)->CLNetworkModel{
+        let forgotRequestModel = CLNetworkModel.init(url: BASE_URL+ADD_FEEDBACK_URL, requestMethod_: "POST")
+        forgotRequestModel.requestBody = body
+        return forgotRequestModel
+    }
+    
     //MARK : Add to Favorite Api
     
     func addToFavoriteApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){

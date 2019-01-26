@@ -94,6 +94,8 @@
 		D095508120E32B4F00D8BBD9 /* CLNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507A20E32B4E00D8BBD9 /* CLNetworkModel.swift */; };
 		D095508220E32B4F00D8BBD9 /* CLNetworkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507B20E32B4E00D8BBD9 /* CLNetworkUtility.swift */; };
 		D095508320E32B4F00D8BBD9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D095507E20E32B4E00D8BBD9 /* Reachability.m */; };
+		D0C334CB21FC0D3300DF00B9 /* FeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C334C921FC0D2F00DF00B9 /* FeedbackVC.swift */; };
+		D0C334CC21FC0D3300DF00B9 /* FeedbackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C334CA21FC0D3000DF00B9 /* FeedbackVC.xib */; };
 		D0F164502114CB3D0030301A /* WebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F1644E2114CB3D0030301A /* WebViewVC.swift */; };
 		D0F164512114CB3D0030301A /* WebViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F1644F2114CB3D0030301A /* WebViewVC.xib */; };
 		D0F5B43720EBFB78008727CC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5B43520EBFB78008727CC /* HomeVC.swift */; };
@@ -220,6 +222,8 @@
 		D095507D20E32B4E00D8BBD9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		D095507E20E32B4E00D8BBD9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		D095508520E32CB300D8BBD9 /* Preparature-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Preparature-Bridging-Header.h"; sourceTree = "<group>"; };
+		D0C334C921FC0D2F00DF00B9 /* FeedbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackVC.swift; sourceTree = "<group>"; };
+		D0C334CA21FC0D3000DF00B9 /* FeedbackVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackVC.xib; sourceTree = "<group>"; };
 		D0F1644E2114CB3D0030301A /* WebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewVC.swift; sourceTree = "<group>"; };
 		D0F1644F2114CB3D0030301A /* WebViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewVC.xib; sourceTree = "<group>"; };
 		D0F5B43520EBFB78008727CC /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -731,6 +735,15 @@
 			path = BridgingHeader;
 			sourceTree = "<group>";
 		};
+		D0C334C821FC0C9A00DF00B9 /* FeedbackVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0C334C921FC0D2F00DF00B9 /* FeedbackVC.swift */,
+				D0C334CA21FC0D3000DF00B9 /* FeedbackVC.xib */,
+			);
+			path = FeedbackVC;
+			sourceTree = "<group>";
+		};
 		D0F1644D2114CAF80030301A /* WebViewVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -775,6 +788,7 @@
 		D0F5B43420EBFB37008727CC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D0C334C821FC0C9A00DF00B9 /* FeedbackVC */,
 				D003E3C4219A984700A55E8C /* PaymentVC */,
 				D0F1644D2114CAF80030301A /* WebViewVC */,
 				D0012C9420EEF5C500074C90 /* SettingsHeaderTVC */,
@@ -926,6 +940,7 @@
 				05D2F1EA20D81D0600E2A5C9 /* Muli-SemiBoldItalic.ttf in Resources */,
 				05E2B70020DFDD35005DD640 /* SignUpViewController.xib in Resources */,
 				D0012C9220EEE61500074C90 /* FavoriteCell.xib in Resources */,
+				D0C334CC21FC0D3300DF00B9 /* FeedbackVC.xib in Resources */,
 				D06819E22114474F00AB4EF6 /* ImagesCVC.xib in Resources */,
 				056D4DE720F0B57C00B7F408 /* AddEventViewController.xib in Resources */,
 				D0F5B44020EBFC86008727CC /* FavoritesVC.xib in Resources */,
@@ -1003,6 +1018,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GrowingTextView/GrowingTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -1019,6 +1035,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GrowingTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -1139,6 +1156,7 @@
 				BBA7B134217BA85600BB37A8 /* AddPlacesTableViewCell.swift in Sources */,
 				D0F164502114CB3D0030301A /* WebViewVC.swift in Sources */,
 				D0183CED210CC3CD0030D02D /* UIImageViewExtensions.swift in Sources */,
+				D0C334CB21FC0D3300DF00B9 /* FeedbackVC.swift in Sources */,
 				D06819E12114474F00AB4EF6 /* ImagesCVC.swift in Sources */,
 				D0F5B43B20EBFC73008727CC /* SettingsVC.swift in Sources */,
 			);

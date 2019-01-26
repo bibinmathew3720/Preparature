@@ -17,6 +17,7 @@ pod 'GoogleMaps'
 #pod 'PayPal.Checkout'
 pod 'Alamofire'
 pod 'AlamofireImage'
+pod 'GrowingTextView', '~> 0.5.6'
 
 
   # Pods for Preparture

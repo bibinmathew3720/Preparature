@@ -30,3 +30,4 @@ let GET_PARTICULAR_EVENTITEMS_URL = "get_event_category"
 let GET_ALL_SUGGESTIONS_EVENT = "suggestions_event" //Done
 let ADD_SUGGESTIONS_URL = "add_suggestion_event" //Done
 let ADD_EVENT_URL = "add_events" //Done
+let ADD_FEEDBACK_URL = "feedback" //Done

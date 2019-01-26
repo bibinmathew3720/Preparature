@@ -79,7 +79,11 @@ class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0{
-            if indexPath.row == 3 {
+            if indexPath.row == 2 {
+                let feedbackVC = FeedbackVC(nibName: "FeedbackVC", bundle: nil)
+                self.present(feedbackVC, animated: true, completion: nil)
+            }
+            else if indexPath.row == 3 {
                 moveToAppStorePage()
             }
             else if indexPath.row == 4 {
