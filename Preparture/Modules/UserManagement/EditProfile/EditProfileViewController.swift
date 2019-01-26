@@ -149,7 +149,11 @@ class EditProfileViewController: BaseViewController,UIImagePickerControllerDeleg
                     if let user = User.getUser(){
                         user.name = self.nameTF.text
                         if let fileReponse = self.fileUploadResponseModel {
-                            user.imageUrl = fileReponse.uploadedImageName
+                            if var imageUrlString = user.imageUrl{
+                                let oldImageName = self.getImageNameFromUrl(imageUrlString: imageUrlString)
+                                imageUrlString = imageUrlString.replacingOccurrences(of: oldImageName, with: fileReponse.uploadedImageName)
+                                user.imageUrl = imageUrlString
+                            }
                         }
                         CoreDataHandler.sharedInstance.saveContext()
                     }
@@ -187,13 +191,24 @@ class EditProfileViewController: BaseViewController,UIImagePickerControllerDeleg
         }
         else{
             if let user = User.getUser() {
-                dict.updateValue(user.imageUrl as AnyObject, forKey: "user_image")
+                let userImageName = getImageNameFromUrl(imageUrlString: user.imageUrl!)
+                dict.updateValue(userImageName as AnyObject, forKey: "user_image")
             }
         }
         if let user = User.getUser() {
             dict.updateValue(user.userId as AnyObject, forKey: "user_id")
         }
         return CCUtility.getJSONfrom(dictionary: dict)
+    }
+    
+    func getImageNameFromUrl(imageUrlString:String)->String{
+        let stringAfterSlashArray = imageUrlString.components(separatedBy: "/")
+        if stringAfterSlashArray.count>0{
+            if let imageName = stringAfterSlashArray.last{
+                return imageName
+            }
+        }
+        return ""
     }
     
     //MARK: Upload Profile Image
