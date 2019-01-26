@@ -45,6 +45,7 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     var pickType:PickerType = .dateOnlyPickerType
     var imageArray = [UIImage]()
     var addEvent = AddEvent()
+    var fileUploadResponseModel:FileUploadResponseModel?
     
     override func initView() {
         super.initView()
@@ -183,7 +184,7 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     
     @IBAction func actionSubmit(_ sender: Any) {
         if isValid(){
-            addEventApi()
+            sendEventImages()
         }
     }
     
@@ -219,6 +220,36 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
         self.navigationController?.pushViewController(vc , animated: true)
     }
     
+    //MARK: Upload Event Images
+    
+    func sendEventImages(){
+        var imageDataArray = [Data]()
+        for image in imageArray{
+            let imageData = UIImageJPEGRepresentation(image, 0.25)
+            if let data = imageData{
+                imageDataArray.append(data)
+            }
+        }
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        let imageUploadUrl = BASE_URL + IMAGE_UPLOAD_URL
+        UserManager().requestWith(endUrl: imageUploadUrl, imagesDatas: imageDataArray, parameters: ["":""], onCompletion: { (response) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            self.fileUploadResponseModel = response
+            if let response = self.fileUploadResponseModel{
+                if response.statusCode == 1 {
+                    self.addEvent.eventFiles = response.uploadedImageName
+                    self.addEventApi()
+                }
+            }
+            print(response)
+        }) { (error) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            print(error)
+        }
+        
+    }
+    
+    
     //MARK:- Add Event Api integration
     
     func addEventApi(){
@@ -227,18 +258,14 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
             if let model = model as? GetAllCategoryResponseModel{
-                
-                let vc:AddPlacesViewController = AddPlacesViewController(nibName: "AddPlacesViewController", bundle: nil)
-                self.navigationController?.pushViewController(vc , animated: true)
-                //if model.statusCode == 1{
-                //                }
-                //                else{
-                //                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
-                //                }
-            } else {
-                //                if let model = model as? stat{
-                //                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
-                //                }
+                if model.statusCode == 1{
+                    CCUtility.showDefaultAlertwithCompletionHandler(_title: Constant.AppName, _message: "Event created successfully", parentController: self, completion: { (status) in
+                         self.dismiss(animated: false, completion: nil)
+                    })
+                }
+                else{
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                }
             }
         }) { (ErrorType) in
             MBProgressHUD.hide(for: self.view, animated: true)

@@ -289,7 +289,7 @@ class AddEvent : NSObject{
     var eventRating:Int = 0
     var travelExperience:String = ""
     var comment:String = ""
-    var eventFiles = [String]()
+    var eventFiles:String = ""
     func getRequestBody()->String{
         var dict:[String:String] = [String:String]()
         if let user = User.getUser(){
@@ -309,6 +309,7 @@ class AddEvent : NSObject{
         dict.updateValue(String(format: "%d", eventRating), forKey: "event_rate")
         dict.updateValue(travelExperience, forKey: "travel_experience")
         dict.updateValue(comment, forKey: "comments")
+        dict.updateValue(eventFiles, forKey: "event_files")
         return CCUtility.getJSONfrom(dictionary: dict)
     }
     
