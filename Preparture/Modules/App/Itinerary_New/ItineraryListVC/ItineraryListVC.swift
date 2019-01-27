@@ -18,6 +18,11 @@ class ItineraryListVC: BaseViewController {
     }
     
     func initialisation(){
+        tableCellRegistration()
+    }
+    
+    func tableCellRegistration(){
+        itineraryListTableView.register(UINib.init(nibName: "ItineraryListTVC", bundle: nil), forCellReuseIdentifier: "itineraryCell")
     }
     
     @IBAction func backButtonAction(_ sender: UIButton) {
@@ -92,7 +97,7 @@ extension ItineraryListVC:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "homeListCell", for: indexPath) as!HomeListTVC
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itineraryCell", for: indexPath) as!ItineraryListTVC
         //cell.eventItem(event:self.eventsArray[indexPath.row] )
         cell.tag = indexPath.row
         //cell.delegate = self
@@ -106,4 +111,27 @@ extension ItineraryListVC:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerViewCustom = (Bundle.main.loadNibNamed("ItineraryHeaderView", owner: self, options: nil)![0] as? ItineraryHeaderView)!
+        headerViewCustom.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100)
+        // headerViewCustom.delegate = self
+        headerViewCustom.tag = section
+        return headerViewCustom
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 150
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width:tableView.frame.size.width, height:40))
+        footerView.backgroundColor = UIColor.black
+        return footerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 40.0
+    }
+    
 }

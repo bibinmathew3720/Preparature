@@ -98,6 +98,10 @@
 		D0C334CC21FC0D3300DF00B9 /* FeedbackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C334CA21FC0D3000DF00B9 /* FeedbackVC.xib */; };
 		D0DC44DB21FCC106007B77C0 /* ItineraryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DC44D921FCC106007B77C0 /* ItineraryListVC.swift */; };
 		D0DC44DC21FCC106007B77C0 /* ItineraryListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DC44DA21FCC106007B77C0 /* ItineraryListVC.xib */; };
+		D0DC44E121FD36C5007B77C0 /* ItineraryListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DC44DF21FD36C5007B77C0 /* ItineraryListTVC.swift */; };
+		D0DC44E221FD36C5007B77C0 /* ItineraryListTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DC44E021FD36C5007B77C0 /* ItineraryListTVC.xib */; };
+		D0DC44E521FD3E3B007B77C0 /* ItineraryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DC44E421FD3E3B007B77C0 /* ItineraryHeaderView.swift */; };
+		D0DC44E721FD3E57007B77C0 /* ItineraryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DC44E621FD3E57007B77C0 /* ItineraryHeaderView.xib */; };
 		D0F164502114CB3D0030301A /* WebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F1644E2114CB3D0030301A /* WebViewVC.swift */; };
 		D0F164512114CB3D0030301A /* WebViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F1644F2114CB3D0030301A /* WebViewVC.xib */; };
 		D0F5B43720EBFB78008727CC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5B43520EBFB78008727CC /* HomeVC.swift */; };
@@ -228,6 +232,10 @@
 		D0C334CA21FC0D3000DF00B9 /* FeedbackVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackVC.xib; sourceTree = "<group>"; };
 		D0DC44D921FCC106007B77C0 /* ItineraryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryListVC.swift; sourceTree = "<group>"; };
 		D0DC44DA21FCC106007B77C0 /* ItineraryListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItineraryListVC.xib; sourceTree = "<group>"; };
+		D0DC44DF21FD36C5007B77C0 /* ItineraryListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryListTVC.swift; sourceTree = "<group>"; };
+		D0DC44E021FD36C5007B77C0 /* ItineraryListTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItineraryListTVC.xib; sourceTree = "<group>"; };
+		D0DC44E421FD3E3B007B77C0 /* ItineraryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryHeaderView.swift; sourceTree = "<group>"; };
+		D0DC44E621FD3E57007B77C0 /* ItineraryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItineraryHeaderView.xib; sourceTree = "<group>"; };
 		D0F1644E2114CB3D0030301A /* WebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewVC.swift; sourceTree = "<group>"; };
 		D0F1644F2114CB3D0030301A /* WebViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewVC.xib; sourceTree = "<group>"; };
 		D0F5B43520EBFB78008727CC /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -752,6 +760,7 @@
 		D0DC44D521FCC07B007B77C0 /* Itinerary_New */ = {
 			isa = PBXGroup;
 			children = (
+				D0DC44DD21FD3678007B77C0 /* CustomViews */,
 				D0DC44D621FCC0A3007B77C0 /* ItineraryListVC */,
 			);
 			path = Itinerary_New;
@@ -764,6 +773,33 @@
 				D0DC44DA21FCC106007B77C0 /* ItineraryListVC.xib */,
 			);
 			path = ItineraryListVC;
+			sourceTree = "<group>";
+		};
+		D0DC44DD21FD3678007B77C0 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				D0DC44E321FD3BED007B77C0 /* ItineraryListHeaderView */,
+				D0DC44DE21FD36A0007B77C0 /* ItineraryListTVC */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		D0DC44DE21FD36A0007B77C0 /* ItineraryListTVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0DC44DF21FD36C5007B77C0 /* ItineraryListTVC.swift */,
+				D0DC44E021FD36C5007B77C0 /* ItineraryListTVC.xib */,
+			);
+			path = ItineraryListTVC;
+			sourceTree = "<group>";
+		};
+		D0DC44E321FD3BED007B77C0 /* ItineraryListHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				D0DC44E421FD3E3B007B77C0 /* ItineraryHeaderView.swift */,
+				D0DC44E621FD3E57007B77C0 /* ItineraryHeaderView.xib */,
+			);
+			path = ItineraryListHeaderView;
 			sourceTree = "<group>";
 		};
 		D0F1644D2114CAF80030301A /* WebViewVC */ = {
@@ -976,8 +1012,10 @@
 				D0F5B43C20EBFC73008727CC /* SettingsVC.xib in Resources */,
 				056D4DF320F0B5B700B7F408 /* ItineraryViewController.xib in Resources */,
 				D003E3C8219A986700A55E8C /* PaymentVC.xib in Resources */,
+				D0DC44E721FD3E57007B77C0 /* ItineraryHeaderView.xib in Resources */,
 				056D4DF720F0B5CA00B7F408 /* SuggestionsViewController.xib in Resources */,
 				05D2F1EB20D81D0600E2A5C9 /* OFL.txt in Resources */,
+				D0DC44E221FD36C5007B77C0 /* ItineraryListTVC.xib in Resources */,
 				05D2F1DE20D81D0600E2A5C9 /* Muli-BlackItalic.ttf in Resources */,
 				BB9FA6D02144203F00FB26FE /* CategoryCollectionViewCell.xib in Resources */,
 				BBA7B135217BA85600BB37A8 /* AddPlacesTableViewCell.xib in Resources */,
@@ -1148,6 +1186,8 @@
 				D0183CEC210CC3CD0030D02D /* UIColorExtension.swift in Sources */,
 				D0030DCF2111609E00703B64 /* EventManager.swift in Sources */,
 				D0F5B43F20EBFC86008727CC /* FavoritesVC.swift in Sources */,
+				D0DC44E521FD3E3B007B77C0 /* ItineraryHeaderView.swift in Sources */,
+				D0DC44E121FD36C5007B77C0 /* ItineraryListTVC.swift in Sources */,
 				059948E220D6B1A10057F673 /* AppDelegate.swift in Sources */,
 				D003E3C7219A986700A55E8C /* PaymentVC.swift in Sources */,
 				D0012C9720EEF5DC00074C90 /* SettingsHeaderTVC.swift in Sources */,
