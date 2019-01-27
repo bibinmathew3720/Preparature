@@ -9,14 +9,108 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Muli-ExtraLight.ttf">
+            <string>Muli-ExtraLight</string>
+        </array>
+        <array key="Muli-Regular.ttf">
+            <string>Muli-Regular</string>
+        </array>
+        <array key="Muli-SemiBold.ttf">
+            <string>Muli-SemiBold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ItineraryHeaderView" customModule="Preparture" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="0.7725490196" green="0.1019607843" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HuF-Jd-c8g">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoL-Vd-KV0">
+                            <rect key="frame" x="10" y="10" width="41" height="19"/>
+                            <fontDescription key="fontDescription" name="Muli-ExtraLight" family="Muli" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9T-Ty-5Z4">
+                            <rect key="frame" x="10" y="34" width="40.5" height="20.5"/>
+                            <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7b-2Z-Aca">
+                            <rect key="frame" x="10" y="616.5" width="40.5" height="20.5"/>
+                            <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEq-Ih-VUt">
+                            <rect key="frame" x="332" y="10" width="33" height="19"/>
+                            <fontDescription key="fontDescription" name="Muli-ExtraLight" family="Muli" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkQ-bW-Dke">
+                            <rect key="frame" x="332" y="34" width="40.5" height="20.5"/>
+                            <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hK-ho-Uqq">
+                            <rect key="frame" x="296" y="595" width="74" height="42"/>
+                            <color key="backgroundColor" red="0.59999999999999998" green="0.792156862745098" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="17"/>
+                            <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="openCloseButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="vPo-2g-u7U"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="I7b-2Z-Aca" firstAttribute="leading" secondItem="T9T-Ty-5Z4" secondAttribute="leading" id="PvI-SG-M75"/>
+                        <constraint firstItem="BEq-Ih-VUt" firstAttribute="centerY" secondItem="HoL-Vd-KV0" secondAttribute="centerY" id="TXY-Yx-GTM"/>
+                        <constraint firstItem="T9T-Ty-5Z4" firstAttribute="leading" secondItem="HoL-Vd-KV0" secondAttribute="leading" id="UfX-D1-Gcj"/>
+                        <constraint firstAttribute="bottom" secondItem="I7b-2Z-Aca" secondAttribute="bottom" constant="10" id="Uxt-6v-v9p"/>
+                        <constraint firstItem="kkQ-bW-Dke" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="I7b-2Z-Aca" secondAttribute="trailing" constant="5" id="VMl-PC-syY"/>
+                        <constraint firstItem="kkQ-bW-Dke" firstAttribute="leading" secondItem="BEq-Ih-VUt" secondAttribute="leading" id="VgG-Fr-fhi"/>
+                        <constraint firstItem="HoL-Vd-KV0" firstAttribute="leading" secondItem="HuF-Jd-c8g" secondAttribute="leading" constant="10" id="b6r-sg-mU8"/>
+                        <constraint firstAttribute="trailing" secondItem="BEq-Ih-VUt" secondAttribute="trailing" constant="10" id="bYB-jc-B02"/>
+                        <constraint firstItem="T9T-Ty-5Z4" firstAttribute="top" secondItem="HoL-Vd-KV0" secondAttribute="bottom" constant="5" id="bz3-Zr-5cC"/>
+                        <constraint firstItem="kkQ-bW-Dke" firstAttribute="top" secondItem="BEq-Ih-VUt" secondAttribute="bottom" constant="5" id="eTp-XQ-weB"/>
+                        <constraint firstItem="2hK-ho-Uqq" firstAttribute="bottom" secondItem="I7b-2Z-Aca" secondAttribute="bottom" id="gOl-GX-ist"/>
+                        <constraint firstItem="HoL-Vd-KV0" firstAttribute="top" secondItem="HuF-Jd-c8g" secondAttribute="top" constant="10" id="iUY-pK-PIk"/>
+                        <constraint firstAttribute="trailing" secondItem="2hK-ho-Uqq" secondAttribute="trailing" constant="5" id="kCN-j7-X3H"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="HuF-Jd-c8g" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="5Sx-4p-LQf"/>
+                <constraint firstItem="HuF-Jd-c8g" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="YTa-cg-P1m"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HuF-Jd-c8g" secondAttribute="trailing" id="c62-fi-sbS"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="HuF-Jd-c8g" secondAttribute="bottom" id="vJl-Sa-j2W"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="dateLabel" destination="kkQ-bW-Dke" id="5zG-uX-QVh"/>
+                <outlet property="headerView" destination="HuF-Jd-c8g" id="Xp0-o3-dg8"/>
+                <outlet property="nameLabel" destination="T9T-Ty-5Z4" id="JJh-gy-n5h"/>
+                <outlet property="openCloseButton" destination="2hK-ho-Uqq" id="8wd-71-eNz"/>
+                <outlet property="timeLabel" destination="I7b-2Z-Aca" id="OiJ-Pj-6cD"/>
+            </connections>
         </view>
     </objects>
 </document>

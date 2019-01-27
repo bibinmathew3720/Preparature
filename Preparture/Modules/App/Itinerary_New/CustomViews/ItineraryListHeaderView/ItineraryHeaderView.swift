@@ -10,6 +10,11 @@ import UIKit
 
 class ItineraryHeaderView: UIView {
 
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var openCloseButton: UIButton!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -17,5 +22,18 @@ class ItineraryHeaderView: UIView {
         // Drawing code
     }
     */
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        initialisation()
+    }
+    
+    func initialisation(){
+        headerView.layer.cornerRadius = 5
+        headerView.layer.borderColor = Constant.Colors.AppCommonGreyColor.cgColor
+        headerView.layer.borderWidth = 1
+    }
 
+    @IBAction func openCloseButtonAction(_ sender: UIButton) {
+    }
 }
