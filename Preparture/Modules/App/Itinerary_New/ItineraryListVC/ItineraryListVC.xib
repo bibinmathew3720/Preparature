@@ -64,12 +64,31 @@
                         <outlet property="delegate" destination="-1" id="mfb-d2-qNJ"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iiy-TD-eOc">
+                    <rect key="frame" x="295" y="587" width="60" height="60"/>
+                    <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="19B-UD-rGH"/>
+                        <constraint firstAttribute="width" constant="60" id="cnC-E5-vMd"/>
+                    </constraints>
+                    <state key="normal" image="addItem"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="30"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="plusButtonAction:" destination="-1" eventType="touchUpInside" id="KBK-ZG-EhT"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Iiy-TD-eOc" secondAttribute="bottom" constant="20" id="3f4-mn-zZY"/>
                 <constraint firstItem="BNd-Sr-yyb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="B8r-1P-z1Q"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BNd-Sr-yyb" secondAttribute="trailing" constant="10" id="Dou-jL-9Tk"/>
                 <constraint firstItem="BNd-Sr-yyb" firstAttribute="top" secondItem="fHw-8e-ZZl" secondAttribute="bottom" constant="10" id="FLD-Rf-opm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Iiy-TD-eOc" secondAttribute="trailing" constant="20" id="VIO-fV-zCV"/>
                 <constraint firstItem="fHw-8e-ZZl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="aOU-JM-t7u"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fHw-8e-ZZl" secondAttribute="trailing" id="aTW-Fb-1U2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="leading" secondItem="fHw-8e-ZZl" secondAttribute="leading" id="dma-I5-40f"/>
@@ -79,6 +98,7 @@
         </view>
     </objects>
     <resources>
+        <image name="addItem" width="19" height="18"/>
         <image name="backIcon" width="19" height="15"/>
     </resources>
 </document>

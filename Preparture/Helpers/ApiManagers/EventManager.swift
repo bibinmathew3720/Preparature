@@ -354,7 +354,6 @@ class LandMarkDetails : NSObject{
 //Output Classes
 
 class AddEvent : NSObject{
-    var userId:String = ""
     var eventName:String = ""
     var authorName:String = ""
     var eventCost:String = ""
@@ -391,4 +390,45 @@ class AddEvent : NSObject{
         return CCUtility.getJSONfrom(dictionary: dict)
     }
     
+}
+
+class AddItinerary : NSObject{
+    var eventid:String = ""
+    var categoryId:String = ""
+    var itineraryName:String = ""
+    var itineraryStartDate:String = ""
+    var itineraryEndDate:String = ""
+    var landMarks = [AddLandmark]()
+    func getRequestBody()->String{
+        var dict:[String:String] = [String:String]()
+        if let user = User.getUser(){
+            if let userIdString = user.userId{
+                dict.updateValue(userIdString, forKey: "user_id")
+            }
+        }
+//        dict.updateValue(eventName, forKey: "event_name")
+//        dict.updateValue(authorName, forKey: "author_name")
+//        dict.updateValue(eventCost, forKey: "event_cost")
+//        dict.updateValue(eventDate, forKey: "event_date")
+//        dict.updateValue(eventTime, forKey: "event_time")
+//        dict.updateValue(category, forKey: "category_id")
+//        dict.updateValue(String(format: "%f", latitude), forKey: "latitude")
+//        dict.updateValue(String(format: "%f", longitude), forKey: "longitude")
+//        dict.updateValue(location, forKey: "location")
+//        dict.updateValue(String(format: "%d", eventRating), forKey: "event_rate")
+//        dict.updateValue(travelExperience, forKey: "travel_experience")
+//        dict.updateValue(comment, forKey: "comments")
+//        dict.updateValue(eventFiles, forKey: "event_files")
+        return CCUtility.getJSONfrom(dictionary: dict)
+    }
+    
+    
+}
+
+class AddLandmark : NSObject{
+    var landmarkName:String = ""
+    var landmarkLatitude:String = ""
+    var landmarkLongitude:String = ""
+    var checkInDate:String = ""
+    var checkOutDate:String = ""
 }

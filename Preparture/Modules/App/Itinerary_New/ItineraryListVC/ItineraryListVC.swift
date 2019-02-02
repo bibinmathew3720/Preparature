@@ -32,6 +32,10 @@ class ItineraryListVC: BaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func plusButtonAction(_ sender: UIButton) {
+        let addItineraryVC = AddItineraryVC.init(nibName: "AddItineraryVC", bundle: nil)
+        self.navigationController?.pushViewController(addItineraryVC, animated: true)
+    }
     
     //MARK:- Get Event Details Api Integration
     

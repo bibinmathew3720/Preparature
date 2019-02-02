@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Muli-Regular.ttf">
+            <string>Muli-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="addItCell" rowHeight="272" id="KGk-i7-Jjw" customClass="AdditineraryTVC" customModule="Preparture" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="369" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="369" height="271.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Landmark name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="65I-TS-GtI">
+                        <rect key="frame" x="5" y="10" width="359" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="cdp-Vs-eIO"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                        <connections>
+                            <action selector="textFieldEditingChnaged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="LaR-Fg-CGQ"/>
+                            <outlet property="delegate" destination="-1" id="q6y-6W-UqT"/>
+                        </connections>
+                    </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="12w-K0-gtF">
+                        <rect key="frame" x="5" y="50" width="359" height="1"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="VO9-XQ-LX9"/>
+                        </constraints>
+                    </view>
+                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Landmark Latitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-B0-Gp9">
+                        <rect key="frame" x="5" y="61" width="359" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="a1Y-iS-Z1M"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                        <connections>
+                            <action selector="textFieldEditingChnaged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="aAu-Uf-kY7"/>
+                            <outlet property="delegate" destination="-1" id="kCo-dN-TvM"/>
+                        </connections>
+                    </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbe-hB-QyC">
+                        <rect key="frame" x="5" y="101" width="359" height="1"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="ybP-Mp-OmV"/>
+                        </constraints>
+                    </view>
+                    <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Landmark Longitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ov7-9b-qgc">
+                        <rect key="frame" x="5" y="112" width="359" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Uo4-rW-8Xv"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                        <connections>
+                            <action selector="textFieldEditingChnaged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="TOq-iA-ng0"/>
+                            <outlet property="delegate" destination="-1" id="uqq-Wk-JLW"/>
+                        </connections>
+                    </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oGE-DK-vDE">
+                        <rect key="frame" x="5" y="152" width="359" height="1"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="CTY-4t-fZ6"/>
+                        </constraints>
+                    </view>
+                    <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Check in" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XPT-yQ-L04">
+                        <rect key="frame" x="5" y="163" width="359" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="3Bw-Na-IdO"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                        <connections>
+                            <action selector="textFieldEditingChnaged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="nlO-9V-2UH"/>
+                            <outlet property="delegate" destination="-1" id="oO5-tI-XEp"/>
+                        </connections>
+                    </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tYr-NB-PbR">
+                        <rect key="frame" x="5" y="203" width="359" height="1"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="udy-JZ-FQv"/>
+                        </constraints>
+                    </view>
+                    <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Check out" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xQZ-7V-vq5">
+                        <rect key="frame" x="5" y="214" width="359" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="1oH-St-qgU"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                        <connections>
+                            <action selector="textFieldEditingChnaged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="DdF-JU-t6m"/>
+                            <outlet property="delegate" destination="-1" id="IWl-bA-d19"/>
+                        </connections>
+                    </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3TH-yV-CGo">
+                        <rect key="frame" x="5" y="254" width="359" height="1"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="hDl-El-UzA"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="XPT-yQ-L04" firstAttribute="leading" secondItem="oGE-DK-vDE" secondAttribute="leading" id="0FT-ke-qkE"/>
+                    <constraint firstItem="oGE-DK-vDE" firstAttribute="leading" secondItem="Ov7-9b-qgc" secondAttribute="leading" id="1vw-2U-ZRe"/>
+                    <constraint firstItem="xQZ-7V-vq5" firstAttribute="trailing" secondItem="tYr-NB-PbR" secondAttribute="trailing" id="39f-87-dvl"/>
+                    <constraint firstItem="12w-K0-gtF" firstAttribute="leading" secondItem="65I-TS-GtI" secondAttribute="leading" id="56Y-Yi-O6e"/>
+                    <constraint firstItem="xbe-hB-QyC" firstAttribute="leading" secondItem="OWk-B0-Gp9" secondAttribute="leading" id="5rg-TL-7PP"/>
+                    <constraint firstItem="65I-TS-GtI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="9X5-QY-tcq"/>
+                    <constraint firstItem="12w-K0-gtF" firstAttribute="trailing" secondItem="65I-TS-GtI" secondAttribute="trailing" id="9iz-XZ-2Mx"/>
+                    <constraint firstAttribute="trailing" secondItem="65I-TS-GtI" secondAttribute="trailing" constant="5" id="C9H-gf-jup"/>
+                    <constraint firstItem="3TH-yV-CGo" firstAttribute="leading" secondItem="xQZ-7V-vq5" secondAttribute="leading" id="GZP-QH-xSI"/>
+                    <constraint firstItem="xbe-hB-QyC" firstAttribute="top" secondItem="OWk-B0-Gp9" secondAttribute="bottom" id="HvL-8u-lag"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3TH-yV-CGo" secondAttribute="bottom" constant="10" id="IOc-hH-4a7"/>
+                    <constraint firstItem="OWk-B0-Gp9" firstAttribute="trailing" secondItem="12w-K0-gtF" secondAttribute="trailing" id="LuV-0g-keK"/>
+                    <constraint firstItem="tYr-NB-PbR" firstAttribute="top" secondItem="XPT-yQ-L04" secondAttribute="bottom" id="TW9-bf-mY6"/>
+                    <constraint firstItem="Ov7-9b-qgc" firstAttribute="top" secondItem="xbe-hB-QyC" secondAttribute="bottom" constant="10" id="UuQ-yE-SJJ"/>
+                    <constraint firstItem="xQZ-7V-vq5" firstAttribute="top" secondItem="tYr-NB-PbR" secondAttribute="bottom" constant="10" id="VLq-Vz-rJo"/>
+                    <constraint firstItem="xQZ-7V-vq5" firstAttribute="leading" secondItem="tYr-NB-PbR" secondAttribute="leading" id="Zwk-Tf-VOw"/>
+                    <constraint firstItem="xbe-hB-QyC" firstAttribute="trailing" secondItem="OWk-B0-Gp9" secondAttribute="trailing" id="aFz-WF-d6p"/>
+                    <constraint firstItem="tYr-NB-PbR" firstAttribute="leading" secondItem="XPT-yQ-L04" secondAttribute="leading" id="aYU-X1-uhx"/>
+                    <constraint firstItem="OWk-B0-Gp9" firstAttribute="leading" secondItem="12w-K0-gtF" secondAttribute="leading" id="cAq-zn-pZD"/>
+                    <constraint firstItem="3TH-yV-CGo" firstAttribute="trailing" secondItem="xQZ-7V-vq5" secondAttribute="trailing" id="cDf-zb-dyS"/>
+                    <constraint firstItem="tYr-NB-PbR" firstAttribute="trailing" secondItem="XPT-yQ-L04" secondAttribute="trailing" id="drX-iM-v1V"/>
+                    <constraint firstItem="oGE-DK-vDE" firstAttribute="top" secondItem="Ov7-9b-qgc" secondAttribute="bottom" id="hit-Aj-1Gc"/>
+                    <constraint firstItem="XPT-yQ-L04" firstAttribute="trailing" secondItem="oGE-DK-vDE" secondAttribute="trailing" id="jKC-4r-42v"/>
+                    <constraint firstItem="XPT-yQ-L04" firstAttribute="top" secondItem="oGE-DK-vDE" secondAttribute="bottom" constant="10" id="jQV-Wy-1Lz"/>
+                    <constraint firstItem="Ov7-9b-qgc" firstAttribute="leading" secondItem="xbe-hB-QyC" secondAttribute="leading" id="m3K-eD-MG9"/>
+                    <constraint firstItem="12w-K0-gtF" firstAttribute="top" secondItem="65I-TS-GtI" secondAttribute="bottom" id="niM-15-VqH"/>
+                    <constraint firstItem="65I-TS-GtI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="s2R-qE-DOQ"/>
+                    <constraint firstItem="OWk-B0-Gp9" firstAttribute="top" secondItem="12w-K0-gtF" secondAttribute="bottom" constant="10" id="uY5-km-4N9"/>
+                    <constraint firstItem="oGE-DK-vDE" firstAttribute="trailing" secondItem="Ov7-9b-qgc" secondAttribute="trailing" id="w58-4W-hI8"/>
+                    <constraint firstItem="Ov7-9b-qgc" firstAttribute="trailing" secondItem="xbe-hB-QyC" secondAttribute="trailing" id="xNJ-in-6go"/>
+                    <constraint firstItem="3TH-yV-CGo" firstAttribute="top" secondItem="xQZ-7V-vq5" secondAttribute="bottom" id="zIe-9H-6XC"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="checkInTF" destination="XPT-yQ-L04" id="IYg-Wo-Czf"/>
+                <outlet property="checkOutTF" destination="xQZ-7V-vq5" id="BSk-iG-HZe"/>
+                <outlet property="landMarkNameTF" destination="65I-TS-GtI" id="xKi-AA-iOf"/>
+                <outlet property="landmarkLatitudeTF" destination="OWk-B0-Gp9" id="axO-Jt-6Zx"/>
+                <outlet property="landmarkLongitudeTF" destination="Ov7-9b-qgc" id="yBh-Ga-KDA"/>
+            </connections>
+            <point key="canvasLocation" x="36.5" y="186"/>
+        </tableViewCell>
+    </objects>
+</document>

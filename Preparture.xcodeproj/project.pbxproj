@@ -104,6 +104,10 @@
 		D0DC44E721FD3E57007B77C0 /* ItineraryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DC44E621FD3E57007B77C0 /* ItineraryHeaderView.xib */; };
 		D0F164502114CB3D0030301A /* WebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F1644E2114CB3D0030301A /* WebViewVC.swift */; };
 		D0F164512114CB3D0030301A /* WebViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F1644F2114CB3D0030301A /* WebViewVC.xib */; };
+		D0F262A42205708C00A86BAC /* AddItineraryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F262A22205708C00A86BAC /* AddItineraryVC.swift */; };
+		D0F262A52205708C00A86BAC /* AddItineraryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F262A32205708C00A86BAC /* AddItineraryVC.xib */; };
+		D0F262A9220578A500A86BAC /* AdditineraryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F262A7220578A500A86BAC /* AdditineraryTVC.swift */; };
+		D0F262AA220578A500A86BAC /* AdditineraryTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F262A8220578A500A86BAC /* AdditineraryTVC.xib */; };
 		D0F5B43720EBFB78008727CC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5B43520EBFB78008727CC /* HomeVC.swift */; };
 		D0F5B43820EBFB78008727CC /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F5B43620EBFB78008727CC /* HomeVC.xib */; };
 		D0F5B43B20EBFC73008727CC /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5B43920EBFC73008727CC /* SettingsVC.swift */; };
@@ -238,6 +242,10 @@
 		D0DC44E621FD3E57007B77C0 /* ItineraryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItineraryHeaderView.xib; sourceTree = "<group>"; };
 		D0F1644E2114CB3D0030301A /* WebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewVC.swift; sourceTree = "<group>"; };
 		D0F1644F2114CB3D0030301A /* WebViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewVC.xib; sourceTree = "<group>"; };
+		D0F262A22205708C00A86BAC /* AddItineraryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItineraryVC.swift; sourceTree = "<group>"; };
+		D0F262A32205708C00A86BAC /* AddItineraryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItineraryVC.xib; sourceTree = "<group>"; };
+		D0F262A7220578A500A86BAC /* AdditineraryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditineraryTVC.swift; sourceTree = "<group>"; };
+		D0F262A8220578A500A86BAC /* AdditineraryTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdditineraryTVC.xib; sourceTree = "<group>"; };
 		D0F5B43520EBFB78008727CC /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		D0F5B43620EBFB78008727CC /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
 		D0F5B43920EBFC73008727CC /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
@@ -760,6 +768,7 @@
 		D0DC44D521FCC07B007B77C0 /* Itinerary_New */ = {
 			isa = PBXGroup;
 			children = (
+				D0F262A12205706100A86BAC /* AdditineraryVC */,
 				D0DC44DD21FD3678007B77C0 /* CustomViews */,
 				D0DC44D621FCC0A3007B77C0 /* ItineraryListVC */,
 			);
@@ -778,6 +787,7 @@
 		D0DC44DD21FD3678007B77C0 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				D0F262A62205788900A86BAC /* AddItineraryTVC */,
 				D0DC44E321FD3BED007B77C0 /* ItineraryListHeaderView */,
 				D0DC44DE21FD36A0007B77C0 /* ItineraryListTVC */,
 			);
@@ -809,6 +819,24 @@
 				D0F1644F2114CB3D0030301A /* WebViewVC.xib */,
 			);
 			path = WebViewVC;
+			sourceTree = "<group>";
+		};
+		D0F262A12205706100A86BAC /* AdditineraryVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0F262A22205708C00A86BAC /* AddItineraryVC.swift */,
+				D0F262A32205708C00A86BAC /* AddItineraryVC.xib */,
+			);
+			path = AdditineraryVC;
+			sourceTree = "<group>";
+		};
+		D0F262A62205788900A86BAC /* AddItineraryTVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0F262A7220578A500A86BAC /* AdditineraryTVC.swift */,
+				D0F262A8220578A500A86BAC /* AdditineraryTVC.xib */,
+			);
+			path = AddItineraryTVC;
 			sourceTree = "<group>";
 		};
 		D0F5B43120EBFB37008727CC /* TabBarItems */ = {
@@ -989,6 +1017,7 @@
 				05D2F1E720D81D0600E2A5C9 /* Muli-LightItalic.ttf in Resources */,
 				D0098006210F3FEF00DA1316 /* EditProfileViewController.xib in Resources */,
 				D01A848D20F96FF6004ED6FB /* ItineraryTVC.xib in Resources */,
+				D0F262A52205708C00A86BAC /* AddItineraryVC.xib in Resources */,
 				05D2F1E820D81D0600E2A5C9 /* Muli-Regular.ttf in Resources */,
 				05D2F1DF20D81D0600E2A5C9 /* Muli-Bold.ttf in Resources */,
 				BBBAAA462122DB1B00DD7601 /* AddPlacesViewController.xib in Resources */,
@@ -1005,6 +1034,7 @@
 				D0F5B44020EBFC86008727CC /* FavoritesVC.xib in Resources */,
 				05D2F1E420D81D0600E2A5C9 /* Muli-ExtraLightItalic.ttf in Resources */,
 				D0F164512114CB3D0030301A /* WebViewVC.xib in Resources */,
+				D0F262AA220578A500A86BAC /* AdditineraryTVC.xib in Resources */,
 				05B2CB6A20B1E481008D0D32 /* Assets.xcassets in Resources */,
 				D0F5B43820EBFB78008727CC /* HomeVC.xib in Resources */,
 				05D2F1E620D81D0600E2A5C9 /* Muli-Light.ttf in Resources */,
@@ -1183,6 +1213,7 @@
 				D0F5B43720EBFB78008727CC /* HomeVC.swift in Sources */,
 				D0098007210F3FEF00DA1316 /* ChangePswdViewController.swift in Sources */,
 				D080183121E045B2008A2CAA /* EventsVC.swift in Sources */,
+				D0F262A42205708C00A86BAC /* AddItineraryVC.swift in Sources */,
 				D0183CEC210CC3CD0030D02D /* UIColorExtension.swift in Sources */,
 				D0030DCF2111609E00703B64 /* EventManager.swift in Sources */,
 				D0F5B43F20EBFC86008727CC /* FavoritesVC.swift in Sources */,
@@ -1217,6 +1248,7 @@
 				05DFA28F20FA6DE6001F676A /* SuggestionsTableViewCell.swift in Sources */,
 				059948E420D6B1C90057F673 /* SignInViewController.swift in Sources */,
 				D009800B210F487700DA1316 /* PreparatureModel.xcdatamodeld in Sources */,
+				D0F262A9220578A500A86BAC /* AdditineraryTVC.swift in Sources */,
 				BBA7B134217BA85600BB37A8 /* AddPlacesTableViewCell.swift in Sources */,
 				D0F164502114CB3D0030301A /* WebViewVC.swift in Sources */,
 				D0183CED210CC3CD0030D02D /* UIImageViewExtensions.swift in Sources */,
