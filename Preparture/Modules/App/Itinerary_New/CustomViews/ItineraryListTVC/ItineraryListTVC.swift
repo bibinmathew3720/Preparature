@@ -7,12 +7,17 @@
 //
 
 import UIKit
-
+protocol ItineraryListTVCDelegate{
+    func directionButtonActionDelegate(section:NSInteger,row:NSInteger)
+}
 class ItineraryListTVC: UITableViewCell {
+    @IBOutlet weak var directionButton: UIButton!
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var landmarkNameLabel: UILabel!
     @IBOutlet weak var checkInTimeLabel: UILabel!
     @IBOutlet weak var checkOutTimeLabel: UILabel!
+    
+    var delegate:ItineraryListTVCDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         initialisation()
@@ -38,5 +43,8 @@ class ItineraryListTVC: UITableViewCell {
     }
     
     @IBAction func directionButtonAction(_ sender: UIButton) {
+        if let del = delegate{
+            del.directionButtonActionDelegate(section: self.tag, row: directionButton.tag)
+        }
     }
 }

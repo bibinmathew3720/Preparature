@@ -112,6 +112,7 @@
                 <outlet property="borderView" destination="a5Y-be-kkq" id="NFF-aR-Kxw"/>
                 <outlet property="checkInTimeLabel" destination="rWm-aB-TD6" id="0mp-Vq-v2L"/>
                 <outlet property="checkOutTimeLabel" destination="5sR-Vn-OhN" id="pcY-PS-6n8"/>
+                <outlet property="directionButton" destination="XQH-Lx-KM6" id="YuO-Dv-m0X"/>
                 <outlet property="landmarkNameLabel" destination="Opi-Wc-WI3" id="io3-wx-hnt"/>
             </connections>
             <point key="canvasLocation" x="260" y="120"/>

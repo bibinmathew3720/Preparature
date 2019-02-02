@@ -11,6 +11,7 @@ import UIKit
 class ItineraryListVC: BaseViewController {
     @IBOutlet weak var itineraryListTableView: UITableView!
     var eventItem:EventItem?
+    var selIndexes = [Int]()
     override func initView() {
         super.initView()
         initialisation()
@@ -93,18 +94,24 @@ extension ItineraryListVC:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let eventIt = self.eventItem{
-            return eventIt.itineraries[section].landMarks.count
+            if selIndexes.contains(section) {
+                return eventIt.itineraries[section].landMarks.count
+            }
+            else{
+                return 0
+            }
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itineraryCell", for: indexPath) as!ItineraryListTVC
-        cell.tag = indexPath.row
+        cell.tag = indexPath.section
+        cell.directionButton.tag = indexPath.row
         if let eventIt = self.eventItem{
-        cell.setLandMarkDetails(landMarkDetails:eventIt.itineraries[indexPath.section].landMarks[indexPath.row])
+            cell.setLandMarkDetails(landMarkDetails:eventIt.itineraries[indexPath.section].landMarks[indexPath.row])
         }
-        //cell.delegate = self
+        cell.delegate = self
         return cell
     }
     
@@ -122,8 +129,9 @@ extension ItineraryListVC:UITableViewDataSource,UITableViewDelegate {
         if let eventIt = eventItem{
             headerViewCustom.setItineraryDetails(itineraryDetails:eventIt.itineraries[section])
         }
-        // headerViewCustom.delegate = self
-        headerViewCustom.tag = section
+        headerViewCustom.delegate = self
+        headerViewCustom.openCloseButton.isSelected = selIndexes.contains(section)
+        headerViewCustom.openCloseButton.tag = section
         return headerViewCustom
     }
     
@@ -140,4 +148,26 @@ extension ItineraryListVC:UITableViewDataSource,UITableViewDelegate {
         return 20.0
     }
     
+}
+
+extension ItineraryListVC:ItineraryListTVCDelegate{
+    func directionButtonActionDelegate(section: NSInteger, row: NSInteger) {
+        if let eventIt = self.eventItem{
+            let landMarkDetails = eventIt.itineraries[section].landMarks[row]
+        }
+    }
+}
+
+extension ItineraryListVC:ItineraryHeaderViewDelegate{
+    func openButtonActionDelegate(button: UIButton) {
+        if selIndexes.contains(button.tag){
+            if let index = selIndexes.index(of: button.tag){
+                selIndexes.remove(at: index)
+            }
+        }
+        else{
+           selIndexes.append(button.tag)
+        }
+        itineraryListTableView.reloadData()
+    }
 }

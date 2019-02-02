@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+protocol ItineraryHeaderViewDelegate {
+    func openButtonActionDelegate(button:UIButton)
+}
 class ItineraryHeaderView: UIView {
 
     @IBOutlet weak var headerView: UIView!
@@ -15,6 +17,7 @@ class ItineraryHeaderView: UIView {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var openCloseButton: UIButton!
+    var delegate:ItineraryHeaderViewDelegate?
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -35,6 +38,9 @@ class ItineraryHeaderView: UIView {
     }
 
     @IBAction func openCloseButtonAction(_ sender: UIButton) {
+        if let del = delegate{
+            del.openButtonActionDelegate(button: sender)
+        }
     }
     
     func setItineraryDetails(itineraryDetails:ItineraryDetails){
