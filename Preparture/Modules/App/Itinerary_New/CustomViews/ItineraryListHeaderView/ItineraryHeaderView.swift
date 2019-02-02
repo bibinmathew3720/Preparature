@@ -29,11 +29,17 @@ class ItineraryHeaderView: UIView {
     }
     
     func initialisation(){
-        headerView.layer.cornerRadius = 5
+        //headerView.layer.cornerRadius = 5
         headerView.layer.borderColor = Constant.Colors.AppCommonGreyColor.cgColor
         headerView.layer.borderWidth = 1
     }
 
     @IBAction func openCloseButtonAction(_ sender: UIButton) {
+    }
+    
+    func setItineraryDetails(itineraryDetails:ItineraryDetails){
+        nameLabel.text = itineraryDetails.itineraryName
+        dateLabel.text = CCUtility.convertToDateToFormat(inputDate: itineraryDetails.startDate, inputDateFormat: "dd/MM/yyyy HH:mm a", outputDateFormat: "yyyy-MM-dd")
+        timeLabel.text = CCUtility.convertToDateToFormat(inputDate: itineraryDetails.startDate, inputDateFormat: "dd/MM/yyyy hh:mm a", outputDateFormat: "HH:mm a")
     }
 }

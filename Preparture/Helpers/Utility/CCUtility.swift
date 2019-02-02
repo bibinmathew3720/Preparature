@@ -167,6 +167,7 @@ class CCUtility: NSObject {
     
     class func convertToDateToFormat(inputDate:String,inputDateFormat:String,outputDateFormat:String)->String{
         let inputFormatter = DateFormatter()
+        inputFormatter.timeZone = NSTimeZone.local
         inputFormatter.dateFormat = inputDateFormat
         let showDate = inputFormatter.date(from: inputDate)
         inputFormatter.dateFormat = outputDateFormat

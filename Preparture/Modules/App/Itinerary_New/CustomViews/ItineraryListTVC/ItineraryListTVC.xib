@@ -9,18 +9,112 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Muli-ExtraLight.ttf">
+            <string>Muli-ExtraLight</string>
+        </array>
+        <array key="Muli-Regular.ttf">
+            <string>Muli-Regular</string>
+        </array>
+        <array key="Muli-SemiBold.ttf">
+            <string>Muli-SemiBold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="itineraryCell" rowHeight="63" id="KGk-i7-Jjw" customClass="ItineraryListTVC" customModule="Preparture" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="344" height="63"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="itineraryCell" rowHeight="214" id="KGk-i7-Jjw" customClass="ItineraryListTVC" customModule="Preparture" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="416" height="214"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="344" height="62.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="416" height="213.5"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5Y-be-kkq">
+                        <rect key="frame" x="10" y="0.0" width="396" height="159.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Opi-Wc-WI3">
+                                <rect key="frame" x="10" y="15" width="40.5" height="20.5"/>
+                                <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check In: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pm-HS-LVS">
+                                <rect key="frame" x="10" y="38" width="69" height="21"/>
+                                <fontDescription key="fontDescription" name="Muli-ExtraLight" family="Muli" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWm-aB-TD6">
+                                <rect key="frame" x="79" y="38" width="40.5" height="21"/>
+                                <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check Out: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2g-68-8o8">
+                                <rect key="frame" x="10" y="67" width="82" height="20.5"/>
+                                <fontDescription key="fontDescription" name="Muli-ExtraLight" family="Muli" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sR-Vn-OhN">
+                                <rect key="frame" x="92" y="67" width="41" height="21"/>
+                                <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQH-Lx-KM6">
+                                <rect key="frame" x="10" y="102.5" width="376" height="42"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.792156862745098" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="17"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                                <state key="normal" title="Direction">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="directionButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pj0-xW-n2Z"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Opi-Wc-WI3" firstAttribute="top" secondItem="a5Y-be-kkq" secondAttribute="top" constant="15" id="20i-fI-Lup"/>
+                            <constraint firstItem="XQH-Lx-KM6" firstAttribute="leading" secondItem="z2g-68-8o8" secondAttribute="leading" id="3ZM-SE-CBU"/>
+                            <constraint firstItem="z2g-68-8o8" firstAttribute="top" secondItem="5pm-HS-LVS" secondAttribute="bottom" constant="8" id="3zz-Wg-mcS"/>
+                            <constraint firstItem="5sR-Vn-OhN" firstAttribute="centerY" secondItem="z2g-68-8o8" secondAttribute="centerY" id="6d9-aI-tCK"/>
+                            <constraint firstItem="rWm-aB-TD6" firstAttribute="leading" secondItem="5pm-HS-LVS" secondAttribute="trailing" id="BgM-Dx-YlT"/>
+                            <constraint firstItem="5sR-Vn-OhN" firstAttribute="leading" secondItem="z2g-68-8o8" secondAttribute="trailing" id="Bs4-FA-IfI"/>
+                            <constraint firstItem="5pm-HS-LVS" firstAttribute="leading" secondItem="Opi-Wc-WI3" secondAttribute="leading" id="F17-Tc-pHh"/>
+                            <constraint firstAttribute="trailing" secondItem="XQH-Lx-KM6" secondAttribute="trailing" constant="10" id="R5Z-tH-3v7"/>
+                            <constraint firstItem="z2g-68-8o8" firstAttribute="leading" secondItem="5pm-HS-LVS" secondAttribute="leading" id="VrA-C5-SWS"/>
+                            <constraint firstItem="Opi-Wc-WI3" firstAttribute="leading" secondItem="a5Y-be-kkq" secondAttribute="leading" constant="10" id="faa-d7-5Nw"/>
+                            <constraint firstItem="XQH-Lx-KM6" firstAttribute="top" secondItem="z2g-68-8o8" secondAttribute="bottom" constant="15" id="ius-2f-9jr"/>
+                            <constraint firstItem="5pm-HS-LVS" firstAttribute="top" secondItem="Opi-Wc-WI3" secondAttribute="bottom" constant="3" id="oBO-Ry-rqo"/>
+                            <constraint firstItem="rWm-aB-TD6" firstAttribute="centerY" secondItem="5pm-HS-LVS" secondAttribute="centerY" id="uBc-cT-LPm"/>
+                            <constraint firstAttribute="bottom" secondItem="XQH-Lx-KM6" secondAttribute="bottom" constant="15" id="zPj-eS-Ug7"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="a5Y-be-kkq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="8BG-4S-B2p"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="a5Y-be-kkq" secondAttribute="bottom" id="9lR-4m-hkQ"/>
+                    <constraint firstItem="a5Y-be-kkq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="SaP-cS-BJC"/>
+                    <constraint firstAttribute="trailing" secondItem="a5Y-be-kkq" secondAttribute="trailing" constant="10" id="hQr-Pk-nO7"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="22" y="43"/>
+            <connections>
+                <outlet property="borderView" destination="a5Y-be-kkq" id="NFF-aR-Kxw"/>
+                <outlet property="checkInTimeLabel" destination="rWm-aB-TD6" id="0mp-Vq-v2L"/>
+                <outlet property="checkOutTimeLabel" destination="5sR-Vn-OhN" id="pcY-PS-6n8"/>
+                <outlet property="landmarkNameLabel" destination="Opi-Wc-WI3" id="io3-wx-hnt"/>
+            </connections>
+            <point key="canvasLocation" x="260" y="120"/>
         </tableViewCell>
     </objects>
 </document>

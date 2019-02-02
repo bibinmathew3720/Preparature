@@ -282,6 +282,7 @@ class UserSuggestion : NSObject{
 class ItineraryDetails : NSObject{
     var categoryId:String = ""
     var createdDate:String = ""
+    var startDate:String = ""
     var endDate:String = ""
     var eventID:String = ""
     var itineraryID:String = ""
@@ -293,6 +294,9 @@ class ItineraryDetails : NSObject{
         }
         if let value = dict["created_date"] as? String{
             createdDate = value
+        }
+        if let value = dict["start_date"] as? String{
+            startDate = value
         }
         if let value = dict["end_date"] as? String{
             endDate = value
