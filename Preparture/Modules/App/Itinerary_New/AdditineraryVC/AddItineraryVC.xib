@@ -21,6 +21,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddItineraryVC" customModule="Preparture" customModuleProvider="target">
             <connections>
                 <outlet property="addItineraryTV" destination="H20-DV-XNB" id="in1-VC-Vgj"/>
+                <outlet property="datePicker" destination="aTD-b9-cBI" id="bh6-89-7U3"/>
+                <outlet property="endDateTF" destination="Urq-wl-fWq" id="DD2-Ja-mue"/>
+                <outlet property="itineraryNameTF" destination="WWd-dP-inN" id="AU1-lM-brH"/>
+                <outlet property="startDateTF" destination="nRV-2r-EtE" id="AuO-Z5-HMy"/>
+                <outlet property="toolBar" destination="gvE-KX-Auv" id="c53-qY-ZUb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -73,6 +78,10 @@
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                    <connections>
+                        <action selector="textFieldEditingChanged:" destination="-1" eventType="editingDidEnd" id="TpA-vy-dPz"/>
+                        <outlet property="delegate" destination="-1" id="oeu-ZI-wH1"/>
+                    </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5H-Nv-HIp">
                     <rect key="frame" x="10" y="183" width="355" height="1"/>
@@ -89,6 +98,9 @@
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="nNo-01-KQ6"/>
+                    </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beH-Z4-TA1">
                     <rect key="frame" x="10" y="233" width="355" height="1"/>
@@ -105,6 +117,9 @@
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="5HA-3g-qQ5"/>
+                    </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uu-uy-vQb">
                     <rect key="frame" x="10" y="284" width="355" height="1"/>
@@ -150,6 +165,9 @@
                             <integer key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="submitButtonAction:" destination="-1" eventType="touchUpInside" id="Xx1-Lf-93f"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -189,6 +207,32 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
+        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="gvE-KX-Auv">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <items>
+                <barButtonItem title="Cancel" id="7SI-6I-fcV">
+                    <connections>
+                        <action selector="toolBarCancelButtonAction:" destination="-1" id="Vzu-dP-lWc"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem style="plain" systemItem="flexibleSpace" id="eU9-wl-tCH"/>
+                <barButtonItem title="Done" id="nnP-fx-oQ0">
+                    <connections>
+                        <action selector="toolBarDoneButtonAction:" destination="-1" id="Vm3-ZZ-ggz"/>
+                    </connections>
+                </barButtonItem>
+            </items>
+            <point key="canvasLocation" x="-1474" y="-46"/>
+        </toolbar>
+        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="aTD-b9-cBI">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+            <date key="date" timeIntervalSinceReferenceDate="569496813.87751698">
+                <!--2019-01-18 09:33:33 +0000-->
+            </date>
+            <point key="canvasLocation" x="-273" y="-149"/>
+        </datePicker>
     </objects>
     <resources>
         <image name="backIcon" width="19" height="15"/>

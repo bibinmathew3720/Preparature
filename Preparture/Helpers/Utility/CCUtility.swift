@@ -138,6 +138,13 @@ class CCUtility: NSObject {
         return dateString
     }
     
+    class func stringFromDateAndTime(date:Date)->String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm a"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+    
     class func dateString(with dateString : String,from dateFormat:String, to format:String) -> String
     {
         

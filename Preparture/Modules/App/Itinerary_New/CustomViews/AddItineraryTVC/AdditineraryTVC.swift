@@ -7,9 +7,19 @@
 //
 
 import UIKit
+enum TextFieldType{
+    case textFieldLandmarkName
+    case textFieldLatitude
+    case textFieldLongitude
+    case textFieldCheckIn
+    case textFieldCheckOut
+    case textFieldStartDate
+    case textFieldEndDate
+}
 
 protocol AddItineraryTVCDelegate {
-    func textFieldEditeChangedDelegate(tag:Int, textField:UITextField)
+    func textFieldShouldBeginDelegate(textField:UITextField,type:TextFieldType,tag:Int)
+    func textFieldEditeChangedDelegate(tag: Int, textField: UITextField, textFieldType:TextFieldType)
 }
 class AdditineraryTVC: UITableViewCell {
     @IBOutlet weak var landMarkNameTF: UITextField!
@@ -17,6 +27,8 @@ class AdditineraryTVC: UITableViewCell {
     @IBOutlet weak var landmarkLongitudeTF: UITextField!
     @IBOutlet weak var checkInTF: UITextField!
     @IBOutlet weak var checkOutTF: UITextField!
+    var textFieldType = TextFieldType.textFieldCheckIn
+    
     var delegate:AddItineraryTVCDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +40,11 @@ class AdditineraryTVC: UITableViewCell {
         self.layer.cornerRadius = 5
         self.layer.borderColor = Constant.Colors.AppCommonGreyColor.cgColor
         self.layer.borderWidth = 1
+        landMarkNameTF.delegate = self
+        landmarkLatitudeTF.delegate = self
+        landmarkLongitudeTF.delegate = self
+        checkInTF.delegate = self
+        checkOutTF.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -46,8 +63,44 @@ class AdditineraryTVC: UITableViewCell {
     
     @IBAction func textFieldEditingChnaged(_ sender: UITextField) {
         if let del = delegate{
-            del.textFieldEditeChangedDelegate(tag: self.tag, textField: sender)
+            del.textFieldEditeChangedDelegate(tag: self.tag, textField: sender, textFieldType:self.textFieldType)
         }
     }
+}
+
+extension AdditineraryTVC: UITextFieldDelegate{
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == landMarkNameTF{
+           textFieldType = .textFieldLandmarkName
+        }
+        else if textField == landmarkLatitudeTF{
+            textFieldType = .textFieldLatitude
+        }
+        else if textField == landmarkLongitudeTF{
+            textFieldType = .textFieldLongitude
+        }
+        else if textField == checkInTF{
+            textFieldType = .textFieldCheckIn
+        }
+        else if textField == checkOutTF{
+            textFieldType = .textFieldCheckOut
+        }
+        if let del = delegate{
+            del.textFieldShouldBeginDelegate(textField: textField, type: textFieldType, tag: self.tag)
+        }
+        return true
+    }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == landMarkNameTF{
+            landmarkLatitudeTF.becomeFirstResponder()
+        }
+        else if textField == landmarkLatitudeTF{
+            landmarkLongitudeTF.becomeFirstResponder()
+        }
+        else if textField == landmarkLongitudeTF{
+            checkInTF.becomeFirstResponder()
+        }
+        return true
+    }
 }

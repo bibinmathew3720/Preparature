@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Landmark name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="65I-TS-GtI">
-                        <rect key="frame" x="5" y="10" width="359" height="40"/>
+                        <rect key="frame" x="10" y="10" width="349" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="cdp-Vs-eIO"/>
                         </constraints>
@@ -38,14 +38,14 @@
                         </connections>
                     </textField>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="12w-K0-gtF">
-                        <rect key="frame" x="5" y="50" width="359" height="1"/>
+                        <rect key="frame" x="10" y="50" width="349" height="1"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="VO9-XQ-LX9"/>
+                            <constraint firstAttribute="height" constant="0.5" id="VO9-XQ-LX9"/>
                         </constraints>
                     </view>
                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Landmark Latitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-B0-Gp9">
-                        <rect key="frame" x="5" y="61" width="359" height="40"/>
+                        <rect key="frame" x="10" y="61" width="349" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="a1Y-iS-Z1M"/>
                         </constraints>
@@ -58,14 +58,14 @@
                         </connections>
                     </textField>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbe-hB-QyC">
-                        <rect key="frame" x="5" y="101" width="359" height="1"/>
+                        <rect key="frame" x="10" y="101" width="349" height="1"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="ybP-Mp-OmV"/>
+                            <constraint firstAttribute="height" constant="0.5" id="ybP-Mp-OmV"/>
                         </constraints>
                     </view>
                     <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Landmark Longitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ov7-9b-qgc">
-                        <rect key="frame" x="5" y="112" width="359" height="40"/>
+                        <rect key="frame" x="10" y="112" width="349" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="Uo4-rW-8Xv"/>
                         </constraints>
@@ -78,14 +78,14 @@
                         </connections>
                     </textField>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oGE-DK-vDE">
-                        <rect key="frame" x="5" y="152" width="359" height="1"/>
+                        <rect key="frame" x="10" y="152" width="349" height="1"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="CTY-4t-fZ6"/>
+                            <constraint firstAttribute="height" constant="0.5" id="CTY-4t-fZ6"/>
                         </constraints>
                     </view>
                     <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Check in" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XPT-yQ-L04">
-                        <rect key="frame" x="5" y="163" width="359" height="40"/>
+                        <rect key="frame" x="10" y="163" width="349" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="3Bw-Na-IdO"/>
                         </constraints>
@@ -98,14 +98,14 @@
                         </connections>
                     </textField>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tYr-NB-PbR">
-                        <rect key="frame" x="5" y="203" width="359" height="1"/>
+                        <rect key="frame" x="10" y="203" width="349" height="1"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="udy-JZ-FQv"/>
+                            <constraint firstAttribute="height" constant="0.5" id="udy-JZ-FQv"/>
                         </constraints>
                     </view>
                     <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Check out" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xQZ-7V-vq5">
-                        <rect key="frame" x="5" y="214" width="359" height="40"/>
+                        <rect key="frame" x="10" y="214" width="349" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="1oH-St-qgU"/>
                         </constraints>
@@ -118,10 +118,10 @@
                         </connections>
                     </textField>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3TH-yV-CGo">
-                        <rect key="frame" x="5" y="254" width="359" height="1"/>
+                        <rect key="frame" x="10" y="254" width="349" height="1"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="hDl-El-UzA"/>
+                            <constraint firstAttribute="height" constant="0.5" id="hDl-El-UzA"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -131,9 +131,9 @@
                     <constraint firstItem="xQZ-7V-vq5" firstAttribute="trailing" secondItem="tYr-NB-PbR" secondAttribute="trailing" id="39f-87-dvl"/>
                     <constraint firstItem="12w-K0-gtF" firstAttribute="leading" secondItem="65I-TS-GtI" secondAttribute="leading" id="56Y-Yi-O6e"/>
                     <constraint firstItem="xbe-hB-QyC" firstAttribute="leading" secondItem="OWk-B0-Gp9" secondAttribute="leading" id="5rg-TL-7PP"/>
-                    <constraint firstItem="65I-TS-GtI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="9X5-QY-tcq"/>
+                    <constraint firstItem="65I-TS-GtI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="9X5-QY-tcq"/>
                     <constraint firstItem="12w-K0-gtF" firstAttribute="trailing" secondItem="65I-TS-GtI" secondAttribute="trailing" id="9iz-XZ-2Mx"/>
-                    <constraint firstAttribute="trailing" secondItem="65I-TS-GtI" secondAttribute="trailing" constant="5" id="C9H-gf-jup"/>
+                    <constraint firstAttribute="trailing" secondItem="65I-TS-GtI" secondAttribute="trailing" constant="10" id="C9H-gf-jup"/>
                     <constraint firstItem="3TH-yV-CGo" firstAttribute="leading" secondItem="xQZ-7V-vq5" secondAttribute="leading" id="GZP-QH-xSI"/>
                     <constraint firstItem="xbe-hB-QyC" firstAttribute="top" secondItem="OWk-B0-Gp9" secondAttribute="bottom" id="HvL-8u-lag"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3TH-yV-CGo" secondAttribute="bottom" constant="10" id="IOc-hH-4a7"/>
