@@ -68,12 +68,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Preparture/Modules/UserManagement/EditProfile/EditProfileViewController.swift"
-            timestampString = "568283941.233929"
+            timestampString = "570247250.164731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "getEditProfileRequestBody()"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "updateButtonAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -84,12 +84,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Preparture/Modules/UserManagement/EditProfile/EditProfileViewController.swift"
-            timestampString = "568283941.2339931"
+            timestampString = "570247250.164858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "updateButtonAction(_:)"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "sendProfileImage(image:ext:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Preparture/Modules/UserManagement/EditProfile/EditProfileViewController.swift"
+            timestampString = "570247250.164922"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "getEditProfileRequestBody()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
