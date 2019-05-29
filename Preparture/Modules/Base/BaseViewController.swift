@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-
+     var rightButton:UIButton?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +23,21 @@ class BaseViewController: UIViewController {
     }
     
     func initView() {
+        
+    }
+    
+    //MARK: Adding Bar Buttons
+    
+    func addingRightBarButtonWithImage(buttonImage:String){
+        self.rightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        self.rightButton?.addTarget(self, action: #selector(rightButtonAction), for: .touchUpInside)
+        self.rightButton?.setImage(UIImage.init(named: buttonImage), for: UIControl.State.normal)
+        var rightBarButton = UIBarButtonItem()
+        rightBarButton = UIBarButtonItem.init(customView: self.rightButton!)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+    }
+    
+    @objc func rightButtonAction(){
         
     }
     

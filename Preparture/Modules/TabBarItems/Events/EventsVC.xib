@@ -29,7 +29,7 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="80"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5c-ey-nmI">
-                            <rect key="frame" x="160.5" y="29.5" width="54" height="21.5"/>
+                            <rect key="frame" x="160.5" y="34.5" width="54" height="21.5"/>
                             <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                     <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="B5c-ey-nmI" firstAttribute="centerX" secondItem="9rK-ky-Ebf" secondAttribute="centerX" id="N9q-jK-vRd"/>
-                        <constraint firstItem="B5c-ey-nmI" firstAttribute="centerY" secondItem="9rK-ky-Ebf" secondAttribute="centerY" id="P6U-OG-uBm"/>
+                        <constraint firstItem="B5c-ey-nmI" firstAttribute="centerY" secondItem="9rK-ky-Ebf" secondAttribute="centerY" constant="5" id="P6U-OG-uBm"/>
                         <constraint firstAttribute="height" constant="80" id="mPa-dZ-IZ7"/>
                     </constraints>
                 </view>

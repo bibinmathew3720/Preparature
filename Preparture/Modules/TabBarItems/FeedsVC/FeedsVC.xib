@@ -29,17 +29,30 @@
                     <rect key="frame" x="0.0" y="44" width="375" height="80"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events From Chicago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6le-aZ-4Ib">
-                            <rect key="frame" x="102.5" y="29.5" width="170.5" height="21.5"/>
+                            <rect key="frame" x="102.5" y="34.5" width="170.5" height="21.5"/>
                             <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Opg-EC-WFG">
+                            <rect key="frame" x="325" y="25" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="mgR-gM-Ntg"/>
+                                <constraint firstAttribute="height" constant="40" id="zth-up-uOm"/>
+                            </constraints>
+                            <state key="normal" image="addItem"/>
+                            <connections>
+                                <action selector="plusButtonAction:" destination="-1" eventType="touchUpInside" id="iYV-1R-V47"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="Opg-EC-WFG" firstAttribute="centerY" secondItem="6le-aZ-4Ib" secondAttribute="centerY" id="0yp-qx-oPZ"/>
                         <constraint firstAttribute="height" constant="80" id="9oW-cC-IqP"/>
-                        <constraint firstItem="6le-aZ-4Ib" firstAttribute="centerY" secondItem="KDg-ag-9Iu" secondAttribute="centerY" id="Pto-cf-QlG"/>
+                        <constraint firstItem="6le-aZ-4Ib" firstAttribute="centerY" secondItem="KDg-ag-9Iu" secondAttribute="centerY" constant="5" id="Pto-cf-QlG"/>
                         <constraint firstItem="6le-aZ-4Ib" firstAttribute="centerX" secondItem="KDg-ag-9Iu" secondAttribute="centerX" id="xjy-TE-Und"/>
+                        <constraint firstAttribute="trailing" secondItem="Opg-EC-WFG" secondAttribute="trailing" constant="10" id="xnO-ze-3ae"/>
                     </constraints>
                 </view>
             </subviews>
@@ -52,4 +65,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
+    <resources>
+        <image name="addItem" width="19" height="18.5"/>
+    </resources>
 </document>
