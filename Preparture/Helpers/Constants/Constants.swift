@@ -23,6 +23,8 @@ struct Constant{
         struct  tabImages {
             static let eventsTabIcon = "eventsTab"
             static let eventsTabSelected = "eventsTabSelected"
+            static let feedsTabIcon = "feedsTab"
+            static let feedsTabSelected = "feedsTabSelected"
             static let dashBoardTabIcon = "dashBoardTab"
             static let dashBoardTabSelected = "dashboardTabSelected"
             static let favoriteTabIcon = "favoritesTab"
@@ -34,6 +36,7 @@ struct Constant{
     
     struct Titles{
         static let EventsTitle = "Events"
+        static let FeedsTitle = "Feeds"
         static let DashBoardTitle = "Dashboard"
         static let FavoritesTitle = "Favorite"
         static let SettingsTitle = "Settings"

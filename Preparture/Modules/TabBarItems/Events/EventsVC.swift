@@ -10,9 +10,10 @@ import UIKit
 
 class EventsVC: BaseViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func initView() {
+        super.initView()
+        //tableCellRegistration()
+        self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
     }
 

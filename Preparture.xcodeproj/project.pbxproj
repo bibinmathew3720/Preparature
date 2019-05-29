@@ -87,6 +87,8 @@
 		D01A848D20F96FF6004ED6FB /* ItineraryTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D01A848B20F96FF6004ED6FB /* ItineraryTVC.xib */; };
 		D06819E12114474F00AB4EF6 /* ImagesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06819DF2114474F00AB4EF6 /* ImagesCVC.swift */; };
 		D06819E22114474F00AB4EF6 /* ImagesCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06819E02114474F00AB4EF6 /* ImagesCVC.xib */; };
+		D06A695F229E1FBD00F25E89 /* FeedsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06A695D229E1FBD00F25E89 /* FeedsVC.swift */; };
+		D06A6960229E1FBD00F25E89 /* FeedsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D06A695E229E1FBD00F25E89 /* FeedsVC.xib */; };
 		D080183121E045B2008A2CAA /* EventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D080182F21E045B2008A2CAA /* EventsVC.swift */; };
 		D080183221E045B2008A2CAA /* EventsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D080183021E045B2008A2CAA /* EventsVC.xib */; };
 		D095507F20E32B4F00D8BBD9 /* CLBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095507820E32B4E00D8BBD9 /* CLBaseService.swift */; };
@@ -223,6 +225,8 @@
 		D01A848B20F96FF6004ED6FB /* ItineraryTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItineraryTVC.xib; sourceTree = "<group>"; };
 		D06819DF2114474F00AB4EF6 /* ImagesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCVC.swift; sourceTree = "<group>"; };
 		D06819E02114474F00AB4EF6 /* ImagesCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesCVC.xib; sourceTree = "<group>"; };
+		D06A695D229E1FBD00F25E89 /* FeedsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsVC.swift; sourceTree = "<group>"; };
+		D06A695E229E1FBD00F25E89 /* FeedsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsVC.xib; sourceTree = "<group>"; };
 		D080182F21E045B2008A2CAA /* EventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsVC.swift; sourceTree = "<group>"; };
 		D080183021E045B2008A2CAA /* EventsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsVC.xib; sourceTree = "<group>"; };
 		D095507820E32B4E00D8BBD9 /* CLBaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLBaseService.swift; sourceTree = "<group>"; };
@@ -718,6 +722,15 @@
 			path = ImageCVC;
 			sourceTree = "<group>";
 		};
+		D06A695C229E1F7200F25E89 /* FeedsVC */ = {
+			isa = PBXGroup;
+			children = (
+				D06A695D229E1FBD00F25E89 /* FeedsVC.swift */,
+				D06A695E229E1FBD00F25E89 /* FeedsVC.xib */,
+			);
+			path = FeedsVC;
+			sourceTree = "<group>";
+		};
 		D080182E21E0457E008A2CAA /* Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,6 +855,7 @@
 		D0F5B43120EBFB37008727CC /* TabBarItems */ = {
 			isa = PBXGroup;
 			children = (
+				D06A695C229E1F7200F25E89 /* FeedsVC */,
 				D080182E21E0457E008A2CAA /* Events */,
 				D0F5B43220EBFB37008727CC /* Favorites */,
 				D0F5B43320EBFB37008727CC /* Home */,
@@ -1041,6 +1055,7 @@
 				D0012C9C20EEF5F100074C90 /* SettingsTVC.xib in Resources */,
 				D0F5B43C20EBFC73008727CC /* SettingsVC.xib in Resources */,
 				056D4DF320F0B5B700B7F408 /* ItineraryViewController.xib in Resources */,
+				D06A6960229E1FBD00F25E89 /* FeedsVC.xib in Resources */,
 				D003E3C8219A986700A55E8C /* PaymentVC.xib in Resources */,
 				D0DC44E721FD3E57007B77C0 /* ItineraryHeaderView.xib in Resources */,
 				056D4DF720F0B5CA00B7F408 /* SuggestionsViewController.xib in Resources */,
@@ -1234,6 +1249,7 @@
 				D095508020E32B4F00D8BBD9 /* CLNetworkManager.swift in Sources */,
 				BB9FA6CF2144203F00FB26FE /* CategoryCollectionViewCell.swift in Sources */,
 				D0098012210F4B1000DA1316 /* CoreDataHandler.swift in Sources */,
+				D06A695F229E1FBD00F25E89 /* FeedsVC.swift in Sources */,
 				D0183CEB210CC3CD0030D02D /* StringExtensions.swift in Sources */,
 				D0012C9B20EEF5F100074C90 /* SettingsTVC.swift in Sources */,
 				D0183CF1210CC6200030D02D /* CCUtility.swift in Sources */,

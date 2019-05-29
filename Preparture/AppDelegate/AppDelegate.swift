@@ -70,6 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let eventsNavVC = UINavigationController.init(rootViewController: eventsVC)
         eventsNavVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.eventsTabSelected, unselectedImage: Constant.ImageNames.tabImages.eventsTabIcon, title: Constant.Titles.EventsTitle)
         
+        let feedsVC:FeedsVC = FeedsVC(nibName: "FeedsVC", bundle: nil)
+        let feedsNavVC = UINavigationController.init(rootViewController: feedsVC)
+         feedsNavVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.feedsTabSelected, unselectedImage: Constant.ImageNames.tabImages.feedsTabIcon, title: Constant.Titles.FeedsTitle)
+        
         let homeVC:HomeEventsViewController = HomeEventsViewController(nibName: "HomeEventsViewController", bundle: nil)
         let homeNavVC = UINavigationController.init(rootViewController: homeVC)
         homeVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.dashBoardTabSelected, unselectedImage: Constant.ImageNames.tabImages.dashBoardTabIcon, title: Constant.Titles.DashBoardTitle)
@@ -86,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let settingsNavVC = UINavigationController.init(rootViewController: settingsVC)
         settingsVC.tabBarItem = settingTabBarItemFontsAndImages( selectedImageName: Constant.ImageNames.tabImages.settingsTabSelected, unselectedImage: Constant.ImageNames.tabImages.settingsIcon, title: Constant.Titles.SettingsTitle)
         
-        tabBarController.viewControllers = [eventsNavVC,homeNavVC,favoritesNavVC,settingsNavVC];
+        tabBarController.viewControllers = [eventsNavVC,feedsNavVC,homeNavVC,favoritesNavVC,settingsNavVC];
         customisingTabBarController(tabBarCnlr: tabBarController)
         self.window?.rootViewController = tabBarController
     }
