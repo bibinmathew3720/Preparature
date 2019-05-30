@@ -9,9 +9,11 @@
 import UIKit
 
 class EventsTVC: UITableViewCell {
-
+    @IBOutlet weak var containerView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        containerView.addCardShadow()
         // Initialization code
     }
 

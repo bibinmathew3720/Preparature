@@ -15,9 +15,14 @@ class EventsVC: BaseViewController {
     
     override func initView() {
         super.initView()
+        initialisation()
         tableCellRegistration()
         self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
+    }
+    
+    func initialisation(){
+       searchView.addCardShadow()
     }
     
     func tableCellRegistration(){
@@ -81,7 +86,8 @@ extension EventsVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return 150
+        let aspectRatio:CGFloat = 0.6
+        return aspectRatio * UIScreen.main.bounds.size.height
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
