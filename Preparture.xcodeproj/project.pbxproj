@@ -64,6 +64,8 @@
 		D0012C9820EEF5DC00074C90 /* SettingsHeaderTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0012C9620EEF5DC00074C90 /* SettingsHeaderTVC.xib */; };
 		D0012C9B20EEF5F100074C90 /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0012C9920EEF5F100074C90 /* SettingsTVC.swift */; };
 		D0012C9C20EEF5F100074C90 /* SettingsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0012C9A20EEF5F100074C90 /* SettingsTVC.xib */; };
+		D002A8BA229F739A009ED890 /* EventsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D002A8B8229F7396009ED890 /* EventsTVC.swift */; };
+		D002A8BB229F739A009ED890 /* EventsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D002A8B9229F7396009ED890 /* EventsTVC.xib */; };
 		D003032320EDA72A00F85F11 /* HomeListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003032120EDA72A00F85F11 /* HomeListTVC.swift */; };
 		D003032420EDA72A00F85F11 /* HomeListTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D003032220EDA72A00F85F11 /* HomeListTVC.xib */; };
 		D0030DCF2111609E00703B64 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0030DCE2111609E00703B64 /* EventManager.swift */; };
@@ -202,6 +204,8 @@
 		D0012C9620EEF5DC00074C90 /* SettingsHeaderTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsHeaderTVC.xib; sourceTree = "<group>"; };
 		D0012C9920EEF5F100074C90 /* SettingsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
 		D0012C9A20EEF5F100074C90 /* SettingsTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTVC.xib; sourceTree = "<group>"; };
+		D002A8B8229F7396009ED890 /* EventsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTVC.swift; sourceTree = "<group>"; };
+		D002A8B9229F7396009ED890 /* EventsTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsTVC.xib; sourceTree = "<group>"; };
 		D003032120EDA72A00F85F11 /* HomeListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListTVC.swift; sourceTree = "<group>"; };
 		D003032220EDA72A00F85F11 /* HomeListTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListTVC.xib; sourceTree = "<group>"; };
 		D0030DCE2111609E00703B64 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
@@ -615,6 +619,15 @@
 			path = SettingsHeaderTVC;
 			sourceTree = "<group>";
 		};
+		D002A8B7229F7329009ED890 /* EventsTVC */ = {
+			isa = PBXGroup;
+			children = (
+				D002A8B8229F7396009ED890 /* EventsTVC.swift */,
+				D002A8B9229F7396009ED890 /* EventsTVC.xib */,
+			);
+			path = EventsTVC;
+			sourceTree = "<group>";
+		};
 		D003032020EDA71200F85F11 /* HomeListTVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,6 +747,7 @@
 		D080182E21E0457E008A2CAA /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				D002A8B7229F7329009ED890 /* EventsTVC */,
 				D080182F21E045B2008A2CAA /* EventsVC.swift */,
 				D080183021E045B2008A2CAA /* EventsVC.xib */,
 			);
@@ -1025,6 +1039,7 @@
 				05D2F1E920D81D0600E2A5C9 /* Muli-SemiBold.ttf in Resources */,
 				05E2B6FC20DFDD21005DD640 /* ForgotPasswordViewController.xib in Resources */,
 				05D2F1E220D81D0600E2A5C9 /* Muli-ExtraBoldItalic.ttf in Resources */,
+				D002A8BB229F739A009ED890 /* EventsTVC.xib in Resources */,
 				D0012C9820EEF5DC00074C90 /* SettingsHeaderTVC.xib in Resources */,
 				05D2F1E520D81D0600E2A5C9 /* Muli-Italic.ttf in Resources */,
 				D080183221E045B2008A2CAA /* EventsVC.xib in Resources */,
@@ -1240,6 +1255,7 @@
 				056D4DF220F0B5B700B7F408 /* ItineraryViewController.swift in Sources */,
 				D095508220E32B4F00D8BBD9 /* CLNetworkUtility.swift in Sources */,
 				BBBAAA452122DB1B00DD7601 /* AddPlacesViewController.swift in Sources */,
+				D002A8BA229F739A009ED890 /* EventsTVC.swift in Sources */,
 				D01A848C20F96FF6004ED6FB /* ItineraryTVC.swift in Sources */,
 				D0183CE3210CB1A80030D02D /* UserManager.swift in Sources */,
 				056D4DEE20F0B5A600B7F408 /* HomeDetailViewController.swift in Sources */,
