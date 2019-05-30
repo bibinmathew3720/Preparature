@@ -51,12 +51,12 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4GC-Oq-g9L">
                     <rect key="frame" x="10" y="110" width="355" height="60"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQR-Vh-MGJ">
-                            <rect key="frame" x="5" y="15" width="46" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQR-Vh-MGJ">
+                            <rect key="frame" x="5" y="19" width="46" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="46" id="LAK-92-UhW"/>
                             </constraints>
-                            <state key="normal" title="Button"/>
+                            <state key="normal" image="search"/>
                             <connections>
                                 <action selector="searchIconButtonAction:" destination="-1" eventType="touchUpInside" id="j4m-v2-Jr7"/>
                             </connections>
@@ -130,5 +130,6 @@
     </objects>
     <resources>
         <image name="addItem" width="19" height="18.5"/>
+        <image name="search" width="22" height="21.5"/>
     </resources>
 </document>

@@ -86,7 +86,7 @@ extension EventsVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let aspectRatio:CGFloat = 0.6
+        let aspectRatio:CGFloat = 0.5
         return aspectRatio * UIScreen.main.bounds.size.height
     }
     
