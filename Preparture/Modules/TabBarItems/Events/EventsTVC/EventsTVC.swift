@@ -7,7 +7,11 @@
 //
 
 import UIKit
-
+protocol EventsTVCDelegate{
+    func favoriteButtonActionDelegate(tag:Int, favButton:UIButton)
+    func itineraryButonActionDelegate(tag:Int)
+    func shareButtonActionDelegate(tag:Int)
+}
 class EventsTVC: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var eventImageView: UIImageView!
@@ -17,7 +21,7 @@ class EventsTVC: UITableViewCell {
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
-    
+    var delegate:EventsTVCDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,4 +49,20 @@ class EventsTVC: UITableViewCell {
         favoriteButton.isSelected = event.isFavourite
     }
     
+    @IBAction func favoriteButtonAction(_ sender: UIButton) {
+        if let _delegate = delegate{
+            _delegate.favoriteButtonActionDelegate(tag: self.tag, favButton: sender)
+        }
+    }
+    
+    @IBAction func itineraryButtonAction(_ sender: UIButton) {
+        if let _delegate = delegate{
+            _delegate.itineraryButonActionDelegate(tag: self.tag)
+        }
+    }
+    @IBAction func shareButtonAction(_ sender: UIButton) {
+        if let _delegate = delegate{
+            _delegate.shareButtonActionDelegate(tag: self.tag)
+        }
+    }
 }

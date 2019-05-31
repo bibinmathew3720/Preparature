@@ -92,6 +92,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="137.5" height="50"/>
                                                 <state key="normal" image="favoritesTab"/>
                                                 <state key="selected" image="favoritesTabSelected"/>
+                                                <connections>
+                                                    <action selector="favoriteButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vye-zA-R7d"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -110,6 +113,9 @@
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljv-SR-Qry">
                                                 <rect key="frame" x="0.0" y="0.0" width="137" height="50"/>
+                                                <connections>
+                                                    <action selector="itineraryButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bof-cu-3aL"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -130,6 +136,9 @@
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJl-VH-onx">
                                                 <rect key="frame" x="0.0" y="0.0" width="137.5" height="50"/>
+                                                <connections>
+                                                    <action selector="shareButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Iam-Aq-XH3"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

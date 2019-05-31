@@ -129,6 +129,8 @@ extension EventsVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let eventsCell = tableView.dequeueReusableCell(withIdentifier: "eventsCell", for: indexPath) as! EventsTVC
         eventsCell.eventItem(event:self.eventsArray[indexPath.row] )
+        eventsCell.tag = indexPath.row
+        eventsCell.delegate = self
         return eventsCell
     }
     
@@ -138,7 +140,10 @@ extension EventsVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        let eventItem:EventItem = self.eventsArray[indexPath.row]
+        let detailVC = HomeDetailViewController(nibName: "HomeDetailViewController", bundle: nil)
+        detailVC.eventItem = eventItem
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -146,4 +151,45 @@ extension EventsVC: UITableViewDataSource, UITableViewDelegate{
             self.getAllEventsApi()
         }
     }
+}
+
+extension EventsVC:EventsTVCDelegate{
+    func favoriteButtonActionDelegate(tag: Int, favButton: UIButton) {
+        let eveItem:EventItem = self.eventsArray[tag]
+        if favButton.isSelected {
+            self.callingRemoveFromFavoriteApi(suggestionItem: eveItem) { (status) in
+                if status {
+                    eveItem.isFavourite = false
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        else{
+            self.callingAddToFavoriteApi(suggestionItem: eveItem) { (status) in
+                if status {
+                    eveItem.isFavourite = true
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    func itineraryButonActionDelegate(tag: Int) {
+        let itineraryVC = ItineraryListVC.init(nibName: "ItineraryListVC", bundle: nil)
+        itineraryVC.eventItem = self.eventsArray[tag]
+        self.navigationController?.pushViewController(itineraryVC, animated: true)
+    }
+    
+    func shareButtonActionDelegate(tag: Int) {
+        let suggestion:EventItem = self.eventsArray[tag]
+        let textToShare = "\(suggestion.name)"
+        let objectsToShare = [textToShare]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        DispatchQueue.main.async {
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+    
+    
 }
