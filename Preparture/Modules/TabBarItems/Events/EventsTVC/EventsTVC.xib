@@ -195,8 +195,13 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="commentLabel" destination="heY-DI-RjX" id="omm-XQ-uvt"/>
                 <outlet property="containerView" destination="Td4-U1-NIk" id="Aie-7x-8Ph"/>
+                <outlet property="dateLabel" destination="VxX-bE-cpk" id="NON-MI-ly9"/>
                 <outlet property="eventImageView" destination="8PD-Xz-EqN" id="xud-Wp-K2C"/>
+                <outlet property="eventNameLabel" destination="eun-8O-76Q" id="Vhh-tO-9Ue"/>
+                <outlet property="favoriteButton" destination="NDN-lC-lDa" id="sAt-Fs-vpA"/>
+                <outlet property="ownerNameLabel" destination="Rkc-dT-dog" id="DRK-1k-hnr"/>
                 <outlet property="ratingLabel" destination="2y0-TP-jvp" id="kRi-6L-A15"/>
             </connections>
             <point key="canvasLocation" x="130.43478260869566" y="113.50446428571428"/>
