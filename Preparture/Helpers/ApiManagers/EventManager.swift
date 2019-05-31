@@ -10,6 +10,36 @@ import UIKit
 
 class EventManager: CLBaseService {
     
+    //MARK : Get All Events Api Without category
+    
+    func callingGetAllEventsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetallEvents(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict as Any)
+                    success(self.getEventsResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetallEvents(with body:String)->CLNetworkModel{
+        let getAllEventsModel = CLNetworkModel.init(url: BASE_URL+GET_ALL_EVENTS, requestMethod_: "POST")
+        getAllEventsModel.requestBody = body
+        return getAllEventsModel
+    }
+    
+    
     //MARK : Get Events Api
     
     func callingEventsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){

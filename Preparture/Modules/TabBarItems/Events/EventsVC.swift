@@ -13,6 +13,10 @@ class EventsVC: BaseViewController {
     @IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var searchView: UIView!
     
+    var currentPage:Int = 0
+    var eventsArray = [EventItem]()
+    var eventsResponseModel:EventsResponseModel?
+    
     override func initView() {
         super.initView()
         initialisation()
@@ -23,6 +27,7 @@ class EventsVC: BaseViewController {
     
     func initialisation(){
        searchView.addCardShadow()
+       getAllEventsApi()
     }
     
     func tableCellRegistration(){
@@ -48,6 +53,47 @@ class EventsVC: BaseViewController {
         let navController:UINavigationController = UINavigationController(rootViewController: vc)
         navController.modalPresentationStyle = .overFullScreen
         self.present(navController, animated: false, completion: nil)
+    }
+    
+    func getAllEventsApi(){
+        MBProgressHUD.showAdded(to: self.view!, animated: true)
+        EventManager().callingGetAllEventsApi(with: listAllEventsRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? EventsResponseModel{
+                if model.statusCode == 1{
+                    self.currentPage = self.currentPage + 1
+                    self.eventsResponseModel = model
+                    self.eventsArray.append(contentsOf: model.events)
+                    self.tableView.reloadData()
+                }
+                else{
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                }
+                
+            }
+            
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            }
+            else{
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            
+            print(ErrorType)
+        }
+    }
+    
+    func listAllEventsRequestBody()->String{
+        var dict:[String:AnyObject] = [String:AnyObject]()
+        dict.updateValue(currentPage as AnyObject, forKey: "currentpage")
+        dict.updateValue(10 as AnyObject, forKey: "rowsperpage")
+        if let user = User.getUser(){
+            dict.updateValue(user.userId as AnyObject, forKey: "user_id")
+        }
+        return CCUtility.getJSONfrom(dictionary: dict)
     }
     
 
@@ -77,12 +123,13 @@ extension EventsVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.eventsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let eventsCell = tableView.dequeueReusableCell(withIdentifier: "eventsCell", for: indexPath) as! EventsTVC
-            return eventsCell
+        let eventsCell = tableView.dequeueReusableCell(withIdentifier: "eventsCell", for: indexPath) as! EventsTVC
+        eventsCell.eventItem(event:self.eventsArray[indexPath.row] )
+        return eventsCell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -92,5 +139,11 @@ extension EventsVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if(indexPath.row == (eventsArray.count-1)){
+            self.getAllEventsApi()
+        }
     }
 }

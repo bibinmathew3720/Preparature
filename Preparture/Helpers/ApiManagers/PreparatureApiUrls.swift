@@ -31,3 +31,4 @@ let GET_ALL_SUGGESTIONS_EVENT = "suggestions_event" //Done
 let ADD_SUGGESTIONS_URL = "add_suggestion_event" //Done
 let ADD_EVENT_URL = "add_events" //Done
 let ADD_FEEDBACK_URL = "feedback" //Done
+let GET_ALL_EVENTS = "list_all_events" //Done
