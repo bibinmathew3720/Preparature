@@ -136,6 +136,9 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     
     //MARK:- UIView Action Methods
     
+    @IBAction func locationButtonAction(_ sender: UIButton) {
+    }
+    
     @IBAction func plusButtonAction(_ sender: UIButton) {
        self.showAttachmentActionSheet(vc: self)
     }
