@@ -171,6 +171,16 @@ extension ItineraryListVC:ItineraryListTVCDelegate{
     func directionButtonActionDelegate(section: NSInteger, row: NSInteger) {
         if let eventIt = self.eventItem{
             let landMarkDetails = eventIt.itineraries[section].landMarks[row]
+            if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)
+            {
+                let urlString = "http://maps.google.com/?daddr=\(landMarkDetails.landLatitude),\(landMarkDetails.landLongitude)&directionsmode=driving"
+                UIApplication.shared.openURL(URL(string: urlString)!)
+            }
+            else
+            {
+                let urlString = "http://maps.apple.com/maps?daddr=\(landMarkDetails.landLatitude),\(landMarkDetails.landLongitude)&dirflg=d"
+                UIApplication.shared.openURL(URL(string: urlString)!)
+            }
         }
     }
 }
