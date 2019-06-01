@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 import PhotosUI
+import GoogleMaps
+import GooglePlaces
 import AVFoundation
 
 enum PickerType{
@@ -137,6 +139,9 @@ class AddEventViewController: BaseViewController,UIPickerViewDataSource,UIPicker
     //MARK:- UIView Action Methods
     
     @IBAction func locationButtonAction(_ sender: UIButton) {
+        let addPlacesVC = AddPlacesViewController.init(nibName: "AddPlacesViewController", bundle: nil)
+        addPlacesVC.delegate = self
+        self.navigationController?.pushViewController(addPlacesVC, animated: true)
     }
     
     @IBAction func plusButtonAction(_ sender: UIButton) {
@@ -567,5 +572,21 @@ extension AddEventViewController:ImagesCVCDelegate{
     func closeButtonActionDelegate(tag: NSInteger) {
         imageArray.remove(at: tag)
         setCollectionViewHeight()
+    }
+}
+
+extension AddEventViewController:AddPlacesVCDelegate{
+    func selectedLocationDelegate(location: GMSPlace) {
+        addEvent.latitude = location.coordinate.latitude
+        addEvent.longitude = location.coordinate.longitude
+        addEvent.location = location.name
+        tfType.text = addEvent.location
+    }
+    
+    func selectedLocationDelegateWithMarker(location: GMSMarker) {
+        addEvent.latitude = location.rotation
+        addEvent.longitude = location.position.longitude
+        addEvent.location = location.title ?? ""
+        tfType.text = addEvent.location
     }
 }

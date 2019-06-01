@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Muli-Bold.ttf">
+            <string>Muli-Bold</string>
+        </array>
         <array key="Muli-ExtraBoldItalic.ttf">
             <string>Muli-ExtraBoldItalic</string>
         </array>
@@ -33,6 +36,36 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="twh-bP-E4v">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSf-d1-84d">
+                            <rect key="frame" x="133.5" y="35" width="108.5" height="21.5"/>
+                            <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3N-25-uqQ">
+                            <rect key="frame" x="10" y="23" width="46" height="46"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="RSO-jk-NCm"/>
+                                <constraint firstAttribute="width" constant="46" id="rAc-Ym-t7f"/>
+                            </constraints>
+                            <state key="normal" image="backIcon"/>
+                            <connections>
+                                <action selector="actionBack:" destination="-1" eventType="touchUpInside" id="Pdw-1A-sPZ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="k3N-25-uqQ" firstAttribute="leading" secondItem="twh-bP-E4v" secondAttribute="leading" constant="10" id="9DA-TY-zKx"/>
+                        <constraint firstItem="k3N-25-uqQ" firstAttribute="centerY" secondItem="DSf-d1-84d" secondAttribute="centerY" id="jDO-qT-h2k"/>
+                        <constraint firstItem="DSf-d1-84d" firstAttribute="top" secondItem="twh-bP-E4v" secondAttribute="top" constant="35" id="ojn-8j-XRm"/>
+                        <constraint firstAttribute="height" constant="80" id="utO-cg-Ig3"/>
+                        <constraint firstItem="DSf-d1-84d" firstAttribute="centerX" secondItem="twh-bP-E4v" secondAttribute="centerX" id="zH1-Vw-7DB"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ki-uC-MVZ" customClass="GMSMapView">
                     <rect key="frame" x="0.0" y="80" width="375" height="537"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -40,17 +73,6 @@
                         <outlet property="delegate" destination="-1" id="uIz-0W-ZUN"/>
                     </connections>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2N-ZV-jcm">
-                    <rect key="frame" x="15" y="30" width="40" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="40" id="KFX-Ig-wcM"/>
-                        <constraint firstAttribute="height" constant="40" id="WWL-pZ-chm"/>
-                    </constraints>
-                    <state key="normal" image="IQButtonBarArrowLeft.png"/>
-                    <connections>
-                        <action selector="actionBack:" destination="-1" eventType="touchUpInside" id="0VI-eH-lgK"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4aI-Na-KFz">
                     <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -106,7 +128,7 @@
                             </connections>
                         </tableView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No places selected!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agU-jy-pyX">
-                            <rect key="frame" x="118" y="190" width="140" height="21"/>
+                            <rect key="frame" x="117.5" y="189.5" width="140" height="21"/>
                             <fontDescription key="fontDescription" name="Muli-LightItalic" family="Muli" pointSize="16"/>
                             <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="0.5" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -132,20 +154,21 @@
                 <constraint firstItem="RUQ-gx-sl9" firstAttribute="leading" secondItem="4aI-Na-KFz" secondAttribute="leading" id="7md-7b-Iaj"/>
                 <constraint firstAttribute="bottom" secondItem="4aI-Na-KFz" secondAttribute="bottom" id="9mm-Bt-dZz"/>
                 <constraint firstItem="8Ki-uC-MVZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="C3D-vY-rgb"/>
-                <constraint firstItem="8Ki-uC-MVZ" firstAttribute="top" secondItem="y2N-ZV-jcm" secondAttribute="bottom" constant="10" id="D2f-dh-sk4"/>
                 <constraint firstItem="RUQ-gx-sl9" firstAttribute="top" secondItem="4aI-Na-KFz" secondAttribute="top" id="GyH-Ak-W5W"/>
+                <constraint firstItem="twh-bP-E4v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Of1-8m-Bsv"/>
                 <constraint firstItem="RUQ-gx-sl9" firstAttribute="trailing" secondItem="4aI-Na-KFz" secondAttribute="trailing" id="XJS-fF-vRK"/>
-                <constraint firstItem="y2N-ZV-jcm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="s7P-qh-BaO"/>
+                <constraint firstItem="twh-bP-E4v" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="cU7-N3-oeV"/>
+                <constraint firstAttribute="trailing" secondItem="twh-bP-E4v" secondAttribute="trailing" id="jIv-9Q-XRg"/>
+                <constraint firstItem="8Ki-uC-MVZ" firstAttribute="top" secondItem="twh-bP-E4v" secondAttribute="bottom" id="pmJ-XE-XN4"/>
                 <constraint firstItem="4aI-Na-KFz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sep-vN-gOE"/>
                 <constraint firstItem="4aI-Na-KFz" firstAttribute="top" secondItem="8Ki-uC-MVZ" secondAttribute="bottom" id="t2A-kI-KnK"/>
                 <constraint firstAttribute="trailing" secondItem="4aI-Na-KFz" secondAttribute="trailing" id="tSL-mG-XdW"/>
-                <constraint firstItem="y2N-ZV-jcm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="we6-5f-N1S"/>
                 <constraint firstAttribute="trailing" secondItem="8Ki-uC-MVZ" secondAttribute="trailing" id="zju-b7-m1m"/>
             </constraints>
             <point key="canvasLocation" x="32.5" y="123.5"/>
         </view>
     </objects>
     <resources>
-        <image name="IQButtonBarArrowLeft.png" width="12" height="21"/>
+        <image name="backIcon" width="19" height="15.5"/>
     </resources>
 </document>

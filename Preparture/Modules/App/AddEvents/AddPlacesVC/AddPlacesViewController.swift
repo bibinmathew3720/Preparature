@@ -11,6 +11,11 @@ import GoogleMaps
 import GooglePlaces
 import GooglePlacePicker
 
+protocol AddPlacesVCDelegate{
+    func selectedLocationDelegate(location:GMSPlace)
+    func selectedLocationDelegateWithMarker(location:GMSMarker)
+}
+
 class AddPlacesViewController: BaseViewController, GMSMapViewDelegate {
 
     @IBOutlet weak var mapView: GMSMapView!
@@ -24,6 +29,7 @@ class AddPlacesViewController: BaseViewController, GMSMapViewDelegate {
     var arrayPlaces:NSMutableArray = NSMutableArray()
     @IBOutlet weak var labelNoPlaces: UILabel!
     @IBOutlet weak var viewBottom: UIView!
+    var delegate:AddPlacesVCDelegate?
     
     override func initView() {
         super.initView()
@@ -180,6 +186,22 @@ extension AddPlacesViewController:UITableViewDelegate, UITableViewDataSource, Ad
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView.init()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let location = arrayPlaces[indexPath.row]
+        if let _delegate = delegate{
+            if let _location = location as? GMSPlace{
+                self.navigationController?.popViewController(animated: true)
+                _delegate.selectedLocationDelegate(location: _location)
+                return
+            }
+            if let _location = location as? GMSMarker{
+                self.navigationController?.popViewController(animated: true)
+                _delegate.selectedLocationDelegateWithMarker(location: _location)
+                return
+            }
+        }
     }
     
     //MARK:- AddPlacesTableViewCellDelegate method
