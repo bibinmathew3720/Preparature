@@ -20,6 +20,7 @@ class HomeVC: BaseViewController {
     @IBOutlet weak var tableViewList: UITableView!
     var currentPage:Int = 0
     var categoryResponseModel:NSArray?
+    @IBOutlet weak var empyView: UIView!
     
     override func initView() {
         super.initView()
@@ -56,6 +57,7 @@ class HomeVC: BaseViewController {
                     self.eventsArray.append(contentsOf: model.events)
                    // self.eventsArray.addObjects(from: model.events)
                     self.tableViewList.reloadData()
+                    self.showEmptyView()
                 }
                 else{
                     CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
@@ -87,6 +89,15 @@ class HomeVC: BaseViewController {
             dict.updateValue(user.userId as AnyObject, forKey: "user_id")
         }
         return CCUtility.getJSONfrom(dictionary: dict)
+    }
+    
+    func showEmptyView(){
+        if eventsArray.count == 0{
+           empyView.isHidden = false
+        }
+        else{
+            empyView.isHidden = true
+        }
     }
     
     override func didReceiveMemoryWarning() {
