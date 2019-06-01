@@ -10,6 +10,7 @@ import UIKit
 
 class ItineraryListVC: BaseViewController {
     @IBOutlet weak var itineraryListTableView: UITableView!
+    @IBOutlet weak var emptyView: UIView!
     var eventItem:EventItem?
     var selIndexes = [Int]()
     override func initView() {
@@ -48,6 +49,7 @@ class ItineraryListVC: BaseViewController {
                 if model.statusCode == 1{
                     self.eventItem = model.eventItem
                     self.itineraryListTableView.reloadData()
+                    self.showEmptyView()
                 }
                 else{
                     CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
@@ -73,6 +75,17 @@ class ItineraryListVC: BaseViewController {
             dict.updateValue(user.userId as AnyObject, forKey: "user_id")
         }
         return CCUtility.getJSONfrom(dictionary: dict)
+    }
+    
+    func showEmptyView(){
+        if let _eventItem = self.eventItem{
+            if _eventItem.itineraries.count == 0{
+                self.emptyView.isHidden = false
+            }
+            else{
+                self.emptyView.isHidden = true
+            }
+        }
     }
 
     /*

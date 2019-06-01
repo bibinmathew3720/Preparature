@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,10 +13,14 @@
         <array key="Muli-Bold.ttf">
             <string>Muli-Bold</string>
         </array>
+        <array key="Muli-Regular.ttf">
+            <string>Muli-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItineraryListVC" customModule="Preparture" customModuleProvider="target">
             <connections>
+                <outlet property="emptyView" destination="L3c-JU-oGi" id="P35-4e-WBi"/>
                 <outlet property="itineraryListTableView" destination="BNd-Sr-yyb" id="B5C-Aq-U3b"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -30,7 +34,7 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="80"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Itinerary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCp-vI-D3V">
-                            <rect key="frame" x="153.5" y="35" width="69" height="21.5"/>
+                            <rect key="frame" x="153" y="35" width="69" height="21.5"/>
                             <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -64,17 +68,33 @@
                         <outlet property="delegate" destination="-1" id="mfb-d2-qNJ"/>
                     </connections>
                 </tableView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L3c-JU-oGi">
+                    <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, no items found." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JL-Y1-htU">
+                            <rect key="frame" x="97.5" y="272" width="180.5" height="23"/>
+                            <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="18"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="1JL-Y1-htU" firstAttribute="centerY" secondItem="L3c-JU-oGi" secondAttribute="centerY" id="Zjw-bT-Neg"/>
+                        <constraint firstItem="1JL-Y1-htU" firstAttribute="centerX" secondItem="L3c-JU-oGi" secondAttribute="centerX" id="coi-z4-Scj"/>
+                    </constraints>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iiy-TD-eOc">
-                    <rect key="frame" x="295" y="587" width="60" height="60"/>
+                    <rect key="frame" x="305" y="557" width="50" height="50"/>
                     <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="19B-UD-rGH"/>
-                        <constraint firstAttribute="width" constant="60" id="cnC-E5-vMd"/>
+                        <constraint firstAttribute="height" constant="50" id="19B-UD-rGH"/>
+                        <constraint firstAttribute="width" constant="50" id="cnC-E5-vMd"/>
                     </constraints>
                     <state key="normal" image="addItem"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="30"/>
+                            <integer key="value" value="25"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -84,21 +104,26 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Iiy-TD-eOc" secondAttribute="bottom" constant="20" id="3f4-mn-zZY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Iiy-TD-eOc" secondAttribute="bottom" constant="60" id="3f4-mn-zZY"/>
                 <constraint firstItem="BNd-Sr-yyb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="B8r-1P-z1Q"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BNd-Sr-yyb" secondAttribute="trailing" constant="10" id="Dou-jL-9Tk"/>
                 <constraint firstItem="BNd-Sr-yyb" firstAttribute="top" secondItem="fHw-8e-ZZl" secondAttribute="bottom" constant="10" id="FLD-Rf-opm"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Iiy-TD-eOc" secondAttribute="trailing" constant="20" id="VIO-fV-zCV"/>
+                <constraint firstItem="L3c-JU-oGi" firstAttribute="top" secondItem="fHw-8e-ZZl" secondAttribute="bottom" id="X3v-uy-aGN"/>
                 <constraint firstItem="fHw-8e-ZZl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="aOU-JM-t7u"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fHw-8e-ZZl" secondAttribute="trailing" id="aTW-Fb-1U2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="leading" secondItem="fHw-8e-ZZl" secondAttribute="leading" id="dma-I5-40f"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="BNd-Sr-yyb" secondAttribute="bottom" constant="10" id="fvl-fa-iSd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="L3c-JU-oGi" secondAttribute="bottom" id="pSa-YE-Nb5"/>
+                <constraint firstItem="L3c-JU-oGi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="q2P-PW-Mwv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="L3c-JU-oGi" secondAttribute="trailing" id="s18-W9-kN3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="56.799999999999997" y="93.103448275862078"/>
         </view>
     </objects>
     <resources>
-        <image name="addItem" width="19" height="18"/>
-        <image name="backIcon" width="19" height="15"/>
+        <image name="addItem" width="19" height="18.5"/>
+        <image name="backIcon" width="19" height="15.5"/>
     </resources>
 </document>

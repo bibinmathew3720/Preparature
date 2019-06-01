@@ -96,16 +96,16 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hg0-i8-0b5">
-                    <rect key="frame" x="295" y="557" width="60" height="60"/>
+                    <rect key="frame" x="305" y="557" width="50" height="50"/>
                     <color key="backgroundColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="HWJ-Db-C96"/>
-                        <constraint firstAttribute="width" constant="60" id="bHh-v8-WgM"/>
+                        <constraint firstAttribute="height" constant="50" id="HWJ-Db-C96"/>
+                        <constraint firstAttribute="width" constant="50" id="bHh-v8-WgM"/>
                     </constraints>
                     <state key="normal" image="addItem"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="30"/>
+                            <integer key="value" value="25"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -128,8 +128,8 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, no items found." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgm-Zf-41C">
-                            <rect key="frame" x="107.5" y="232" width="160.5" height="20.5"/>
-                            <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="16"/>
+                            <rect key="frame" x="97.5" y="229.5" width="180.5" height="23"/>
+                            <fontDescription key="fontDescription" name="Muli-Regular" family="Muli" pointSize="18"/>
                             <color key="textColor" red="0.59999999999999998" green="0.79215686269999996" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -153,7 +153,7 @@
                 <constraint firstItem="9rK-ky-Ebf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Uza-qA-Slc"/>
                 <constraint firstItem="FkH-xn-vn5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Wmf-1m-rPG"/>
                 <constraint firstItem="WmV-S9-wJP" firstAttribute="trailing" secondItem="4GC-Oq-g9L" secondAttribute="trailing" id="aVz-8X-yq2"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hg0-i8-0b5" secondAttribute="bottom" constant="50" id="atF-pX-aUD"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hg0-i8-0b5" secondAttribute="bottom" constant="60" id="atF-pX-aUD"/>
                 <constraint firstItem="9rK-ky-Ebf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="eKz-NV-zXu"/>
                 <constraint firstItem="FkH-xn-vn5" firstAttribute="top" secondItem="9rK-ky-Ebf" secondAttribute="bottom" id="edh-Mb-bk4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="FkH-xn-vn5" secondAttribute="bottom" id="fBh-j4-vmJ"/>
