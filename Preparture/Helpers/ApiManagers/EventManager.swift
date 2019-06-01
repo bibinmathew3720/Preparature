@@ -39,6 +39,35 @@ class EventManager: CLBaseService {
         return getAllEventsModel
     }
     
+    //MARK : Get All Events Based On Location
+    
+    func callingGetAllEventsBasedOnLocationApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForSearchEvents(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict as Any)
+                    success(self.getEventsResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForSearchEvents(with body:String)->CLNetworkModel{
+        let getSearchEventsModel = CLNetworkModel.init(url: BASE_URL+GET_SEARCH_EVENTS_URL, requestMethod_: "POST")
+        getSearchEventsModel.requestBody = body
+        return getSearchEventsModel
+    }
+    
     
     //MARK : Get Events Api
     
@@ -121,6 +150,11 @@ class EventsResponseModel : NSObject{
             statusCode = value
         }
         if let value = dict["result"] as? NSArray{
+            for item in value {
+                events.append(EventItem.init(dict: item as! [String : Any?]))
+            }
+        }
+        if let value = dict["results"] as? NSArray{
             for item in value {
                 events.append(EventItem.init(dict: item as! [String : Any?]))
             }
@@ -461,4 +495,19 @@ class AddLandmark : NSObject{
     var landmarkLongitude:String = ""
     var checkInDate:String = ""
     var checkOutDate:String = ""
+}
+
+class EventsSearchRequestModel:NSObject{
+    var searchText:String = ""
+    func getRequestBody()->String{
+        var dict:[String:String] = [String:String]()
+        if let user = User.getUser(){
+            if let userIdString = user.userId{
+                dict.updateValue(userIdString, forKey: "user_id")
+            }
+        }
+        dict.updateValue(searchText, forKey: "search_words")
+        return CCUtility.getJSONfrom(dictionary: dict)
+    }
+    
 }

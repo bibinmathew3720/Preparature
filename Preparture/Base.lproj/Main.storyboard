@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -71,8 +71,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xe0-ni-zK1">
-                                                <rect key="frame" x="95.5" y="240" width="45" height="45"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xe0-ni-zK1">
+                                                <rect key="frame" x="95" y="240" width="45" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="EaQ-bB-8oO"/>
                                                     <constraint firstAttribute="width" constant="45" id="dAs-jR-3RF"/>
@@ -82,8 +82,8 @@
                                                     <action selector="actionFacebookLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fdy-Rj-ssG"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBJ-zd-SdW">
-                                                <rect key="frame" x="195" y="240.5" width="45" height="45"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBJ-zd-SdW">
+                                                <rect key="frame" x="195" y="240" width="45" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="ehW-Zs-aCN"/>
                                                     <constraint firstAttribute="width" constant="45" id="moO-m1-bM0"/>
@@ -245,9 +245,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bgImage" width="375" height="666"/>
-        <image name="fbIcon" width="18" height="31"/>
-        <image name="gPlusIcon" width="33" height="21"/>
+        <image name="bgImage" width="375" height="666.5"/>
+        <image name="fbIcon" width="18" height="31.5"/>
+        <image name="gPlusIcon" width="33.5" height="21"/>
         <image name="logoImage" width="40" height="40"/>
     </resources>
 </document>
