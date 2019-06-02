@@ -20,6 +20,7 @@ enum TextFieldType{
 protocol AddItineraryTVCDelegate {
     func textFieldShouldBeginDelegate(textField:UITextField,type:TextFieldType,tag:Int)
     func textFieldEditeChangedDelegate(tag: Int, textField: UITextField, textFieldType:TextFieldType)
+    func landMarkButtonActionDelegate(tag:Int)
 }
 class AdditineraryTVC: UITableViewCell {
     @IBOutlet weak var landMarkNameTF: UITextField!
@@ -46,7 +47,13 @@ class AdditineraryTVC: UITableViewCell {
         checkInTF.delegate = self
         checkOutTF.delegate = self
     }
-
+    
+    @IBAction func landMarkNameButtonAction(_ sender: UIButton) {
+        if let _del = delegate{
+            _del.landMarkButtonActionDelegate(tag: self.tag)
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -55,8 +62,8 @@ class AdditineraryTVC: UITableViewCell {
     
     func setLandMarkDetails(landMark:AddLandmark){
         landMarkNameTF.text = landMark.landmarkName
-        landmarkLatitudeTF.text = landMark.landmarkLatitude
-        landmarkLongitudeTF.text = landMark.landmarkLongitude
+        landmarkLatitudeTF.text = "\(landMark.landmarkLatitude)"
+        landmarkLongitudeTF.text = "\(landMark.landmarkLongitude)"
         checkInTF.text = landMark.checkInDate
         checkOutTF.text = landMark.checkOutDate
     }
@@ -104,3 +111,4 @@ extension AdditineraryTVC: UITextFieldDelegate{
         return true
     }
 }
+

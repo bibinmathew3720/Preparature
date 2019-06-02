@@ -14,8 +14,8 @@ class ItineraryHeaderView: UIView {
 
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var departureDateLabel: UILabel!
+    @IBOutlet weak var arrivalDateLabel: UILabel!
     @IBOutlet weak var openCloseButton: UIButton!
     var delegate:ItineraryHeaderViewDelegate?
     /*
@@ -45,7 +45,7 @@ class ItineraryHeaderView: UIView {
     
     func setItineraryDetails(itineraryDetails:ItineraryDetails){
         nameLabel.text = itineraryDetails.itineraryName
-        dateLabel.text = CCUtility.convertToDateToFormat(inputDate: itineraryDetails.startDate, inputDateFormat: "dd/MM/yyyy HH:mm a", outputDateFormat: "yyyy-MM-dd")
-        timeLabel.text = CCUtility.convertToDateToFormat(inputDate: itineraryDetails.startDate, inputDateFormat: "dd/MM/yyyy hh:mm a", outputDateFormat: "HH:mm a")
+        arrivalDateLabel.text = CCUtility.convertToDateToFormat(inputDate: itineraryDetails.startDate, inputDateFormat: "dd/MM/yyyy HH:mm a", outputDateFormat: "MMM dd, yy hh:mm a")
+        departureDateLabel.text = CCUtility.convertToDateToFormat(inputDate: itineraryDetails.endDate, inputDateFormat: "dd/MM/yyyy hh:mm a", outputDateFormat: "MMM dd, yy hh:mm a")
     }
 }

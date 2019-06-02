@@ -584,7 +584,7 @@ extension AddEventViewController:AddPlacesVCDelegate{
     }
     
     func selectedLocationDelegateWithMarker(location: GMSMarker) {
-        addEvent.latitude = location.rotation
+        addEvent.latitude = location.position.latitude
         addEvent.longitude = location.position.longitude
         addEvent.location = location.title ?? ""
         tfType.text = addEvent.location

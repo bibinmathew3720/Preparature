@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
 class AddItineraryVC: BaseViewController {
 
@@ -118,7 +120,7 @@ class AddItineraryVC: BaseViewController {
             }
         }
         else{
-            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "Please enter itinerary name", parentController: self)
+            CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "Please enter trip name", parentController: self)
             return false
         }
     }
@@ -169,16 +171,16 @@ extension AddItineraryVC:AddItineraryTVCDelegate{
                 landMark.landmarkName = txtString
             }
         }
-        else if textFieldType == .textFieldLatitude{
-            if let txtString = textField.text{
-                landMark.landmarkLatitude = txtString
-            }
-        }
-        else if textFieldType == .textFieldLongitude{
-            if let txtString = textField.text{
-                landMark.landmarkLongitude = txtString
-            }
-        }
+//        else if textFieldType == .textFieldLatitude{
+//            if let txtString = textField.text{
+//                //landMark.landmarkLatitude = txtString
+//            }
+//        }
+//        else if textFieldType == .textFieldLongitude{
+//            if let txtString = textField.text{
+//                //landMark.landmarkLongitude = txtString
+//            }
+//        }
     
     }
     
@@ -189,6 +191,13 @@ extension AddItineraryVC:AddItineraryTVCDelegate{
         }
         textFieldType = type
         selIndex = tag
+    }
+    
+    func landMarkButtonActionDelegate(tag: Int) {
+        selIndex = tag
+        let addPlacesVC = AddPlacesViewController.init(nibName: "AddPlacesViewController", bundle: nil)
+        addPlacesVC.delegate = self
+        self.navigationController?.pushViewController(addPlacesVC, animated: true)
     }
 }
 
@@ -208,5 +217,23 @@ extension AddItineraryVC:UITextFieldDelegate{
             textFieldType = .textFieldEndDate
         }
         return true
+    }
+}
+
+extension AddItineraryVC:AddPlacesVCDelegate{
+    func selectedLocationDelegate(location: GMSPlace) {
+        let landMark = self.addItinerary.landMarks[self.selIndex]
+        landMark.landmarkLatitude = location.coordinate.latitude
+        landMark.landmarkLongitude = location.coordinate.longitude
+        landMark.landmarkName = location.name
+        addItineraryTV.reloadData()
+    }
+    
+    func selectedLocationDelegateWithMarker(location: GMSMarker) {
+        let landMark = self.addItinerary.landMarks[self.selIndex]
+        landMark.landmarkLatitude = location.position.latitude
+        landMark.landmarkLongitude = location.position.longitude
+        landMark.landmarkName = location.title ?? ""
+        addItineraryTV.reloadData()
     }
 }

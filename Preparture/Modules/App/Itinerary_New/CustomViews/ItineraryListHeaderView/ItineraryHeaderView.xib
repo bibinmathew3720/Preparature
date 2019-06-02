@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,8 +30,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HuF-Jd-c8g">
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoL-Vd-KV0">
-                            <rect key="frame" x="10" y="10" width="41" height="19"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoL-Vd-KV0">
+                            <rect key="frame" x="10" y="10" width="69.5" height="19"/>
                             <fontDescription key="fontDescription" name="Muli-ExtraLight" family="Muli" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -48,8 +48,14 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEq-Ih-VUt">
-                            <rect key="frame" x="332" y="10" width="33" height="19"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Departure" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTD-oF-ckN">
+                            <rect key="frame" x="10" y="592.5" width="68.5" height="19"/>
+                            <fontDescription key="fontDescription" name="Muli-ExtraLight" family="Muli" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arrival" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEq-Ih-VUt">
+                            <rect key="frame" x="321" y="10" width="44" height="19"/>
                             <fontDescription key="fontDescription" name="Muli-ExtraLight" family="Muli" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -61,12 +67,12 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hK-ho-Uqq">
-                            <rect key="frame" x="307" y="595" width="63" height="42"/>
+                            <rect key="frame" x="309" y="595" width="61" height="42"/>
                             <color key="backgroundColor" red="0.59999999999999998" green="0.792156862745098" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="Muli-SemiBold" family="Muli" pointSize="17"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                            <state key="normal" title="Open">
+                            <state key="normal" title="View">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <state key="selected" title="Close"/>
@@ -83,6 +89,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="I7b-2Z-Aca" firstAttribute="leading" secondItem="T9T-Ty-5Z4" secondAttribute="leading" id="PvI-SG-M75"/>
+                        <constraint firstItem="I7b-2Z-Aca" firstAttribute="top" secondItem="rTD-oF-ckN" secondAttribute="bottom" constant="5" id="QMa-OO-pxc"/>
                         <constraint firstItem="BEq-Ih-VUt" firstAttribute="centerY" secondItem="HoL-Vd-KV0" secondAttribute="centerY" id="TXY-Yx-GTM"/>
                         <constraint firstItem="kkQ-bW-Dke" firstAttribute="trailing" secondItem="BEq-Ih-VUt" secondAttribute="trailing" id="UPQ-0m-rE6"/>
                         <constraint firstItem="T9T-Ty-5Z4" firstAttribute="leading" secondItem="HoL-Vd-KV0" secondAttribute="leading" id="UfX-D1-Gcj"/>
@@ -94,6 +101,7 @@
                         <constraint firstItem="2hK-ho-Uqq" firstAttribute="bottom" secondItem="I7b-2Z-Aca" secondAttribute="bottom" id="gOl-GX-ist"/>
                         <constraint firstItem="HoL-Vd-KV0" firstAttribute="top" secondItem="HuF-Jd-c8g" secondAttribute="top" constant="10" id="iUY-pK-PIk"/>
                         <constraint firstAttribute="trailing" secondItem="2hK-ho-Uqq" secondAttribute="trailing" constant="5" id="kCN-j7-X3H"/>
+                        <constraint firstItem="rTD-oF-ckN" firstAttribute="leading" secondItem="I7b-2Z-Aca" secondAttribute="leading" id="qW0-jW-w6M"/>
                     </constraints>
                 </view>
             </subviews>
@@ -106,11 +114,11 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="dateLabel" destination="kkQ-bW-Dke" id="5zG-uX-QVh"/>
+                <outlet property="arrivalDateLabel" destination="kkQ-bW-Dke" id="0dz-zK-H3T"/>
+                <outlet property="departureDateLabel" destination="I7b-2Z-Aca" id="KTa-qm-iM7"/>
                 <outlet property="headerView" destination="HuF-Jd-c8g" id="Xp0-o3-dg8"/>
                 <outlet property="nameLabel" destination="T9T-Ty-5Z4" id="JJh-gy-n5h"/>
                 <outlet property="openCloseButton" destination="2hK-ho-Uqq" id="8wd-71-eNz"/>
-                <outlet property="timeLabel" destination="I7b-2Z-Aca" id="OiJ-Pj-6cD"/>
             </connections>
         </view>
     </objects>

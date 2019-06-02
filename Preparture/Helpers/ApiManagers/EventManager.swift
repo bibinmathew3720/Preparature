@@ -491,8 +491,8 @@ class AddItinerary : NSObject{
 
 class AddLandmark : NSObject{
     var landmarkName:String = ""
-    var landmarkLatitude:String = ""
-    var landmarkLongitude:String = ""
+    var landmarkLatitude:Double = 0.0
+    var landmarkLongitude:Double = 0.0
     var checkInDate:String = ""
     var checkOutDate:String = ""
 }
