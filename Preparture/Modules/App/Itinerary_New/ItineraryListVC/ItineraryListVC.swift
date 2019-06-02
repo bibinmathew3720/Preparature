@@ -35,6 +35,7 @@ class ItineraryListVC: BaseViewController {
     
     @IBAction func plusButtonAction(_ sender: UIButton) {
         let addItineraryVC = AddItineraryVC.init(nibName: "AddItineraryVC", bundle: nil)
+        addItineraryVC.eventItem = self.eventItem
         self.navigationController?.pushViewController(addItineraryVC, animated: true)
     }
     

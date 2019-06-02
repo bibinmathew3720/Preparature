@@ -17,6 +17,7 @@ class AddItineraryVC: BaseViewController {
     @IBOutlet weak var itineraryNameTF: UITextField!
     @IBOutlet weak var startDateTF: UITextField!
     @IBOutlet weak var endDateTF: UITextField!
+    var eventItem:EventItem?
     
     @IBOutlet var toolBar: UIToolbar!
     var addItinerary = AddItinerary()
@@ -37,6 +38,10 @@ class AddItineraryVC: BaseViewController {
         endDateTF.inputAccessoryView = toolBar
         datePicker.datePickerMode = .dateAndTime
         datePicker.minimumDate = Date()
+        if let _eventItem = eventItem{
+            addItinerary.eventId = _eventItem.eventId
+            addItinerary.categoryId = _eventItem.categoryId
+        }
     }
     
     func tableCellRegistration(){
@@ -99,7 +104,7 @@ class AddItineraryVC: BaseViewController {
     
     @IBAction func submitButtonAction(_ sender: UIButton) {
         if isValid(){
-            
+            callingAddItineraryApi()
         }
     }
     
@@ -122,6 +127,34 @@ class AddItineraryVC: BaseViewController {
         else{
             CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: "Please enter trip name", parentController: self)
             return false
+        }
+    }
+    
+    //MARK:- Add Event Api integration
+    
+    func callingAddItineraryApi(){
+        MBProgressHUD.showAdded(to: self.view!, animated: true)
+        EventManager().callingAddItineraryApi(with:addItinerary.getRequestBody(), success: {
+            (model) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let model = model as? GetAllCategoryResponseModel{
+                if model.statusCode == 1{
+                    CCUtility.showDefaultAlertwithCompletionHandler(_title: Constant.AppName, _message: "Event created successfully", parentController: self, completion: { (status) in
+                        self.dismiss(animated: false, completion: nil)
+                    })
+                }
+                else{
+                    CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: model.statusMessage, parentController: self)
+                }
+            }
+        }) { (ErrorType) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if(ErrorType == .noNetwork){
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.noNetworkMessage, parentController: self)
+            } else {
+                CCUtility.showDefaultAlertwith(_title: Constant.AppName, _message: Constant.ErrorMessages.serverErrorMessamge, parentController: self)
+            }
+            print(ErrorType)
         }
     }
 }

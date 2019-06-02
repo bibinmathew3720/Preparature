@@ -136,6 +136,35 @@ class EventManager: CLBaseService {
         let eventDetailReponseModel = EventDetailResponseModel.init(dict:dict)
         return eventDetailReponseModel
     }
+    
+    //MARK : Get Add Itinerary Api
+    
+    func callingAddItineraryApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForAddItinerary(with:body), success: {
+            (resultData) in
+            let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            if error == nil {
+                if let jdict = jsonDict{
+                    print(jsonDict as Any)
+                    success(self.getEventDetailResponseModel(dict: jdict) as Any)
+                }else{
+                    failure(ErrorType.dataError)
+                }
+            }else{
+                failure(ErrorType.dataError)
+            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForAddItinerary(with body:String)->CLNetworkModel{
+        let addIntineraryModel = CLNetworkModel.init(url: BASE_URL+ADD_ITINERARY_URL, requestMethod_: "POST")
+        addIntineraryModel.requestBody = body
+        return addIntineraryModel
+    }
 }
 
 class EventsResponseModel : NSObject{
@@ -457,32 +486,43 @@ class AddEvent : NSObject{
 }
 
 class AddItinerary : NSObject{
-    var eventid:String = ""
-    var categoryId:String = ""
+    var eventId:Int = 0
+    var categoryId:Int = 0
     var itineraryName:String = ""
     var itineraryStartDate:String = ""
     var itineraryEndDate:String = ""
     var landMarks = [AddLandmark]()
+    var latitudeArray = [String]()
+    var longitudeArray = [String]()
+    var landMarkNameArray = [String]()
+    var checkInArray = [String]()
+    var checkOutArray = [String]()
     func getRequestBody()->String{
-        var dict:[String:String] = [String:String]()
+        var dict:[String:AnyObject] = [String:AnyObject]()
+        dict.updateValue(itineraryName as AnyObject, forKey: "itinerary_name")
+        dict.updateValue("\(eventId)" as AnyObject, forKey: "event_id")
         if let user = User.getUser(){
             if let userIdString = user.userId{
-                dict.updateValue(userIdString, forKey: "user_id")
+                dict.updateValue(userIdString as AnyObject, forKey: "user_id")
             }
         }
-//        dict.updateValue(eventName, forKey: "event_name")
-//        dict.updateValue(authorName, forKey: "author_name")
-//        dict.updateValue(eventCost, forKey: "event_cost")
-//        dict.updateValue(eventDate, forKey: "event_date")
-//        dict.updateValue(eventTime, forKey: "event_time")
-//        dict.updateValue(category, forKey: "category_id")
-//        dict.updateValue(String(format: "%f", latitude), forKey: "latitude")
-//        dict.updateValue(String(format: "%f", longitude), forKey: "longitude")
-//        dict.updateValue(location, forKey: "location")
-//        dict.updateValue(String(format: "%d", eventRating), forKey: "event_rate")
-//        dict.updateValue(travelExperience, forKey: "travel_experience")
-//        dict.updateValue(comment, forKey: "comments")
-//        dict.updateValue(eventFiles, forKey: "event_files")
+        dict.updateValue("\(categoryId)" as AnyObject, forKey: "category_id")
+        dict.updateValue(itineraryStartDate as AnyObject, forKey: "start_date")
+        dict.updateValue(itineraryEndDate as AnyObject, forKey: "end_date")
+        for landMark in landMarks{
+            if landMark.landmarkName.count > 0{
+                latitudeArray.append("\(landMark.landmarkLatitude)")
+                longitudeArray.append("\(landMark.landmarkLongitude)")
+                landMarkNameArray.append(landMark.landmarkName)
+                checkInArray.append(landMark.checkInDate)
+                checkOutArray.append(landMark.checkOutDate)
+            }
+        }
+        dict.updateValue(latitudeArray as AnyObject, forKey: "land_latitude")
+         dict.updateValue(longitudeArray as AnyObject, forKey: "land_longitude")
+         dict.updateValue(landMarkNameArray as AnyObject, forKey: "landmark_name")
+        dict.updateValue(checkInArray as AnyObject, forKey: "check_in")
+        dict.updateValue(checkOutArray as AnyObject, forKey: "check_out")
         return CCUtility.getJSONfrom(dictionary: dict)
     }
     
