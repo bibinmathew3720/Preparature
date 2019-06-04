@@ -25,6 +25,13 @@ class SettingsVC: BaseViewController,UITableViewDataSource,UITableViewDelegate {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func plusButtonAction(_ sender: UIButton) {
+        let vc:AddEventViewController = AddEventViewController(nibName: "AddEventViewController", bundle: nil)
+        let navController:UINavigationController = UINavigationController(rootViewController: vc)
+        navController.modalPresentationStyle = .overFullScreen
+        self.present(navController, animated: false, completion: nil)
+    }
+    
     func tableCellRegistration(){
         settingsTableView.register(UINib.init(nibName: "SettingsHeaderTVC", bundle: nil), forCellReuseIdentifier: "settingHeader")
         settingsTableView.register(UINib.init(nibName: "SettingsTVC", bundle: nil), forCellReuseIdentifier: "settingCell")

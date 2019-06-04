@@ -20,6 +20,13 @@ class HomeEventsViewController: BaseViewController {
         callingGetCategoriesApi()
     }
     
+    @IBAction func plusButtonAction(_ sender: UIButton) {
+        let vc:AddEventViewController = AddEventViewController(nibName: "AddEventViewController", bundle: nil)
+        let navController:UINavigationController = UINavigationController(rootViewController: vc)
+        navController.modalPresentationStyle = .overFullScreen
+        self.present(navController, animated: false, completion: nil)
+    }
+    
     func callingGetCategoriesApi(){
         self.getAllCategoryApi { (status, categoryResponse) in
             if status{

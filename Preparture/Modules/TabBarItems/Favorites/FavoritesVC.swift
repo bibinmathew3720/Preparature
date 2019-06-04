@@ -19,6 +19,13 @@ class FavoritesVC: BaseViewController,UITableViewDataSource,UITableViewDelegate 
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func plusButtonAction(_ sender: UIButton) {
+        let vc:AddEventViewController = AddEventViewController(nibName: "AddEventViewController", bundle: nil)
+        let navController:UINavigationController = UINavigationController(rootViewController: vc)
+        navController.modalPresentationStyle = .overFullScreen
+        self.present(navController, animated: false, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
