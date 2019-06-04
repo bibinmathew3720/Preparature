@@ -137,10 +137,10 @@ class AddItineraryVC: BaseViewController {
         EventManager().callingAddItineraryApi(with:addItinerary.getRequestBody(), success: {
             (model) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            if let model = model as? GetAllCategoryResponseModel{
+            if let model = model as? AddToFavoriteResponseModel{
                 if model.statusCode == 1{
-                    CCUtility.showDefaultAlertwithCompletionHandler(_title: Constant.AppName, _message: "Event created successfully", parentController: self, completion: { (status) in
-                        self.dismiss(animated: false, completion: nil)
+                    CCUtility.showDefaultAlertwithCompletionHandler(_title: Constant.AppName, _message: model.statusMessage, parentController: self, completion: { (status) in
+                        self.navigationController?.popViewController(animated: true)
                     })
                 }
                 else{

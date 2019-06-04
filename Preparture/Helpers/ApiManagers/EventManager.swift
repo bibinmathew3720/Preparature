@@ -146,7 +146,7 @@ class EventManager: CLBaseService {
             if error == nil {
                 if let jdict = jsonDict{
                     print(jsonDict as Any)
-                    success(self.getEventDetailResponseModel(dict: jdict) as Any)
+                    success(self.getAddItineraryResponseModel(dict: jdict) as Any)
                 }else{
                     failure(ErrorType.dataError)
                 }
@@ -164,6 +164,11 @@ class EventManager: CLBaseService {
         let addIntineraryModel = CLNetworkModel.init(url: BASE_URL+ADD_ITINERARY_URL, requestMethod_: "POST")
         addIntineraryModel.requestBody = body
         return addIntineraryModel
+    }
+    
+    func getAddItineraryResponseModel(dict:[String : Any?]) -> Any? {
+        let addItineraryReponseModel = AddToFavoriteResponseModel.init(dict:dict)
+        return addItineraryReponseModel
     }
     
     //MARK : Get All Feeds Api Without category
