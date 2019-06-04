@@ -304,7 +304,9 @@ extension EventsVC:EventsTVCDelegate{
         if let _eventItem = eventItem{
             let itineraryVC = ItineraryListVC.init(nibName: "ItineraryListVC", bundle: nil)
             itineraryVC.eventItem = _eventItem
-            self.navigationController?.pushViewController(itineraryVC, animated: true)
+             itineraryVC.isPresent = true
+            let itineraryNavCtlr = UINavigationController.init(rootViewController: itineraryVC)
+            self.present(itineraryNavCtlr, animated: true, completion: nil)
         }
     }
     

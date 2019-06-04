@@ -13,10 +13,11 @@ class ItineraryListVC: BaseViewController {
     @IBOutlet weak var emptyView: UIView!
     var eventItem:EventItem?
     var selIndexes = [Int]()
+    var isPresent:Bool = false
     override func initView() {
         super.initView()
         initialisation()
-        callingGetEventDetailsApi()
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func initialisation(){
@@ -29,8 +30,18 @@ class ItineraryListVC: BaseViewController {
         itineraryListTableView.register(UINib.init(nibName: "ItineraryListTVC", bundle: nil), forCellReuseIdentifier: "itineraryCell")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        callingGetEventDetailsApi()
+    }
+    
     @IBAction func backButtonAction(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        if isPresent{
+            self.dismiss(animated: true, completion: nil)
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @IBAction func plusButtonAction(_ sender: UIButton) {

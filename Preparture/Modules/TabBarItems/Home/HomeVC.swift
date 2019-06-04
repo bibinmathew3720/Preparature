@@ -175,7 +175,8 @@ extension HomeVC:UITableViewDataSource,UITableViewDelegate,HomeListTVCDelegate {
     func doubleArrowButtonAction(tag:NSInteger){
         let itineraryVC = ItineraryListVC.init(nibName: "ItineraryListVC", bundle: nil)
         itineraryVC.eventItem = self.eventsArray[tag]
-        self.navigationController?.pushViewController(itineraryVC, animated: true)
+        itineraryVC.isPresent = false
+         self.navigationController?.pushViewController(itineraryVC, animated: true)
     }
     
     func shareAction(tag:NSInteger){
