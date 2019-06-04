@@ -17,25 +17,26 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedsVC" customModule="Preparture" customModuleProvider="target">
             <connections>
+                <outlet property="feedsTableView" destination="0DQ-2l-b3w" id="wh4-mD-Xhf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDg-ag-9Iu">
-                    <rect key="frame" x="0.0" y="44" width="375" height="80"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="80"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events From Chicago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6le-aZ-4Ib">
-                            <rect key="frame" x="102.5" y="34.5" width="170.5" height="21.5"/>
+                            <rect key="frame" x="122" y="34.5" width="170.5" height="21.5"/>
                             <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Opg-EC-WFG">
-                            <rect key="frame" x="325" y="25" width="40" height="40"/>
+                            <rect key="frame" x="364" y="25" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="mgR-gM-Ntg"/>
                                 <constraint firstAttribute="height" constant="40" id="zth-up-uOm"/>
@@ -55,11 +56,23 @@
                         <constraint firstAttribute="trailing" secondItem="Opg-EC-WFG" secondAttribute="trailing" constant="10" id="xnO-ze-3ae"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0DQ-2l-b3w">
+                    <rect key="frame" x="10" y="134" width="394" height="728"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="AO5-Wb-qcA"/>
+                        <outlet property="delegate" destination="-1" id="3a8-9H-XH8"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="0DQ-2l-b3w" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="4gV-3b-r3N"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0DQ-2l-b3w" secondAttribute="bottom" id="Lul-lX-Rx6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0DQ-2l-b3w" secondAttribute="trailing" constant="10" id="Qst-YT-8Df"/>
                 <constraint firstItem="KDg-ag-9Iu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="T24-SJ-u6j"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KDg-ag-9Iu" secondAttribute="trailing" id="eWC-xH-4cU"/>
+                <constraint firstItem="0DQ-2l-b3w" firstAttribute="top" secondItem="KDg-ag-9Iu" secondAttribute="bottom" constant="10" id="gXz-vp-oS2"/>
                 <constraint firstItem="KDg-ag-9Iu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="rwM-hN-Knf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

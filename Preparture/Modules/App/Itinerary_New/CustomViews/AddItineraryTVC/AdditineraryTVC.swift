@@ -62,8 +62,12 @@ class AdditineraryTVC: UITableViewCell {
     
     func setLandMarkDetails(landMark:AddLandmark){
         landMarkNameTF.text = landMark.landmarkName
-        landmarkLatitudeTF.text = "\(landMark.landmarkLatitude)"
-        landmarkLongitudeTF.text = "\(landMark.landmarkLongitude)"
+        if landMark.landmarkLatitude != 0{
+            landmarkLatitudeTF.text = "\(landMark.landmarkLatitude)"
+        }
+        if landMark.landmarkLongitude != 0{
+            landmarkLongitudeTF.text = "\(landMark.landmarkLongitude)"
+        }
         checkInTF.text = landMark.checkInDate
         checkOutTF.text = landMark.checkOutDate
     }

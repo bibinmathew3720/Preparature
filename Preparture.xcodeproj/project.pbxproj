@@ -118,6 +118,8 @@
 		D0F5B43C20EBFC73008727CC /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F5B43A20EBFC73008727CC /* SettingsVC.xib */; };
 		D0F5B43F20EBFC86008727CC /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5B43D20EBFC86008727CC /* FavoritesVC.swift */; };
 		D0F5B44020EBFC86008727CC /* FavoritesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F5B43E20EBFC86008727CC /* FavoritesVC.xib */; };
+		D0F94BEB22A5F10F00CB3E2B /* FeedsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F94BE922A5F10F00CB3E2B /* FeedsTVC.swift */; };
+		D0F94BEC22A5F10F00CB3E2B /* FeedsTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0F94BEA22A5F10F00CB3E2B /* FeedsTVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -260,6 +262,8 @@
 		D0F5B43A20EBFC73008727CC /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
 		D0F5B43D20EBFC86008727CC /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		D0F5B43E20EBFC86008727CC /* FavoritesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesVC.xib; sourceTree = "<group>"; };
+		D0F94BE922A5F10F00CB3E2B /* FeedsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsTVC.swift; sourceTree = "<group>"; };
+		D0F94BEA22A5F10F00CB3E2B /* FeedsTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsTVC.xib; sourceTree = "<group>"; };
 		D1C42B3C6F3EA91E849E8704 /* Pods-PrepartureUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureUITests/Pods-PrepartureUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D760075719329CC9C9DF73C1 /* Pods-Preparture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preparture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Preparture/Pods-Preparture.debug.xcconfig"; sourceTree = "<group>"; };
 		DB4235DBA8CFFCE1ACC620B0 /* Pods-PrepartureTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrepartureTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PrepartureTests/Pods-PrepartureTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -738,6 +742,7 @@
 		D06A695C229E1F7200F25E89 /* FeedsVC */ = {
 			isa = PBXGroup;
 			children = (
+				D0F94BE822A5F0F100CB3E2B /* FeedsTVC */,
 				D06A695D229E1FBD00F25E89 /* FeedsVC.swift */,
 				D06A695E229E1FBD00F25E89 /* FeedsVC.xib */,
 			);
@@ -921,6 +926,15 @@
 			path = CustomCells;
 			sourceTree = "<group>";
 		};
+		D0F94BE822A5F0F100CB3E2B /* FeedsTVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0F94BE922A5F10F00CB3E2B /* FeedsTVC.swift */,
+				D0F94BEA22A5F10F00CB3E2B /* FeedsTVC.xib */,
+			);
+			path = FeedsTVC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1034,6 +1048,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0DC44DC21FCC106007B77C0 /* ItineraryListVC.xib in Resources */,
+				D0F94BEC22A5F10F00CB3E2B /* FeedsTVC.xib in Resources */,
 				BB9FA6CA21441A4F00FB26FE /* HomeEventsViewController.xib in Resources */,
 				D003032420EDA72A00F85F11 /* HomeListTVC.xib in Resources */,
 				05D2F1E920D81D0600E2A5C9 /* Muli-SemiBold.ttf in Resources */,
@@ -1237,6 +1252,7 @@
 				D0F5B43720EBFB78008727CC /* HomeVC.swift in Sources */,
 				D0098007210F3FEF00DA1316 /* ChangePswdViewController.swift in Sources */,
 				D080183121E045B2008A2CAA /* EventsVC.swift in Sources */,
+				D0F94BEB22A5F10F00CB3E2B /* FeedsTVC.swift in Sources */,
 				D0F262A42205708C00A86BAC /* AddItineraryVC.swift in Sources */,
 				D0183CEC210CC3CD0030D02D /* UIColorExtension.swift in Sources */,
 				D0030DCF2111609E00703B64 /* EventManager.swift in Sources */,

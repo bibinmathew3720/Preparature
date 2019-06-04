@@ -165,6 +165,36 @@ class EventManager: CLBaseService {
         addIntineraryModel.requestBody = body
         return addIntineraryModel
     }
+    
+    //MARK : Get All Feeds Api Without category
+    
+    func callingGetAllFeedsApi(with body:String, success : @escaping (Any)->(),failure : @escaping (_ errorType:ErrorType)->()){
+        CLNetworkManager().initateWebRequest(networkModelForGetAllFeeds(with:body), success: {
+            (resultData) in
+            //let (jsonDict, error) = self.didReceiveStatesResponseSuccessFully(resultData)
+            //if (!error) {
+           // }
+            //if error == nil {
+                //if let jdict = jsonDict{
+                    //print(jsonDict as Any)
+                    success(resultData as Any)
+//                }else{
+//                    failure(ErrorType.dataError)
+//                }
+//            }else{
+//                failure(ErrorType.dataError)
+//            }
+            
+        }, failiure: {(error)-> () in failure(error)
+            
+        })
+        
+    }
+    
+    func networkModelForGetAllFeeds(with body:String)->CLNetworkModel{
+        let getAllFeedsModel = CLNetworkModel.init(url: GET_ALL_CHICAGO_FEEDS_URL, requestMethod_: "GET")
+        return getAllFeedsModel
+    }
 }
 
 class EventsResponseModel : NSObject{
@@ -550,4 +580,20 @@ class EventsSearchRequestModel:NSObject{
         return CCUtility.getJSONfrom(dictionary: dict)
     }
     
+}
+
+class Feed:NSObject{
+    var feedTitle:String = ""
+    var feedLink:String = ""
+    var feedComments:String = ""
+    var feedDate:String = ""
+    var feedDescription:String = ""
+    
+    init(title:String, link:String, comments:String, date:String, feedDes:String){
+        feedTitle = title
+        feedLink = link
+        feedComments = comments
+        feedDate = date
+        feedDescription = feedDes
+    }
 }

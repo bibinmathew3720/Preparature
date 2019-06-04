@@ -34,3 +34,4 @@ let ADD_FEEDBACK_URL = "feedback" //Done
 let GET_ALL_EVENTS = "list_all_events" //Done
 let GET_SEARCH_EVENTS_URL = "search_place" //Done
 let ADD_ITINERARY_URL = "add_itinerary" //Done
+let GET_ALL_CHICAGO_FEEDS_URL = "https://www.choosechicago.com/blog/rss" //Done
