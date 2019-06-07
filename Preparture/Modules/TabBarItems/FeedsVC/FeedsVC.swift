@@ -16,24 +16,32 @@ class FeedsVC: BaseViewController {
     var feedPubDate = String()
     var feedDescription = String()
     var elementName: String = String()
+    var pageIndex:Int = 1
     @IBOutlet weak var feedsTableView: UITableView!
     override func initView() {
         super.initView()
-        guard let encodedUrlstring = GET_ALL_CHICAGO_FEEDS_URL.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed) else { return  }
-        let requestURL = URL(string: encodedUrlstring)
-        if let _url = requestURL{
-            MBProgressHUD.showAdded(to: self.view, animated: true)
-            let xmlParser = XMLParser.init(contentsOf: _url)
-            if let _xmlParser = xmlParser{
-                _xmlParser.delegate = self
-                _xmlParser.parse()
-            }
-        }
-        
         tableCellRegistration()
+        getFeedsData()
         //addingRightBarButtonWithImage(buttonImage: "addItem")
         self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
+    }
+    
+    func getFeedsData(){
+        guard var encodedUrlstring = GET_ALL_CHICAGO_FEEDS_URL.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed) else { return  }
+        encodedUrlstring = encodedUrlstring + "\(pageIndex)"
+        let requestURL = URL(string: encodedUrlstring)
+        if let _url = requestURL{
+            DispatchQueue.main.async {
+                MBProgressHUD.showAdded(to: self.view, animated: true)
+                let xmlParser = XMLParser.init(contentsOf: _url)
+                if let _xmlParser = xmlParser{
+                    _xmlParser.delegate = self
+                    _xmlParser.parse()
+                }
+            }
+            
+        }
     }
     
     func tableCellRegistration(){
@@ -135,10 +143,9 @@ extension FeedsVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        if (!self.isFromSearch){
-//            if(indexPath.row == (eventsArray.count-1)){
-//                self.getAllEventsApi()
-//            }
-//        }
+        if(indexPath.row == (feedsArray.count-1)){
+            pageIndex += 1
+            self.getFeedsData()
+        }
     }
 }

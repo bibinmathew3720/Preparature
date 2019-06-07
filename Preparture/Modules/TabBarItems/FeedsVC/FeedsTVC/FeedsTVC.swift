@@ -31,22 +31,31 @@ class FeedsTVC: UITableViewCell {
     }
     
     func loadfeedImageWithDescription(description:String){
-        let descArray = description.components(separatedBy: "<img src=")
-        if descArray.count > 0{
-            let imageUrlArray = descArray.last?.components(separatedBy: ".jpg")
-            if let _imageUrlArray = imageUrlArray{
-                if _imageUrlArray.count > 0{
-                    let imageurlString = _imageUrlArray.first
-                    if var _imageUrlString = imageurlString{
-                        _imageUrlString = _imageUrlString.replacingOccurrences(of: "\\", with: "")
-                        _imageUrlString = _imageUrlString.replacingOccurrences(of: "\"", with: "")
-                        _imageUrlString = _imageUrlString + ".jpg"
-                         guard let encodedUrlstring = _imageUrlString.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed) else { return  }
-                        feedsImageView.sd_setImage(with: URL(string: encodedUrlstring), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
-                    }
+        if (description.contains(".jpg")){
+            self.processImageDescription(feedDesc:description,exten:".jpg")
+        }
+        else if (description.contains(".png")){
+            self.processImageDescription(feedDesc:description,exten:".png")
+        }
+    }
+    
+func processImageDescription(feedDesc:String, exten:String){
+    let descArray = feedDesc.components(separatedBy: "<img src=")
+    if descArray.count > 0{
+        let imageUrlArray = descArray.last?.components(separatedBy: exten)
+        if let _imageUrlArray = imageUrlArray{
+            if _imageUrlArray.count > 0{
+                let imageurlString = _imageUrlArray.first
+                if var _imageUrlString = imageurlString{
+                    _imageUrlString = _imageUrlString.replacingOccurrences(of: "\\", with: "")
+                    _imageUrlString = _imageUrlString.replacingOccurrences(of: "\"", with: "")
+                    _imageUrlString = _imageUrlString + exten
+                    guard let encodedUrlstring = _imageUrlString.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed) else { return  }
+                    feedsImageView.sd_setImage(with: URL(string: encodedUrlstring), placeholderImage: UIImage(named: Constant.ImageNames.placeholderImage))
                 }
             }
         }
     }
+}
     
 }
