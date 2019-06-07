@@ -100,6 +100,8 @@
 		D095508320E32B4F00D8BBD9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D095507E20E32B4E00D8BBD9 /* Reachability.m */; };
 		D0C334CB21FC0D3300DF00B9 /* FeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C334C921FC0D2F00DF00B9 /* FeedbackVC.swift */; };
 		D0C334CC21FC0D3300DF00B9 /* FeedbackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C334CA21FC0D3000DF00B9 /* FeedbackVC.xib */; };
+		D0C698D622AA6CC90060B2C4 /* FeedWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C698D422AA6CC90060B2C4 /* FeedWebViewVC.swift */; };
+		D0C698D722AA6CC90060B2C4 /* FeedWebViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0C698D522AA6CC90060B2C4 /* FeedWebViewVC.xib */; };
 		D0DC44DB21FCC106007B77C0 /* ItineraryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DC44D921FCC106007B77C0 /* ItineraryListVC.swift */; };
 		D0DC44DC21FCC106007B77C0 /* ItineraryListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DC44DA21FCC106007B77C0 /* ItineraryListVC.xib */; };
 		D0DC44E121FD36C5007B77C0 /* ItineraryListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DC44DF21FD36C5007B77C0 /* ItineraryListTVC.swift */; };
@@ -244,6 +246,8 @@
 		D095508520E32CB300D8BBD9 /* Preparature-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Preparature-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0C334C921FC0D2F00DF00B9 /* FeedbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackVC.swift; sourceTree = "<group>"; };
 		D0C334CA21FC0D3000DF00B9 /* FeedbackVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackVC.xib; sourceTree = "<group>"; };
+		D0C698D422AA6CC90060B2C4 /* FeedWebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedWebViewVC.swift; sourceTree = "<group>"; };
+		D0C698D522AA6CC90060B2C4 /* FeedWebViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedWebViewVC.xib; sourceTree = "<group>"; };
 		D0DC44D921FCC106007B77C0 /* ItineraryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryListVC.swift; sourceTree = "<group>"; };
 		D0DC44DA21FCC106007B77C0 /* ItineraryListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItineraryListVC.xib; sourceTree = "<group>"; };
 		D0DC44DF21FD36C5007B77C0 /* ItineraryListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryListTVC.swift; sourceTree = "<group>"; };
@@ -742,6 +746,7 @@
 		D06A695C229E1F7200F25E89 /* FeedsVC */ = {
 			isa = PBXGroup;
 			children = (
+				D0C698D322AA6C9D0060B2C4 /* FeedWebViewVC */,
 				D0F94BE822A5F0F100CB3E2B /* FeedsTVC */,
 				D06A695D229E1FBD00F25E89 /* FeedsVC.swift */,
 				D06A695E229E1FBD00F25E89 /* FeedsVC.xib */,
@@ -795,6 +800,15 @@
 				D0C334CA21FC0D3000DF00B9 /* FeedbackVC.xib */,
 			);
 			path = FeedbackVC;
+			sourceTree = "<group>";
+		};
+		D0C698D322AA6C9D0060B2C4 /* FeedWebViewVC */ = {
+			isa = PBXGroup;
+			children = (
+				D0C698D422AA6CC90060B2C4 /* FeedWebViewVC.swift */,
+				D0C698D522AA6CC90060B2C4 /* FeedWebViewVC.xib */,
+			);
+			path = FeedWebViewVC;
 			sourceTree = "<group>";
 		};
 		D0DC44D521FCC07B007B77C0 /* Itinerary_New */ = {
@@ -1097,6 +1111,7 @@
 				05D2F1E020D81D0600E2A5C9 /* Muli-BoldItalic.ttf in Resources */,
 				05B2CB6820B1E481008D0D32 /* Main.storyboard in Resources */,
 				05D2F1DD20D81D0600E2A5C9 /* Muli-Black.ttf in Resources */,
+				D0C698D722AA6CC90060B2C4 /* FeedWebViewVC.xib in Resources */,
 				056D4DEF20F0B5A600B7F408 /* HomeDetailViewController.xib in Resources */,
 				05D2F1E120D81D0600E2A5C9 /* Muli-ExtraBold.ttf in Resources */,
 			);
@@ -1270,6 +1285,7 @@
 				056D4DF620F0B5CA00B7F408 /* SuggestionsViewController.swift in Sources */,
 				056D4DF220F0B5B700B7F408 /* ItineraryViewController.swift in Sources */,
 				D095508220E32B4F00D8BBD9 /* CLNetworkUtility.swift in Sources */,
+				D0C698D622AA6CC90060B2C4 /* FeedWebViewVC.swift in Sources */,
 				BBBAAA452122DB1B00DD7601 /* AddPlacesViewController.swift in Sources */,
 				D002A8BA229F739A009ED890 /* EventsTVC.swift in Sources */,
 				D01A848C20F96FF6004ED6FB /* ItineraryTVC.swift in Sources */,

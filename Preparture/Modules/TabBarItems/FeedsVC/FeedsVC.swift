@@ -139,7 +139,10 @@ extension FeedsVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+       let feedWebViewVC = FeedWebViewVC.init(nibName: "FeedWebViewVC", bundle: nil)
+        let feed = feedsArray[indexPath.row]
+        feedWebViewVC.urlString = feed.feedLink
+        self.navigationController?.pushViewController(feedWebViewVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
