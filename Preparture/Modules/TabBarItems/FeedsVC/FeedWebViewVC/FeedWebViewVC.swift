@@ -27,6 +27,9 @@ class FeedWebViewVC: BaseViewController {
     }
 
 
+    @IBAction func backButtonAction(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     /*
     // MARK: - Navigation
 
