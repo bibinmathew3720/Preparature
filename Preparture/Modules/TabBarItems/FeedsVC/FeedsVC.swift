@@ -62,18 +62,21 @@ class FeedsVC: BaseViewController {
 extension FeedsVC:XMLParserDelegate{
     // 1
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        print(elementName)
+       // print(elementName)
         if elementName == "item" {
             feedTitle = String()
             feedLink = String()
             feedComment = String()
             feedPubDate = String()
             feedDescription = String()
-       }
+        }
+        else if elementName == "description"{
+        }
        self.elementName = elementName
     }
     
     // 2
+    
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "item" {
             let feed = Feed.init(title: feedTitle, link: feedLink, comments: feedComment, date: feedPubDate, feedDes: feedDescription)
